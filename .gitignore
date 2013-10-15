@@ -1,0 +1,8 @@
+*/.project
+*/.classpath
+*/.settings
+*/bin/classes
+/.DS_Store
+/composer.phar
+*/composer.lock
+*/composer.phar
