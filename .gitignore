@@ -6,3 +6,11 @@
 /composer.phar
 */composer.lock
 */composer.phar
+/web/bundles/
+/app/bootstrap*
+/app/logs/*
+/app/cacje/*
+/vendor/
+/app/config/parameters.yml
+.sonar*
+
