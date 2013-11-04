@@ -2,30 +2,3 @@ Dépôt des sources du projet PEPIT : CulturalStore
 Site communautaire
 
 
-" ============================================================================
-" Netrw Directory Listing                                        (netrw v143)
-"   /Users/lucie/code/site
-"   Sorted by      name
-"   Sort sequence: [\/]$,\<core\%(\.\d\+\)\=\>,\.h$,\.c$,\.cpp$,\~\=\*$,*,\.o$,\.obj$,\.info$,\.swp$,\.bak$,\~$
-"   Quick Help: <F1>:help  -:go up dir  D:delete  R:rename  s:sort-by  x:exec
-" ============================================================================
-../
-css/
-fancybox/
-images/
-js/
-jquery-1.6.1.min.js*
-jquery.easing.1.3.js*
-jquery.gridnav.js*
-jquery.mousewheel.js*
-.DS_Store
-Makefile
-flickr.xml
-imgAccueil.png
-index.html
-jquery-1.7.2.min.js
-logoVirginie.png
-style.css
-wallpaperAccueil.jpg
-wallpaperVierge.jpg
-.style.css.swp
