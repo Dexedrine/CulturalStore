@@ -1,5 +1,0 @@
-_assetic:
-    resource: .
-    type: assetic
-_app:
-    resource: /home/synapse/CulturalStore/lappstack/project/CulturalStore/app/config/routing_dev.yml
