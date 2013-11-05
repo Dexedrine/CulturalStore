@@ -3,19 +3,22 @@
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
-class AppKernel extends Kernel {
-	public function registerBundles() {
-		$bundles = array(new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-				new Symfony\Bundle\SecurityBundle\SecurityBundle(),
-				new Symfony\Bundle\TwigBundle\TwigBundle(),
-				new Symfony\Bundle\MonologBundle\MonologBundle(),
-				new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-				new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-				new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-				new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-				new CS\UserBundle\CSUserBundle(),
-				new CSBundle\DesignBundle\CSBundleDesignBundle(),
-				new CS\DesignBundle\CSDesignBundle(),);
+class AppKernel extends Kernel
+{
+    public function registerBundles()
+    {
+        $bundles = array(
+            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new Symfony\Bundle\TwigBundle\TwigBundle(),
+            new Symfony\Bundle\MonologBundle\MonologBundle(),
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new CS\UserBundle\CSUserBundle(),
+            new CS\DesignBundle\CSDesignBundle(),
+        );
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {
 			$bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
