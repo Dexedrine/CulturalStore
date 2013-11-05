@@ -1,5 +1,0 @@
-_assetic:
-    resource: .
-    type: assetic
-_app:
-    resource: /Applications/mappstack-5.4.21-0/creation/CulturalStore/app/config/routing_dev.yml
