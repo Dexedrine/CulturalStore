@@ -1,3 +1,11 @@
+cs_design:
+    resource: "@CSDesignBundle/Resources/config/routing.yml"
+    prefix:   /
+
+cs_bundle_design:
+    resource: "@CSBundleDesignBundle/Resources/config/routing.yml"
+    prefix:   /
+
 cs_user:
     resource: "@CSUserBundle/Resources/config/routing.yml"
     prefix:   /

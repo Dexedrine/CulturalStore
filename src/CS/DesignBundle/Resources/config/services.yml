@@ -1,0 +1,7 @@
+parameters:
+#    cs_design.example.class: CS\DesignBundle\Example
+
+services:
+#    cs_design.example:
+#        class: %cs_design.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
