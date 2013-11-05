@@ -19,6 +19,10 @@ require_once __DIR__.'/../app/AppKernel.php';
 $kernel = new AppKernel('prod', false);
 $kernel->loadClassCache();
 //$kernel = new AppCache($kernel);
+<<<<<<< HEAD
+=======
+Request::enableHttpMethodParameterOverride();
+>>>>>>> a9ec11a3ccfdace1b9ea1f2f561120defc296c6d
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();

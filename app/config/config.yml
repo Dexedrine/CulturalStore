@@ -19,7 +19,10 @@ framework:
     trusted_proxies: ~
     session:         ~
     fragments:       ~
+<<<<<<< HEAD
     http_method_override: true
+=======
+>>>>>>> a9ec11a3ccfdace1b9ea1f2f561120defc296c6d
 
 # Twig Configuration
 twig:
