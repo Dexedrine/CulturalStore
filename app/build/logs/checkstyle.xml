@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="1.4.7">
+ <file name="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/AcmeDemoBundle.php">
+  <error line="7" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+ </file>
+ <file name="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/Controller/DemoController.php">
+  <error line="13" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+  <error line="18" column="1" severity="error" message="Missing @return tag in function comment" source="Symfony2.Commenting.FunctionComment.MissingReturn"/>
+  <error line="24" column="5" severity="error" message="Doc comment for &quot;$name&quot; missing" source="Symfony2.Commenting.FunctionComment.MissingParamTag"/>
+  <error line="27" column="1" severity="error" message="Missing @return tag in function comment" source="Symfony2.Commenting.FunctionComment.MissingReturn"/>
+  <error line="36" column="1" severity="error" message="Missing @return tag in function comment" source="Symfony2.Commenting.FunctionComment.MissingReturn"/>
+ </file>
+ <file name="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/Controller/SecuredController.php">
+  <error line="12" column="1" severity="error" message="There should always be a description, followed by a blank line, before the tags of a class comment." source="Symfony2.Commenting.ClassComment.SpacingBeforeTags"/>
+  <error line="16" column="5" severity="error" message="Doc comment for &quot;$request&quot; missing" source="Symfony2.Commenting.FunctionComment.MissingParamTag"/>
+  <error line="19" column="1" severity="error" message="Missing @return tag in function comment" source="Symfony2.Commenting.FunctionComment.MissingReturn"/>
+  <error line="50" column="5" severity="error" message="Doc comment for &quot;$name&quot; missing" source="Symfony2.Commenting.FunctionComment.MissingParamTag"/>
+  <error line="54" column="1" severity="error" message="Missing @return tag in function comment" source="Symfony2.Commenting.FunctionComment.MissingReturn"/>
+  <error line="60" column="5" severity="error" message="Doc comment for &quot;$name&quot; missing" source="Symfony2.Commenting.FunctionComment.MissingParamTag"/>
+  <error line="63" column="1" severity="error" message="Missing @return tag in function comment" source="Symfony2.Commenting.FunctionComment.MissingReturn"/>
+ </file>
+ <file name="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/Controller/WelcomeController.php">
+  <error line="7" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+  <error line="9" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ </file>
+ <file name="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/DependencyInjection/AcmeDemoExtension.php">
+  <error line="10" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+  <error line="12" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+  <error line="18" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ </file>
+ <file name="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/EventListener/ControllerListener.php">
+  <error line="9" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+  <error line="13" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+  <error line="18" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ </file>
+ <file name="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/Form/ContactType.php">
+  <error line="8" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+  <error line="10" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+  <error line="16" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ </file>
+ <file name="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/Tests/Controller/DemoControllerTest.php">
+  <error line="7" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+  <error line="9" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ </file>
+ <file name="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/Twig/Extension/DemoExtension.php">
+  <error line="7" column="1" severity="error" message="Missing class doc comment" source="Symfony2.Commenting.ClassComment.Missing"/>
+  <error line="12" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+  <error line="17" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+  <error line="32" column="12" severity="error" message="Missing function doc comment" source="Symfony2.Commenting.FunctionComment.Missing"/>
+ </file>
+</checkstyle>

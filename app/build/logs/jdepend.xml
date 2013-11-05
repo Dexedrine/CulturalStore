@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PDepend>
+  <Packages>
+    <Package name="Acme\DemoBundle">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>1</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>0</Ca>
+        <Ce>1</Ce>
+        <A>0</A>
+        <I>1</I>
+        <D>0</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/AcmeDemoBundle.php">AcmeDemoBundle</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon>
+        <Package>Symfony\Component\HttpKernel\Bundle</Package>
+      </DependsUpon>
+      <UsedBy/>
+    </Package>
+    <Package name="Acme\DemoBundle\Controller">
+      <Stats>
+        <TotalClasses>3</TotalClasses>
+        <ConcreteClasses>3</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>0</Ca>
+        <Ce>4</Ce>
+        <A>0</A>
+        <I>1</I>
+        <D>0</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/Controller/DemoController.php">DemoController</Class>
+        <Class sourceFile="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/Controller/SecuredController.php">SecuredController</Class>
+        <Class sourceFile="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/Controller/WelcomeController.php">WelcomeController</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon>
+        <Package>Acme\DemoBundle\Form</Package>
+        <Package>Symfony\Bundle\FrameworkBundle\Controller</Package>
+        <Package>Symfony\Component\HttpFoundation</Package>
+        <Package>Symfony\Component\Security\Core</Package>
+      </DependsUpon>
+      <UsedBy/>
+    </Package>
+    <Package name="Acme\DemoBundle\DependencyInjection">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>1</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>0</Ca>
+        <Ce>4</Ce>
+        <A>0</A>
+        <I>1</I>
+        <D>0</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/DependencyInjection/AcmeDemoExtension.php">AcmeDemoExtension</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon>
+        <Package>Symfony\Component\Config</Package>
+        <Package>Symfony\Component\DependencyInjection</Package>
+        <Package>Symfony\Component\DependencyInjection\Loader</Package>
+        <Package>Symfony\Component\HttpKernel\DependencyInjection</Package>
+      </DependsUpon>
+      <UsedBy/>
+    </Package>
+    <Package name="Acme\DemoBundle\EventListener">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>1</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>0</Ca>
+        <Ce>3</Ce>
+        <A>0</A>
+        <I>1</I>
+        <D>0</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/EventListener/ControllerListener.php">ControllerListener</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon>
+        <Package>Acme\DemoBundle\Twig\Extension</Package>
+        <Package>Symfony\Component\HttpKernel</Package>
+        <Package>Symfony\Component\HttpKernel\Event</Package>
+      </DependsUpon>
+      <UsedBy/>
+    </Package>
+    <Package name="Acme\DemoBundle\Form">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>1</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>1</Ca>
+        <Ce>1</Ce>
+        <A>0</A>
+        <I>0.5</I>
+        <D>0.5</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/Form/ContactType.php">ContactType</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon>
+        <Package>Symfony\Component\Form</Package>
+      </DependsUpon>
+      <UsedBy>
+        <Package>Acme\DemoBundle\Controller</Package>
+      </UsedBy>
+    </Package>
+    <Package name="Acme\DemoBundle\Tests\Controller">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>1</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>0</Ca>
+        <Ce>1</Ce>
+        <A>0</A>
+        <I>1</I>
+        <D>0</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/Tests/Controller/DemoControllerTest.php">DemoControllerTest</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon>
+        <Package>Symfony\Bundle\FrameworkBundle\Test</Package>
+      </DependsUpon>
+      <UsedBy/>
+    </Package>
+    <Package name="Acme\DemoBundle\Twig\Extension">
+      <Stats>
+        <TotalClasses>1</TotalClasses>
+        <ConcreteClasses>1</ConcreteClasses>
+        <AbstractClasses>0</AbstractClasses>
+        <Ca>1</Ca>
+        <Ce>2</Ce>
+        <A>0</A>
+        <I>0.66666666666667</I>
+        <D>0.33333333333333</D>
+      </Stats>
+      <ConcreteClasses>
+        <Class sourceFile="/home/synapse/CulturalStore/lappstack/project/CulturalStore/src/Acme/DemoBundle/Twig/Extension/DemoExtension.php">DemoExtension</Class>
+      </ConcreteClasses>
+      <AbstractClasses/>
+      <DependsUpon>
+        <Package></Package>
+        <Package>CG\Core</Package>
+      </DependsUpon>
+      <UsedBy>
+        <Package>Acme\DemoBundle\EventListener</Package>
+      </UsedBy>
+    </Package>
+  </Packages>
+  <Cycles/>
+</PDepend>
