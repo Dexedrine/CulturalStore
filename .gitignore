@@ -9,7 +9,7 @@
 /web/bundles/
 /app/bootstrap*
 /app/logs/*
-/app/cacje/*
+/app/cache/*
 /vendor/
 /app/config/parameters.yml
 .sonar*
