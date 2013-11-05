@@ -1,1 +1,9 @@
 @CHARSET "UTF-8";
+
+html {
+	background-color: #FAF6EB;
+}
+
+body {
+	font-family: arial, serif;
+}
