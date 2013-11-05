@@ -4,8 +4,9 @@
 */bin/classes
 /.DS_Store
 /composer.phar
+composer.lock
 */composer.lock
-*/composer.phar
+composer.phar
 /web/bundles/
 /app/bootstrap*
 /app/logs/*
