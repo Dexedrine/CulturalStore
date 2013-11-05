@@ -17,3 +17,5 @@ composer.phar
 .htaccess
 */.htaccess
 app/build/*
+*.bat
+*.md
