@@ -24,10 +24,7 @@ require_once __DIR__.'/../app/AppKernel.php';
 
 $kernel = new AppKernel('dev', true);
 $kernel->loadClassCache();
-<<<<<<< HEAD
 
-=======
->>>>>>> 23c8c0c1b9b8c038743b3c289a00f02d76ff1b9e
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
