@@ -20,9 +20,13 @@ framework:
     session:         ~
     fragments:       ~
 <<<<<<< HEAD
+<<<<<<< HEAD
     http_method_override: true
 =======
 >>>>>>> a9ec11a3ccfdace1b9ea1f2f561120defc296c6d
+=======
+    http_method_override: true
+>>>>>>> 23c8c0c1b9b8c038743b3c289a00f02d76ff1b9e
 
 # Twig Configuration
 twig:

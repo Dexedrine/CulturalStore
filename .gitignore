@@ -1,6 +1,7 @@
-*/.project
-*/.classpath
-*/.settings
+.buildpath
+.project
+.classpath
+.settings
 */bin/classes
 /.DS_Store
 /composer.phar

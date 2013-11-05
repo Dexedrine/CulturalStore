@@ -1,0 +1,4 @@
+cs_user:
+    resource: "@CSUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
