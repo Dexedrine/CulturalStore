@@ -16,4 +16,4 @@ composer.phar
 .sonar*
 .htaccess
 */.htaccess
-
+app/build/*
