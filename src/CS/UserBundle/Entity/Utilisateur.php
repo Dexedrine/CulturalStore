@@ -103,6 +103,12 @@ class Utilisateur extends BaseUser {
 		return $this->photo;
 	}
 	
+	public function setEmail($email)
+	{
+		parent::setEmail($email);
+		$this->setUsername($email);
+	}
+	
 	public function __construct() {
 		parent::__construct();
 		// your own logic
