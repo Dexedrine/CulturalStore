@@ -31,17 +31,11 @@ class Utilisateur extends BaseUser
      */
     private $prenom;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=30, nullable=false)
-     */
-    private $pseudo;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=300, nullable=false)
+     * @ORM\Column(type="string", length=300, nullable=true)
      */
     private $photo;
 

@@ -2,6 +2,8 @@ parameters:
 #    cs_user.example.class: CS\UserBundle\Example
 
 services:
-#    cs_user.example:
-#        class: %cs_user.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    cs_user.registration.form.type:
+        class: CS\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: cs_user_registration }
