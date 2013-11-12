@@ -4,11 +4,13 @@ namespace CS\UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
+
+// @ORM\Entity(repositoryClass="CS\UserBundle\Repository\UtilisateurRepository")
 /**
  * @ORM\Entity
  * @ORM\Table(name="utilisateur")
- * @ORM\Entity(repositoryClass="CS\UserBundle\Repository\UtilisateurRepository")
- * @ORM\HasLifecycleCallbacks
+ *
+ * 
  */
 
 class Utilisateur extends BaseUser {
