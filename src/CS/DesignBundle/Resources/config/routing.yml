@@ -1,3 +1,3 @@
 cs_design_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: CSDesignBundle:Default:index }
+    pattern:  /
+    defaults: { _controller: CSDesignBundle:Homepage:homepage }
