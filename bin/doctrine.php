@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 /*
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
@@ -42,12 +41,11 @@ if (file_exists($configFile)) {
 $helperSet = ($helperSet) ?: new \Symfony\Component\Console\Helper\HelperSet();
 
 \Doctrine\ORM\Tools\Console\ConsoleRunner::run($helperSet);
-=======
-#!/usr/bin/env sh
+
+/*#!/usr/bin/env sh
 SRC_DIR="`pwd`"
 cd "`dirname "$0"`"
 cd "../vendor/doctrine/orm/bin"
 BIN_TARGET="`pwd`/doctrine.php"
 cd "$SRC_DIR"
-"$BIN_TARGET" "$@"
->>>>>>> a9ec11a3ccfdace1b9ea1f2f561120defc296c6d
+"$BIN_TARGET" "$@"*/

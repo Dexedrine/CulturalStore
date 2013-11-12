@@ -6,16 +6,7 @@ framework:
     session:
         storage_id: session.storage.mock_file
     profiler:
-<<<<<<< HEAD
-<<<<<<< HEAD
         collect: false
-=======
-        enabled: false
->>>>>>> a9ec11a3ccfdace1b9ea1f2f561120defc296c6d
-=======
-        collect: false
->>>>>>> 23c8c0c1b9b8c038743b3c289a00f02d76ff1b9e
-
 web_profiler:
     toolbar: false
     intercept_redirects: false

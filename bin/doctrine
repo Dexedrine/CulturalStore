@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-#!/usr/bin/env php
-<?php
-
-include('doctrine.php');
-=======
 #!/usr/bin/env sh
 SRC_DIR="`pwd`"
 cd "`dirname "$0"`"
@@ -11,4 +5,3 @@ cd "../vendor/doctrine/orm/bin"
 BIN_TARGET="`pwd`/doctrine"
 cd "$SRC_DIR"
 "$BIN_TARGET" "$@"
->>>>>>> a9ec11a3ccfdace1b9ea1f2f561120defc296c6d
