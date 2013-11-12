@@ -73,3 +73,4 @@ fos_user:
     registration:
         form:
             type: cs_user_registration
+            
