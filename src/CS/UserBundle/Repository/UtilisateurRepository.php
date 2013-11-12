@@ -12,7 +12,7 @@ namespace CS\UserBundle\Repository;
 		public function loadUserByUsername($email) {
 			return $this->getEntityManager()
 			->createQuery('SELECT u FROM
-CSUtilisateurBundle:Utilisateur u
+CS/UserBundle:Utilisateur u
 WHERE u.email = :email
 OR u.email = :username')
 	->setParameters(array(
