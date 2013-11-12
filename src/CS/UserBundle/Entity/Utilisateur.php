@@ -7,7 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="utilisateur")
+ * @ORM\Entity(repositoryClass="CS\UserBundle\Repository\UtilisateurRepository")
+ * @ORM\HasLifecycleCallbacks
  */
+
 class Utilisateur extends BaseUser {
 	/**
 	 * @ORM\Id
