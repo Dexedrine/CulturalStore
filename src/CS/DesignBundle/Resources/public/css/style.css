@@ -6,4 +6,16 @@ html {
 
 body {
 	font-family: arial, serif;
+	background-position: center top;
+}
+.header{
+	margin: 0 auto;
+	width: 65%;
+	
+}
+
+.logo img{
+	margin: 2px 0;
+	height: 100px;
+	width: 230px;
 }
