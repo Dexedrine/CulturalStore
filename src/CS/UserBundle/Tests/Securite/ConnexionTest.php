@@ -18,18 +18,18 @@ class ConnexionTest extends WebTestCase{
 	
 		$userManager = $this->repo->get('fos_user.user_manager');
 	
-		$email = "testing".(string) rand(0,10000)."@test.com";
-		$prenom = "prenom";
-		$nom = "nom";
-		$motDePasse = "passworD1";
+		$this->email = "testing".(string) rand(0,10000)."@test.com";
+		$this->prenom = "prenom";
+		$this->nom = "nom";
+		$this->motDePasse = "passworD1";
 	
 		$user = $userManager->createUser();
 	
-		$user->setEmail($email);
-		$user->setUsername($email);
-		$user->setPrenom($prenom);
-		$user->setNom($nom);
-		$user->setPlainPassword($motDePasse);
+		$user->setEmail($this->email);
+		$user->setUsername($this->email);
+		$user->setPrenom($this->prenom);
+		$user->setNom($this->nom);
+		$user->setPlainPassword($this->motDePasse);
 	
 		// Persist the user to the database
 		$userManager->updateUser($user);
