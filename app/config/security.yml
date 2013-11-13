@@ -8,8 +8,9 @@ security:
 
     providers:
         fos_userbundle:
-            id: fos_user.user_provider.username_email
-            #entity: { class: CS\UserBundle\Entity\Utilisateur }
+            #id: fos_user.user_provider.username_email
+             id: fos_user.user_manager
+            #entity: { class: CS\UserBundle\Entity\Utilisateur ,property : email}
 
     firewalls:
         main:

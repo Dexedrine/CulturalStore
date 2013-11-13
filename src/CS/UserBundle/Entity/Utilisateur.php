@@ -2,10 +2,11 @@
 
 namespace CS\UserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 
-// @ORM\Entity(repositoryClass="CS\UserBundle\Repository\UtilisateurRepository")
+// (repositoryClass="CS\UserBundle\Repository\UtilisateurRepository")
 /**
  * @ORM\Entity
  * @ORM\Table(name="utilisateur")

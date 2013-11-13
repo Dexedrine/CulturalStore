@@ -1,0 +1,68 @@
+<?php
+namespace CS\UserBundle\Tests;
+class TestConnexion extends \PHPUnit_Framework_TestCase{
+	
+	private $email;
+	private $prenom ;
+	private $nom ;
+	private $motDePasse;
+	
+	public function setUp() {
+	
+		$kernel = static::createKernel();
+		$this->repo = $kernel->boot();
+		$this->repo = $kernel->getContainer();
+	
+		$userManager = $this->repo->get('fos_user.user_manager');
+	
+		$email = "testing".(string) self::newRandomNumber()."@test.com";
+		$prenom = "prenom";
+		$nom = "nom";
+		$motDePasse = "passworD1";
+	
+		$user = $userManager->createUser();
+	
+		$user->setEmail($email);
+		$user->setUsername($email);
+		$user->setPrenom($prenom);
+		$user->setNom($nom);
+		$user->setPlainPassword($motDePasse);
+		$user->setBimStaff(True);
+	
+		// Persist the user to the database
+		$userManager->updateUser($user);
+	
+		$this->user = $user;
+	
+// 		$this->client = static::createClient();
+// 		$crawler = $this->client->request('GET', '/');
+	
+// 		$form = $crawler->selectButton('Login')->form();
+	
+// 		// set some values
+// 		//$un = 'Lucas'.self::newRandomNumber();
+// 		$form['_username'] = $un;
+// 		$form['_password'] = $pwd;
+	
+// 		// submit the form
+	
+// 		$crawler = $this->client->submit($form);
+// 		print_r($this->client->getResponse());
+	
+// 		$this->client->followRedirects();
+	
+	}
+	public function testLogin() {
+		$crawler = $this->client->request('GET', '/login');
+		$form = $crawler->selectButton('_submit')->form(array(
+				'_username'  => $email,
+				'_password'  => $motDePasse,
+		));
+		$this->client->submit($form);
+	
+		$this->assertTrue($this->client->getResponse()->isRedirect(), 'should be redirected');
+		$this->assertTrue($this->client->getResponse()->isRedirect('http://localhost/'), 'doit etre redirigé vers la page d\'acceuil'');
+	
+		$crawler = $this->client->followRedirect();
+	}
+}
