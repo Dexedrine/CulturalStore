@@ -58,8 +58,8 @@ class ConnexionTest extends WebTestCase{
 		$client = static::createClient();
 		$crawler = $client->request('GET', '/login');
 		$form = $crawler->selectButton('_submit')->form(array(
-				'_username'  => $email,
-				'_password'  => $motDePasse,
+				'_username'  => $this->email,
+				'_password'  => $this->motDePasse,
 		));
 		$this->client->submit($form);
 	
