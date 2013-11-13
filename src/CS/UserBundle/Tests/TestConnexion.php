@@ -61,7 +61,7 @@ class TestConnexion extends \PHPUnit_Framework_TestCase{
 		$this->client->submit($form);
 	
 		$this->assertTrue($this->client->getResponse()->isRedirect(), 'should be redirected');
-		$this->assertTrue($this->client->getResponse()->isRedirect('http://localhost/'), 'doit etre redirigé vers la page d\'acceuil'');
+		$this->assertTrue($this->client->getResponse()->isRedirect('http://localhost/'), 'doit etre redirigé vers la page d\'acceuil');
 	
 		$crawler = $this->client->followRedirect();
 	}
