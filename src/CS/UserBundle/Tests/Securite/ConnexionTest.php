@@ -30,7 +30,6 @@ class ConnexionTest extends WebTestCase{
 		$user->setPrenom($prenom);
 		$user->setNom($nom);
 		$user->setPlainPassword($motDePasse);
-		$user->setBimStaff(True);
 	
 		// Persist the user to the database
 		$userManager->updateUser($user);
