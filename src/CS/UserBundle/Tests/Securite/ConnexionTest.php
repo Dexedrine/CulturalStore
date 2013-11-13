@@ -1,5 +1,8 @@
 <?php
 namespace CS\UserBundle\Tests\Securite;
+
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
 class ConnexionTest extends WebTestCase{
 	
 	private $email;
