@@ -5,10 +5,10 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ConnexionTest extends WebTestCase{
 	
-	private $email;
-	private $prenom ;
-	private $nom ;
-	private $motDePasse;
+	protected $email;
+	protected $prenom ;
+	protected $nom ;
+	protected $motDePasse;
 	
 	public function setUp() {
 	
