@@ -55,7 +55,8 @@ class ConnexionTest extends WebTestCase{
 	
 	}
 	public function testLogin() {
-		$crawler = $this->client->request('GET', '/login');
+		$client = static::createClient();
+		$crawler = $client->request('GET', '/login');
 		$form = $crawler->selectButton('_submit')->form(array(
 				'_username'  => $email,
 				'_password'  => $motDePasse,
