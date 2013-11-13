@@ -18,7 +18,7 @@ class ConnexionTest extends WebTestCase{
 	
 		$userManager = $this->repo->get('fos_user.user_manager');
 	
-		$email = "testing".(string) self::newRandomNumber()."@test.com";
+		$email = "testing".(string) rand(0,10000)."@test.com";
 		$prenom = "prenom";
 		$nom = "nom";
 		$motDePasse = "passworD1";
