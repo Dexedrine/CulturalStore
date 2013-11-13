@@ -1,6 +1,6 @@
 <?php
 namespace CS\UserBundle\Tests\Securite;
-class TestConnexion extends \PHPUnit_Framework_TestCase{
+class ConnexionTest extends WebTestCase{
 	
 	private $email;
 	private $prenom ;
