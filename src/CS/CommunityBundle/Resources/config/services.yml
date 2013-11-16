@@ -1,0 +1,7 @@
+parameters:
+#    cs_community.example.class: CS\CommunityBundle\Example
+
+services:
+#    cs_community.example:
+#        class: %cs_community.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

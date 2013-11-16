@@ -74,3 +74,8 @@ fos_user:
         form:
             type: cs_user_registration
             
+fpn_tag:
+    model:
+        tag_class:     CS\CommunityBundle\Entity\Community
+        tagging_class: CS\CommunityBundle\Entity\CommunitySubscribing
+            
