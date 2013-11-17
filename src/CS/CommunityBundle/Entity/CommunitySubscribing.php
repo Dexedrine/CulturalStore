@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping\UniqueConstraint;
 /**
  * CS\CommunityBundle\Entity\CommunitySubscribing
  *
- * @ORM\Table(uniqueConstraints={@UniqueConstraint(name="tagging_idx", columns={"tag_id", "resource_type", "resource_id"})})
+ * @ORM\Table(uniqueConstraints={@UniqueConstraint(name="community_subscribing_idx", columns={"community_id", "resource_type", "resource_id"})})
  * @ORM\Entity
  */
 class CommunitySubscribing extends BaseTagging
