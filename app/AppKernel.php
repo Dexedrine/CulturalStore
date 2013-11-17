@@ -17,7 +17,9 @@ class AppKernel extends Kernel
 				new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 				new CS\UserBundle\CSUserBundle(),
 				new CS\DesignBundle\CSDesignBundle(),
-				new FOS\UserBundle\FOSUserBundle(),
+				new FOS\UserBundle\FOSUserBundle(),				
+				new FPN\TagBundle\FPNTagBundle(),
+				new CS\CommunityBundle\CSCommunityBundle(),
 
 				//bundles for Sylius (ecommerce bundles)
 				new FOS\RestBundle\FOSRestBundle(),

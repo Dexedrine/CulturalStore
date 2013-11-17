@@ -106,3 +106,9 @@ sylius_promotions:
     
 sylius_money:
     driver: doctrine/orm
+    
+#Communities config
+fpn_tag:
+    model:
+        tag_class:     CS\CommunityBundle\Entity\Community
+        tagging_class: CS\CommunityBundle\Entity\CommunitySubscribing
