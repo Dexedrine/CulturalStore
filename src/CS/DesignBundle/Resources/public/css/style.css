@@ -6,7 +6,7 @@ body {
 		background-color: #FAF6EB;
 	
 }
-.header{
+.header, .body{
 	margin: 0 auto;
 	width: 65%;
 	
