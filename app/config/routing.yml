@@ -1,8 +1,10 @@
+cs_product:
+    resource: "@CSProductBundle/Resources/config/routing.yml"
+    prefix:   /
+
 cs_design:
     resource: "@CSDesignBundle/Resources/config/routing.yml"
     prefix:   /
-
-
 
 cs_user:
     resource: "@CSUserBundle/Resources/config/routing.yml"
@@ -26,3 +28,16 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+   
+sylius_product:
+    resource: @SyliusProductBundle/Resources/config/routing.yml
+    
+#sylius_cart:
+ #   resource: @SyliusCartBundle/Resources/config/routing.yml
+  #  prefix: /cart
+    
+sylius_promotion:
+    resource: @SyliusPromotionsBundle/Resources/config/routing.yml
+    
+sylius_money:
+    resource: @SyliusMoneyBundle/Resources/config/routing.yml
