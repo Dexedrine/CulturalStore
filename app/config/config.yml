@@ -81,9 +81,42 @@ fos_user:
     registration:
         form:
             type: cs_user_registration
+
+#Sylius Configuration
+sylius_product:
+    driver: doctrine/orm # Configure the doctrine orm driver used in the documentation.
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true
+            timestampable: true
             
+sylius_order:
+    driver: doctrine/orm # Configure the doctrine orm driver used in documentation.
+    classes:
+        order_item:
+            #model: Sylius\Bundle\CoreBundle\Model\OrderItem
+        #sellable:
+            model: CS\ProductBundle\Entity\Product # Your product entity.
+        order:
+            model: CS\ProductBundle\Entity\Order # The order entity.
+            
+sylius_cart:
+    #driver: doctrine/orm # Configure the doctrine orm driver used in documentation.
+    resolver: app.cart_item_resolver # The id of our newly created service.
+    classes:
+        item:
+            form: CS\ProductBundle\Entity\CartItem # The item entity.
+            
+sylius_promotions:
+    driver: doctrine/orm # Configure the doctrine orm driver used in the documentation.
+    
+sylius_money:
+    driver: doctrine/orm
+    
+#Communities config
 fpn_tag:
     model:
         tag_class:     CS\CommunityBundle\Entity\Community
         tagging_class: CS\CommunityBundle\Entity\CommunitySubscribing
-            
