@@ -1,0 +1,10 @@
+parameters:
+#    cs_product.example.class: CS\ProductBundle\Example
+
+services:
+#    cs_product.example:
+#        class: %cs_product.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    app.cart_item_resolver:
+        class: CS\ProductBundle\Cart\ItemResolver
+        arguments: ["@doctrine.orm.entity_manager"]

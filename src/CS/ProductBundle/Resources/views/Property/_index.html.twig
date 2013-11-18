@@ -1,0 +1,9 @@
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'SyliusProductBundle:Product:macros.html.twig' as macros %}
+
+<h1>Property list <small>All properties saved in the system</small></h1>
+<hr />
+
+<div class="well">
+    {{ buttons.create(path('sylius_property_create'), 'create property') }}
+</div>
