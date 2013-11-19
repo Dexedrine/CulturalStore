@@ -63,10 +63,10 @@ class ConnexionTest extends WebTestCase{
 		));
 		$client->submit($form);
 		//echo $this->client->getResponse()->getContent();
-		//$this->assertTrue($client->getResponse()->isRedirect(), 'should be redirected');
-		$this->assertTrue(
+		$this->assertTrue($client->getResponse()->isRedirect(), 'should be redirected');
+		/*$this->assertTrue(
 				$client->getResponse()->isRedirect('/')
-		);
+		);*/
 		//$this->assertTrue($client->getResponse()->isRedirect('/'), 'doit etre redirigé vers la page d\'acceuil');
 	
 		//$crawler = $client->followRedirect();
