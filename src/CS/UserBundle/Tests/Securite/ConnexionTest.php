@@ -30,7 +30,7 @@ class ConnexionTest extends WebTestCase{
 		$user->setPrenom($this->prenom);
 		$user->setNom($this->nom);
 		$user->setPlainPassword($this->motDePasse);
-	
+		$user->setEnabled(true);
 		// Persist the user to the database
 		$userManager->updateUser($user);
 	
@@ -62,10 +62,13 @@ class ConnexionTest extends WebTestCase{
 				'_password'  => $this->motDePasse,
 		));
 		$client->submit($form);
+		//echo $this->client->getResponse()->getContent();
+		//$this->assertTrue($client->getResponse()->isRedirect(), 'should be redirected');
+		$this->assertTrue(
+				$client->getResponse()->isRedirect('/')
+		);
+		//$this->assertTrue($client->getResponse()->isRedirect('/'), 'doit etre redirigé vers la page d\'acceuil');
 	
-		$this->assertTrue($client->getResponse()->isRedirect(), 'should be redirected');
-		//$this->assertTrue($client->getResponse()->isRedirect('http://localhost:8080/culturalstore/app.php/'), 'doit etre redirigé vers la page d\'acceuil');
-	
-		$crawler = $client->followRedirect();
+		//$crawler = $client->followRedirect();
 	}
 }
