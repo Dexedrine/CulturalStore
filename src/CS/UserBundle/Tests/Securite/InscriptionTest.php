@@ -9,6 +9,7 @@ class InscriptionTest extends WebTestCase{
 	protected $prenom ;
 	protected $nom ;
 	protected $motDePasse;
+	protected $user;
 	
 	public function setUp() {
 	
@@ -28,11 +29,13 @@ class InscriptionTest extends WebTestCase{
 				'fos_user_registration_form[prenom]'  => $this->prenom,
 		));
 		$client->submit($form);
-		
+		$this->user = $this->userManager->findUserBy(array(
+            		'mail' => $this->email,
+        	));
 		
 	
 	}
 	public function testNom() {
-
+		$this->assertEquals($this->nom, $this->user->nom);
 	}
 }
