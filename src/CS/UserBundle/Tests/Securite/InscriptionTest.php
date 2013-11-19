@@ -13,6 +13,12 @@ class InscriptionTest extends WebTestCase{
 	
 	public function setUp() {
 	
+	        $kernel = static::createKernel();
+                $this->repo = $kernel->boot();
+                $this->repo = $kernel->getContainer();
+        
+                $userManager = $this->repo->get('fos_user.user_manager');
+	
 		$this->email = "testing".(string) rand(0,10000)."@test.com";
 		$this->prenom = "prenom";
 		$this->nom = "nom";
@@ -29,7 +35,7 @@ class InscriptionTest extends WebTestCase{
 				'fos_user_registration_form[prenom]'  => $this->prenom,
 		));
 		$client->submit($form);
-		$this->user = $this->userManager->findUserBy(array(
+		$this->user = $userManager->findUserBy(array(
             		'mail' => $this->email,
         	));
 		
