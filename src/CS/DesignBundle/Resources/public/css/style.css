@@ -3,13 +3,11 @@
 body {
 	font-family: arial, serif;
 	background-position: center top;
-		background-color: #FAF6EB;
-	
+	background-color: #FAF6EB;	
 }
-.header, .body{
+
+.container{
 	margin: 0 auto;
-	width: 65%;
-	
 }
 
 .logo img{
@@ -17,3 +15,49 @@ body {
 	height: 100px;
 	width: 230px;
 }
+
+.input-append .search{
+	vertical-align: middle ;
+}
+
+
+.icon-shopping-cart{
+	zoom: 2;
+	margin-top: -3px;
+	margin-right: 5px;
+}
+.row{
+	margin: 0px;
+}
+
+.header > [class*="span"] {
+	height: 100px;
+}
+
+#panel-account img.photo {
+	width: 60px;
+	height: 60px;
+}
+
+#panel-account .client {
+	line-height: 100%;
+	vertical-align: middle;
+}
+
+#panel-account td.photo{
+	width: 100px;
+}
+
+#panel-account td.cart{
+width: 50px;
+	}
+
+[class*="span"]{
+	background-color: lightgreen;
+	margin-bottom: 10px;
+	border-radius: 5px 5px 5px 5px;
+	line-height: 80px;
+	text-align: center;	
+	margin-left: 1px;
+}
+
