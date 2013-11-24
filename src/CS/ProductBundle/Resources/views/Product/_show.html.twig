@@ -1,24 +1,26 @@
 {% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
 
-<h1>{{ product.name }} <small>{{ product.description }}</small></h1>
+<h1>{{ product.name }}</h1>
+<small>{{ product.description }}</small>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>{{ 'name' }}</th>
-            <th>{{ 'available on' }}</th>
-            <th>{{ 'created at' }}</th>
-            <th>{{ 'updated at' }}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{ product.id }}</td>
-            <td>{{ product.name }}</td>
-            <td><span class="label label-{{ product.available ? 'success' : 'important' }}">{{ product.availableOn|date }}</span></td>
-            <td><span class="label label-info">{{ product.createdAt|date }}</span></td>
-            <td><span class="label label-info">{{ product.updatedAt|date }}</span></td>
-        </tr>
-    </tbody>
-</table>
+{# marche mais pas terrible niveau flexibilité#}
+{% if product.properties|length > 0 %}
+        {% for property in product.properties %}
+        <p>
+            <span>{{ property.presentation }}:</span>
+            <span>{{ property.value }}</span>
+        </p>
+        {% endfor %}
+{% endif %}
+
+{# presque pire
+<p>Prix: {{ product.properties[6] }}<p>
+<img src="{{ product.properties[5]}}"></img>
+<br/>
+<p>Type: {{ product.properties[2] }}<p>
+<p>Genre: {{ product.properties[3] }}<p>
+<p>Durée: {{ product.properties[4] }}<p>
+<br/>
+<p>Langue: {{ product.properties[0] }}<p>
+<p>Langue des sous-titres: {{ product.properties[1] }}<p>
+#}
