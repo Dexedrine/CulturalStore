@@ -1,0 +1,58 @@
+<!-- Le logo Cultural Store -->
+			<div class="logo span3">
+				<img src="{{ asset('bundles/csdesign/img/logo_CulturalStore.png') }}" alt="Logo CulturalStore"/>
+			</div>	
+			
+<!-- Le champs de recherche de produit -->			
+			<div class="span5">
+				<form class="form-search">
+					<div class="input-append">
+						<input type="text" class="search-query" placeholder="Twilight, Lara Fabian, etc.">
+						<!-- <div class="control-group">
+							<div class="controls">
+							<select id="simple" class="input-mini">
+								<option>Musique</option>
+								<option>Spectacle</option>
+								<option>Jeux vidéos</option>
+								<option>Littérature</option>
+							</select>
+							</div>
+						</div> -->
+						<button class="btn btn-primary search" type="submit">Chercher un produit</button>
+					</div>
+				</form>			
+			</div>
+			
+<!-- Le compte client et panier -->			
+			
+			<table class="span4" id="panel-account">
+			<tr>
+				<td class="photo">
+				<img src="{{ asset('bundles/csdesign/img/bob.jpeg') }}" alt="Bob" class="photo img-polaroid "/>
+				</td>
+				<td class="client">
+					<div class="">
+				
+				
+					
+            					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            						Bonjour {{  app.user.prenom }} {{ app.user.nom }} 
+                					
+                					<a href="{{ path('fos_user_security_logout') }}">
+                    						{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                					</a>
+            					{% else %}
+                					<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            					{% endif %}
+        				
+					</div>
+					<div class="">
+						Mon compte
+					</div>
+					</td>
+					
+				<td class="cart">
+					<i class="icon-shopping-cart"></i>
+				</td>
+</tr>
+</table>

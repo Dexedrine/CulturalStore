@@ -3,31 +3,36 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="icon" type="image/png" href="{{ asset('bundles/csdesign/img/icone.png') }}" />
 		<title>{% block title %}Cultural Store{% endblock %}</title>
 		<link href="{{ asset('bundles/csdesign/css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
 		<link href="{{ asset('bundles/csdesign/css/bootstrap-responsive.css') }}" type="text/css" rel="stylesheet" />	
-		<link href="{{ asset('bundles/csdesign/css/style.css') }}" type="text/css" rel="stylesheet" />
-			
+		<link href="{{ asset('bundles/csdesign/css/jquery-2.0.3.js') }}" type="text/css" rel="stylesheet" />
+		<link href="{{ asset('bundles/csdesign/css/bootstrap.js') }}" type="text/css" rel="stylesheet" />
+		<link href="{{ asset('bundles/csdesign/css/style.css') }}" type="text/css" rel="stylesheet" />			
 	</head>
 <body>
-	<div class="header">
-	{% block header %}
-		<div class="logo">
-			<img src="{{ asset('bundles/csdesign/img/logo_CulturalStore.png') }}" alt="Logo CulturalStore"/>
+
+<div class="container">
+
+	<header>
+		<div class="row header">
+		{%  include 'CSDesignBundle:Commun:header.html.twig' %}				
 		</div>
-		
-	
-	{% endblock %}
 	</header>
 	
-{% block body %}
-{% endblock %}
+		
+	<div class="body">
+	{% block body %}
+	{% endblock %}
+	</div>
 
-<div class="footer">
-{% block footer %}
-{% endblock %}
+	<footer>
+	{% block footer %}
+	{% endblock %}
+	</footer>
+	
 </div>
-
 </body>
 
 </html>
