@@ -2,7 +2,7 @@
 
 namespace CS\UserBundle\Entity;
 
-use DoctrineExtensions\Taggable\Taggable;
+use Kunstmaan\TaggingBundle\Entity\Taggable;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -127,21 +127,41 @@ class Utilisateur extends BaseUser implements Taggable{
 	
 	protected $communities;
 	
-	public function getTaggableType()
-	{
-		return 'utilisateur';
-	}
+	/**
+     * Returns the unique taggable resource type
+     *
+     * @return string
+     */
+    function getTaggableType()
+    {
+        return "utilisateur";
+    }
 	
-	public function getTaggableId()
-	{
-		return $this->id;
-	}
+	/**
+     * Returns the unique taggable resource identifier
+     *
+     * @return string
+     */
+    function getTaggableId()
+    {
+        return $this->id;
+    }
 	
-	public function getTags()
-	{
-		$this->communities = $this->communities ?: new ArrayCollection();
-		return $this->communities;
-	}
+ 	/**
+     * Returns the collection of tags for this Taggable entity
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    function getTags()
+    {
+        $this->communities = $this->communities ?: new ArrayCollection();
+        return $this->communities;
+    }
+
+    public function setTags($tags)
+    {
+        $this->communities = $tags;
+    }
 	
 	
 }

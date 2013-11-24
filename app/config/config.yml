@@ -64,7 +64,6 @@ doctrine:
                         prefix: DoctrineExtensions\Taggable\Entity
                         dir: "%kernel.root_dir%/../vendor/fpn/doctrine-extensions-taggable/metadata"
 
-
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
@@ -115,8 +114,4 @@ sylius_promotions:
 sylius_money:
     driver: doctrine/orm
     
-#Communities config
-fpn_tag:
-    model:
-        tag_class:     CS\CommunityBundle\Entity\Community
-        tagging_class: CS\CommunityBundle\Entity\CommunitySubscribing
+
