@@ -10,21 +10,14 @@ body {
 	margin: 0 auto;
 }
 
-.row {
-	margin: 0px;
-}
-
 [class*="span"] {
-	background-color: lightgreen;
-	margin-bottom: 10px;
-	border-radius: 5px 5px 5px 5px;
-	line-height: 80px;
+	-background-color: lightgreen;
 	text-align: center;
-	margin-left: 1px;
 }
 
 .header>[class*="span"] {
 	height: 100px;
+	line-height: 98px;
 }
 
 .logo img {
