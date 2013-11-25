@@ -1,3 +1,5 @@
+<div class="row header">
+
 <!-- Le logo Cultural Store -->
 			<div class="logo span3">
 				<img src="{{ asset('bundles/csdesign/img/logo_CulturalStore.png') }}" alt="Logo CulturalStore"/>
@@ -8,16 +10,6 @@
 				<form class="form-search">
 					<div class="input-append">
 						<input type="text" class="search-query" placeholder="Twilight, Lara Fabian, etc.">
-						<!-- <div class="control-group">
-							<div class="controls">
-							<select id="simple" class="input-mini">
-								<option>Musique</option>
-								<option>Spectacle</option>
-								<option>Jeux vidéos</option>
-								<option>Littérature</option>
-							</select>
-							</div>
-						</div> -->
 						<button class="btn btn-primary search" type="submit">Chercher un produit</button>
 					</div>
 				</form>			
@@ -25,34 +17,117 @@
 			
 <!-- Le compte client et panier -->			
 			
-			<table class="span4" id="panel-account">
+		<table class="span4" id="panel-account">
 			<tr>
 				<td class="photo">
 				<img src="{{ asset('bundles/csdesign/img/bob.jpeg') }}" alt="Bob" class="photo img-polaroid "/>
 				</td>
 				<td class="client">
-					<div class="">
-				
-				
-					
+					<div class="">					
             					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            						Bonjour {{  app.user.prenom }} {{ app.user.nom }} 
-                					
-                					<a href="{{ path('fos_user_security_logout') }}">
-                    						{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                					</a>
+            						Bonjour {{  app.user.prenom }} {{ app.user.nom }} ! 	
             					{% else %}
                 					<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-            					{% endif %}
-        				
+            					{% endif %}        				
 					</div>
-					<div class="">
-						Mon compte
+					
+					<div class="account dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Mon profil</a></li>
+								<li><a href="#">Mes commandes</a></li>
+								<li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+							</ul>						
 					</div>
 					</td>
 					
 				<td class="cart">
-					<i class="icon-shopping-cart"></i>
+					<a href="#"><i class="icon-shopping-cart"></i></a>
 				</td>
-</tr>
-</table>
+			</tr>
+		</table>
+		</div>
+		
+<!-- La barre de navigation du site -->				
+<div class="row navigation">
+	<nav class="navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<ul class="nav">
+								
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Livres <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Marc Lévy</a></li>
+							<li><a href="#">Amélie Nothomb</a></li>
+							<li><a href="#">Marquis de Sade</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Les autres communautés</a></li>					
+						</ul>
+					</li>
+					
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Musique <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Electro</a></li>
+							<li><a href="#">Lara Fabian</a></li>
+							<li><a href="#">Daft Punk</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Les autres communautés</a></li>	
+						</ul>
+					</li>
+					
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Cinéma <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Américain</a></li>
+							<li><a href="#">Gravity</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Les autres communautés</a></li>	
+						</ul>
+					</li>
+					
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Jeux vidéos <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Dota 2</a></li>
+							<li><a href="#">Battlefield</a></li>
+							<li><a href="#">PS4</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Les autres communautés</a></li>	
+						</ul>
+					</li>
+					
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Spectacles <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Dany Boon</a></li>
+							<li><a href="#">Losc</a></li>
+							<li><a href="#">Danse</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Les autres communautés</a></li>	
+						</ul>
+					</li>
+					
+						<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Applications <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Gratuit</a></li>
+							<li><a href="#">Payant</a></li>
+							<li><a href="#">Top</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Les autres communautés</a></li>	
+						</ul>
+					</li>
+					
+					
+					
+					<li><a href="#">Promotions</a></li>
+					
+				</ul>
+			</div>
+		</div>
+	</nav>
+</div>
+		
