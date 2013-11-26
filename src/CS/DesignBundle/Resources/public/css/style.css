@@ -26,8 +26,32 @@ body {
 	width: 230px;
 }
 
+
+.btn-primary {
+  background-image: -moz-linear-gradient(top, #95CDE9, #95CDE9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#95CDE9), to(#95CDE9));
+  background-image: -webkit-linear-gradient(top, #95CDE9, #95CDE9);
+  background-image: -o-linear-gradient(top, #95CDE9, #95CDE9);
+  background-image: linear-gradient(to bottom, #95CDE9, #95CDE9);
+  border-color: #95CDE9;
+  color: #666666;
+  text-shadow: none;
+}
+
 .input-append .search {
 	vertical-align: middle;
+}
+
+.form-search .input-append .search-query {
+-webkit-border-radius: 4px 0 0 4px;
+-moz-border-radius: 4px 0 0 4px;
+border-radius: 4px 0 0 4px;
+}
+
+.form-search .input-append .btn {
+-webkit-border-radius: 0 4px 4px 0;
+-moz-border-radius: 0 4px 4px 0;
+border-radius: 0 4px 4px 0;
 }
 
 .icon-shopping-cart {
@@ -60,4 +84,17 @@ body {
 
 .navbar .nav>li {
 	margin-right: 20px;
+}
+
+.navbar-inner {
+  background-image: -moz-linear-gradient(top, #95CDE9, #C1E3F0);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#95CDE9), to(#C1E3F0));
+  background-image: -webkit-linear-gradient(top, #95CDE9, #C1E3F0);
+  background-image: -o-linear-gradient(top, #95CDE9, #C1E3F0);
+  background-image: linear-gradient(to bottom, #95CDE9, #C1E3F0);
+}
+
+.navbar .nav > li > a {
+color: #666666;
+text-shadow: none;
 }
