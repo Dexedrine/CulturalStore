@@ -60,7 +60,7 @@ border-radius: 0 4px 4px 0;
 }
 
 .icon-shopping-cart {
-	zoom: 2;
+	zoom: 1;
 	margin-top: -3px;
 	margin-right: 5px;
 }
@@ -80,7 +80,8 @@ border-radius: 0 4px 4px 0;
 }
 
 #panel-account td.cart {
-	width: 50px;
+	width: 90px;
+	font-size: 13px;
 }
 
 .navbar-inner {
@@ -92,11 +93,11 @@ border-radius: 0 4px 4px 0;
 }
 
 .navbar-inner {
-  background-image: -moz-linear-gradient(top, #95CDE9, #C1E3F0);
+  background-image: -moz-linear-gradient(top, #C1E3F0, #C1E3F0);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#95CDE9), to(#C1E3F0));
-  background-image: -webkit-linear-gradient(top, #95CDE9, #C1E3F0);
-  background-image: -o-linear-gradient(top, #95CDE9, #C1E3F0);
-  background-image: linear-gradient(to bottom, #95CDE9, #C1E3F0);
+  background-image: -webkit-linear-gradient(top, #C1E3F0, #C1E3F0);
+  background-image: -o-linear-gradient(top, #C1E3F0, #C1E3F0);
+  background-image: linear-gradient(to bottom, #C1E3F0, #C1E3F0);
 }
 
 .navbar .nav > li > a {
