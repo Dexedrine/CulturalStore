@@ -36,7 +36,8 @@ class AppKernel extends Kernel
 
 				//doctrine must be added after sylius
 				new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            	new CS\ProductBundle\CSProductBundle()
+            	new CS\ProductBundle\CSProductBundle(),
+            new CS\AdminBundle\CSAdminBundle(),
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,3 +1,7 @@
+cs_admin:
+    resource: "@CSAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 cs_product:
     resource: "@CSProductBundle/Resources/config/routing.yml"
 cs_community:

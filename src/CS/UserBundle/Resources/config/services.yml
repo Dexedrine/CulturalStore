@@ -1,15 +1,13 @@
 parameters:
 
-    cs_user.handler.login_success_handler.class: CS\UserBundle\Handler\LoginSuccessHandler
-    
 services:
     cs_user.registration.form.type:
         class: CS\UserBundle\Form\Type\RegistrationFormType
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: cs_user_registration }
-    cs_user.handler.login_success_handler.class:
-        class:  %cs_user.handler.login_success_handler.class%
-        arguments:  [@service_container, @router]
+    authentication_handler:
+        class:  CS\UserBundle\Handler\LoginSuccessHandler
+        arguments:  [@router, @security.context]
         tags:
             - { name: 'monolog.logger', channel: 'security' }
