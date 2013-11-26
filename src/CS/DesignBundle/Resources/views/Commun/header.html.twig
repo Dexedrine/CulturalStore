@@ -37,6 +37,7 @@
 									</div>	
 									
             					{% else %}
+            					<!-- Connection avec fenetre modale -->
             						<div class="modal hide" id="logger">
             							<div class="modal-header"><a class="close" data-dismiss="modal">x</a>
             								<h3>Se connecter à Cultural Store</h3>
@@ -46,9 +47,13 @@
             								{% render url('fos_user_security_login') %}
             							</div>
             						</div>
+            						<a class="btn btn-primary" data-toggle="modal" href="#logger">Se connecter</a>
             						
-            					<a class="btn btn-primary" data-toggle="modal" href="#logger">Se connecter</a>
-            					
+            					    <!-- Inscription au site -->
+            					    <div class="inscription'">
+            					    </br>
+            					    	<a href="#">S'inscrire</a>
+            						</div>
             					{% endif %}        				
 					</div>				
 					</td>
