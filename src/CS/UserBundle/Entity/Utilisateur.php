@@ -119,11 +119,11 @@ class Utilisateur extends BaseUser implements Taggable{
 	
 	public function __construct() {
 		parent::__construct();
-		// your own logic
+		$this->roles = array('ROLE_CLIENT');
 	}
 	
 
-	//Gestion des communautés par systéme de tag
+	//Gestion des communautï¿½s par systï¿½me de tag
 	
 	protected $communities;
 	
