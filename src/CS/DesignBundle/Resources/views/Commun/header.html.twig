@@ -41,8 +41,8 @@
             								<h3>Se connecter à Cultural Store</h3>
             							</div>
             							
-            							<div class="modal-body">            							
-            								<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>       							
+            							<div class="modal-body">
+            								{% render url('fos_user_security_login') %}
             							</div>
             						</div>
             						
