@@ -32,7 +32,7 @@ security:
                 always_use_default_target_path: true
                 default_target_path: /admin
             logout:       true
-                path:   /admin/logout
+                path:   /logout
                 target: /admin
             anonymous:    true
             remember_me:
@@ -48,7 +48,7 @@ security:
                 always_use_default_target_path: true
                 default_target_path: /fournisseur
             logout:       true
-                path:   /fournisseur/logout
+                path:   /logout
                 target: /fournisseur
             anonymous:    true
             remember_me:
