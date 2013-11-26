@@ -7,24 +7,24 @@
 		<title>{% block title %}Cultural Store{% endblock %}</title>
 		<link href="{{ asset('bundles/csdesign/css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
 		<link href="{{ asset('bundles/csdesign/css/bootstrap-responsive.css') }}" type="text/css" rel="stylesheet" />	
-		<link href="{{ asset('bundles/csdesign/css/jquery-2.0.3.js') }}" type="text/css" rel="stylesheet" />
-		<link href="{{ asset('bundles/csdesign/css/bootstrap.js') }}" type="text/css" rel="stylesheet" />
-		<link href="{{ asset('bundles/csdesign/css/style.css') }}" type="text/css" rel="stylesheet" />			
+		<link href="{{ asset('bundles/csdesign/css/style.css') }}" type="text/css" rel="stylesheet" />	
+		<script src="{{ asset('bundles/csdesign/js/jquery-2.0.3.js') }}"></script>				
+		<script src="{{ asset('bundles/csdesign/js/bootstrap.js') }}"></script>
 	</head>
 <body>
 
 <div class="container">
 
-	<header>
-		<div class="row header">
+	<header>		
 		{%  include 'CSDesignBundle:Commun:header.html.twig' %}				
-		</div>
 	</header>
 	
 		
 	<div class="body">
-	{% block body %}
-	{% endblock %}
+		{% block body %}
+			{%  include 'CSDesignBundle:Commun:body.html.twig' %}		
+		
+		{% endblock %}
 	</div>
 
 	<footer>
