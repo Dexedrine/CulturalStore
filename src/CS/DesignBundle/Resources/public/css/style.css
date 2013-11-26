@@ -38,6 +38,11 @@ body {
   text-shadow: none;
 }
 
+.btn-primary:hover {
+color: #666666;
+background-color: #95CDE9;
+}
+
 .input-append .search {
 	vertical-align: middle;
 }
