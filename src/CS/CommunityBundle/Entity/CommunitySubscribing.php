@@ -1,7 +1,7 @@
 <?php
 namespace CS\CommunityBundle\Entity;
 
-use \FPN\TagBundle\Entity\Tagging as BaseTagging;
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
 
@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping\UniqueConstraint;
  * @ORM\Table(uniqueConstraints={@UniqueConstraint(name="community_subscribing_idx", columns={"community_id", "resource_type", "resource_id"})})
  * @ORM\Entity
  */
-class CommunitySubscribing extends BaseTagging
+class CommunitySubscribing
 {
 	/**
 	 * @var integer $id

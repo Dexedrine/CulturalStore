@@ -1,7 +1,7 @@
 <?php
 namespace CS\CommunityBundle\Entity;
 
-use \FPN\TagBundle\Entity\Tag as BaseTag;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Community extends BaseTag
+class Community 
 {
 	/**
 	 * @var integer $id

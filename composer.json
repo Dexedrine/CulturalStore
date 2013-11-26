@@ -27,8 +27,7 @@
         "sylius/order-bundle": "dev-master",
         "sylius/cart-bundle": "dev-master",
         "sylius/promotions-bundle": "dev-master",
-        "fpn/doctrine-extensions-taggable": "dev-master",
-        "kunstmaan/tagging-bundle": "dev-master"
+        "fpn/doctrine-extensions-taggable": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
