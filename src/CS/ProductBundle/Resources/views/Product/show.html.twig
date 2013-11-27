@@ -1,5 +1,19 @@
 {% extends 'CSDesignBundle:Commun:commun.html.twig' %}
 
 {% block body %}
-    {% include 'CSProductBundle:Product:_show.html.twig' %}
+{# partie commune #}
+
+
+
+
+{# partie spécifique #}
+	{% if product.metaKeywords == 'livre' %}
+	    {% include 'CSProductBundle:Product:_show_book.html.twig' %}	  
+	{% elseif product.metaKeywords == 'video' %}
+		{% include 'CSProductBundle:Product:_show_video.html.twig' %}	
+	{% elseif product.metaKeywords == 'music' %}
+		{% include 'CSProductBundle:Product:_show_music.html.twig' %}
+	{% else %}
+		{% include 'CSProductBundle:Product:_show.html.twig' %}
+	{% endif %}
 {% endblock %}
