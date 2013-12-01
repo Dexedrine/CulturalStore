@@ -104,6 +104,17 @@ border-radius: 0 4px 4px 0;
 color: #666666;
 text-shadow: none;
 }
+
+.promotionBody{
+	height: 400px;
+	background-color: lightgreen;
+}
+
+.promotionBody > img{
+	margin-top: 4px;
+}
+
+
 .itemContent{
 	height: 200px;
 	margin:0 60px;
@@ -132,4 +143,8 @@ text-shadow: none;
 .avisBody{
 	height: 450px;
 	background-color: lightgreen;
+}
+
+.suggestionCommunautés{
+	border: 1px solid black;
 }
