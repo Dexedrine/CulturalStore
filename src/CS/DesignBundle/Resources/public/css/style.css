@@ -104,5 +104,32 @@ border-radius: 0 4px 4px 0;
 color: #666666;
 text-shadow: none;
 }
+.itemContent{
+	height: 200px;
+	margin:0 60px;
+}
 
+.item33{
+	width: 33%;
+	float:left;
+}
 
+.item33-photo {
+	height: 170px;
+	width: 90%;
+    margin-left: 5%;
+}
+
+.item33-photo img {
+	max-height: 100%;
+	height: inherit;
+}
+
+.item33-photo p {
+	margin-top: 4px;
+}
+
+.avisBody{
+	height: 450px;
+	background-color: lightgreen;
+}
