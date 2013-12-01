@@ -34,12 +34,12 @@ body {
   background-image: -o-linear-gradient(top, #95CDE9, #95CDE9);
   background-image: linear-gradient(to bottom, #95CDE9, #95CDE9);
   border-color: #95CDE9;
-  color: #666666;
+  color: #49423d;
   text-shadow: none;
 }
 
 .btn-primary:hover {
-color: #666666;
+color: #49423d;
 background-color: #95CDE9;
 }
 
@@ -101,7 +101,7 @@ border-radius: 0 4px 4px 0;
 }
 
 .navbar .nav > li > a {
-color: #666666;
+color: #49423d;
 text-shadow: none;
 }
 
@@ -147,4 +147,42 @@ text-shadow: none;
 
 .suggestionCommunautés{
 	border: 1px solid black;
+}
+footer{
+	margin-top: 15px;
+}
+
+footer .paiement{
+	float:left;
+	text-align: center;
+	
+}
+
+footer .accesVendeur{
+	float: left;
+}
+
+footer .followUs{
+	float: right;
+	text-align: right;
+}
+
+footer .followUs li{
+	list-style: none;
+	font-family: Arial;
+}
+
+footer .followUs li a{
+	texte-decoration: none;
+	color: #49423d;
+}
+
+footer .followUs .fb_link .twitter_link .gg_link{
+	display: block;
+	padding-right: 45px;
+	font-size: 1em;
+	background-position: right;
+	background-repeat: no-repeat;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
