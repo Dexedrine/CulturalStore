@@ -3,6 +3,8 @@ namespace CS\CommunityBundle\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
+use FPN\TagBundle\Entity\Tag  as BaseTag;
+
 
 /**
  * CS\CommunityBundle\Entity\Community
@@ -10,19 +12,19 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Community 
+class Community extends BaseTag
 {
 	/**
-	 * @var integer $id
-	 *
-	 * @ORM\Column(name="id", type="integer")
-	 * @ORM\Id
-	 * @ORM\GeneratedValue(strategy="AUTO")
-	 */
-	protected $id;
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
 
-	/**
-	 * @ORM\OneToMany(targetEntity="CommunitySubscribing", mappedBy="community", fetch="EAGER")
-	 **/
-	protected $community_subscribing;
+    /**
+     * @ORM\OneToMany(targetEntity="CommunitySubscribing", mappedBy="tag", fetch="EAGER")
+     **/
+    protected $tagging;
 }

@@ -19,6 +19,8 @@ class AppKernel extends Kernel
 				new CS\DesignBundle\CSDesignBundle(),
 				new FOS\UserBundle\FOSUserBundle(),
 				new CS\CommunityBundle\CSCommunityBundle(),
+				
+				new FPN\TagBundle\FPNTagBundle(),
 
 				//bundles for Sylius (ecommerce bundles)
 				new FOS\RestBundle\FOSRestBundle(),

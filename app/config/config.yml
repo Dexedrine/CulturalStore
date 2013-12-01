@@ -52,7 +52,6 @@ doctrine:
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: %kernel.root_dir%/data/data.db3
         # path:     %database_path%
-
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         entity_managers:
@@ -116,5 +115,17 @@ sylius_promotions:
     
 sylius_money:
     driver: doctrine/orm
+    
+fpn_tag:
+    model:
+        tag_class:     CS\CommunityBundle\Entity\Community
+        tagging_class: CS\CommunityBundle\Entity\CommunitySubscribing
+        
+services:
+    cs.form.community_entry:
+        class: CS\CommunityBundle\Form\Type\CommunityType
+        arguments: [ "@fpn_tag.tag_manager" ]
+        tags:
+            - { name: form.type, alias: community_entry }
     
 
