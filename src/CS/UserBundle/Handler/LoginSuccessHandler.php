@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Router;
 
-
 class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
 {
 	
@@ -34,9 +33,7 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
 		elseif ($this->security->isGranted('ROLE_ADMIN'))
 		{
 			// redirection vers la page admin.
-			$url = $this->router->generate($request->getPathInfo());
-			
-			$response = new RedirectResponse($url);
+			$response = new RedirectResponse($this->router->generate('/admin'));
 		} 
 		elseif ($this->security->isGranted('ROLE_FOURNISSEUR'))
 		{
