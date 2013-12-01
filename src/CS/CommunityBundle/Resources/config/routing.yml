@@ -1,3 +1,11 @@
 cs_community_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: CSCommunityBundle:Default:index }
+    pattern:  /community/
+    defaults: { _controller: CSCommunityBundle:Community:home }
+
+create_theme:
+    pattern: /community/create
+    defaults:  { _controller: CSCommunityBundle:Community:create }
+    
+add_community:
+    pattern: /community/add_community/{idtheme}
+    defaults:  { _controller: CSCommunityBundle:Community:addCommunity }

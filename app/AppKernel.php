@@ -17,9 +17,10 @@ class AppKernel extends Kernel
 				new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 				new CS\UserBundle\CSUserBundle(),
 				new CS\DesignBundle\CSDesignBundle(),
-				new FOS\UserBundle\FOSUserBundle(),				
-				new FPN\TagBundle\FPNTagBundle(),
+				new FOS\UserBundle\FOSUserBundle(),
 				new CS\CommunityBundle\CSCommunityBundle(),
+				
+				new FPN\TagBundle\FPNTagBundle(),
 
 				//bundles for Sylius (ecommerce bundles)
 				new FOS\RestBundle\FOSRestBundle(),
@@ -39,7 +40,10 @@ class AppKernel extends Kernel
 				//doctrine must be added after sylius
 				new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             	new CS\ProductBundle\CSProductBundle(),
-            new CS\AdminBundle\CSAdminBundle(),
+         		new CS\AdminBundle\CSAdminBundle(),
+				
+				//bundle to rock images !
+				new Liip\ImagineBundle\LiipImagineBundle(),
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {

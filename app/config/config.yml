@@ -52,7 +52,6 @@ doctrine:
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: %kernel.root_dir%/data/data.db3
         # path:     %database_path%
-
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         entity_managers:
@@ -63,7 +62,6 @@ doctrine:
                         type: annotation
                         prefix: DoctrineExtensions\Taggable\Entity
                         dir: "%kernel.root_dir%/../vendor/fpn/doctrine-extensions-taggable/metadata"
-
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -87,7 +85,7 @@ sylius_product:
     driver: doctrine/orm # Configure the doctrine orm driver used in the documentation.
     classes:
         product:
-            controller: CS\ProductBundle\Controller\DefaultController
+            controller: CS\ProductBundle\Controller\ProductController
 
 stof_doctrine_extensions:
     orm:
@@ -118,8 +116,16 @@ sylius_promotions:
 sylius_money:
     driver: doctrine/orm
     
-#Communities config
 fpn_tag:
     model:
         tag_class:     CS\CommunityBundle\Entity\Community
         tagging_class: CS\CommunityBundle\Entity\CommunitySubscribing
+        
+services:
+    cs.form.community_entry:
+        class: CS\CommunityBundle\Form\Type\CommunityType
+        arguments: [ "@fpn_tag.tag_manager" ]
+        tags:
+            - { name: form.type, alias: community_entry }
+    
+

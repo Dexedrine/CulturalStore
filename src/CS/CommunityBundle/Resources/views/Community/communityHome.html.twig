@@ -1,0 +1,31 @@
+{% extends 'CSDesignBundle:Commun:commun.html.twig' %}
+{% block body %}
+
+
+{% if themes | length > 0 %}
+                {%  for theme in  themes %}                        
+                       {{ theme.title }}
+                       {% render url('add_community',{ 'idtheme': theme.id }) %}                
+                {% endfor %}
+        {% else %}
+               Il n'y a pas encore de theme !
+             
+        {% endif %}
+
+
+        
+<div class="modal hide" id="create_theme">
+        <div class="modal-header"><a class="close" data-dismiss="modal">x</a>
+                <h3>Creer un nouveau theme</h3>
+        </div>
+        
+        <div class="modal-body">
+                {% render url('create_theme') %}
+        </div>
+</div>
+<a class="btn btn-primary" data-toggle="modal" href="#create_theme">Creer un theme</a>
+
+ 
+
+
+{% endblock body %}

@@ -1,6 +1,6 @@
 <!-- Mise en place du carousel à 3 slides -->
 <div class="row">
-<div class="span10 offset1">
+<div class="span9">
 	<div class="carousel slide" id="superCarousel">
 		<ol class="carousel-indicators">
    			 <li data-target="#superCarousel" data-slide-to="0" class="active"></li>
@@ -9,21 +9,21 @@
  		 </ol>
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src="{{ asset('bundles/csdesign/img/worms.png') }}" alt="Battlefield"/>
+				<img src="{{ asset('bundles/csdesign/img/worms.png') }}" alt="Worms"/>
 				<div class="carousel-caption">
 					<p>Le nouveau Worms est sorti !</p>
 				</div>
 			</div>
 			
 			<div class="item">
-				<img src="{{ asset('bundles/csdesign/img/mag.jpg') }}" alt="Dota" />
+				<img src="{{ asset('bundles/csdesign/img/mag.jpg') }}" alt="MagazineNantais" />
 				<div class="carousel-caption">
-					<p>Le magasin rennais est là !</p>
+					<p>Le magazine rennais est là !</p>
 				</div>
 			</div>
 			
 			<div class="item">
-				<img src="{{ asset('bundles/csdesign/img/book.jpg') }}" alt="Lara" />
+				<img src="{{ asset('bundles/csdesign/img/book.jpg') }}" alt="LePetitPrince" />
 				<div class="carousel-caption">
 					<p>Le petit prince à prix spécial !</p>
 				</div>
@@ -31,9 +31,162 @@
 			</div>		
 			<a class="carousel-control left" data-slide="prev" href="#superCarousel">&lsaquo;</a>
 			<a class="carousel-control right" data-slide="next" href="#superCarousel">&rsaquo;</a>	
-		
-	
 	</div>
+	</div>
+	<div class="span3">
+		<div class="promotionBody">
+			<h5>A ne pas manquer en ce moment sur Cultural Store :</h5>
+			<img src="{{ asset('bundles/csdesign/img/mag.jpg') }}" alt="MagazineNantais" />
+			<img src="{{ asset('bundles/csdesign/img/book.jpg') }}" alt="LePetitPrince" />
+			<img src="{{ asset('bundles/csdesign/img/worms.png') }}" alt="Worms"/>
+			
+			
+		</div>
+	</div>
+</div>
 
+<!-- Mise en place des minis carousels pour la suggestion de produit par communauté -->
+
+<!-- Row qui va contenir le 1er carousel de suggestion de produit -->
+<div class="row">
+	<div class="span9">
+	<h5>Suggestion pour la communauté xxx</h5>
+		<div class="carousel slide" id="suggestionCarouselFirst">
+			<div class="carousel-inner">
+				<div class="item active">
+					<div class="itemContent">
+					<!-- Ne pas toucher au style de item33, si ajout de photo alors ajout de div et stylisation dessus -->
+						<div class="item33">	
+							<div class="item33-photo">					
+								<img src="{{ asset('bundles/csdesign/img/bob.jpeg') }}" alt="Bob" class="img-rounded"/>
+								<p>Nouvel film avec Bob l'éponge</p>
+							</div>				
+						</div>
+						
+						<div class="item33">
+							<div class="item33-photo">						
+								<img src="{{ asset('bundles/csdesign/img/bob.jpeg') }}" alt="Bob" class="img-rounded "/>	
+								<p>Le nouveau jeu A bikini bottom</p>
+							</div>
+						</div>
+						
+						<div class="item33">
+							<div class="item33-photo">
+								<img src="{{ asset('bundles/csdesign/img/marc.jpg') }}" alt="Marc" class="img-rounded "/>	
+								<p>Nouveau livre de marc lévy</p>	
+							</div>
+						</div>
+					</div>		
+				</div>
+			
+				<div class="item">
+					<div class="itemContent">
+					<!-- Ne pas toucher au style de item33, si ajout de photo alors ajout de div et stylisation dessus -->
+						<div class="item33">	
+							<div class="item33-photo">					
+								<img src="{{ asset('bundles/csdesign/img/book.jpg') }}" alt="LePetitPrince" class="img-rounded"/>
+								<p>Le petit prince remasterisé</p>
+							</div>				
+						</div>
+						
+						<div class="item33">
+							<div class="item33-photo">						
+								<img src="{{ asset('bundles/csdesign/img/faust.jpeg') }}" alt="Faust" class="img-rounded "/>	
+								<p>Nouveau spectacle au Sébastopol</p>
+							</div>
+						</div>
+						
+						<div class="item33">
+							<div class="item33-photo">
+								<img src="{{ asset('bundles/csdesign/img/mag.jpg') }}" alt="magazineNantais" class="img-rounded "/>	
+								<p>L'e-magazine rennais vient de sortir</p>	
+							</div>
+						</div>
+					</div>		
+				</div>
+			
+			</div>
+			<a class="carousel-control left" data-slide="prev" href="#suggestionCarouselFirst">&lsaquo;</a>
+			<a class="carousel-control right" data-slide="next" href="#suggestionCarouselFirst">&rsaquo;</a>
+		</div>
+
+		<h5>Suggestion pour la communauté xxx</h5>
+		<div class="carousel slide" id="suggestionCarouselSecond">
+			<div class="carousel-inner">
+				<div class="item active">
+					<div class="itemContent">
+					<!-- Ne pas toucher au style de item33, si ajout de photo alors ajout de div et stylisation dessus -->
+						<div class="item33">	
+							<div class="item33-photo">					
+								<img src="{{ asset('bundles/csdesign/img/bob.jpeg') }}" alt="Bob" class="img-rounded"/>
+								<p>Super produit de cultural store</p>
+							</div>				
+						</div>
+						
+						<div class="item33">
+							<div class="item33-photo">						
+								<img src="{{ asset('bundles/csdesign/img/bob.jpeg') }}" alt="Bob" class="img-rounded "/>	
+								<p>Super produit Bob l'éponge</p>
+							</div>
+						</div>
+						
+						<div class="item33">
+							<div class="item33-photo">
+								<img src="{{ asset('bundles/csdesign/img/marc.jpg') }}" alt="Marc" class="img-rounded "/>	
+								<p>Nouveau livre de marc lévy</p>	
+							</div>
+						</div>
+					</div>		
+				</div>
+			
+				<div class="item">
+					<div class="itemContent">
+					<!-- Ne pas toucher au style de item33, si ajout de photo alors ajout de div et stylisation dessus -->
+						<div class="item33">	
+							<div class="item33-photo">					
+								<img src="{{ asset('bundles/csdesign/img/book.jpg') }}" alt="LePetitPrince" class="img-rounded"/>
+								<p>Super produit de cultural store</p>
+							</div>				
+						</div>
+						
+						<div class="item33">
+							<div class="item33-photo">						
+								<img src="{{ asset('bundles/csdesign/img/faust.jpeg') }}" alt="Faust" class="img-rounded "/>	
+								<p>Super produit Bob l'éponge</p>
+							</div>
+						</div>
+						
+						<div class="item33">
+							<div class="item33-photo">
+								<img src="{{ asset('bundles/csdesign/img/mag.jpg') }}" alt="magazineNantais" class="img-rounded "/>	
+								<p>Nouveau livre de marc lévy</p>	
+							</div>
+						</div>
+					</div>		
+				</div>
+			</div>
+			<a class="carousel-control left" data-slide="prev" href="#suggestionCarouselSecond">&lsaquo;</a>
+			<a class="carousel-control right" data-slide="next" href="#suggestionCarouselSecond">&rsaquo;</a>
+		</div>
 </div>
+	
+	<!-- Mise en place de la colonne latérale haute pour indiquer les derniers avis déposés -->
+	<aside class="span3">
+		<div class="avisBody">
+			<h5>Les derniers avis déposés sur CulturalStore</h5>		
+		</div>		
+	</aside>
 </div>
+	<!-- Mise en place de la ligne basse concernant les autres communautés existantes -->
+	
+<div class="row">
+	<div class="span12 suggestionCommunautés">
+		<h5>Les personnes de vos communautés suivent aussi les communautés suivantes :</h5>
+		electro
+		lara fabian
+	</div>
+</div>
+	
+
+
+

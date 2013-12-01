@@ -1,26 +1,28 @@
 {% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
 
-<h1>{{ product.name }}</h1>
-<small>{{ product.description }}</small>
-
-{# marche mais pas terrible niveau flexibilité#}
-{% if product.properties|length > 0 %}
-        {% for property in product.properties %}
-        <p>
-            <span>{{ property.presentation }}:</span>
-            <span>{{ property.value }}</span>
-        </p>
-        {% endfor %}
-{% endif %}
-
-{# presque pire
-<p>Prix: {{ product.properties[6] }}<p>
-<img src="{{ product.properties[5]}}"></img>
-<br/>
-<p>Type: {{ product.properties[2] }}<p>
-<p>Genre: {{ product.properties[3] }}<p>
-<p>Durée: {{ product.properties[4] }}<p>
-<br/>
-<p>Langue: {{ product.properties[0] }}<p>
-<p>Langue des sous-titres: {{ product.properties[1] }}<p>
-#}
+{% block body %}
+<div class="product-detail row">
+	<div class="span4">
+	{% block image %}
+		<img class="image" src="{{ image }}" alt="Image" />
+	{% endblock %}
+	</div>
+	
+	<div class="general-information span8">
+	{% block general %}
+		<p class="name">{{ product.name }}</p>
+		<p class="description">{{ product.description }}</p>
+		
+		{% block price %}
+			<div class="price">{{ price }} €</div>
+		{% endblock %}
+	
+	{% endblock general%}
+	</div>
+	
+	<div class="properties row span12">
+	{%  block properties %}
+	{% endblock %}
+	</div>
+</div>
+{% endblock body %}

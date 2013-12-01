@@ -37,14 +37,18 @@ fos_user_change_password:
     prefix: /profile
    
 sylius_product:
-    resource: @SyliusProductBundle/Resources/config/routing.yml
+    resource: "@SyliusProductBundle/Resources/config/routing.yml"
     
 sylius_cart:
-    resource: @SyliusCartBundle/Resources/config/routing.yml
+    resource: "@SyliusCartBundle/Resources/config/routing.yml"
     prefix: /cart
     
 sylius_promotion:
-    resource: @SyliusPromotionsBundle/Resources/config/routing.yml
+    resource: "@SyliusPromotionsBundle/Resources/config/routing.yml"
     
 sylius_money:
-    resource: @SyliusMoneyBundle/Resources/config/routing.yml
+    resource: "@SyliusMoneyBundle/Resources/config/routing.yml"
+    
+_imagine:
+    resource: .
+    type: imagine

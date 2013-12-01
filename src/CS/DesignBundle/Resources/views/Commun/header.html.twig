@@ -21,7 +21,7 @@
 		<table class="span4" id="panel-account">
 			<tr>
 				<td class="photo">
-				<img src="{{ asset('bundles/csdesign/img/bob.jpeg') }}" alt="Bob" class="photo img-polaroid "/>
+				<img src="{{ asset('bundles/csdesign/img/bob.jpeg') }}" alt="You" class="img-polaroid "/>
 				</td>
 				<td class="client">
 					<div class="">					
@@ -138,10 +138,23 @@
 							<li><a href="#">Les autres communautés</a></li>	
 						</ul>
 					</li>
-					<li><a href="#">Promotions</a></li>
-					<li><a href="#">Nous contacter !</a></li>
+					<li><a href="#">Mes promotions</a></li>
 					
 					
+					{% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+						
+						<div class="modal hide" id="accesCommunaute">
+            				<div class="modal-header"><a class="close" data-dismiss="modal">x</a>
+            					<h3>Vous devez être connecté pour accèder à vos communautés</h3>
+            				</div>
+            							
+            				<div class="modal-body">
+            					{% render url('fos_user_security_login') %}
+            				</div>
+            			</div>
+            			{% endif %}
+					 <li><a data-toggle="modal" href="#accesCommunaute">Mes communautés</a>
+					 
 				</ul>
 			</div>
 		</div>
