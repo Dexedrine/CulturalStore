@@ -7,13 +7,11 @@
 
 
 {# partie spécifique #}
-	{% if product.metaKeywords == 'livre' %}
+	{% if product.metaKeywords == 'book' %}
 	    {% include 'CSProductBundle:Product:_show_book.html.twig' %}	  
 	{% elseif product.metaKeywords == 'video' %}
 		{% include 'CSProductBundle:Product:_show_video.html.twig' %}	
 	{% elseif product.metaKeywords == 'music' %}
 		{% include 'CSProductBundle:Product:_show_music.html.twig' %}
-	{% else %}
-		{% include 'CSProductBundle:Product:_show.html.twig' %}
 	{% endif %}
 {% endblock %}

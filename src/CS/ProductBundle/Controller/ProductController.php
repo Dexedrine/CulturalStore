@@ -67,7 +67,7 @@ class ProductController extends ResourceController
 			$this->manager->persist($product);
 			$this->manager->flush(); // Save changes in database.
 			
-			return $this->showProduct($product);
+			return $this->showCreatedProduct($product,$form["price"]->getData(),$form["image"]->getData());
 		}
 		
 		if ($this->getConfiguration()->isApiRequest()) {
@@ -111,7 +111,7 @@ class ProductController extends ResourceController
 			$this->manager->persist($product);
 			$this->manager->flush(); // Save changes in database.
 			
-			return $this->showProduct($product);
+			return $this->showCreatedProduct($product,$form["price"]->getData(),$form["image"]->getData());
 		}
 
 		if ($this->getConfiguration()->isApiRequest()) {
@@ -153,7 +153,7 @@ class ProductController extends ResourceController
 			$this->manager->persist($product);
 			$this->manager->flush(); // Save changes in database.
 			
-			return $this->showProduct($product);
+			return $this->showCreatedProduct($product,$form["price"]->getData(),$form["image"]->getData());
 		}
 		
 		if ($this->getConfiguration()->isApiRequest()) {
@@ -162,18 +162,31 @@ class ProductController extends ResourceController
 		return $this->showForm($form,'book');
 	}
 
-	function showProduct($product){
+	function showCreatedProduct($product,$price, $image){
 		$view = $this
 			->view()
 			->setTemplate($this->getConfiguration()->getTemplate('show.html'))
-			->setData(array('product' => $product));
+			->setData(array('product' => $product,'price' => $price, 'image' => $image));
 		return $this->handleView($view);
 	}
 	
+	function showProductAction(/*Request $request,*/ $id){
+		$repository = $this->container->get('sylius.repository.product');
+		$product = $repository->find(intval($id));
+		$price = $product->getPropertyByName("price");
+		$image = $product->getPropertyByName("image");
+
+		$view = $this
+			->view()
+			->setTemplate($this->getConfiguration()->getTemplate('show.html'))
+			->setData(array('product' => $product,'price' => $price, 'image' => $image));
+		return $this->handleView($view);
+	}	
+	
 	function showForm($form,$type){
 		$view = $this->view()
-		->setTemplate($this->getConfiguration()->getTemplate('create.html'))
-		->setData(array(
+			->setTemplate($this->getConfiguration()->getTemplate('create.html'))
+			->setData(array(
 				$this->getConfiguration()->getResourceName() => $this->createNew(),
 				'form' => $form->createView(),
 				'type' => $type
