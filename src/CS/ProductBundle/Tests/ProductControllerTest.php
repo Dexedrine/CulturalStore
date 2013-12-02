@@ -2,17 +2,44 @@
 namespace CS\ProductBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use CS\ProductBundle\Controller\ProductController;
 
 class ProductControllerTest extends WebTestCase{
+	
+	private $em;
+	
 	public function setUp() {
-		$pc = new ProductController;
+		static::$kernel = static::createKernel();
+		static::$kernel->boot();
+				
+		$this->em = static::$kernel->getContainer()->get('sylius.repository.product');		
 	}
 	
-	public function testAddProperty() {
-		$product = $pc->repository->createNew();
-		$pc->addProperty($product,"price",10);
+	public function testCreateBook() {
+		$client = static::createClient();
 		
-		$this->assertEquals($product->getProperties()["price"], 10);
+		$crawler = $client->request('GET', '/products/new/book');
+		
+		$form = $crawler->selectButton('form_create')->form();
+		
+		// set some values
+		$form['form[name]']  = "test";
+		$form['form[description]']  = "test";
+		$form['form[price]']   = 10;
+		$form['form[image]']  = "test";
+		$form['form[genre]']  = "test";
+		$form['form[langue]']  = "test";
+		$form['form[type]']  = "test";
+		$form['form[format]']  = "test";
+		$form['form[auteur]']  = "test";
+		
+		
+		// submit the form
+		$crawler = $client->submit($form);
+		
+		$products = $this->em->findBy(array('name' => "test"));
+		
+		
+		/*$this->assertCount(1,$products);
+		//$this->assertEquals($product->getPropertyByName("price"), 10);*/
 	}
 }

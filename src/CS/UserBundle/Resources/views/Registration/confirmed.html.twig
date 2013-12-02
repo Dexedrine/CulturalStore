@@ -3,13 +3,15 @@
 {% block page_name %} Confirmation d'inscription{% endblock %}
 
 {% block body %}
-	<p>Vous avez bien &eacute;t&eacute; enregistr&eacute; !
+<div class="confirmInscription">
+	<h5>Vous avez bien &eacute;t&eacute; enregistr&eacute; !</h5>
+	<p>Vous allez être redirigé vers la page d'acceuil dans quelques instants</p>
 	 {% if app.session is not empty %}
         {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
-        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
-		<meta http-equiv="refresh" content="2; URL={{ path('cs_design_homepage') }}">    
+       
+		<meta http-equiv="refresh" content="5; URL={{ path('cs_design_homepage') }}">    
 {% endif %}
-   
+   </div>
     
 {% endblock body %}
 	
