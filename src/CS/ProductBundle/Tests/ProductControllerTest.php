@@ -36,7 +36,7 @@ class ProductControllerTest extends WebTestCase{
 		// submit the form
 		$crawler = $client->submit($form);
 		
-		$products = $this->em->findOneBy(array('name' => "test"));
+		$products = $this->em->findBy(array('name' => "test"));
 		
 		
 		/*$this->assertCount(1,$products);
