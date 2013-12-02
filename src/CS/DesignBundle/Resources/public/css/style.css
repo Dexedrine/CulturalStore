@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-
+/*General*/
 body {
 	font-family: arial, serif;
 	background-position: center top;
@@ -15,6 +15,7 @@ body {
 	text-align: center;
 }
 
+/*Header*/
 .header>[class*="span"] {
 	height: 100px;
 	line-height: 98px;
@@ -87,6 +88,8 @@ border-radius: 0 4px 4px 0;
 	font-size: 13px;
 }
 
+/*Navigation*/
+
 .navbar-inner {
 	font-size: 15px;
 }
@@ -108,6 +111,7 @@ color: #49423d;
 text-shadow: none;
 }
 
+/*Body*/
 .promotionBody{
 	height: 400px;
 	background-color: lightgreen;
@@ -151,6 +155,8 @@ text-shadow: none;
 .suggestionCommunautés{
 	border: 1px solid black;
 }
+
+/*Footer*/
 footer{
 	margin-top: 15px;
 }
@@ -189,3 +195,18 @@ footer .followUs .fb_link .twitter_link .gg_link{
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
+
+/*Inscription*/
+.inscription h5{
+	text-align: center;
+}
+
+.fos_user_registration_register{
+	text-align: center;
+}
+
+.confirmInscription h5{
+	text-align: center;
+}
+
+
