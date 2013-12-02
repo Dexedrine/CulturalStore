@@ -4,6 +4,7 @@ cs_admin:
 
 cs_product:
     resource: "@CSProductBundle/Resources/config/routing.yml"
+    
 cs_community:
     resource: "@CSCommunityBundle/Resources/config/routing.yml"
     prefix:   /
@@ -15,6 +16,7 @@ cs_design:
 cs_user:
     resource: "@CSUserBundle/Resources/config/routing.yml"
     prefix:   /
+    
     
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
@@ -52,3 +54,5 @@ sylius_money:
 _imagine:
     resource: .
     type: imagine
+
+
