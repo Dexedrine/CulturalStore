@@ -88,6 +88,11 @@ border-radius: 0 4px 4px 0;
 	font-size: 13px;
 }
 
+.btn-primary:focus{
+	background-color: #95CDE9;
+	color: #49423d;
+}
+
 /*Navigation*/
 
 .navbar-inner {
@@ -114,7 +119,8 @@ text-shadow: none;
 /*Body*/
 .promotionBody{
 	height: 400px;
-	background-color: lightgreen;
+	background-color: #ede8dc;
+	border-radius: 4px;
 }
 
 .promotionBody > img{
@@ -147,18 +153,58 @@ text-shadow: none;
 	margin-top: 4px;
 }
 
+
 .avisBody{
 	height: 450px;
-	background-color: lightgreen;
+	background-color: #ede8dc;
+	border-radius: 4px;
+}
+
+.topFree, .topPaying{
+	background-color: #ede8dc;
+	border-radius: 4px;
+}
+
+.colContent{
+	height: 170px;
+	margin: 0 50px;
+}
+
+.col{
+	float:left;
+	width: 24%;
+}
+
+.imgCell{
+	height: 150px;
+	width: 90%;
+    margin-left: 5%;
+}
+
+.imgCell img{
+	max-height: 100%;
+	height: inherit;
+}
+
+.imgCell p{
+	margin-top: 4px;
+	
 }
 
 .suggestionCommunautés{
 	border: 1px solid black;
 }
 
+
+
+
+
+
 /*Footer*/
 footer{
 	margin-top: 15px;
+	background-color: #ede8dc;
+	border-radius: 4px;
 }
 
 footer .paiement{
@@ -205,8 +251,7 @@ footer .followUs .fb_link .twitter_link .gg_link{
 	text-align: center;
 }
 
-.confirmInscription h5{
+.confirmInscription h5 p{
 	text-align: center;
 }
-
 
