@@ -24,8 +24,6 @@ class CommunityController extends Controller
 	
     public function createAction(Request $request)
     {
-
-                
                 $theme = new Theme();
 
                 $form = $this->createForm(new ThemeType(), $theme);

@@ -2,7 +2,6 @@
 namespace CS\ProductBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use CS\ProductBundle\Controller\ProductController;
 
 class ProductControllerTest extends WebTestCase{
 	
@@ -11,39 +10,36 @@ class ProductControllerTest extends WebTestCase{
 	public function setUp() {
 		static::$kernel = static::createKernel();
 		static::$kernel->boot();
-		$this->em = static::$kernel->getContainer()
-		->get('doctrine')
-		->getManager()
-		;
-		
-		
-		
-		
+				
+		$this->em = static::$kernel->getContainer()->get('sylius.repository.product');		
 	}
 	
-	public function testAddProperty() {
+	public function testCreateBook() {
 		$client = static::createClient();
-		$crawler = $client->request('GET', '/product/new/book');
-		$form = $crawler->selectButton('_submit')->form(array(
-				'form[name]'  => "test",
-				'form[description]'  => "test",
-				'form[price]'  => 10,
-				'form[image]'  => "test",
-				'form[genre]'  => "test",
-				'form[langue]'  => "test",
-				'form[type]'  => "test",
-				'form[format]'  => "test",
-				'form[auteur]'  => "test",
-				
-		));
-		$client->submit($form);
 		
-		$products = $this->em 
-			->getRepository('CSProductBundle:Product')
-			->findOneBy(array('name' => "test"))	
-		;
+		$crawler = $client->request('GET', '/products/new/book');
 		
-		$this->assertCount(1,$products);
-		//$this->assertEquals($product->getPropertyByName("price"), 10);
+		$form = $crawler->selectButton('form_create')->form();
+		
+		// set some values
+		$form['form[name]']  = "test";
+		$form['form[description]']  = "test";
+		$form['form[price]']   = 10;
+		$form['form[image]']  = "test";
+		$form['form[genre]']  = "test";
+		$form['form[langue]']  = "test";
+		$form['form[type]']  = "test";
+		$form['form[format]']  = "test";
+		$form['form[auteur]']  = "test";
+		
+		
+		// submit the form
+		$crawler = $client->submit($form);
+		
+		$products = $this->em->findOneBy(array('name' => "test"));
+		
+		
+		/*$this->assertCount(1,$products);
+		//$this->assertEquals($product->getPropertyByName("price"), 10);*/
 	}
 }
