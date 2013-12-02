@@ -64,6 +64,9 @@ border-radius: 0 4px 4px 0;
 	margin-top: -3px;
 	margin-right: 5px;
 }
+#panel-account{
+	width: 100%;
+}
 
 #panel-account img.photo {
 	width: 60px;
@@ -76,7 +79,7 @@ border-radius: 0 4px 4px 0;
 }
 
 #panel-account td.photo {
-	width: 100px;
+	max-width: 100px;
 }
 
 #panel-account td.cart {
