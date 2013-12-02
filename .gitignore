@@ -5,6 +5,7 @@
 */bin/classes
 .DS_Store
 composer.phar
+phpunit.phar
 composer.lock
 */composer.lock
 composer.phar
