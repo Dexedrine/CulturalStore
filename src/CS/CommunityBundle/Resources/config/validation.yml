@@ -1,0 +1,4 @@
+CS\CommunityBundle\Entity\Theme:
+  properties:
+    title:
+      - NotBlank: ~
