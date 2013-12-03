@@ -55,13 +55,12 @@ class ConnexionTest extends WebTestCase{
 // 		$this->client->followRedirects();
 	
 	}
-        public function testRécupérationDeLUtilisateurDepuisLaBase(){
+        public function testRecuperationDeLUtilisateurDepuisLaBase(){
                 $user =  $this->userManager->findUserByEmail($this->email);
                 $this->assertEquals($this->email,$user->getEmail());
                 $this->assertEquals($this->email,$user->getUsername());
                 $this->assertEquals($this->prenom,$user->getPrenom());
                 $this->assertEquals($this->nom,$user->getNom());
-                $this->assertTrue($user->getEnabled());
         }
         public function testLogin() {
                 $client = static::createClient();
