@@ -57,6 +57,20 @@ class CommuntyControllerTest extends WebTestCase {
 		$this->assertEquals ( $theme->getTitle (), "test" );
 	}
 	
+	public function testWrongCreate() {
+		$client = static::createClient();
+	
+		$crawler = $client->request('GET', '/community/create');
+	
+		$form = $crawler->selectButton('_submit')->form();
+	
+		// set some values
+		$form['theme[title]']  = "";
+	
+	
+		// submit the form
+		$crawler = $client->submit($form);
+	}
 	/**
 	 * @depends testCreate
 	 */
