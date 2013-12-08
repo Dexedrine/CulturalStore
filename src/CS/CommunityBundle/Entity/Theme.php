@@ -5,6 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use DoctrineExtensions\Taggable\Taggable;
 use Doctrine\Common\Collections\ArrayCollection;
 
+
 /**
  * CS\CommunityBundle\Entity\Theme
  * 
@@ -31,7 +32,12 @@ class Theme implements Taggable
 	{
 		return $this->id;
 	}
-
+	
+	public function getTitle()
+	{
+		return $this->title;
+	}
+	
 	public function setTitle($title)
 	{
 		return $this->title = $title;
