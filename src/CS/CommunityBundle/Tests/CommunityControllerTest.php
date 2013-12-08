@@ -37,6 +37,14 @@ class CommuntyControllerTest extends WebTestCase {
 		self::$em->flush ();
 	}
 	
+
+
+	public function testHome() {
+		$client = static::createClient ();
+	
+		$crawler = $client->request ( 'GET', '/community/' );
+	}
+	
 	public function testCreate() {
 		$client = static::createClient ();
 		
