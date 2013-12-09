@@ -4,17 +4,11 @@
 namespace CS\ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Sylius\Bundle\CartBundle\Model\CartItem as BaseCartItem;
-use Sylius\Bundle\OrderBundle\Model\OrderItemInterface;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="cart_product")
- *
- *
- */
+use Sylius\Bundle\OrderBundle\Model\SellableInterface;
+use Sylius\Bundle\ProductBundle\Model\Product as BaseProduct;
 
-class Product extends BaseCartItem implements OrderItemInterface
+class Product extends BaseProduct implements SellableInterface
 {
     // Your code...
 

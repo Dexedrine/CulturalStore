@@ -81,10 +81,20 @@ fos_user:
             type: cs_user_registration
 
 #Sylius Configuration
+
+sylius_resource:
+    resources:
+        app.user:
+            driver: doctrine/orm
+            templates: CSUserBundle:User
+            classes:
+                model: CS\UserBundle\Entity\Utilisateur
+                
 sylius_product:
     driver: doctrine/orm # Configure the doctrine orm driver used in the documentation.
     classes:
         product:
+            model: CS\ProductBundle\Entity\Product
             controller: CS\ProductBundle\Controller\ProductController
 
 stof_doctrine_extensions:
@@ -96,12 +106,13 @@ stof_doctrine_extensions:
 sylius_order:
     driver: doctrine/orm # Configure the doctrine orm driver used in documentation.
     classes:
-        order_item:
-            #model: Sylius\Bundle\CoreBundle\Model\OrderItem
-        #sellable:
-            model: CS\ProductBundle\Entity\Product # Your product entity.
         order:
-            model: CS\ProductBundle\Entity\Order # The order entity.
+            model: CS\ProductBundle\Entity\Order
+        sellable:
+            model: CS\ProductBundle\Entity\Product # Your product entity.
+         # The order entity.
+  #order_item:
+            #model: Sylius\Bundle\CoreBundle\Model\OrderItem
             
 sylius_cart:
     #driver: doctrine/orm # Configure the doctrine orm driver used in documentation.
@@ -110,8 +121,8 @@ sylius_cart:
         item:
             form: CS\ProductBundle\Entity\CartItem # The item entity.
             
-sylius_promotions:
-    driver: doctrine/orm # Configure the doctrine orm driver used in the documentation.
+#sylius_promotions:
+#    driver: doctrine/orm # Configure the doctrine orm driver used in the documentation.
     
 sylius_money:
     driver: doctrine/orm

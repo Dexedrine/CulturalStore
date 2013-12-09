@@ -49,9 +49,6 @@ sylius_cart:
     resource: "@SyliusCartBundle/Resources/config/routing.yml"
     prefix: /cart
     
-sylius_promotion:
-    resource: "@SyliusPromotionsBundle/Resources/config/routing.yml"
-    
 sylius_money:
     resource: "@SyliusMoneyBundle/Resources/config/routing.yml"
     
@@ -59,4 +56,9 @@ _imagine:
     resource: .
     type: imagine
 
+cs_user_show:
+    pattern: /users/{id}
+    methods: [GET]
+    defaults:
+        _controller: app.controller.user:showAction
 
