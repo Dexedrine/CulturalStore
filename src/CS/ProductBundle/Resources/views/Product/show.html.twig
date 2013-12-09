@@ -1,17 +1,49 @@
-{% extends 'CSDesignBundle:Commun:commun.html.twig' %}
+{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
 
 {% block body %}
-{# partie commune #}
+<div class="product-detail row">
+	<div class="span4">
+		{% block image %} <img class="image" src="{{ image }}" alt="Image" />
+		{% endblock %}
+	</div>
 
+	<div class="product-information span5">
+		<div class="general-information row-fluid">
+			{% block general %}
+			<h3 class="name">{{ product.name }}</h3>
+			<p class="description">{{ product.description }}</p>
 
+			{% block price %} <span class="price">{{ price }} €</span> {%
+			endblock %} {% endblock general%}
+		</div>
 
+		<div class="properties row-fluid">
+			{% block properties %} {% if product.properties|length > 0 %} <span>Autres
+				informations : </span>
+			<ul>
+				{% for property in product.properties %} {% if property.name !=
+				"price" and property.name != "image" %}
+				<li class="{{ property.name }}"><span>{{ property.presentation }} : </span> <span>{{
+						property.value }}</span></li> {% endif %} 
+			</ul>
+			
+			{% endif %} {% endblock properties %}
+		</div>
 
-{# partie spécifique #}
-	{% if product.metaKeywords == 'book' %}
-	    {% include 'CSProductBundle:Product:_show_book.html.twig' %}	  
-	{% elseif product.metaKeywords == 'video' %}
-		{% include 'CSProductBundle:Product:_show_video.html.twig' %}	
-	{% elseif product.metaKeywords == 'music' %}
-		{% include 'CSProductBundle:Product:_show_music.html.twig' %}
-	{% endif %}
-{% endblock %}
+		<div class="row-fluid action-buttons">
+			<div class="span6">
+				<a class="btn btn-large btn-block btn-info"
+					href="{{ path('sylius_cart_item_add', {'productId': product.id}) }}"><i
+					class="icon-shopping-cart"></i>Ajouter au panier</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="communities span3">
+		<div>
+			<h5>Ce produit intéresse les communautés&nbsp;:</h5>
+			<span>romans d'amour</span> - <span>fantastique</span> - <span>vampires</span>
+		</div>
+	</div>
+</div>
+{% endblock body %}

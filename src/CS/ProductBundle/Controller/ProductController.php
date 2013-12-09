@@ -76,8 +76,6 @@ class ProductController extends ResourceController
         return $this->showForm($form,'video');
 	}
 	
-
-
 	public function createMusicAction(Request $request)
 	{
 		$this->prepareRepository();
@@ -161,6 +159,86 @@ class ProductController extends ResourceController
 		}
 		return $this->showForm($form,'book');
 	}
+	
+	public function createGameAction(Request $request)
+	{
+		$this->prepareRepository();
+		$product = $this->repository->createNew();
+		$form = $this->createFormBuilder()
+		->add('name', 'text')
+		->add('description', 'text')
+		->add('price', 'integer')
+		->add('image', 'text')
+		->add('genre', 'text')
+		->add('plateforme', 'text')
+		->add('PEGI', 'text')
+		->add('create', 'submit')
+		->getForm();
+	
+		if ($request->isMethod('POST') && $form->bind($request)->isValid()) {
+			$product
+			->setName($form["name"]->getData())
+			->setDescription($form["description"]->getData())
+			->setMetaKeywords("game");
+			$this->addProperty($product, "price", $form["price"]->getData());
+			$this->addProperty($product, "image", $form["image"]->getData());
+			$this->addProperty($product, "genre", $form["genre"]->getData());
+			$this->addProperty($product, "plateforme", $form["plateforme"]->getData());
+			$this->addProperty($product, "PEGI", $form["plateforme"]->getData());
+	
+			$this->manager->persist($product);
+			$this->manager->flush(); // Save changes in database.
+				
+			return $this->showCreatedProduct($product,$form["price"]->getData(),$form["image"]->getData());
+		}
+	
+		if ($this->getConfiguration()->isApiRequest()) {
+			return $this->handleView($this->view($form));
+		}
+		return $this->showForm($form,'game');
+	}
+	
+	public function createTicketAction(Request $request)
+	{
+		$this->prepareRepository();
+		$product = $this->repository->createNew();
+		$form = $this->createFormBuilder()
+		->add('name', 'text')
+		->add('description', 'text')
+		->add('type', 'text')
+		->add('price', 'integer')
+		->add('image', 'text')
+		->add('genre', 'text')
+		->add('quantite', 'integer')
+		->add('lieu', 'text')
+		->add('dateEvent', 'text')
+		->add('create', 'submit')
+		->getForm();
+	
+		if ($request->isMethod('POST') && $form->bind($request)->isValid()) {
+			$product
+			->setName($form["name"]->getData())
+			->setDescription($form["description"]->getData())
+			->setMetaKeywords("ticket");
+			$this->addProperty($product, "price", $form["price"]->getData());
+			$this->addProperty($product, "image", $form["image"]->getData());
+			$this->addProperty($product, "type", $form["langue"]->getData());
+			$this->addProperty($product, "genre", $form["genre"]->getData());
+			$this->addProperty($product, "quantite", $form["type"]->getData());
+			$this->addProperty($product, "lieu", $form["auteur"]->getData());
+			$this->addProperty($product, "dateEvent", $form["format"]->getData());
+	
+			$this->manager->persist($product);
+			$this->manager->flush(); // Save changes in database.
+				
+			return $this->showCreatedProduct($product,$form["price"]->getData(),$form["image"]->getData());
+		}
+	
+		if ($this->getConfiguration()->isApiRequest()) {
+			return $this->handleView($this->view($form));
+		}
+		return $this->showForm($form,'ticket');
+	}
 
 	function showCreatedProduct($product,$price, $image){
 		$view = $this
@@ -170,7 +248,7 @@ class ProductController extends ResourceController
 		return $this->handleView($view);
 	}
 	
-	function showProductAction(/*Request $request,*/ $id){
+	function showProductAction($id){
 		$repository = $this->container->get('sylius.repository.product');
 		$product = $repository->find(intval($id));
 		$price = $product->getPropertyByName("price");
