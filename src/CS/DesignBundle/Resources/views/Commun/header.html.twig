@@ -9,7 +9,10 @@
 			<div class="span5 search">
 				<form class="form-search">
 					<div class="input-append">
+						{% render url('search_product') %}
+						<!--
 						<input type="text" class="search-query" placeholder="Twilight, Lara Fabian, etc.">
+						-->
 						<button class="btn btn-primary search" type="submit">Rechercher
 					</button>
 					</div>
@@ -59,7 +62,7 @@
 					</td>
 					
 				<td class="cart">					
-					<a href="#"><i class="icon-shopping-cart"></i>Mon panier</a>
+					<a href="{{ path('sylius_cart_summary') }}"><i class="icon-shopping-cart"></i>Mon panier</a> 
 					
 				</td>
 			</tr>

@@ -1,1 +1,38 @@
 @CHARSET "UTF-8";
+
+.product-detail .general-information,
+.product-detail .properties{
+	text-align: left;
+}
+
+.description{
+	color:#666666;
+	font-style: italic;
+	margin-bottom: 20px;
+}
+
+.price{
+	padding: 2px 5px;
+	background-color:#95CDE9;
+	color: #666666;
+	font-weight: bold;
+	border-radius: 4px;
+	font-size: 20px;
+}
+
+.properties{
+	margin-top: 20px;	
+}
+
+.product-detail .action-buttons{
+	margin-top: 20px;
+}
+
+.communities{
+	background-color: #EDE8DC;
+	min-height: 30%;
+}
+
+.communities div{
+	padding: 5px 15px 10px;
+}
