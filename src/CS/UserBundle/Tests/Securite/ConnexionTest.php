@@ -56,19 +56,29 @@ class ConnexionTest extends WebTestCase{
 	}
 	public function testLogin() {
 		$client = static::createClient();
-		$crawler = $client->request('GET', '/login');
+		$crawler = $client->request('GET', $this->generateUrl($client,'cs_design_homepage'));
 		$form = $crawler->selectButton('_submit')->form(array(
 				'_username'  => $this->email,
 				'_password'  => $this->motDePasse,
 		));
-		$client->submit($form);
-		//echo $this->client->getResponse()->getContent();
-		$this->assertTrue($client->getResponse()->isRedirect(), 'should be redirected');
-		/*$this->assertTrue(
-				$client->getResponse()->isRedirect('/')
-		);*/
+		$client->submit($form);  
+		echo '##################';
+		$userType = $client->getContainer()->get('fos_elastica.index.website.user');
+		echo phpinfo();
+		echo $userType->search('bob');
+		echo $this->generateUrl($client,'cs_design_homepage');
+		echo '##################';
+		//$this->assertTrue($client->getResponse()->isRedirect(), 'should be redirected');
+		//echo  $this->generateUrl($client,'cs_design_homepage')&'login' ;
+		$this->assertTrue(
+				$client->getResponse()->isRedirect( $this->generateUrl($client,'cs_design_homepage'))
+		);
 		//$this->assertTrue($client->getResponse()->isRedirect('/'), 'doit etre redirigé vers la page d\'acceuil');
 	
 		//$crawler = $client->followRedirect();
+	}
+	public function generateUrl( $client, $route, $parameters = array() )
+	{
+		return $client->getContainer()->get( 'router' )->generate( $route, $parameters,true );
 	}
 }

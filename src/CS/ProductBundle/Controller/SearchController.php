@@ -9,17 +9,47 @@ use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 class SearchController extends ResourceController {
 
 
-	private function searchProduct($words) {
-		//$em = $this->getDoctrine()->getEntityManager();
-		$repository = $this->container->get('sylius.repository.product');
-		$products = $repository->findAll();
-		//$query = $em->createQuery('Select p FROM Sylius\Bundle\ProductBundle\Model:Product p');
-				
-// 				->createQuery(
-// 						 '	Select p FROM (select sylius_product.id, name || ',' || description || ',' || array_to_string(array_agg(value),',') as words from sylius_product left join sylius_product_property on sylius_product.id = sylius_product_property.product_id group by sylius_product.id) as products 
-// 						right join SyliusBundle:Product p on  Product.id = products.id   ' //where words like
-// 						);//->setParameter('price', '19.99');
-		
-	}
+public function searchAction(Request $request)
+{
+    $query = $request->get('search', null);
+ 
+    // notre index est directement disponible sous forme de service
+    $index = $this->container->get('fos_elastica.index.website.user');
+ 
+    $searchQuery = new \Elastica\Query\QueryString();
+    $searchQuery->setParam('query', $query);
+ 
+    // nous forçons l'opérateur de recherche à AND, car on veut les résultats qui
+    // correspondent à tous les mots de la recherche, plutôt qu'à au moins un
+    // d'entre eux (opérateur OR)
+    $searchQuery->setDefaultOperator('OR');
+ 
+    // on exécute une requête de type "fields", qui portera sur les colonnes "name"
+    // et "zipcode" de l'index
+    $searchQuery->setParam('fields', array(
+        'nom', 
+        'prenom',
+    ));
+ 
+    // exécution de la requête, limitée aux 10 premiers résultats
+    $results = $index->search($searchQuery, 10)->getResults();
+ 
+    $data = array();
+ 
+    // on arrange les données des résultats...
+    foreach ($results as $result) {
+        $source = $result->getSource();
+        $data[] = array(
+            'suggest'   => $source['prenom'].' '.$source['nom'],
+            'prenom'   => $source['prenom'],
+            'nom'      => $source['nom'],
+        );
+    }
+ 
+    // ...avant de les retourner en json
+    return new JsonResponse($data, 200, array(
+        'Cache-Control' => 'no-cache',
+    ));
+}
 
 }

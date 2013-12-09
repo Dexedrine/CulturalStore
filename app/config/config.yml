@@ -127,5 +127,38 @@ services:
         arguments: [ "@fpn_tag.tag_manager" ]
         tags:
             - { name: form.type, alias: community_entry }
-    
 
+fos_elastica:
+    clients:
+        default: { host: localhost, port: 9200 }
+    indexes:
+        website:
+            client: default
+            settings:
+                index:
+                    analysis:
+                        analyzer:
+                            custom_search_analyzer:
+                                type: custom
+                                tokenizer: standard
+                                filter   : [standard, lowercase, asciifolding]
+                            custom_index_analyzer:
+                                type: custom
+                                tokenizer: standard
+                                filter   : [standard, lowercase, asciifolding, custom_filter]
+                        filter:
+                            custom_filter:
+                                type: edgeNGram
+                                side: front
+                                min_gram: 1
+                                max_gram: 20
+            types:
+                user:
+                    mappings:
+                        nom: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                        prenom: { boost: 3 }
+                    persistence:
+                        driver: orm
+                        model: CS\UserBundle\Entity\Utilisateur
+                        provider: ~
+                        finder: ~
