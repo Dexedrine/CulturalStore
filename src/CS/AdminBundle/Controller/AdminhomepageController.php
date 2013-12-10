@@ -7,6 +7,6 @@ class AdminhomepageController extends Controller {
 	public function adminhomepageAction() {
 		$user = $this->get('security.context')->getToken()->getUser();
 		return $this
-				->render('CSAdminBundle:Homepage:homepage.html.twig', array('user'=>$user));
+				->render('CSAdminBundle:Homepage:homepageAdmin.html.twig', array('user'=>$user));
 	}
 }

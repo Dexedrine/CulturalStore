@@ -192,10 +192,37 @@ text-shadow: none;
 }
 
 .suggestionCommunautés{
-	border: 1px solid black;
+	-border: 1px solid black;
 }
 
+.univers1{
+	float:left;
+}
 
+.univers{
+	float:left;
+	width:234px;
+	heigth:100px;
+	margin-right:10px;
+}
+
+.univers dl{
+	width:234px;
+	heigth:100px;
+	position:relative;
+	text-transform: uppercase;
+}
+
+.headerUnivers{
+	font-size:1.8em;
+	color: #49423d;
+	margin: 0 0 3px 0;
+	padding: 20px 10px 0;
+}
+
+.headerUnivers a{
+	color: #49423d;
+}
 
 
 
