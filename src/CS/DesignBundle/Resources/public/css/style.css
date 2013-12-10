@@ -67,7 +67,11 @@ border-radius: 0 4px 4px 0;
 }
 
 #panel-account{
-	width: 80%;
+	width: 100%;
+}
+
+#panel-account-fournisseur{
+	width:80%;
 }
 
 #panel-account img.photo {
@@ -81,7 +85,9 @@ border-radius: 0 4px 4px 0;
 }
 
 #panel-account td.photo {
-	max-width: 100px;
+	-max-width: 100px;
+	width: 100px;
+	height: 100px;
 }
 
 #panel-account td.cart {

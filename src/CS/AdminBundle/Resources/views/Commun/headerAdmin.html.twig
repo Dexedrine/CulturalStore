@@ -1,4 +1,5 @@
 <div class="row header">
+	
 
 <!-- Le logo Cultural Store -->
 			<div class="logo span3">
@@ -10,7 +11,7 @@
 				<h3>Page d'administration</h3>	 
 			</div>
 			
-
+</div>
 <!-- La barre de navigation de l'administrateur -->				
 <div class="navigation">
 	<nav class="navbar">
@@ -21,9 +22,9 @@
 					<li><a href="#">Valider les produits</a></li>	
 					<li><a href="#">Autre</a></li>
 					<li><a href="{{ path('cs_design_homepage') }}">Accèder au site client</a></li>
+					<li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 </div>
-		

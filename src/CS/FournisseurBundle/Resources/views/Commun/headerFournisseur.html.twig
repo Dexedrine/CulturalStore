@@ -12,7 +12,7 @@
 			
 <!-- Le compte fournisseur -->			
 		<div class="span2">
-			<table id="panel-account">
+			<table id="panel-account-fournisseur">
 				<tr>
 					<td class="photo">
 					<img src="{{ asset('bundles/csdesign/img/dead-block.jpg') }}" alt="LogoFournisseur" class="img-polaroid "/>
@@ -28,10 +28,11 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<ul class="nav">					
-					<li><a href="#">Ajouter un produit</a></li>
+					<li><a href="{{ path('cs_fournisseur_homepage') }}">Ajouter un produit</a></li>
 					<li><a href="#">Modifier un produit</a></li>
 					<li><a href="#">Mes produits</a></li>
 					<li><a href="#">Mes statistiques</a></li>
+					<li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
 				</ul>
 			</div>
 		</div>
