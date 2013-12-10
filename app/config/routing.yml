@@ -1,6 +1,6 @@
 cs_fournisseur:
     resource: "@CSFournisseurBundle/Resources/config/routing.yml"
-    prefix:   /toto
+    prefix:   /fournisseur
 
 cs_admin:
     resource: "@CSAdminBundle/Resources/config/routing.yml"
