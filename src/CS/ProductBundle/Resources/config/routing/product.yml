@@ -41,6 +41,22 @@ sylius_product_create_book:
         _sylius:
             redirect: sylius_product_show
             
+sylius_product_create_game:
+    pattern: /new/game
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.product:createGameAction
+        _sylius:
+            redirect: sylius_product_show
+            
+sylius_product_create_ticket:
+    pattern: /new/ticket
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.product:createTicketAction
+        _sylius:
+            redirect: sylius_product_show
+            
 sylius_product_update:
     pattern: /{id}/edit
     methods: [GET, PUT, POST]

@@ -184,7 +184,7 @@ class ProductController extends ResourceController
 			$this->addProperty($product, "image", $form["image"]->getData());
 			$this->addProperty($product, "genre", $form["genre"]->getData());
 			$this->addProperty($product, "plateforme", $form["plateforme"]->getData());
-			$this->addProperty($product, "PEGI", $form["plateforme"]->getData());
+			$this->addProperty($product, "PEGI", $form["PEGI"]->getData());
 	
 			$this->manager->persist($product);
 			$this->manager->flush(); // Save changes in database.
@@ -222,11 +222,11 @@ class ProductController extends ResourceController
 			->setMetaKeywords("ticket");
 			$this->addProperty($product, "price", $form["price"]->getData());
 			$this->addProperty($product, "image", $form["image"]->getData());
-			$this->addProperty($product, "type", $form["langue"]->getData());
+			$this->addProperty($product, "type", $form["type"]->getData());
 			$this->addProperty($product, "genre", $form["genre"]->getData());
-			$this->addProperty($product, "quantite", $form["type"]->getData());
-			$this->addProperty($product, "lieu", $form["auteur"]->getData());
-			$this->addProperty($product, "dateEvent", $form["format"]->getData());
+			$this->addProperty($product, "quantite", $form["quantite"]->getData());
+			$this->addProperty($product, "lieu", $form["lieu"]->getData());
+			$this->addProperty($product, "dateEvent", $form["dateEvent"]->getData());
 	
 			$this->manager->persist($product);
 			$this->manager->flush(); // Save changes in database.
