@@ -24,7 +24,7 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
 	public function onAuthenticationSuccess(Request $request, TokenInterface $token)
 	{
 		
-		if ($this->security->isGranted('ROLE_CLIENT') || $this->security->isGranted('ROLE_USER') ){
+		if ($this->security->isGranted('ROLE_CLIENT')  ){
 			// redirect the user to where they were before the login process begun.
 			$referer_url = $request->headers->get('referer');
 						
@@ -33,12 +33,12 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
 		elseif ($this->security->isGranted('ROLE_ADMIN'))
 		{
 			// redirection vers la page admin.
-			$response = new RedirectResponse($this->router->generate('/admin'));
+			$response = new RedirectResponse($this->router->generate('cs_admin_homepage'));
 		} 
 		elseif ($this->security->isGranted('ROLE_FOURNISSEUR'))
 		{
 			// redirection vers la page fournisseur 
-			$response = new RedirectResponse($this->router->generate('fournisseur'));
+			$response = new RedirectResponse($this->router->generate('cs_fournisseur_homepage'));
 
 		}
 			
