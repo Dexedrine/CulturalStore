@@ -1,7 +1,0 @@
-parameters:
-#    cs_cart.example.class: CS\CartBundle\Example
-
-services:
-#    cs_cart.example:
-#        class: %cs_cart.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

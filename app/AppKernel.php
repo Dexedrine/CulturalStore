@@ -28,13 +28,7 @@ class AppKernel extends Kernel
 				new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 				new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
 				new Sylius\Bundle\ProductBundle\SyliusProductBundle(),
-				//new Sylius\Bundle\VariableProductBundle\SyliusVariableProductBundle(),
-				//new Sylius\Bundle\PromotionsBundle\SyliusPromotionsBundle(),
 				new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
-				new Sylius\Bundle\MoneyBundle\SyliusMoneyBundle(),
-				new Sylius\Bundle\OrderBundle\SyliusOrderBundle(),
-				new Sylius\Bundle\CartBundle\SyliusCartBundle(),
-
 				//doctrine must be added after sylius
 				new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             	new CS\ProductBundle\CSProductBundle(),
@@ -42,7 +36,6 @@ class AppKernel extends Kernel
 				
 				//bundle to rock images !
 				new Liip\ImagineBundle\LiipImagineBundle(),
-            new CS\CartBundle\CSCartBundle(),
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {

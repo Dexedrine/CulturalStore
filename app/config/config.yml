@@ -94,8 +94,9 @@ sylius_product:
     driver: doctrine/orm # Configure the doctrine orm driver used in the documentation.
     classes:
         product:
-            model: CS\ProductBundle\Entity\Product
+            model: Sylius\Bundle\ProductBundle\Model\Product
             controller: CS\ProductBundle\Controller\ProductController
+
 
 stof_doctrine_extensions:
     orm:
@@ -103,30 +104,7 @@ stof_doctrine_extensions:
             sluggable: true
             timestampable: true
             
-sylius_order:
-    driver: doctrine/orm # Configure the doctrine orm driver used in documentation.
-    classes:
-        order:
-            model: CS\ProductBundle\Entity\Order
-        sellable:
-            model: CS\ProductBundle\Entity\Product # Your product entity.
-         # The order entity.
-  #order_item:
-            #model: Sylius\Bundle\CoreBundle\Model\OrderItem
-            
-sylius_cart:
-    #driver: doctrine/orm # Configure the doctrine orm driver used in documentation.
-    resolver: cs_product.cart_item_resolver # The id of our newly created service.
-    classes:
-        item:
-            form: CS\ProductBundle\Entity\CartItem # The item entity.
-            
-#sylius_promotions:
-#    driver: doctrine/orm # Configure the doctrine orm driver used in the documentation.
-    
-sylius_money:
-    driver: doctrine/orm
-    
+
 fpn_tag:
     model:
         tag_class:     CS\CommunityBundle\Entity\Community

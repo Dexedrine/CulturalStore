@@ -1,7 +1,3 @@
-cs_cart:
-    resource: "@CSCartBundle/Resources/config/routing.yml"
-    prefix:   /
-
 cs_admin:
     resource: "@CSAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
@@ -45,12 +41,6 @@ fos_user_change_password:
 sylius_product:
     resource: "@SyliusProductBundle/Resources/config/routing.yml"
     
-sylius_cart:
-    resource: "@SyliusCartBundle/Resources/config/routing.yml"
-    prefix: /cart
-    
-sylius_money:
-    resource: "@SyliusMoneyBundle/Resources/config/routing.yml"
     
 _imagine:
     resource: .
