@@ -29,6 +29,10 @@ class AppKernel extends Kernel
 				new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
 				new Sylius\Bundle\ProductBundle\SyliusProductBundle(),
 				new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
+
+
+				new FOS\ElasticaBundle\FOSElasticaBundle(),
+				
 				//doctrine must be added after sylius
 				new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             	new CS\ProductBundle\CSProductBundle(),

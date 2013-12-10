@@ -7,6 +7,10 @@
     {% include 'CSProductBundle:Product:_create_music.html.twig' %}
 {% elseif type == 'book' %}
     {% include 'CSProductBundle:Product:_create_book.html.twig' %}
+{% elseif type == 'game' %}
+    {% include 'CSProductBundle:Product:_create_game.html.twig' %}
+{% elseif type == 'ticket' %}
+    {% include 'CSProductBundle:Product:_create_ticket.html.twig' %}
 {% else %}
     {% include 'CSProductBundle:Product:_create.html.twig' %}  
 {% endif %} 
