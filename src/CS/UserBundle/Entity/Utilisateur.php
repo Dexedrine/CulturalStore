@@ -6,6 +6,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 use DoctrineExtensions\Taggable\Taggable;
+use CS\CartBundle\Entity\Cart;
 
 
 // (repositoryClass="CS\UserBundle\Repository\UtilisateurRepository")
@@ -43,6 +44,14 @@ class Utilisateur extends BaseUser implements Taggable{
 	 * @ORM\Column(type="string", length=300, nullable=true)
 	 */
 	private $photo;
+	
+	/**
+	 * @var Cart
+	 * 
+	 * @ORM\OneToOne(targetEntity="CS\CartBundle\Entity\Cart",cascade={"persist"})
+	 * @ORM\JoinColumn(name="cart_id", referencedColumnName="id")
+	 */
+	private $cart;
 
 	/**
 	 * Set nom
@@ -74,6 +83,29 @@ class Utilisateur extends BaseUser implements Taggable{
 	public function setPrenom($prenom)
 	{
 		$this->prenom = $prenom;
+	
+		return $this;
+	}
+	
+	/**
+	 * Get cart
+	 *
+	 * @return Cart
+	 */
+	public function getCart()
+	{
+		return $this->cart;
+	}
+	
+	/**
+	 * Set cart
+	 *
+	 * @param  Cart $cart
+	 * @return Utilisateur
+	 */
+	public function setCart($cart)
+	{
+		$this->cart = $cart;
 	
 		return $this;
 	}
@@ -123,7 +155,7 @@ class Utilisateur extends BaseUser implements Taggable{
 	}
 	
 
-	//Gestion des communaut�s par syst�me de tag
+	//Gestion des communautes par syst�me de tag
 	
 	protected $communities;
 	

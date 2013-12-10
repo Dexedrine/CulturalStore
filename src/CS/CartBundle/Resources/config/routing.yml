@@ -1,0 +1,7 @@
+show_cart:
+    pattern:  /cart/
+    defaults: { _controller: "CSCartBundle:Cart:showCart" }
+
+add_product:
+    pattern: /cart/add_product/{product_id}
+    defaults: { _controller: "CSCartBundle:Cart:addProduct" }
