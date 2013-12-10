@@ -23,13 +23,13 @@
 		<div class="span4">
 		<table id="panel-account">
 			<tr>
-				<td class="photo">
-				<img src="{{ asset('bundles/csdesign/img/bob.jpeg') }}" alt="You" class="img-polaroid "/>
-				</td>
+<!-- 				<td class="photo"> -->
+			{#	<img src="{{ asset('bundles/csdesign/img/bob.jpeg') }}" alt="You" class="img-polaroid "/>#}
+<!-- 				</td> -->
 				<td class="client">
 					<div class="">					
             					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            						Bonjour {{  app.user.prenom }} {{ app.user.nom }} ! 
+            						<h5>Bonjour {{  app.user.prenom }} {{ app.user.nom }} ! </h5>
             						<div class="account dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte</a>
 										<ul class="dropdown-menu">
