@@ -40,6 +40,7 @@ class AppKernel extends Kernel
 				
 				//bundle to rock images !
 				new Liip\ImagineBundle\LiipImagineBundle(),
+            new CS\FournisseurBundle\CSFournisseurBundle(),
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {
