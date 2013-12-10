@@ -94,7 +94,7 @@ sylius_product:
     driver: doctrine/orm # Configure the doctrine orm driver used in the documentation.
     classes:
         product:
-            model: Sylius\Bundle\ProductBundle\Model\Product
+            model: CS\ProductBundle\Entity\Product
             controller: CS\ProductBundle\Controller\ProductController
 
 

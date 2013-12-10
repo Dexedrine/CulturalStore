@@ -1,0 +1,12 @@
+{% extends 'CSDesignBundle:Commun:commun.html.twig' %}
+{% block body %}
+<h1> Mon panier </h1>
+{% if cart and (cart.products | length > 0) %}
+	  {%  for product in  cart.products %}                        
+                       {{ product.name }}                
+      {% endfor %}
+{% else %}
+	Votre panier est vide.
+{% endif %}
+ 
+{% endblock body %}
