@@ -85,6 +85,15 @@ class Cart {
     {
         $this->products->removeElement($products);
     }
+    
+    /**
+     * Remove all products
+     *
+     */
+    public function emptyCart()
+    {
+        $this->products->clear();
+    }
 
     /**
      * Get products
