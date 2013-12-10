@@ -6,12 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class CartControllerTest extends WebTestCase
 {
-    public function testIndex()
+    public function testShowCart()
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/hello/Fabien');
+        $crawler = $client->request('GET', '/cart/');
 
-        $this->assertTrue($crawler->filter('html:contains("Hello Fabien")')->count() > 0);
+        
     }
+    
+    
 }
