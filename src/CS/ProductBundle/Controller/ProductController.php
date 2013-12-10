@@ -253,14 +253,8 @@ class ProductController extends ResourceController
 		$product = $repository->find(intval($id));
 		$price = $product->getPropertyByName("price");
 		$image = $product->getPropertyByName("image");
-
-		$view = $this
-			->view()
-			->setTemplate($this->getConfiguration()->getTemplate('show.html'))
-			->setData(array('product' => $product,'price' => $price, 'image' => $image));
-		return $this->handleView($view);
-	}	
-	
+	}
+		
 	function showForm($form,$type){
 		$view = $this->view()
 			->setTemplate($this->getConfiguration()->getTemplate('create.html'))

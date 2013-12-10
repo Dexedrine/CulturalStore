@@ -9,7 +9,10 @@
 			<div class="span5 search">
 				<form class="form-search">
 					<div class="input-append">
+						{% render url('search_product') %}
+						<!--
 						<input type="text" class="search-query" placeholder="Twilight, Lara Fabian, etc.">
+						-->
 						<button class="btn btn-primary search" type="submit">Rechercher
 					</button>
 					</div>
@@ -52,7 +55,7 @@
             					    <!-- Inscription au site -->
             					    <div class="inscription'">
             					    </br>
-            					    	<a href="register">S'inscrire</a>
+            					    	<a href="{{ path('cs_design_homepage') }}register">S'inscrire</a>
             						</div>
             					{% endif %}        				
 					</div>				

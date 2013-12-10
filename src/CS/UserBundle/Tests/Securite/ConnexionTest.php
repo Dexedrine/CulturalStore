@@ -55,6 +55,35 @@ class ConnexionTest extends WebTestCase{
 // 		$this->client->followRedirects();
 	
 	}
+<<<<<<< HEAD
+	public function testLogin() {
+		$client = static::createClient();
+		$crawler = $client->request('GET', $this->generateUrl($client,'cs_design_homepage'));
+		$form = $crawler->selectButton('_submit')->form(array(
+				'_username'  => $this->email,
+				'_password'  => $this->motDePasse,
+		));
+		$client->submit($form);  
+		echo '##################';
+		$userType = $client->getContainer()->get('fos_elastica.index.website.user');
+		echo phpinfo();
+		echo $userType->search('bob');
+		echo $this->generateUrl($client,'cs_design_homepage');
+		echo '##################';
+		//$this->assertTrue($client->getResponse()->isRedirect(), 'should be redirected');
+		//echo  $this->generateUrl($client,'cs_design_homepage')&'login' ;
+		$this->assertTrue(
+				$client->getResponse()->isRedirect( $this->generateUrl($client,'cs_design_homepage'))
+		);
+		//$this->assertTrue($client->getResponse()->isRedirect('/'), 'doit etre redirigé vers la page d\'acceuil');
+	
+		//$crawler = $client->followRedirect();
+	}
+	public function generateUrl( $client, $route, $parameters = array() )
+	{
+		return $client->getContainer()->get( 'router' )->generate( $route, $parameters,true );
+	}
+=======
         public function testRecuperationDeLUtilisateurDepuisLaBase(){
                 $user =  $this->userManager->findUserByEmail($this->email);
                 $this->assertEquals($this->email,$user->getEmail());
@@ -86,5 +115,6 @@ class ConnexionTest extends WebTestCase{
                 $user =  $this->userManager->findUserByEmail($this->email);
                 $this->userManager->deleteUser($user);
         }
+>>>>>>> 42c4569c08768353e480ae7c2171d9c16c69ae6e
 }
 

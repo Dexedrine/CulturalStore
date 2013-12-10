@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Router;
 
-
 class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
 {
 	
@@ -25,7 +24,7 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
 	public function onAuthenticationSuccess(Request $request, TokenInterface $token)
 	{
 		
-		if ($this->security->isGranted('ROLE_CLIENT')){
+		if ($this->security->isGranted('ROLE_CLIENT') || $this->security->isGranted('ROLE_USER') ){
 			// redirect the user to where they were before the login process begun.
 			$referer_url = $request->headers->get('referer');
 						
@@ -34,9 +33,7 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
 		elseif ($this->security->isGranted('ROLE_ADMIN'))
 		{
 			// redirection vers la page admin.
-			$url = $this->router->generate($request->getPathInfo());
-			
-			$response = new RedirectResponse($url);
+			$response = new RedirectResponse($this->router->generate('/admin'));
 		} 
 		elseif ($this->security->isGranted('ROLE_FOURNISSEUR'))
 		{
