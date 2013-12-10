@@ -32,7 +32,6 @@ class CartController extends Controller {
 		$product = $repository_product->findOneBy(array (
 				'id' => $product_id
 		));
-		
 		return $product;
 	}
 	
@@ -74,12 +73,19 @@ class CartController extends Controller {
 	}
 	
 	public function deleteProductAction($product_id) {
+		$session = $this->getRequest()->getSession();
+		
 		$user = $this->getConnectedUser();
 		$cart = $this->getCurrentCart();		
 		$product = $this->getProductFromRepository($product_id);
+		$cart->removeProduct($product);//ne marche pas si pas co
 		
-		$cart->removeProduct($product);
-		$this->em->flush();
+		if(!$user){
+			$session->set('cart', $cart);
+		}
+		else{
+			$this->em->flush();
+		}
 		
 		return $this->render ( 'CSCartBundle:Cart:cart.html.twig', array (
 				'user' => $user,

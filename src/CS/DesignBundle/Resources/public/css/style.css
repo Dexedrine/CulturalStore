@@ -84,6 +84,9 @@ border-radius: 0 4px 4px 0;
 	line-height: 100%;
 	vertical-align: middle;
 }
+#panel-account .client .inscription {
+	text-align: left;
+}
 
 #panel-account td.photo {
 	-max-width: 100px;

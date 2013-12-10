@@ -1,166 +1,162 @@
 <div class="row header">
 
-<!-- Le logo Cultural Store -->
-                        <div class="logo span3">
-                                <a href="{{ path('cs_design_homepage') }}"><img src="{{ asset('bundles/csdesign/img/logo_CulturalStore.png') }}" alt="Logo CulturalStore"/></a>
-                        </div>        
-                        
-<!-- Le champs de recherche de produit -->                        
-                        <div class="span5 search">
-                                <form class="form-search">
-                                        <div class="input-append">
-                                                {% render url('search_product') %}
-                                                <!--
+	<!-- Le logo Cultural Store -->
+	<div class="logo span3">
+		<a href="{{ path('cs_design_homepage') }}"><img
+			src="{{ asset('bundles/csdesign/img/logo_CulturalStore.png') }}"
+			alt="Logo CulturalStore" /></a>
+	</div>
+
+	<!-- Le champs de recherche de produit -->
+	<div class="span5 search">
+		<form class="form-search">
+			<div class="input-append">
+				{% render url('search_product') %}
+				<!--
                                                 <input type="text" class="search-query" placeholder="Twilight, Lara Fabian, etc.">
                                                 -->
-                                                <button class="btn btn-primary search" type="submit">Rechercher
-                                        </button>
-                                        </div>
-                                </form>                        
-                        </div>
-                        
-<!-- Le compte client et panier -->                        
-                <div class="span4">
-                <table id="panel-account">
-                        <tr>
-<!--                                 <td class="photo"> -->
-                        {#        <img src="{{ asset('bundles/csdesign/img/bob.jpeg') }}" alt="You" class="img-polaroid "/>#}
-<!--                                 </td> -->
-                                <td class="client">
-                                        <div class="">                                        
-                                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                                            <h5>Bonjour {{ app.user.prenom }} {{ app.user.nom }} ! </h5>
-                                                            <div class="account dropdown">
-                                                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte</a>
-                                                                                <ul class="dropdown-menu">
-                                                                                        <li><a href="#">Mon profil</a></li>
-                                                                                        <li><a href="#">Mes commandes</a></li>
-                                                                                        <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
-                                                                                </ul>                                                
-                                                                        </div>        
-                                                                        
-                                                    {% else %}
-                                                    <!-- Connection avec fenetre modale -->
-                                                            <div class="modal hide" id="logger">
-                                                                    <div class="modal-header"><a class="close" data-dismiss="modal">x</a>
-                                                                            <h3>Se connecter à Cultural Store</h3>
-                                                                    </div>
-                                                                    
-                                                                    <div class="modal-body">
-                                                                            {% render url('fos_user_security_login') %}
-                                                                    </div>
-                                                            </div>
-                                                            <a class="btn btn-primary" data-toggle="modal" href="#logger">Se connecter</a>
-                                                            
-                                                     <!-- Inscription au site -->
-                                                     <div class="inscription'">
-                                                     </br>
-                                                             <a href="{{ path('cs_design_homepage') }}register">S'inscrire</a>
-                                                            </div>
-                                                    {% endif %}                                 
-                                        </div>                                
-                                        </td>
-                                        
-                                <td class="cart">                                        
-                                        <a href=""><i class="icon-shopping-cart"></i>Mon panier</a>
-                                        
-                                </td>
-                        </tr>
-                </table>
-                </div>
-                </div>
-                
-<!-- La barre de navigation du site -->                                
+				<button class="btn btn-primary search" type="submit">Rechercher</button>
+			</div>
+		</form>
+	</div>
+
+	<!-- Le compte client et panier -->
+	<div class="span4">
+		<table id="panel-account">
+			<tr>
+				<!--                                 <td class="photo"> -->
+				{# <img src="{{ asset('bundles/csdesign/img/bob.jpeg') }}" alt="You"
+				class="img-polaroid "/>#}
+				<!--                                 </td> -->
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				<td class="client">
+					<div class="">
+
+						<h5>Bonjour {{ app.user.prenom }} {{ app.user.nom }} !</h5>
+						<div class="account dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon
+								compte</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Mon profil</a></li>
+								<li><a href="#">Mes commandes</a></li>
+								<li><a href="{{ path('fos_user_security_logout') }}">{{
+										'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+							</ul>
+						</div>
+
+
+					</div>
+				</td> {% else %}
+				<td class="client">
+					<!-- Connection avec fenetre modale -->
+					<div class="modal hide" id="logger">
+						<div class="modal-header">
+							<a class="close" data-dismiss="modal">x</a>
+							<h3>Se connecter à Cultural Store</h3>
+						</div>
+
+						<div class="modal-body">{% render url('fos_user_security_login')
+							%}</div>
+					</div> <a class="btn btn-primary" data-toggle="modal"
+					href="#logger">Se connecter</a>
+				</td>
+				<td class="client">
+					<!-- Inscription au site -->
+					<div class="inscription'">
+						<a href="{{ path('cs_design_homepage') }}register">S'inscrire</a>
+					</div> {% endif %}
+				</td>
+
+				<td class="cart"><a href="{{ path('show_cart') }}"><i
+						class="icon-shopping-cart"></i>Mon panier</a></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<!-- La barre de navigation du site -->
 <div class="navigation">
-        <nav class="navbar">
-                <div class="navbar-inner">
-                        <div class="container">
-                                <ul class="nav">
-                                                                
-                                        <li class="dropdown">
-                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Livres <b class="caret"></b></a>
-                                                <ul class="dropdown-menu">
-                                                        <li><a href="#">Marc Lévy</a></li>
-                                                        <li><a href="#">Amélie Nothomb</a></li>
-                                                        <li><a href="#">Marquis de Sade</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">Les autres communautés</a></li>                                        
-                                                </ul>
-                                        </li>
-                                        
-                                        <li class="dropdown">
-                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Musique <b class="caret"></b></a>
-                                                <ul class="dropdown-menu">
-                                                        <li><a href="#">Electro</a></li>
-                                                        <li><a href="#">Lara Fabian</a></li>
-                                                        <li><a href="#">Daft Punk</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">Les autres communautés</a></li>        
-                                                </ul>
-                                        </li>
-                                        
-                                        <li class="dropdown">
-                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Cinéma <b class="caret"></b></a>
-                                                <ul class="dropdown-menu">
-                                                        <li><a href="#">Action</a></li>
-                                                        <li><a href="#">Américain</a></li>
-                                                        <li><a href="#">Gravity</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">Les autres communautés</a></li>        
-                                                </ul>
-                                        </li>
-                                        
-                                        <li class="dropdown">
-                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Jeux vidéos <b class="caret"></b></a>
-                                                <ul class="dropdown-menu">
-                                                        <li><a href="#">Dota 2</a></li>
-                                                        <li><a href="#">Battlefield</a></li>
-                                                        <li><a href="#">PS4</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">Les autres communautés</a></li>        
-                                                </ul>
-                                        </li>
-                                        
-                                        <li class="dropdown">
-                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Spectacles <b class="caret"></b></a>
-                                                <ul class="dropdown-menu">
-                                                        <li><a href="#">Dany Boon</a></li>
-                                                        <li><a href="#">Losc</a></li>
-                                                        <li><a href="#">Danse</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">Les autres communautés</a></li>        
-                                                </ul>
-                                        </li>
-                                        
-                                                <li class="dropdown">
-                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Applications <b class="caret"></b></a>
-                                                <ul class="dropdown-menu">
-                                                        <li><a href="#">Gratuit</a></li>
-                                                        <li><a href="#">Payant</a></li>
-                                                        <li><a href="#">Top</a></li>
-                                                        <li class="divider"></li>
-                                                        <li><a href="#">Les autres communautés</a></li>        
-                                                </ul>
-                                        </li>
-                                        <li><a href="#">Mes promotions</a></li>
-                                        
-                                        
-                                        {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                                
-                                                <div class="modal hide" id="accesCommunaute">
-                                            <div class="modal-header"><a class="close" data-dismiss="modal">x</a>
-                                                    <h3>Vous devez être connecté pour accèder à vos communautés</h3>
-                                            </div>
-                                                                    
-                                            <div class="modal-body">
-                                                    {% render url('fos_user_security_login') %}
-                                            </div>
-                                    </div>
-                                    {% endif %}
-                                         <li><a data-toggle="modal" href="#accesCommunaute">Mes communautés</a>
-                                        
-                                </ul>
-                        </div>
-                </div>
-        </nav>
+	<nav class="navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<ul class="nav">
+
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Livres <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Marc Lévy</a></li>
+							<li><a href="#">Amélie Nothomb</a></li>
+							<li><a href="#">Marquis de Sade</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Les autres communautés</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Musique <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Electro</a></li>
+							<li><a href="#">Lara Fabian</a></li>
+							<li><a href="#">Daft Punk</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Les autres communautés</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Cinéma <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Américain</a></li>
+							<li><a href="#">Gravity</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Les autres communautés</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Jeux vidéos <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Dota 2</a></li>
+							<li><a href="#">Battlefield</a></li>
+							<li><a href="#">PS4</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Les autres communautés</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Spectacles <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Dany Boon</a></li>
+							<li><a href="#">Losc</a></li>
+							<li><a href="#">Danse</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Les autres communautés</a></li>
+						</ul></li>
+
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Applications <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Gratuit</a></li>
+							<li><a href="#">Payant</a></li>
+							<li><a href="#">Top</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Les autres communautés</a></li>
+						</ul></li>
+					<li><a href="#">Mes promotions</a></li> {% if not
+					is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+					<div class="modal hide" id="accesCommunaute">
+						<div class="modal-header">
+							<a class="close" data-dismiss="modal">x</a>
+							<h3>Vous devez être connecté pour accèder à vos communautés</h3>
+						</div>
+
+						<div class="modal-body">{% render url('fos_user_security_login')
+							%}</div>
+					</div>
+					{% endif %}
+					<li><a data-toggle="modal" href="#accesCommunaute">Mes communautés</a>
+				
+				</ul>
+			</div>
+		</div>
+	</nav>
 </div>
