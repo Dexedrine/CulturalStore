@@ -9,3 +9,7 @@ fournisseur_registration:
 admin_registration:
     pattern:  /register/admin
     defaults: { _controller: "CSUserBundle:RegistrationAdmin:register" }
+    
+user_delete:
+  pattern: /user/delete
+  defaults: { _controller: "CSUserBundle:User:deleteUser" }
