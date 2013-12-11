@@ -44,6 +44,20 @@ class Utilisateur extends AUser implements Taggable{
 	 * @ORM\JoinColumn(name="cart_id", referencedColumnName="id")
 	 */
 	private $cart;
+	
+	/**
+	 * @var bool
+	 *
+	 * @ORM\Column(type="boolean")
+	 */
+	private $optin_donnee;
+	
+	/**
+	 * @var bool
+	 *
+	 * @ORM\Column(type="boolean")
+	 */
+	private $optin_newsletter;
 
 	/**
 	 * Set nom
@@ -146,4 +160,60 @@ class Utilisateur extends AUser implements Taggable{
 			$this->communities->add($tag);
 		}
 	}
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set optin_donnee
+     *
+     * @param boolean $optinDonnee
+     * @return Utilisateur
+     */
+    public function setOptinDonnee($optinDonnee)
+    {
+        $this->optin_donnee = $optinDonnee;
+    
+        return $this;
+    }
+
+    /**
+     * Get optin_donnee
+     *
+     * @return boolean 
+     */
+    public function getOptinDonnee()
+    {
+        return $this->optin_donnee;
+    }
+
+    /**
+     * Set optin_newsletter
+     *
+     * @param boolean $optinNewsletter
+     * @return Utilisateur
+     */
+    public function setOptinNewsletter($optinNewsletter)
+    {
+        $this->optin_newsletter = $optinNewsletter;
+    
+        return $this;
+    }
+
+    /**
+     * Get optin_newsletter
+     *
+     * @return boolean 
+     */
+    public function getOptinNewsletter()
+    {
+        return $this->optin_newsletter;
+    }
 }

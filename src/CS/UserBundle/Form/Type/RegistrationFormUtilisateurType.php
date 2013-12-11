@@ -13,6 +13,8 @@ class RegistrationFormUtilisateurType extends BaseType
 
         $builder->add('nom')
         	->add('prenom')
+        	->add('optin_donnee', 'checkbox', array('data'=>true, 'label'=>"J'accepte que mes coordonnées soient utilisées dans un but commercial"))
+        	->add('optin_newsletter', 'checkbox', array('data'=>false, 'label'=>"J'accepte de recevoir des informations de la part de CulturalStore et de ses partenaires commerciaux"))
         	->remove('username');
     }
 
