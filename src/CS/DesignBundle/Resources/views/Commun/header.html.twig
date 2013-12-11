@@ -28,7 +28,7 @@
 				</td>
 				<td class="client">
 					<div class="">					
-            					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            					{% if is_granted("ROLE_CLIENT") %}
             						Bonjour {{  app.user.prenom }} {{ app.user.nom }} ! 
             						<div class="account dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte</a>
@@ -55,7 +55,7 @@
             					    <!-- Inscription au site -->
             					    <div class="inscription'">
             					    </br>
-            					    	<a href="{{ path('cs_design_homepage') }}register">S'inscrire</a>
+            					    	<a href="{{ path('utilisateur_registration') }}">S'inscrire</a>
             						</div>
             					{% endif %}        				
 					</div>				

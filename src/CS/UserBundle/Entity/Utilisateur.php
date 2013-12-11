@@ -2,22 +2,21 @@
 
 namespace CS\UserBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 use DoctrineExtensions\Taggable\Taggable;
 use CS\CartBundle\Entity\Cart;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 
 // (repositoryClass="CS\UserBundle\Repository\UtilisateurRepository")
 /**
  * @ORM\Entity
  * @ORM\Table(name="utilisateur")
- *
- * 
+ * @UniqueEntity(fields = "username", targetClass = "CS\UserBundle\Entity\AUser", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "CS\UserBundle\Entity\AUser", message="fos_user.email.already_used")
  */
 
-class Utilisateur extends BaseUser implements Taggable{
+class Utilisateur extends AUser implements Taggable{
 	/**
 	 * @ORM\Id
 	 * @ORM\Column(type="integer")
@@ -38,13 +37,6 @@ class Utilisateur extends BaseUser implements Taggable{
 	 */
 	private $prenom;
 
-	/**
-	 * @var string
-	 *
-	 * @ORM\Column(type="string", length=300, nullable=true)
-	 */
-	private $photo;
-	
 	/**
 	 * @var Cart
 	 * 
@@ -120,34 +112,7 @@ class Utilisateur extends BaseUser implements Taggable{
 		return $this->prenom;
 	}
 	
-	/**
-	 * Set photo url
-	 *
-	 * @param string $photo
-	 * @return Utilisateur
-	 */
-	public function setPhoto($photo)
-	{
-		$this->photo = $photo;
 	
-		return $this;
-	}
-	
-	/**
-	 * Get photo
-	 *
-	 * @return string
-	 */
-	public function getPhoto()
-	{
-		return $this->photo;
-	}
-	
-	public function setEmail($email)
-	{
-		parent::setEmail($email);
-		$this->setUsername($email);
-	}
 	
 	public function __construct() {
 		parent::__construct();

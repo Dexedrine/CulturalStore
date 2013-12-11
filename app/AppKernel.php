@@ -18,6 +18,7 @@ class AppKernel extends Kernel
 				new CS\UserBundle\CSUserBundle(),
 				new CS\DesignBundle\CSDesignBundle(),
 				new FOS\UserBundle\FOSUserBundle(),
+				new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
 				new CS\CommunityBundle\CSCommunityBundle(),
 				
 				new FPN\TagBundle\FPNTagBundle(),
@@ -29,7 +30,7 @@ class AppKernel extends Kernel
 				new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
 				new Sylius\Bundle\ProductBundle\SyliusProductBundle(),
 				new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
-
+				
 
 				new FOS\ElasticaBundle\FOSElasticaBundle(),
 				

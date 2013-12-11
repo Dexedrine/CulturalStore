@@ -1,3 +1,11 @@
-cs_user_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: CSUserBundle:Default:index }
+utilisateur_registration:
+    pattern:  /register/utilisateur
+    defaults: { _controller: "CSUserBundle:RegistrationUtilisateur:register" }
+
+fournisseur_registration:
+    pattern:  /register/fournisseur
+    defaults: { _controller: "CSUserBundle:RegistrationFournisseur:register" }
+
+admin_registration:
+    pattern:  /register/admin
+    defaults: { _controller: "CSUserBundle:RegistrationAdmin:register" }

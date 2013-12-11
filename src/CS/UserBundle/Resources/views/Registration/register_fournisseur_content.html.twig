@@ -1,7 +1,7 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <div class="inscription">
 <h5>Bienvenue sur Cultural Store ! Vous pouvez dès à présent vous inscrire en remplissant le formulaire suivant :</h5>
-<form name="reg_form" action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+<form name="reg_form" action="{{ path('fournisseur_registration') }}" {{ form_enctype(form) }} method="POST" class="fournisseur_registration">
 
     {{ form_widget(form) }}
     <div>
