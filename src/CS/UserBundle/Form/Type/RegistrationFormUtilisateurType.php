@@ -5,7 +5,7 @@ namespace CS\UserBundle\Form\Type;
 use Symfony\Component\Form\FormBuilderInterface; 
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
 
-class RegistrationFormType extends BaseType
+class RegistrationFormUtilisateurType extends BaseType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -13,12 +13,11 @@ class RegistrationFormType extends BaseType
 
         $builder->add('nom')
         	->add('prenom')
-        	->add('photo')
         	->remove('username');
     }
 
     public function getName()
     {
-        return 'cs_user_registration';
+        return 'cs_utilisateur_registration_form';
     }
 }

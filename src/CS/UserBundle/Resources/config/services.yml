@@ -1,13 +1,16 @@
-parameters:
-
 services:
     cs_user.registration.form.type:
-        class: CS\UserBundle\Form\Type\RegistrationFormType
+        class: CS\UserBundle\Form\Type\RegistrationFormUtilisateurType
         arguments: [%fos_user.model.user.class%]
         tags:
-            - { name: form.type, alias: cs_user_registration }
+            - { name: form.type, alias: cs_utilisateur_registration_form }
+    cs_fournisseur.registration.form.type:
+        class: CS\UserBundle\Form\Type\RegistrationFormFournisseurType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: cs_fournisseur_registration_form }
     authentication_handler:
         class:  CS\UserBundle\Handler\LoginSuccessHandler
-        arguments:  [@router, @security.context]
+        arguments:  ['@router', '@security.context']
         tags:
             - { name: 'monolog.logger', channel: 'security' }

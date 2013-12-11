@@ -74,11 +74,45 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: CS\UserBundle\Entity\Utilisateur
+    user_class: CS\UserBundle\Entity\AUser
+    service:
+        user_manager: pugx_user_manager
     # Permet de renseigner le nouveau formulaire d'inscription
-    registration:
-        form:
-            type: cs_user_registration
+
+            
+pugx_multi_user:
+  users:
+    utilisateur:
+        entity: 
+          class: CS\UserBundle\Entity\Utilisateur
+        registration:
+          form: 
+            type: CS\UserBundle\Form\Type\RegistrationFormUtilisateurType
+            name: cs_utilisateur_registration_form
+          template: CSUserBundle:Registration:register_utilisateur.html.twig
+        profile:
+          form:
+            type: cs\UserBundle\Form\Type\ProfileFormUtilisateurType
+            name: cs_utilisateur_profile_form
+    admin:
+        entity: 
+          class: CS\UserBundle\Entity\Administrateur
+        registration:
+          form: 
+            type: CS\UserBundle\Form\Type\RegistrationFormAdminType
+            name: cs_admin_registration_form
+          template: CSUserBundle:Registration:register_admin.html.twig
+    fournisseur:
+        entity: 
+          class: CS\UserBundle\Entity\Fournisseur
+        registration:
+          form: 
+            type: CS\UserBundle\Form\Type\RegistrationFormFournisseurType
+            name: cs_fournisseur_registration_form
+          template: CSUserBundle:Registration:register_fournisseur.html.twig
+        profile:
+          form: 
+            type: CS\UserBundle\Form\Type\ProfileFormFournisseurType
 
 #Sylius Configuration
 

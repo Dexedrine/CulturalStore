@@ -6,7 +6,8 @@ use Symfony\Component\Security\Core\SecurityContext;
 
 class HomepageController extends Controller {
 	public function homepageAction() {
-		$user = $this->get('security.context')->getToken()->getUser();
+		$security = $this->get('security.context');
+		$user = $security->getToken()->getUser();
 		return $this
 				->render('CSDesignBundle:Homepage:homepage.html.twig', array('user'=>$user));
 	}

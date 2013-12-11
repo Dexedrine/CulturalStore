@@ -5,3 +5,11 @@ show_cart:
 add_product:
     pattern: /cart/add_product/{product_id}
     defaults: { _controller: "CSCartBundle:Cart:addProduct" }
+    
+delete_product:
+    pattern: /cart/delete_product/{product_id}
+    defaults: { _controller: "CSCartBundle:Cart:deleteProduct" }
+    
+validate_cart:
+    pattern: /cart/validation
+    defaults: { _controller: "CSCartBundle:Cart:validateCart" }

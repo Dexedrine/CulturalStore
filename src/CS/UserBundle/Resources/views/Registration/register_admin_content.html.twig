@@ -1,0 +1,12 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="inscription">
+<h5>Bienvenue sur Cultural Store ! Vous pouvez dès à présent vous inscrire en remplissant le formulaire suivant :</h5>
+<form name="reg_form" action="{{ path('admin_registration') }}" {{ form_enctype(form) }} method="POST" class="admin_registration">
+
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" name="_submit" id="_submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+</form>
+</div>
+
