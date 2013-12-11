@@ -1,6 +1,9 @@
-{{ form(form) }}
+{{ form_start(form, {'attr': {'class': 'form-search'}}) }}
+    {{ form_errors(form) }}
+		<div class="input-append">
+        {{ form_errors(form.recherche) }}
+        {{ form_widget(form.recherche, {'attr': {'class': 'search-query','placeholder':'Twilight, Lara Fabian, etc.'}}) }}
 
-{# <form>#}
-{# 	<input type="text" id="nom" data-suggest="{{ path('search_product') }}" placeholder="Rechercher" />#}
-{# 	<input  class="btn btn-primary search" type="submit" value="Rechercher"/>#}
-{# </form>#}
+        {{ form_widget(form.Rechercher, {'attr': {'class': 'btn btn-primary search'}}) }}
+		</div>
+{{ form_end(form) }}

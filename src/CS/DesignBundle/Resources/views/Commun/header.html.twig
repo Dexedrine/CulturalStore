@@ -9,15 +9,7 @@
 
 	<!-- Le champs de recherche de produit -->
 	<div class="span5 search">
-		<form class="form-search">
-			<div class="input-append">
-				{% render url('search_product') %}
-				<!--
-                                                <input type="text" class="search-query" placeholder="Twilight, Lara Fabian, etc.">
-                                                -->
-				<button class="btn btn-primary search" type="submit">Rechercher</button>
-			</div>
-		</form>
+		{% render url('search_product') %}
 	</div>
 
 	<!-- Le compte client et panier -->
@@ -44,7 +36,6 @@
 							</ul>
 						</div>
 
-
 					</div>
 				</td> {% else %}
 				<td class="client">
@@ -52,7 +43,7 @@
 					<div class="modal hide" id="logger">
 						<div class="modal-header">
 							<a class="close" data-dismiss="modal">x</a>
-							<h3>Se connecter à Cultural Store</h3>
+							<h3>Se connecter ï¿½ Cultural Store</h3>
 						</div>
 
 						<div class="modal-body">{% render url('fos_user_security_login')
@@ -84,11 +75,11 @@
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">Livres <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Marc Lévy</a></li>
-							<li><a href="#">Amélie Nothomb</a></li>
+							<li><a href="#">Marc Lï¿½vy</a></li>
+							<li><a href="#">Amï¿½lie Nothomb</a></li>
 							<li><a href="#">Marquis de Sade</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Les autres communautés</a></li>
+							<li><a href="#">Les autres communautï¿½s</a></li>
 						</ul></li>
 
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -98,27 +89,27 @@
 							<li><a href="#">Lara Fabian</a></li>
 							<li><a href="#">Daft Punk</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Les autres communautés</a></li>
+							<li><a href="#">Les autres communautï¿½s</a></li>
 						</ul></li>
 
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Cinéma <b class="caret"></b></a>
+						data-toggle="dropdown" href="#">Cinï¿½ma <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Action</a></li>
-							<li><a href="#">Américain</a></li>
+							<li><a href="#">Amï¿½ricain</a></li>
 							<li><a href="#">Gravity</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Les autres communautés</a></li>
+							<li><a href="#">Les autres communautï¿½s</a></li>
 						</ul></li>
 
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Jeux vidéos <b class="caret"></b></a>
+						data-toggle="dropdown" href="#">Jeux vidï¿½os <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Dota 2</a></li>
 							<li><a href="#">Battlefield</a></li>
 							<li><a href="#">PS4</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Les autres communautés</a></li>
+							<li><a href="#">Les autres communautï¿½s</a></li>
 						</ul></li>
 
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -128,7 +119,7 @@
 							<li><a href="#">Losc</a></li>
 							<li><a href="#">Danse</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Les autres communautés</a></li>
+							<li><a href="#">Les autres communautï¿½s</a></li>
 						</ul></li>
 
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -138,7 +129,7 @@
 							<li><a href="#">Payant</a></li>
 							<li><a href="#">Top</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Les autres communautés</a></li>
+							<li><a href="#">Les autres communautï¿½s</a></li>
 						</ul></li>
 					<li><a href="#">Mes promotions</a></li> {% if not
 					is_granted("ROLE_CLIENT") %}
@@ -146,14 +137,14 @@
 					<div class="modal hide" id="accesCommunaute">
 						<div class="modal-header">
 							<a class="close" data-dismiss="modal">x</a>
-							<h3>Vous devez être connecté pour accèder à vos communautés</h3>
+							<h3>Vous devez ï¿½tre connectï¿½ pour accï¿½der ï¿½ vos communautï¿½s</h3>
 						</div>
 
 						<div class="modal-body">{% render url('fos_user_security_login')
 							%}</div>
 					</div>
 					{% endif %}
-					<li><a data-toggle="modal" href="#accesCommunaute">Mes communautés</a>
+					<li><a data-toggle="modal" href="#accesCommunaute">Mes communautï¿½s</a>
 				
 				</ul>
 			</div>
