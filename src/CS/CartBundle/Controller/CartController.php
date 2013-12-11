@@ -32,6 +32,7 @@ class CartController extends Controller {
 		$product = $repository_product->findOneBy(array (
 				'id' => $product_id
 		));
+
 		return $product;
 	}
 	
@@ -79,7 +80,7 @@ class CartController extends Controller {
 		$cart = $this->getCurrentCart();		
 		$product = $this->getProductFromRepository($product_id);
 		$cart->removeProduct($product);//ne marche pas si pas co
-		
+
 		if(!$user){
 			$session->set('cart', $cart);
 		}
@@ -93,13 +94,10 @@ class CartController extends Controller {
 		));
 	}
 	
-	public function validateCartAction(){
-		$this->em = $this->getDoctrine ()->getManager ();
+	public function validateCartAction(){	
 		$cart = $this->getCurrentCart();
-		$cart->emptyCart();
-		$this->em->flush();
-		//TODO create an order
-		
-		return $this->render('CSCartBundle:Checkout:payment.html.twig');
+		return $this->render('CSCartBundle:Checkout:payment.html.twig', array (
+				'cart' => $cart 
+		));
 	}
 }

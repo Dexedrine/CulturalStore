@@ -1,9 +1,13 @@
 {% extends 'CSDesignBundle:Commun:commun.html.twig' %}
+
+{% block css %}
+<link href="{{ asset('bundles/cscart/css/checkout.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
 <div class="cart">
 	<h1> Mon panier </h1>
-	
-	
+
 	{% if cart and (cart.products | length > 0) %}
 	<table class="list-products">
 	  <thead>

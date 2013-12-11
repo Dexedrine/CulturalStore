@@ -81,9 +81,9 @@ class Cart {
      *
      * @param \CS\ProductBundle\Entity\Product $products
      */
-    public function removeProduct(\CS\ProductBundle\Entity\Product $products)
+    public function removeProduct(\CS\ProductBundle\Entity\Product $product)
     {
-        $this->products->removeElement($products);
+        $this->products->removeElement($product);
     }
     
     /**

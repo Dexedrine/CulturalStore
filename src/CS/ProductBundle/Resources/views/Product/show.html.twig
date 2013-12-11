@@ -1,5 +1,9 @@
 {% extends 'CSDesignBundle:Commun:commun.html.twig' %}
 
+{% block css %}
+<link href="{{ asset('bundles/csproduct/css/product.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
 {% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
 
 {% block body %}

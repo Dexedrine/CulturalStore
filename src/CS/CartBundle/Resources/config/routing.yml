@@ -13,3 +13,7 @@ delete_product:
 validate_cart:
     pattern: /cart/validation
     defaults: { _controller: "CSCartBundle:Cart:validateCart" }
+    
+validate_payment:
+    pattern: /payment/validation
+    defaults: { _controller: "CSCartBundle:Order:validatePayment" }
