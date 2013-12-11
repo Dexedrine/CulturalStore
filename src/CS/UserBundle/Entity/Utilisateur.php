@@ -48,14 +48,14 @@ class Utilisateur extends AUser implements Taggable{
 	/**
 	 * @var bool
 	 *
-	 * @ORM\Column(type="boolean")
+	 * @ORM\Column(type="boolean", nullable=false)
 	 */
 	private $optin_donnee;
 	
 	/**
 	 * @var bool
 	 *
-	 * @ORM\Column(type="boolean")
+	 * @ORM\Column(type="boolean", nullable=false)
 	 */
 	private $optin_newsletter;
 
