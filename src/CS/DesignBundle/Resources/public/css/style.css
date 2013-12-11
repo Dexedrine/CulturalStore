@@ -129,7 +129,9 @@ text-shadow: none;
 
 /*Body*/
 
-
+.body{
+	min-height:300px;
+}
 
 .itemContent{
 	height: 200px;
