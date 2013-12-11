@@ -28,7 +28,7 @@
 				{# <img src="{{ asset('bundles/csdesign/img/bob.jpeg') }}" alt="You"
 				class="img-polaroid "/>#}
 				<!--                                 </td> -->
-				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				{% if is_granted("ROLE_CLIENT") %}
 				<td class="client">
 					<div class="">
 
@@ -52,7 +52,7 @@
 					<div class="modal hide" id="logger">
 						<div class="modal-header">
 							<a class="close" data-dismiss="modal">x</a>
-							<h3>Se connecter Ã  Cultural Store</h3>
+							<h3>Se connecter à Cultural Store</h3>
 						</div>
 
 						<div class="modal-body">{% render url('fos_user_security_login')
@@ -61,41 +61,10 @@
 					href="#logger">Se connecter</a>
 				</td>
 				<td class="client">
-					<div class="">					
-            					{% if is_granted("ROLE_CLIENT") %}
-            						Bonjour {{  app.user.prenom }} {{ app.user.nom }} ! 
-            						<div class="account dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte</a>
-										<ul class="dropdown-menu">
-											<li><a href="#">Mon profil</a></li>
-											<li><a href="#">Mes commandes</a></li>
-											<li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
-										</ul>						
-									</div>	
-									
-            					{% else %}
-            					<!-- Connection avec fenetre modale -->
-            						<div class="modal hide" id="logger">
-            							<div class="modal-header"><a class="close" data-dismiss="modal">x</a>
-            								<h3>Se connecter Ã  Cultural Store</h3>
-            							</div>
-            							
-            							<div class="modal-body">
-            								{% render url('fos_user_security_login') %}
-            							</div>
-            						</div>
-            						<a class="btn btn-primary" data-toggle="modal" href="#logger">Se connecter</a>
-            						
-            					    <!-- Inscription au site -->
-            					    <div class="inscription'">
-            					    	<a href="{{ path('utilisateur_registration') }}">S'inscrire</a>
-            						</div>
-            					{% endif %}        				
-					</div>				
-					</td>
-					
-				<td class="cart">					
-					<a href=""><i class="icon-shopping-cart"></i>Mon panier</a> 
+					<!-- Inscription au site -->
+					<div class="inscription'">
+						<a href="{{ path('utilisateur_registration') }}">S'inscrire</a>
+					</div> {% endif %}
 				</td>
 
 				<td class="cart"><a href="{{ path('show_cart') }}"><i
@@ -115,11 +84,11 @@
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">Livres <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Marc LÃ©vy</a></li>
-							<li><a href="#">AmÃ©lie Nothomb</a></li>
+							<li><a href="#">Marc Lévy</a></li>
+							<li><a href="#">Amélie Nothomb</a></li>
 							<li><a href="#">Marquis de Sade</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Les autres communautÃ©s</a></li>
+							<li><a href="#">Les autres communautés</a></li>
 						</ul></li>
 
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -129,27 +98,27 @@
 							<li><a href="#">Lara Fabian</a></li>
 							<li><a href="#">Daft Punk</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Les autres communautÃ©s</a></li>
+							<li><a href="#">Les autres communautés</a></li>
 						</ul></li>
 
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">CinÃ©ma <b class="caret"></b></a>
+						data-toggle="dropdown" href="#">Cinéma <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Action</a></li>
-							<li><a href="#">AmÃ©ricain</a></li>
+							<li><a href="#">Américain</a></li>
 							<li><a href="#">Gravity</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Les autres communautÃ©s</a></li>
+							<li><a href="#">Les autres communautés</a></li>
 						</ul></li>
 
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Jeux vidÃ©os <b class="caret"></b></a>
+						data-toggle="dropdown" href="#">Jeux vidéos <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Dota 2</a></li>
 							<li><a href="#">Battlefield</a></li>
 							<li><a href="#">PS4</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Les autres communautÃ©s</a></li>
+							<li><a href="#">Les autres communautés</a></li>
 						</ul></li>
 
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -159,7 +128,7 @@
 							<li><a href="#">Losc</a></li>
 							<li><a href="#">Danse</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Les autres communautÃ©s</a></li>
+							<li><a href="#">Les autres communautés</a></li>
 						</ul></li>
 
 					<li class="dropdown"><a class="dropdown-toggle"
@@ -169,22 +138,22 @@
 							<li><a href="#">Payant</a></li>
 							<li><a href="#">Top</a></li>
 							<li class="divider"></li>
-							<li><a href="#">Les autres communautÃ©s</a></li>
+							<li><a href="#">Les autres communautés</a></li>
 						</ul></li>
 					<li><a href="#">Mes promotions</a></li> {% if not
-					is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+					is_granted("ROLE_CLIENT") %}
 
 					<div class="modal hide" id="accesCommunaute">
 						<div class="modal-header">
 							<a class="close" data-dismiss="modal">x</a>
-							<h3>Vous devez Ãªtre connectÃ© pour accÃ¨der Ã  vos communautÃ©s</h3>
+							<h3>Vous devez être connecté pour accèder à vos communautés</h3>
 						</div>
 
 						<div class="modal-body">{% render url('fos_user_security_login')
 							%}</div>
 					</div>
 					{% endif %}
-					<li><a data-toggle="modal" href="#accesCommunaute">Mes communautÃ©s</a>
+					<li><a data-toggle="modal" href="#accesCommunaute">Mes communautés</a>
 				
 				</ul>
 			</div>
