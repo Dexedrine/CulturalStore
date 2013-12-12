@@ -36,9 +36,6 @@ class ConnexionTest extends WebTestCase {
 		$user->setNom ( $this->nom );
 		$user->setPlainPassword ( $this->motDePasse );
 		$user->setEnabled ( true );
-		$user->setEnabled ( true );
-		$user->setOptinDonnee(true);
-		$user->setOptinNewsletter(true);
 		// Persist the user to the database
 		$this->userManager->updateUser ( $user );
 		
