@@ -161,12 +161,12 @@ text-shadow: none;
 
 .avisBody{
 	height: 450px;
-	background-color: #f7f7f7;
+	background-color: #ede8dc;
 	-border-radius: 4px;
 }
 
 .topFree, .topPaying{
-	background-color: #f7f7f7;
+	background-color: #ede8dc;
 	-border-radius: 4px;
 }
 
