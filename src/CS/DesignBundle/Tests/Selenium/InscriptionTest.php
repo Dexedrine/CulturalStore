@@ -6,7 +6,7 @@ require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
 class InscriptionTest extends PHPUnit_Extensions_SeleniumTestCase {
 	protected function setUp() {
-		$this->setBrowser("*squeeze");
+		$this->setBrowser("*konqueror");
 		$this->setBrowserUrl("http://localhost:8070/");
 	}
 
