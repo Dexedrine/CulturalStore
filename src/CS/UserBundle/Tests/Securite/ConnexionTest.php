@@ -12,10 +12,14 @@ class ConnexionTest extends WebTestCase {
 	protected $userManager;
 	public function setUp() {
 		$kernel = static::createKernel ();
-		$this->repo = $kernel->boot ();
-		$this->repo = $kernel->getContainer ();
+		$this->container = $kernel->boot ();
+		$this->container = $kernel->getContainer ();
 		
-		$this->userManager = $this->repo->get ( 'fos_user.user_manager' );
+		$discriminator = $this->container->get('pugx_user.manager.user_discriminator');
+		$discriminator->setClass('CS\UserBundle\Entity\Utilisateur');
+		
+		$this->userManager = $this->container->get('pugx_user_manager');
+		
 		
 		$this->email = "testing" . ( string ) rand ( 0, 10000 ) . "@test.com";
 		$this->prenom = "prenom";
@@ -30,6 +34,9 @@ class ConnexionTest extends WebTestCase {
 		$user->setNom ( $this->nom );
 		$user->setPlainPassword ( $this->motDePasse );
 		$user->setEnabled ( true );
+		$user->setEnabled ( true );
+		$user->setOptinDonnee(true);
+		$user->setOptinNewsletter(true);
 		// Persist the user to the database
 		$this->userManager->updateUser ( $user );
 		
@@ -52,8 +59,8 @@ class ConnexionTest extends WebTestCase {
 		
 		// $this->client->followRedirects();
 	}
-	/*
-	public function testLogin() {
+	
+	/*public function testLogin() {
 		$client = static::createClient ();
 		$crawler = $client->request ( 'GET', $this->generateUrl ( $client, 'cs_design_homepage' ) );
 		$form = $crawler->selectButton ( '_submit' )->form ( array (
