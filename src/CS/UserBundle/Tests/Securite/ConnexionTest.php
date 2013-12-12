@@ -31,6 +31,8 @@ class ConnexionTest extends WebTestCase {
 		$user->setEmail ( $this->email );
 		$user->setUsername ( $this->email );
 		$user->setPrenom ( $this->prenom );
+		$user->setOptinDonnee(true);
+		$user->setOptinNewsletter(true);
 		$user->setNom ( $this->nom );
 		$user->setPlainPassword ( $this->motDePasse );
 		$user->setEnabled ( true );
@@ -85,12 +87,29 @@ class ConnexionTest extends WebTestCase {
 		return $client->getContainer ()->get ( 'router' )->generate ( $route, $parameters, true );
 	}
 	
-	public function testRecuperationDeLUtilisateurDepuisLaBase() {
+	public function testRecuperationDeLemailDeLUtilisateurDepuisLaBase() {
 		$user = $this->userManager->findUserByEmail ( $this->email );
 		$this->assertEquals ( $this->email, $user->getEmail () );
+	}
+	public function testRecuperationDeLUrsernameDeLUtilisateurDepuisLaBase() {
+		$user = $this->userManager->findUserByEmail ( $this->email );
 		$this->assertEquals ( $this->email, $user->getUsername () );
+	}
+	public function testRecuperationDuPrenomDeLUtilisateurDepuisLaBase() {
+		$user = $this->userManager->findUserByEmail ( $this->email );
 		$this->assertEquals ( $this->prenom, $user->getPrenom () );
+	}
+	public function testRecuperationDuNomDeLUtilisateurDepuisLaBase() {
+		$user = $this->userManager->findUserByEmail ( $this->email );
 		$this->assertEquals ( $this->nom, $user->getNom () );
+	}
+	public function testRecuperationDeLOptinNewsDeLUtilisateurDepuisLaBase() {
+		$user = $this->userManager->findUserByEmail ( $this->email );
+		$this->assertTrue ( $user->getOptinNewsletter() );
+	}
+	public function testRecuperationDeLOptinDonneeDeLUtilisateurDepuisLaBase() {
+		$user = $this->userManager->findUserByEmail ( $this->email );
+		$this->assertTrue ( $user->getOptinDonnee() );
 	}
 	
 	public function testLogin() {

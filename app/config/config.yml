@@ -181,7 +181,7 @@ fos_elastica:
                         id:
                         name: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                         description: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                        properties:
+                        properties: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                     persistence:
                         driver: orm
                         model: CS\ProductBundle\Entity\Product
