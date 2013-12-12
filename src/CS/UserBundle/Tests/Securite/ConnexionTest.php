@@ -12,10 +12,14 @@ class ConnexionTest extends WebTestCase {
 	protected $userManager;
 	public function setUp() {
 		$kernel = static::createKernel ();
-		$this->repo = $kernel->boot ();
-		$this->repo = $kernel->getContainer ();
+		$this->container = $kernel->boot ();
+		$this->container = $kernel->getContainer ();
 		
-		$this->userManager = $this->repo->get ( 'fos_user.user_manager' );
+		$discriminator = $this->container->get('pugx_user.manager.user_discriminator');
+		$discriminator->setClass('CS\UserBundle\Entity\Utilisateur');
+		
+		$this->userManager = $this->container->get('pugx_user_manager');
+		
 		
 		$this->email = "testing" . ( string ) rand ( 0, 10000 ) . "@test.com";
 		$this->prenom = "prenom";
@@ -27,6 +31,8 @@ class ConnexionTest extends WebTestCase {
 		$user->setEmail ( $this->email );
 		$user->setUsername ( $this->email );
 		$user->setPrenom ( $this->prenom );
+		$user->setOptinDonnee(true);
+		$user->setOptinNewsletter(true);
 		$user->setNom ( $this->nom );
 		$user->setPlainPassword ( $this->motDePasse );
 		$user->setEnabled ( true );
@@ -52,8 +58,8 @@ class ConnexionTest extends WebTestCase {
 		
 		// $this->client->followRedirects();
 	}
-	/*
-	public function testLogin() {
+	
+	/*public function testLogin() {
 		$client = static::createClient ();
 		$crawler = $client->request ( 'GET', $this->generateUrl ( $client, 'cs_design_homepage' ) );
 		$form = $crawler->selectButton ( '_submit' )->form ( array (
@@ -78,12 +84,29 @@ class ConnexionTest extends WebTestCase {
 		return $client->getContainer ()->get ( 'router' )->generate ( $route, $parameters, true );
 	}
 	
-	public function testRecuperationDeLUtilisateurDepuisLaBase() {
+	public function testRecuperationDeLemailDeLUtilisateurDepuisLaBase() {
 		$user = $this->userManager->findUserByEmail ( $this->email );
 		$this->assertEquals ( $this->email, $user->getEmail () );
+	}
+	public function testRecuperationDeLUrsernameDeLUtilisateurDepuisLaBase() {
+		$user = $this->userManager->findUserByEmail ( $this->email );
 		$this->assertEquals ( $this->email, $user->getUsername () );
+	}
+	public function testRecuperationDuPrenomDeLUtilisateurDepuisLaBase() {
+		$user = $this->userManager->findUserByEmail ( $this->email );
 		$this->assertEquals ( $this->prenom, $user->getPrenom () );
+	}
+	public function testRecuperationDuNomDeLUtilisateurDepuisLaBase() {
+		$user = $this->userManager->findUserByEmail ( $this->email );
 		$this->assertEquals ( $this->nom, $user->getNom () );
+	}
+	public function testRecuperationDeLOptinNewsDeLUtilisateurDepuisLaBase() {
+		$user = $this->userManager->findUserByEmail ( $this->email );
+		$this->assertTrue ( $user->getOptinNewsletter() );
+	}
+	public function testRecuperationDeLOptinDonneeDeLUtilisateurDepuisLaBase() {
+		$user = $this->userManager->findUserByEmail ( $this->email );
+		$this->assertTrue ( $user->getOptinDonnee() );
 	}
 	
 	public function testLogin() {
