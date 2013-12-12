@@ -4,13 +4,13 @@
 
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
-class InscriptionTest extends PHPUnit_Extensions_SeleniumTestCase {
+class CommanderTest extends PHPUnit_Extensions_SeleniumTestCase {
 	protected function setUp() {
 		$this->setBrowser("*firefox");
 		$this->setBrowserUrl("http://localhost:8070/");
 	}
 
-  public function testMyTestCase()
+  public function testCommander()
   {
     $this->open("/culturalstore/app_dev.php/");
     $this->click("css=img[alt=\"Logo CulturalStore\"]");
