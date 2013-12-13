@@ -1,0 +1,6 @@
+<form action="{{ path('add_community_user') }}" {{ form_enctype(form) }} method="POST" class="add_community">
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" name="_submit" id="_submit" value="Valider" />
+    </div>
+</form>

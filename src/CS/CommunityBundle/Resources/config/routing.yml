@@ -1,11 +1,23 @@
 cs_community_homepage:
     pattern:  /community/
-    defaults: { _controller: CSCommunityBundle:Community:home }
+    defaults: { _controller: "CSCommunityBundle:Community:home" }
 
 create_theme:
     pattern: /community/create
-    defaults:  { _controller: CSCommunityBundle:Community:create }
+    defaults:  { _controller: "CSCommunityBundle:Community:create" }
     
 add_community:
     pattern: /community/add_community/{idtheme}
-    defaults:  { _controller: CSCommunityBundle:Community:addCommunity }
+    defaults:  { _controller: "CSCommunityBundle:Community:addCommunity" }
+    
+show_all_communities:
+    pattern: /community/show_all_communties
+    defaults:  { _controller: "CSCommunityBundle:Community:showCommuntiesType"}
+
+show_user_communities:
+    pattern: /community/user/show_communties
+    defaults:  { _controller: "CSCommunityBundle:Community:showCommuntiesUserSession"}
+
+add_community_user_session:
+    pattern: /community/user/add_community/{communityName}
+    defaults:  { _controller: "CSCommunityBundle:Community:addCommuntyUserSession"}

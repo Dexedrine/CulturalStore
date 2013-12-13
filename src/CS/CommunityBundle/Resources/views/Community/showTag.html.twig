@@ -1,0 +1,6 @@
+
+{% for name, count in communities %}
+	<span id="{{ name }}"  class="tag label label-info" draggable="true"> 
+		{{ name }} {{ count }} 
+	</span>
+{% endfor %}

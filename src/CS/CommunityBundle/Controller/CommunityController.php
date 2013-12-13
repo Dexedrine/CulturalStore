@@ -22,6 +22,81 @@ class CommunityController extends Controller
 		return $this->render('CSCommunityBundle:Community:communityHome.html.twig',array('themes' =>$themes));
 	}
 	
+	public function showCommuntiesTypeAction() {
+	
+		$entityManager = $this->getDoctrine()->getManager();
+		$tagRepo = $entityManager->getRepository('CS\CommunityBundle\Entity\Community');
+	
+		// get the community and count for all <type>
+		$communities_theme = $tagRepo->getTagsWithCountArray('theme');
+		$communities_user = $tagRepo->getTagsWithCountArray('user');
+		$communities = array();
+		
+		foreach ($communities_theme as $name => $count) {
+			if(array_key_exists ( $name , $communities_user )){
+				$communities[$name] = $communities_user[$name];
+			}else{
+				$communities[$name] = 0;
+			} 
+		}
+	
+		return $this
+		->render('CSCommunityBundle:Community:showTag.html.twig',
+				array('communities' => $communities));
+	}
+	
+	public function showCommuntiesUserSessionAction() {
+	
+		$security = $this->get('security.context');
+		$user = $security->getToken()->getUser();
+		
+		$tagManager = $this->get('fpn_tag.tag_manager');
+		
+		$entityManager = $this->getDoctrine()->getManager();
+		$tagRepo = $entityManager->getRepository('CS\CommunityBundle\Entity\Community');
+	
+		
+		$tagManager->loadTagging($user);
+		
+		// get the community and count for all <type>
+		$communities_user_session = $user->getTags();
+		$communities_user = $tagRepo->getTagsWithCountArray('user');
+		$communities = array();
+	
+		foreach ($communities_user_session as $community) {
+			$name = $community->getName();
+			if(array_key_exists ( $name , $communities_user )){
+				$communities[$name] = $communities_user[$name];
+			}else{
+				$communities[$name] = 0;
+			}
+		}
+	
+		return $this
+		->render('CSCommunityBundle:Community:showTag.html.twig',
+				array('communities' => $communities));
+	}
+	
+	public function addCommuntyUserSessionAction($communityName) {
+	
+		$security = $this->get('security.context');
+		$user = $security->getToken()->getUser();
+	
+		$tagManager = $this->get('fpn_tag.tag_manager');
+	
+		$community = $tagManager->loadOrCreateTag($communityName);
+		
+		$tagManager->loadTagging($user);
+		
+		$user->addTag($community);
+		
+		// assign the foo tag to the post
+		$tagManager->saveTagging($user);	
+	
+		return $this
+		->render('CSUserBundle:Community:manageCommunity.html.twig' );
+	}
+	
     public function createAction(Request $request)
     {
                 $theme = new Theme();

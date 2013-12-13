@@ -287,3 +287,11 @@ footer .followUs .fb_link .twitter_link .gg_link{
 	text-align: center;
 }
 
+/*Community*/
+
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}

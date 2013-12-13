@@ -4,6 +4,7 @@ namespace CS\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use DoctrineExtensions\Taggable\Taggable;
+use Doctrine\Common\Collections\ArrayCollection;
 use CS\CartBundle\Entity\Cart;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
@@ -146,6 +147,14 @@ class Utilisateur extends AUser implements Taggable{
 	public function getTaggableId()
 	{
 		return $this->getId();
+	}
+	
+	public function addTag($tag)
+	{
+		$this->communities = $this->communities ?: new ArrayCollection();
+		if(!$this->communities->contains($tag)){
+			$this->communities->add($tag);
+		}	
 	}
 	
 	public function getTags()

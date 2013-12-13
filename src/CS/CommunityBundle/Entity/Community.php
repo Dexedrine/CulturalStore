@@ -11,6 +11,7 @@ use FPN\TagBundle\Entity\Tag  as BaseTag;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="CS\CommunityBundle\Repository\CommunityRepository")
  */
 class Community extends BaseTag
 {
