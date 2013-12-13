@@ -22,7 +22,31 @@ class CommunityController extends Controller
 		return $this->render('CSCommunityBundle:Community:communityHome.html.twig',array('themes' =>$themes));
 	}
 	
-	public function showCommuntiesTypeAction() {
+	
+	public function pageCommunityAction($communityName) {
+	
+		$entityManager = $this->getDoctrine()->getManager();
+		$tagRepo = $entityManager->getRepository('CS\CommunityBundle\Entity\Community');
+	
+		// get the community and count for all <type>
+		$communities_user = $tagRepo->getTagsWithCountArray('user');
+		
+		$count = $communities_user[$communityName];
+		
+		$tagManager = $this->get('fpn_tag.tag_manager');
+		
+		$community = $tagManager->loadOrCreateTag($communityName);
+		
+		//récupérer produit de la communauté
+	
+		return $this
+		->render('CSCommunityBundle:Community:pageCommunity.html.twig',
+				array('community' => $community,
+					'count' => $count,));
+	}
+	
+	
+	public function showCommunitiesTypeAction() {
 	
 		$entityManager = $this->getDoctrine()->getManager();
 		$tagRepo = $entityManager->getRepository('CS\CommunityBundle\Entity\Community');
@@ -45,7 +69,7 @@ class CommunityController extends Controller
 				array('communities' => $communities));
 	}
 	
-	public function showCommuntiesUserSessionAction() {
+	public function showCommunitiesUserSessionAction() {
 	
 		$security = $this->get('security.context');
 		$user = $security->getToken()->getUser();
@@ -77,7 +101,7 @@ class CommunityController extends Controller
 				array('communities' => $communities));
 	}
 	
-	public function addCommuntyUserSessionAction($communityName) {
+	public function addCommunityUserSessionAction($communityName) {
 	
 		$security = $this->get('security.context');
 		$user = $security->getToken()->getUser();
@@ -93,9 +117,28 @@ class CommunityController extends Controller
 		// assign the foo tag to the post
 		$tagManager->saveTagging($user);	
 	
-		return $this
-		->render('CSUserBundle:Community:manageCommunity.html.twig' );
+		return $this->redirect($this->generateUrl('manage_community'));
 	}
+	
+	public function removeCommunityUserSessionAction($communityName) {
+	
+		$security = $this->get('security.context');
+		$user = $security->getToken()->getUser();
+	
+		$tagManager = $this->get('fpn_tag.tag_manager');
+	
+		$community = $tagManager->loadOrCreateTag($communityName);
+	
+		$tagManager->loadTagging($user);
+	
+		$user->removeTag($community);
+	
+		// assign the foo tag to the post
+		$tagManager->saveTagging($user);
+	
+		return $this->redirect($this->generateUrl('manage_community'));
+	}
+	
 	
     public function createAction(Request $request)
     {

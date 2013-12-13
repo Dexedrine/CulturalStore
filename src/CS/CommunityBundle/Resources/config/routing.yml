@@ -2,6 +2,10 @@ cs_community_homepage:
     pattern:  /community/
     defaults: { _controller: "CSCommunityBundle:Community:home" }
 
+page_community:
+    pattern: page_community/{communityName}
+    defaults: { _controller: "CSCommunityBundle:Community:pageCommunity" }
+
 create_theme:
     pattern: /community/create
     defaults:  { _controller: "CSCommunityBundle:Community:create" }
@@ -11,13 +15,17 @@ add_community:
     defaults:  { _controller: "CSCommunityBundle:Community:addCommunity" }
     
 show_all_communities:
-    pattern: /community/show_all_communties
-    defaults:  { _controller: "CSCommunityBundle:Community:showCommuntiesType"}
+    pattern: /community/show_all_communities
+    defaults:  { _controller: "CSCommunityBundle:Community:showCommunitiesType"}
 
 show_user_communities:
-    pattern: /community/user/show_communties
-    defaults:  { _controller: "CSCommunityBundle:Community:showCommuntiesUserSession"}
+    pattern: /community/user/show_communities
+    defaults:  { _controller: "CSCommunityBundle:Community:showCommunitiesUserSession"}
 
 add_community_user_session:
     pattern: /community/user/add_community/{communityName}
-    defaults:  { _controller: "CSCommunityBundle:Community:addCommuntyUserSession"}
+    defaults:  { _controller: "CSCommunityBundle:Community:addCommunityUserSession"}
+    
+remove_community_user_session:
+    pattern: /community/user/remove_community/{communityName}
+    defaults:  { _controller: "CSCommunityBundle:Community:removeCommunityUserSession"}

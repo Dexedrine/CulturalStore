@@ -156,6 +156,13 @@ class Utilisateur extends AUser implements Taggable{
 			$this->communities->add($tag);
 		}	
 	}
+	public function removeTag($tag)
+	{
+		$this->communities = $this->communities ?: new ArrayCollection();
+		
+		$this->communities->removeElement($tag);
+		
+	}
 	
 	public function getTags()
 	{

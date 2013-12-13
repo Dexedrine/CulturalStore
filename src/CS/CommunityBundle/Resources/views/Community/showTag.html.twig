@@ -1,6 +1,8 @@
 
 {% for name, count in communities %}
-	<span id="{{ name }}"  class="tag label label-info" draggable="true"> 
+	<a href="{{ path('page_community',{ 'communityName' : name }) }}">
+	<div id="{{ name }}"   class="tag label label-info" draggable="true"> 
 		{{ name }} {{ count }} 
-	</span>
+	</div>
+	</a>
 {% endfor %}
