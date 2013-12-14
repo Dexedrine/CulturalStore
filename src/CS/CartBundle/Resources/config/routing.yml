@@ -17,3 +17,7 @@ validate_cart:
 validate_payment:
     pattern: /payment/validation
     defaults: { _controller: "CSCartBundle:Order:validatePayment" }
+    
+view_orders:
+    pattern: /orders/list
+    defaults: { _controller: "CSCartBundle:Order:viewOrders" }

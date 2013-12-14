@@ -30,7 +30,7 @@
 								compte</a>
 							<ul class="dropdown-menu">
 								<li><a href="#">Mon profil</a></li>
-								<li><a href="#">Mes commandes</a></li>
+								<li><a href="{{ path('view_orders') }}">Mes commandes</a></li>
 								<li><a href="{{ path('fos_user_security_logout') }}">{{
 										'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
 							</ul>
@@ -51,7 +51,7 @@
 					</div> <a class="btn btn-primary" data-toggle="modal"
 					href="#logger">Se connecter</a>
 				</td>
-				<td class="client">
+				<td class="client register">
 					<!-- Inscription au site -->
 					<div class="inscription'">
 						<a href="{{ path('utilisateur_registration') }}">S'inscrire</a>

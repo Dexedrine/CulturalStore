@@ -37,5 +37,9 @@ class OrderController extends Controller {
 				'cart' => $cart 
 		));
 	}
+	
+	public function viewOrdersAction(){
+		return $this->render ( 'CSCartBundle:Order:my_orders.html.twig');
+	}
 
 }

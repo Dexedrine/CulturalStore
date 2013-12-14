@@ -64,7 +64,7 @@ class CartController extends Controller {
 			}			
 		}
 		
-		$cart->addProduct($product);			
+		$cart = $cart->addProduct($product);			
 		$this->em->flush();
 				
 		return $this->render('CSCartBundle:Cart:cart.html.twig', array (
@@ -79,7 +79,7 @@ class CartController extends Controller {
 		$user = $this->getConnectedUser();
 		$cart = $this->getCurrentCart();		
 		$product = $this->getProductFromRepository($product_id);
-		$cart->removeProduct($product);//ne marche pas si pas co
+		$cart = $cart->removeProduct($product);
 
 		if(!$user){
 			$session->set('cart', $cart);
