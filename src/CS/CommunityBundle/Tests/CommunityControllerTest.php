@@ -14,4 +14,16 @@ class CommuntyControllerTest extends WebTestCase {
 	
 		$crawler = $client->request ( 'GET', '/community/' );
 	}
+	
+	public function tesPageCommunity() {
+		$client = static::createClient ();
+	
+		$crawler = $client->request ( 'GET', '/community/page_community/test' );
+	}
+	
+	public function testShowCommunitiesType() {
+		$client = static::createClient ();
+	
+		$crawler = $client->request ( 'GET', '/community/show_all_communities ' );
+	}
 }
