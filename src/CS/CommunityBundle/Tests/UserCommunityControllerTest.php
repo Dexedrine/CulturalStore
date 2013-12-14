@@ -59,15 +59,9 @@ class UserCommuntyControllerTest extends WebTestCase {
 		$session = self::$client->getContainer()->get('session');
 		
 		$firewall = 'main';
-		$token = new UsernamePasswordToken('test@test.fr', 'test', $firewall, array('ROLE_CLIENT'));
+		$token = new UsernamePasswordToken(self::$user, 'test', $firewall, array('ROLE_CLIENT'));
 		$session->set('_security_'.$firewall, serialize($token));
-		
-		
-		$security = self::$client->getContainer()->get('security.context');
 	
-		$token = new UsernamePasswordToken('test@test.fr', 'test', $firewall, array('ROLE_CLIENT'));
-		$security->setToken($token);
-		
 		$session->save();
 		
 	}
@@ -84,22 +78,38 @@ class UserCommuntyControllerTest extends WebTestCase {
 		self::$em->flush ();
 	}
 	
-
+	//test visuel
 	public function testManageCommunity(){
 		$crawler = self::$client->request ( 'GET', '/community/user/' );
 	}
 	
-	public function testShowCommunitiesUserSession() {
-		
-		$crawler = self::$client->request ( 'GET', '/community/user/show_communities' );
-		
-	}
-	
 	public function testAddCommunityUserSession(){	
 		$crawler = self::$client->request ( 'GET', '/community/user/add_community/test' );
+		
+		self::$tagManager->loadTagging(self::$user);
+		$communities = self::$user->getTags();
+		
+		$this->assertEquals(1,count($communities));
 	}
+	/**
+	 * @depends testAddCommunityUserSession
+	 */
+	public function testShowCommunitiesUserSession() {
 	
+		$crawler = self::$client->request ( 'GET', '/community/user/show_communities' );
+	
+		$this->assertEquals(1,$crawler->filter('div.tag')->count());
+		$this->assertEquals(1,$crawler->filter('div.tag:contains("test")')->count());
+	}
+	/**
+	 * @depends testShowCommunitiesUserSession
+	 */
 	public function testRemoveCommunityUserSession(){
 		$crawler = self::$client->request ( 'GET', '/community/user/remove_community/test' );
+		
+		self::$tagManager->loadTagging(self::$user);
+		$communities = self::$user->getTags();
+		
+		$this->assertEquals(0,count($communities));
 	}
 }

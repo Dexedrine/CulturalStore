@@ -8,19 +8,19 @@ use CS\CommunityBundle\Entity\Theme;
 class CommuntyControllerTest extends WebTestCase {
 	
 
-
+	//test visuel
 	public function testHome() {
 		$client = static::createClient ();
 	
 		$crawler = $client->request ( 'GET', '/community/' );
 	}
-	
+	//test visuel
 	public function tesPageCommunity() {
 		$client = static::createClient ();
 	
 		$crawler = $client->request ( 'GET', '/community/page_community/test' );
 	}
-	
+	//test visuel
 	public function testShowCommunitiesType() {
 		$client = static::createClient ();
 	
