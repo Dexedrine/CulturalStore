@@ -80,7 +80,8 @@ class UserCommuntyControllerTest extends WebTestCase {
 	
 	//test visuel
 	public function testManageCommunity(){
-		$crawler = self::$client->request ( 'GET', '/community/user/' );
+		$crawler = self::$client->request ( 'GET', '/community/user/manage' );
+
 	}
 	
 	public function testAddCommunityUserSession(){	

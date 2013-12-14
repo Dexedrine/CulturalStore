@@ -10,7 +10,7 @@ show_all_communities:
     pattern: /show_all_communities
     defaults:  { _controller: "CSCommunityBundle:Community:showCommunitiesType"}
 
-cs_community_theme:
+cs_community_admin:
     resource: "@CSCommunityBundle/Resources/config/Admin/routing.yml"
     prefix:   /admin
     
