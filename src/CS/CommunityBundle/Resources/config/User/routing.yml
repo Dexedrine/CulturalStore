@@ -11,5 +11,5 @@ remove_community_user_session:
     defaults:  { _controller: "CSCommunityBundle:UserCommunity:removeCommunityUserSession"}
 
 manage_community:
-  pattern: /manage_community
+  pattern: /
   defaults:  { _controller: "CSCommunityBundle:UserCommunity:manageCommunity"}
