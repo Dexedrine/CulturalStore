@@ -19,7 +19,7 @@
 			<h3 class="name">{{ product.name }}</h3>
 			<p class="description">{{ product.description }}</p>
 
-			{% block price %} <span class="price">{{ price }} €</span> {%
+			{% block price %} <span class="price">{{ price|number_format(2, ',', '.') }} €</span> {%
 			endblock %} {% endblock general%}
 		</div>
 

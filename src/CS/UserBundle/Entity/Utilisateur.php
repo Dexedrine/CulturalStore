@@ -5,6 +5,7 @@ namespace CS\UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use DoctrineExtensions\Taggable\Taggable;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use CS\CartBundle\Entity\Cart;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
@@ -45,6 +46,23 @@ class Utilisateur extends AUser implements Taggable{
 	 * @ORM\JoinColumn(name="cart_id", referencedColumnName="id")
 	 */
 	private $cart;
+	
+	/**
+	 *
+	 * @var \Doctrine\Common\Collections\Collection 
+	 * 
+	 * @ORM\ManyToMany(targetEntity="CS\CartBundle\Entity\Order")
+	 *      @ORM\JoinTable(name="user_order",
+	 *      joinColumns={
+	 *      @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+	 *      },
+	 *      inverseJoinColumns={
+	 *      @ORM\JoinColumn(name="order_id", referencedColumnName="id")
+	 *      }
+	 *      )
+	 */
+	private $orders;
+	
 	
 	/**
 	 * @var bool
@@ -231,5 +249,38 @@ class Utilisateur extends AUser implements Taggable{
     public function getOptinNewsletter()
     {
         return $this->optin_newsletter;
+    }
+
+    /**
+     * Add orders
+     *
+     * @param \CS\CartBundle\Entity\Order $orders
+     * @return Utilisateur
+     */
+    public function addOrder(\CS\CartBundle\Entity\Order $orders)
+    {
+        $this->orders[] = $orders;
+    
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param \CS\CartBundle\Entity\Order $orders
+     */
+    public function removeOrder(\CS\CartBundle\Entity\Order $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 }

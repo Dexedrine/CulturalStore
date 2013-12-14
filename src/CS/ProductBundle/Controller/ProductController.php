@@ -39,7 +39,7 @@ class ProductController extends ResourceController
 		$form = $this->createFormBuilder()
 			->add('name', 'text')
 			->add('description', 'text')
-			->add('price', 'integer')
+			->add('price', 'number')
 			->add('image', 'text')
 			->add('genre', 'text')
 			->add('type', 'text')
@@ -55,7 +55,7 @@ class ProductController extends ResourceController
 				->setName($form["name"]->getData())
 				->setDescription($form["description"]->getData())
 				->setMetaKeywords("video");
-			$this->addProperty($product, "price", $form["price"]->getData());
+			$this->addProperty($product, "price", $form["price"]->getData()*100);
 			$this->addProperty($product, "image", $form["image"]->getData());
 			$this->addProperty($product, "duree", $form["duree"]->getData());
 			$this->addProperty($product, "genre", $form["genre"]->getData());
@@ -83,7 +83,7 @@ class ProductController extends ResourceController
 		$form = $this->createFormBuilder()
 			->add('name', 'text')
 			->add('description', 'text')
-			->add('price', 'integer')
+			->add('price', 'number')
 			->add('image', 'text')
 			->add('genre', 'text')
 			->add('duree', 'integer')
@@ -98,7 +98,7 @@ class ProductController extends ResourceController
 				->setName($form["name"]->getData())
 				->setDescription($form["description"]->getData())
 				->setMetaKeywords("music");
-			$this->addProperty($product, "price", $form["price"]->getData());
+			$this->addProperty($product, "price", $form["price"]->getData()*100);
 			$this->addProperty($product, "image", $form["image"]->getData());
 			$this->addProperty($product, "duree", $form["duree"]->getData());
 			$this->addProperty($product, "genre", $form["genre"]->getData());
@@ -125,7 +125,7 @@ class ProductController extends ResourceController
 		$form = $this->createFormBuilder()
 			->add('name', 'text')
 			->add('description', 'text')
-			->add('price', 'integer')
+			->add('price', 'number')
 			->add('image', 'text')
 			->add('genre', 'text')
 			->add('langue', 'text')
@@ -140,7 +140,7 @@ class ProductController extends ResourceController
 				->setName($form["name"]->getData())
 				->setDescription($form["description"]->getData())
 				->setMetaKeywords("book");
-			$this->addProperty($product, "price", $form["price"]->getData());
+			$this->addProperty($product, "price", $form["price"]->getData()*100);
 			$this->addProperty($product, "image", $form["image"]->getData());
 			$this->addProperty($product, "langue", $form["langue"]->getData());
 			$this->addProperty($product, "genre", $form["genre"]->getData());
@@ -167,7 +167,7 @@ class ProductController extends ResourceController
 		$form = $this->createFormBuilder()
 		->add('name', 'text')
 		->add('description', 'text')
-		->add('price', 'integer')
+		->add('price', 'number')
 		->add('image', 'text')
 		->add('genre', 'text')
 		->add('plateforme', 'text')
@@ -180,7 +180,7 @@ class ProductController extends ResourceController
 			->setName($form["name"]->getData())
 			->setDescription($form["description"]->getData())
 			->setMetaKeywords("game");
-			$this->addProperty($product, "price", $form["price"]->getData());
+			$this->addProperty($product, "price", $form["price"]->getData()*100);
 			$this->addProperty($product, "image", $form["image"]->getData());
 			$this->addProperty($product, "genre", $form["genre"]->getData());
 			$this->addProperty($product, "plateforme", $form["plateforme"]->getData());
@@ -206,7 +206,7 @@ class ProductController extends ResourceController
 		->add('name', 'text')
 		->add('description', 'text')
 		->add('type', 'text')
-		->add('price', 'integer')
+		->add('price', 'number')
 		->add('image', 'text')
 		->add('genre', 'text')
 		->add('quantite', 'integer')
@@ -220,7 +220,7 @@ class ProductController extends ResourceController
 			->setName($form["name"]->getData())
 			->setDescription($form["description"]->getData())
 			->setMetaKeywords("ticket");
-			$this->addProperty($product, "price", $form["price"]->getData());
+			$this->addProperty($product, "price", $form["price"]->getData()*100);
 			$this->addProperty($product, "image", $form["image"]->getData());
 			$this->addProperty($product, "type", $form["type"]->getData());
 			$this->addProperty($product, "genre", $form["genre"]->getData());
@@ -251,7 +251,7 @@ class ProductController extends ResourceController
 	function showProductAction($id){
 		$repository = $this->container->get('sylius.repository.product');
 		$product = $repository->find(intval($id));
-		$price = $product->getPropertyByName("price");
+		$price = intval($product->getPropertyByName("price")->__toString())/100;
 		$image = $product->getPropertyByName("image");
 		
 		

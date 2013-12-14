@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 /**
  * CS\CartBundle\Entity\Order
  *
- * @ORM\Table()
+ * @ORM\Table("orders")
  * @ORM\Entity
  */
 class Order {
@@ -49,7 +49,7 @@ class Order {
 	 * 
 	 * @var CS\UserBundle\Entity\Utilisateur
 	 * 
-	 * @ORM\OneToOne(targetEntity="CS\UserBundle\Entity\Utilisateur")
+	 * @ORM\ManyToOne(targetEntity="CS\UserBundle\Entity\Utilisateur")
 	 * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
 	 */
 	private $user;

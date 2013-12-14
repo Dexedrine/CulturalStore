@@ -1,28 +1,34 @@
-{% extends 'CSDesignBundle:Commun:commun.html.twig' %}
-
-{% block css %}
-<link href="{{ asset('bundles/cscartcss/checkout.css') }}" type="text/css" rel="stylesheet" />
-{% endblock %}
-
-{% block body %}
+{% extends 'CSDesignBundle:Commun:commun.html.twig' %} {% block css %}
+<link href="{{ asset('bundles/cscart/css/checkout.css') }}"
+	type="text/css" rel="stylesheet" />
+{% endblock %} {% block body %}
 <div class="payment">
 	<h1>Paiement</h1>
-	
+
 	<table>
+
 		<tr>
-			<td>Numéro de carte bancaire</td>
-			<td><input type="number" name="cb" maxlength="16"></td>
+			<td>Type de carte</td>
+			<td><select>
+					<option value="">Visa</option>
+					<option value="">MasterCard</option>
+					<option value="">AmericanExpress</option>
+			</select></td>
 		</tr>
 		<tr>
-			<td>Date de validité</td>
-			<td><input type="date" name="date" maxlength="8"></td>
+			<td>Numéro de carte bancaire</td>
+			<td><input class="cbinput" type="number" name="cb" maxlength="16"></td>
 		</tr>
 		<tr>
 			<td>Code de vérification</td>
-			<td><input type="number" name="code" maxlength="3"></td>
+			<td><input class="codeinput" type="number" name="code" maxlength="3"></td>
+		</tr>
+		<tr>
+			<td>Date de validité (format: MM/AAAA)</td>
+			<td><input class="dateinput" type="month" name="date" maxlength="8"></td>
 		</tr>
 	</table>
-	
+
 	<div class="row-fluid action-buttons">
 		<div class="span3">
 			<a class="btn btn-large btn-block btn-info"

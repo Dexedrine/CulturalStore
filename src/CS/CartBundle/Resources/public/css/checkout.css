@@ -30,6 +30,22 @@
 	margin-top: 20px;	
 }
 
+.payment input, .payment select{
+	margin-left: 10px;
+}
+
+.payment .cbinput{
+	width: 140px;
+}
+
+.payment .dateinput{
+	width: 70px;
+}
+
+.payment .codeinput{
+	width: 40px;	
+}
+
 .clear{
 	clear:both;	
 }

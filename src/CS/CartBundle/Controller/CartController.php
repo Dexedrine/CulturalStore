@@ -67,10 +67,7 @@ class CartController extends Controller {
 		$cart = $cart->addProduct($product);			
 		$this->em->flush();
 				
-		return $this->render('CSCartBundle:Cart:cart.html.twig', array (
-				'user' => $user,
-				'cart' => $cart 
-		));
+		return $this->redirect($this->generateUrl('show_cart'));
 	}
 	
 	public function deleteProductAction($product_id) {
@@ -88,14 +85,22 @@ class CartController extends Controller {
 			$this->em->flush();
 		}
 		
-		return $this->render ( 'CSCartBundle:Cart:cart.html.twig', array (
-				'user' => $user,
-				'cart' => $cart
-		));
+		return $this->redirect($this->generateUrl('show_cart'));
 	}
 	
-	public function validateCartAction(){	
-		$cart = $this->getCurrentCart();
+	public function validateCartAction(){
+		$user = $this->getConnectedUser();
+		$cart = $this->getCurrentCart();		
+
+		//if user is not connected, go to login
+		if(!$user){
+			$this->get('session')->getFlashBag()->add(
+            	'notice',
+            	'Vous devez être identifié pour valider votre panier!');
+			
+	        return $this->redirect($this->generateUrl('show_cart'));
+		}
+		
 		return $this->render('CSCartBundle:Checkout:payment.html.twig', array (
 				'cart' => $cart 
 		));

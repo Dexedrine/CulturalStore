@@ -53,4 +53,10 @@ class Product  extends BaseProduct implements Taggable
 			$this->communities->add($tag);
 		}
 	}
+	
+	public function getPrice(){
+		foreach ($this->getProperties() as $property){
+			if($property->getName() == "price") return intval($property->getValue());
+		}
+	}
 }

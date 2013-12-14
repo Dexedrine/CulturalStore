@@ -1,13 +1,33 @@
-{% extends 'CSDesignBundle:Commun:commun.html.twig' %}
-
-{% block css %}
-<link href="{{ asset('bundles/cscart/css/checkout.css') }}" type="text/css" rel="stylesheet" />
-{% endblock %}
-
-{% block body %}
+{% extends 'CSDesignBundle:Commun:commun.html.twig' %} {% block css %}
+<link href="{{ asset('bundles/cscart/css/checkout.css') }}"
+	type="text/css" rel="stylesheet" />
+{% endblock %} {% block body %}
 
 <h1>Mes commandes</h1>
 
-<p>Voici la liste de vos commandes sur Cultural Store: </p>
+{% if user and (user.orders | length > 0) %}
 
-{% endblock %}
+<p>Voici la liste de vos commandes sur Cultural Store:</p>
+
+<table class="list-products">
+	<thead>
+		<tr>
+			<th>N° de commande</th>
+			<th>Date</th>
+			<th>Montant total</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for order in user.orders %}
+		<tr>
+			<td>{{ order.id }}</td>
+			<td>{{ order.date|date("d/m/Y")}}</td>
+			<td>{{ (order.totalprice / 100) |number_format(2, ',', '.') }} €</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+{% else %}
+<p>Vous n'avez pas encore passé de commande sur CulturalStore.</p>
+{% endif %} {% endblock %}
