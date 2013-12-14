@@ -13,7 +13,6 @@ class UserCommuntyControllerTest extends WebTestCase {
 	private static $theme;
 	private static $tagManager;
 	private static $userManager;
-	private static $session;
 	private static $client;
 	
 	
@@ -57,12 +56,20 @@ class UserCommuntyControllerTest extends WebTestCase {
 		self::$userManager->updateUser ( self::$user );
 		
 		
-		self::$session = self::$client->getContainer()->get('session');
+		$session = self::$client->getContainer()->get('session');
 		
 		$firewall = 'main';
 		$token = new UsernamePasswordToken('test@test.fr', 'test', $firewall, array('ROLE_CLIENT'));
-		self::$session->set('_security_'.$firewall, serialize($token));
-		self::$session->save();
+		$session->set('_security_'.$firewall, serialize($token));
+		
+		
+		$security = self::$client->getContainer()->get('security.context');
+	
+		$token = new UsernamePasswordToken('test@test.fr', 'test', $firewall, array('ROLE_CLIENT'));
+		$security->setToken($token);
+		
+		$session->save();
+		
 	}
 	
 	public static  function tearDownAfterClass() {
@@ -85,7 +92,7 @@ class UserCommuntyControllerTest extends WebTestCase {
 	public function testShowCommunitiesUserSession() {
 		
 		$crawler = self::$client->request ( 'GET', '/community/user/show_communities' );
-
+		
 	}
 	
 	public function testAddCommunityUserSession(){	
