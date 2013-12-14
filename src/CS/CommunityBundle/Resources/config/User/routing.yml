@@ -1,0 +1,15 @@
+show_user_communities:
+    pattern: /show_communities
+    defaults:  { _controller: "CSCommunityBundle:UserCommunity:showCommunitiesUserSession"}
+
+add_community_user_session:
+    pattern: /add_community/{communityName}
+    defaults:  { _controller: "CSCommunityBundle:UserCommunity:addCommunityUserSession"}
+    
+remove_community_user_session:
+    pattern: /remove_community/{communityName}
+    defaults:  { _controller: "CSCommunityBundle:UserCommunity:removeCommunityUserSession"}
+
+manage_community:
+  pattern: /manage_community
+  defaults:  { _controller: "CSCommunityBundle:UserCommunity:manageCommunity"}

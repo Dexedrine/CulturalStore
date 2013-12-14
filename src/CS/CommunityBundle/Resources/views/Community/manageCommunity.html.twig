@@ -73,7 +73,8 @@
             $this = $(this);
 			i = $(this).index();
 			$(this).css('opacity', '1');
-			
+
+			console.log(e.target.id);
 			e.dataTransfer.setData('text/html', e.target.id);
 		    
 		},

@@ -1,0 +1,7 @@
+create_theme:
+    pattern: /create_theme
+    defaults:  { _controller: "CSCommunityBundle:AdminCommunity:createTheme" }
+    
+add_community:
+    pattern: /add_community/{idtheme}
+    defaults:  { _controller: "CSCommunityBundle:AdminCommunity:addCommunity" }

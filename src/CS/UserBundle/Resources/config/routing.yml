@@ -14,9 +14,7 @@ user_delete:
   pattern: /user/delete
   defaults: { _controller: "CSUserBundle:User:deleteUser" }
   
-manage_community:
-  pattern: /user/manage_community
-  defaults:  { _controller: "CSUserBundle:User:manageCommunity"}
+
   
 
   

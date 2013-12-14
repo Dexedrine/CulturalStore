@@ -1,8 +1,6 @@
 
 {% for name, count in communities %}
-	<a href="{{ path('page_community',{ 'communityName' : name }) }}">
-	<div id="{{ name }}"   class="tag label label-info" draggable="true"> 
+	<div  id="{{ name }}"  class="tag label label-info" draggable="true" onClick="window.location.href='{{ path('page_community',{ 'communityName' : name }) }}';"> 
 		{{ name }} {{ count }} 
 	</div>
-	</a>
 {% endfor %}

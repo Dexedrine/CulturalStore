@@ -15,7 +15,7 @@ cs_product:
     
 cs_community:
     resource: "@CSCommunityBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /community
 
 cs_design:
     resource: "@CSDesignBundle/Resources/config/routing.yml"
