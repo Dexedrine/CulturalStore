@@ -14,7 +14,7 @@ class CommuntyControllerTest extends WebTestCase {
 	public static function setUpBeforeClass() {
 		static::$kernel = static::createKernel ();
 		static::$kernel->boot ();
-		
+		 
 		self::$em = static::$kernel->getContainer ()->get ( 'doctrine' )->getManager ();
 		
 		self::$repository = self::$em->getRepository ( 'CSCommunityBundle:Theme' );

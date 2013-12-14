@@ -1,0 +1,83 @@
+{% extends 'CSDesignBundle:Commun:commun.html.twig' %}	
+
+
+
+{% block body %}
+	<div class="row">
+		<div id="user_communaute" class="span6">
+			<h3> Mes Communautés <h3>
+			{% render url('show_user_communities') %}	
+		</div>
+		
+		<div id="other_communaute" class="span6"> 
+			<h3> Les autres communautés <h3>
+			{% render url('show_all_communities') %}
+		</div>
+	</div>
+	<div class="row">
+		<div id="add_community" class="span6">
+			<h3> Fait glisser une communauté ici pour t'inscrire. <h3>	
+		</div>
+		
+		<div id="remove_community" class="span6"> 
+			<h3> Glisse une de tes communautés pour te désinscrire.</h3>
+		</div>
+	
+	</div>
+	
+	
+	<script>
+	 $.event.props.push('dataTransfer');
+	 
+	 $("#add_community").on({
+         
+         dragover: function(e) {
+                        e.preventDefault();
+         },
+
+         drop: function(e) {
+                 e.preventDefault();
+                 var data= e.dataTransfer.getData('text/html');
+                 var route = "{{ path('add_community_user_session', { 'communityName': "PLACEHOLDER" }) }}";
+                 window.location = route.replace("PLACEHOLDER", data);
+                      
+                 e.target.appendChild(document.getElementById(data));
+         }
+            
+    })
+    
+    $("#remove_community").on({
+         
+         dragover: function(e) {
+                        e.preventDefault();
+         },
+
+         drop: function(e) {
+                 e.preventDefault();
+                 var data= e.dataTransfer.getData('text/html');
+                 var route = "{{ path('remove_community_user_session', { 'communityName': "PLACEHOLDER" }) }}";
+                 window.location = route.replace("PLACEHOLDER", data);
+                      
+                 e.target.appendChild(document.getElementById(data));
+         }
+            
+    })
+	
+	$("#other_communaute,#user_communaute div").on({
+        
+        dragend: function(e){
+            
+        },
+        
+        dragstart: function(e) {
+            $this = $(this);
+			i = $(this).index();
+			$(this).css('opacity', '1');
+			
+			e.dataTransfer.setData('text/html', e.target.id);
+		    
+		},
+			
+	});
+</script>
+{% endblock  %}
