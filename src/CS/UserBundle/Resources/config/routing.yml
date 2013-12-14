@@ -13,3 +13,4 @@ admin_registration:
 user_delete:
   pattern: /user/delete
   defaults: { _controller: "CSUserBundle:User:deleteUser" }
+  

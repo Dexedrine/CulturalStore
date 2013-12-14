@@ -21,4 +21,5 @@ class UserController extends Controller {
 		$entityManager->flush();
 		return $this->redirect($this->generateUrl('cs_design_homepage'));		
 	}
+	
 }
