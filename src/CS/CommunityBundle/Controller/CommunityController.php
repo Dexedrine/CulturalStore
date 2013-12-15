@@ -112,10 +112,10 @@ class CommunityController extends Controller
 			$correspondingThemeTitle = "Livres";
 		}
 		else if ($metakeyword == "ticket" ){
-			$correspondingThemeTitle = "Spectacle";
+			$correspondingThemeTitle = "Spectacles";
 		}
 		else if ($metakeyword == "game" ){
-			$correspondingThemeTitle = "Jeux Vidéo";
+			$correspondingThemeTitle = "Jeux vidéos";
 		}
 		else if ($metakeyword == "music" ){
 			$correspondingThemeTitle = "Musique";

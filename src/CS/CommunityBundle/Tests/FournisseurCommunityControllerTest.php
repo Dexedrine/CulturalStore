@@ -34,7 +34,7 @@ class FournisseurCommuntyControllerTest extends WebTestCase {
 		
 		self::$tag = self::$tagManager->loadOrCreateTag("test");
 		
-		$titleTheme = "Spectacle";
+		$titleTheme = "Spectacles";
 		self::$theme = self::$repository->findOneBy ( array (
 				'title' =>  $titleTheme) );
 		

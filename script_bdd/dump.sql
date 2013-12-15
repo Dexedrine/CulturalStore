@@ -356,13 +356,15 @@ SELECT pg_catalog.setval('sylius_variant_id_seq', 1, true);
 INSERT INTO theme VALUES (44, 'Musique');
 INSERT INTO theme VALUES (45, 'Cinéma');
 INSERT INTO theme VALUES (46, 'Jeux vidéos');
-
+INSERT INTO theme VALUES (47, 'Livres');
+INSERT INTO theme VALUES (48, 'Spectacles');
+INSERT INTO theme VALUES (49, 'Applications');
 
 --
 -- Name: theme_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('theme_id_seq', 46, true);
+SELECT pg_catalog.setval('theme_id_seq', 49, true);
 
 
 --
