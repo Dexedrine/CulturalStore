@@ -1,0 +1,72 @@
+PHPUnit 3.7.28 by Sebastian Bergmann.
+
+The Xdebug extension is not loaded. No code coverage will be generated.
+
+
+..object(Symfony\Component\DomCrawler\Crawler)#658 (2) {
+  ["uri":protected]=>
+  string(61) "http://localhost/community/fournisseur/add_community/test/119"
+  ["storage":"SplObjectStorage":private]=>
+  array(1) {
+    ["000000006c1b35030000000070bb27d0"]=>
+    array(2) {
+      ["obj"]=>
+      object(DOMElement)#1217 (17) {
+        ["tagName"]=>
+        string(4) "html"
+        ["schemaTypeInfo"]=>
+        NULL
+        ["nodeName"]=>
+        string(4) "html"
+        ["nodeValue"]=>
+        string(97) "Redirecting to /community/fournisseur/119
+        Redirecting to /community/fournisseur/119.
+    "
+        ["nodeType"]=>
+        int(1)
+        ["parentNode"]=>
+        string(22) "(object value omitted)"
+        ["childNodes"]=>
+        string(22) "(object value omitted)"
+        ["firstChild"]=>
+        string(22) "(object value omitted)"
+        ["lastChild"]=>
+        string(22) "(object value omitted)"
+        ["previousSibling"]=>
+        string(22) "(object value omitted)"
+        ["attributes"]=>
+        string(22) "(object value omitted)"
+        ["ownerDocument"]=>
+        string(22) "(object value omitted)"
+        ["namespaceURI"]=>
+        NULL
+        ["prefix"]=>
+        string(0) ""
+        ["localName"]=>
+        string(4) "html"
+        ["baseURI"]=>
+        NULL
+        ["textContent"]=>
+        string(97) "Redirecting to /community/fournisseur/119
+        Redirecting to /community/fournisseur/119.
+    "
+      }
+      ["inf"]=>
+      NULL
+    }
+  }
+}
+.[41;37mF[0m
+
+Time: 7.31 seconds, Memory: 26.00Mb
+
+There was 1 failure:
+
+1) CS\ProductBundle\Tests\FournisseurCommuntyControllerTest::testRemoveCommunityProduct
+Failed asserting that 1 matches expected 0.
+
+C:\BitNami\wappstack-5.4.21-0\project\CulturalStore\src\CS\CommunityBundle\Tests\FournisseurCommunityControllerTest.php:117
+
+[37;41m[2KFAILURES!
+[0m[37;41m[2KTests: 4, Assertions: 4, Failures: 1.
+[0m[2K

@@ -47,7 +47,9 @@
 	<div class="communities span3">
 		<div>
 			<h5>Ce produit intéresse les communautés&nbsp;:</h5>
-			<span>romans d'amour</span> - <span>fantastique</span> - <span>vampires</span>
+			{% render url('show_product_communities', { 'product_id' : product.id }) %}	
+			<a class="btn btn-large btn-block btn-info"
+					href="{{ path('manage_community_product' , { 'product_id' : product.id }) }}"></i>G&eacute;rer les communautés&nbsp;</a>
 		</div>
 	</div>
 </div>

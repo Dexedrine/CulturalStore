@@ -1,3 +1,15 @@
-load_possible_communities:
-    pattern: /load_possible_communities/{$themeName}
-    defaults:  { _controller: "CSCommunityBundle:FournisseurCommunity:loadPossibleCommunities"}
+manage_community_product:
+    pattern: /{product_id}
+    defaults:  { _controller: "CSCommunityBundle:FournisseurCommunity:manageCommunityProduct"}
+
+show_product_communities:
+    pattern: /show_product_communities/{product_id}
+    defaults:  { _controller: "CSCommunityBundle:FournisseurCommunity:showCommunitiesProduct"}
+
+add_community_product:
+    pattern: /add_community/{communityName}/{product_id}
+    defaults:  { _controller: "CSCommunityBundle:FournisseurCommunity:addCommunityProduct"}
+    
+remove_community_product:
+    pattern: /remove_community/{communityName}/{product_id}
+    defaults:  { _controller: "CSCommunityBundle:FournisseurCommunity:removeCommunityProduct"}
