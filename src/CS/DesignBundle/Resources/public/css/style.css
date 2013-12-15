@@ -303,6 +303,23 @@ footer .followUs .fb_link .twitter_link .gg_link{
     text-shadow: none;
 }
 
+#user_communaute h3{
+	font-size: 20px
+}
+
+#other_communaute h3{
+	font-size: 20px
+}
+
+#add_community h3{
+	font-size: 20px;
+	
+}
+
+#remove_community h3{
+	font-size: 20px
+}
+
 /*Affichage des community*/
 .communityName {
 	text-align: center;
