@@ -17,3 +17,7 @@ cs_community_admin:
 cs_community_user:
     resource: "@CSCommunityBundle/Resources/config/User/routing.yml"
     prefix:   /user
+
+cs_community_fournisseur:
+    resource: "@CSCommunityBundle/Resources/config/Fournisseur/routing.yml"
+    prefix:   /fournisseur

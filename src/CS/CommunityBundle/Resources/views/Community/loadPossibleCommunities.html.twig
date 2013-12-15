@@ -1,0 +1,17 @@
+<script>
+$('input').tagsinput({
+  itemValue: 'value',
+  itemText: 'text',
+  typeahead: {
+    source: function(query) {
+      return $.getJSON('communities.json');
+    }
+  }
+});
+
+
+{% for name, count in communities %}
+	$('input').tagsinput('add', { "value": {{ name }} , "text": "{{ name }} {{ count }}"  });
+{% endfor %}
+
+</script>

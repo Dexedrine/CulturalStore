@@ -1,0 +1,3 @@
+load_possible_communities:
+    pattern: /load_possible_communities/{$themeName}
+    defaults:  { _controller: "CSCommunityBundle:FournisseurCommunity:loadPossibleCommunities"}
