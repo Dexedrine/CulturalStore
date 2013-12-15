@@ -133,8 +133,8 @@
 							<li class="divider"></li>
 							<li><a href="#">Les autres communautés</a></li>
 						</ul></li>
-					<li><a href="#">Mes promotions</a></li> {% if not
-					is_granted("ROLE_CLIENT") %}
+					<li><a href="#">Mes promotions</a></li>
+					 {% if not is_granted("ROLE_CLIENT") %}
 
 					<div class="modal hide" id="accesCommunaute">
 						<div class="modal-header">
@@ -142,8 +142,8 @@
 							<h3>Vous devez être connecté pour accéder à vos communautés</h3>
 						</div>
 
-						<div class="modal-body">{% render url('fos_user_security_login')
-							%}</div>
+						<div class="modal-body">
+						{% render url('fos_user_security_login')%}</div>
 					</div>
 					{% endif %}
 					<li><a data-toggle="modal" href="{{ path('manage_community') }}">Mes communautés</a>

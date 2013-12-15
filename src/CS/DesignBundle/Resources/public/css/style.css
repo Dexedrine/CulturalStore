@@ -296,3 +296,45 @@ footer .followUs .fb_link .twitter_link .gg_link{
     -webkit-user-select: none;
     user-select: none;
 }
+
+.label-info{
+	background-color: #95CDE9;
+	color: #49423d; 
+    text-shadow: none;
+}
+
+#user_communaute h3{
+	font-size: 20px
+}
+
+#other_communaute h3{
+	font-size: 20px
+}
+
+#add_community h3{
+	font-size: 20px;
+	
+}
+
+#remove_community h3{
+	font-size: 20px
+}
+
+/*Affichage des community*/
+.communityName {
+	text-align: center;
+	font-size: 35px;
+	margin-bottom: 10px;
+	color: #49423d;
+}
+
+.communityNumber{
+	font-size: 20px;
+	margin-bottom: 10px;
+	color: #49423d;
+}
+
+.communitySoon{
+	font-size:15px;
+	color: #49423d;
+}

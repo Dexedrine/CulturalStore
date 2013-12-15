@@ -23,7 +23,7 @@
 	width: 16px;
 	height: 16px;
 	display: block;
-	background: url('https://whyweprotest.net/community/styles/dark/ratings/delete_icon&16.png') 0 0 no-repeat;
+	background: url('../images/delete_icon.png') 0 0 no-repeat;
 }
 
 .cart .action-buttons, .payment .action-buttons{

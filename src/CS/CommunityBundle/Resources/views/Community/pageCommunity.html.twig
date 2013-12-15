@@ -1,12 +1,22 @@
 {% extends 'CSDesignBundle:Commun:commun.html.twig' %}
 {% block body %}
+<div class="row communityName">
+	<div class="span12">
+		<p>Bienvenue sur la communaut&eacute; {{ community.name }} !</p>
+	</div>
+</div>
 
+<div class="row communityNumber ">
+	<div class="span12">
+		<p>Il y a actuellement : {{ count }} personne(s) inscrite(s) Ã  cette communaut&eacute;</p>
+	</div>
+	
+</div>	
 
-<h1>{{ community.name }}</h1>
-
-<h2>Nombre d'inscrit : {{ count }}</h2>
-
-<h3>Bientôt les produits de cette communauté</h3>
-
+<div class="row communitySoon">
+	<div class="span12">
+		<p>Prochainement : les produits de cette communaut&eacute;</p>
+	</div>
+</div>
 
 {% endblock body %}
