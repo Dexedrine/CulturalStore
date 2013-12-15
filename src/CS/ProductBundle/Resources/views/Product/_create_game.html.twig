@@ -3,6 +3,40 @@
 <h1>Création de produit</h1>
 <hr />
 
-<form action="{{ path('sylius_product_create_game') }}" method="post" class="form-horizontal" novalidate>
-    {% include 'CSProductBundle:Product:_form.html.twig' %}
+<form action="{{ path('sylius_product_create_game') }}" method="post"
+	class="form-horizontal" novalidate>
+	{{ form_errors(form) }}
+	<table>
+		<tr>
+			<td>{{ form_label(form.name, 'Nom du produit') }}</td>
+			<td>{{ form_widget(form.name, {'attr': {'class': ''}}) }}</td>
+		</tr>
+		<tr>
+			<td>{{ form_label(form.description, 'Description') }}</td>
+			<td>{{ form_widget(form.description, {'attr': {'class': ''}}) }}</td>
+		</tr>
+		<tr>
+			<td>{{ form_label(form.price, 'Prix') }}</td>
+			<td>{{ form_widget(form.price, {'attr': {'class': ''}}) }}</td>
+		</tr>
+		<tr>
+			<td>{{ form_label(form.image, "URL de l'image") }}</td>
+			<td>{{ form_widget(form.image, {'attr': {'class': ''}}) }}</td>
+		</tr>
+		<tr>
+			<td>{{ form_label(form.genre, 'Genre') }}</td>
+			<td>{{ form_widget(form.genre, {'attr': {'class': ''}}) }}</td>
+		</tr>
+		<tr>
+			<td>{{ form_label(form.plateforme, 'Plateforme') }}</td>
+			<td>{{ form_widget(form.plateforme, {'attr': {'class': ''}}) }}</td>
+		</tr>
+		<tr>
+			<td>{{ form_label(form.PEGI, 'PEGI') }}</td>
+			<td>{{ form_widget(form.PEGI, {'attr': {'class': ''}}) }}</td>
+		</tr>
+	</table>
+	<br /> {{ form_widget(form.create, { 'label': 'Créer le produit' }) }}
+
+	{{ form_rest(form) }}
 </form>

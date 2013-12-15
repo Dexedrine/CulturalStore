@@ -16,21 +16,20 @@
 	<div class="product-information span5">
 		<div class="general-information row-fluid">
 			{% block general %}
-			<h3 class="name">{{ product.name }}</h3>
-			<p class="description">{{ product.description }}</p>
+			<h3 class="name">{{ product.name|capitalize }}</h3>
+			<p class="description">{{ product.description|capitalize }}</p>
 
 			{% block price %} <span class="price">{{ price|number_format(2, ',', '.') }} €</span> {%
 			endblock %} {% endblock general%}
 		</div>
 
 		<div class="properties row-fluid">
-			{% block properties %} {% if product.properties|length > 0 %} <span>Autres
-				informations : </span>
+			{% block properties %} {% if product.properties|length > 0 %} <span>Détails du produit : </span>
 			<ul>
 				{% for property in product.properties %} {% if property.name !=
 				"price" and property.name != "image" %}
 				<li class="{{ property.name }}"><span>{{ property.presentation }} : </span> <span>{{
-						property.value }}</span></li> {% endif %} {% endfor %}
+						property.value|capitalize }}</span></li> {% endif %} {% endfor %}
 			</ul>
 			
 			{% endif %} {% endblock properties %}

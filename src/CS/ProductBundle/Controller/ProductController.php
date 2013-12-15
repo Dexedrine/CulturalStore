@@ -41,10 +41,24 @@ class ProductController extends ResourceController
 			->add('description', 'text')
 			->add('price', 'number')
 			->add('image', 'text')
-			->add('genre', 'text')
-			->add('type', 'text')
+			->add('genre', 'choice', array(
+			    'choices'   => array(
+			        'aventure'   => 'Aventure',
+			        'horreur' => 'Horreur',
+			        'comédie'   => 'Comédie',
+			    )))
+			->add('type', 'choice', array(
+			    'choices'   => array(
+			        'film'   => 'Film',
+			        'documentaire' => 'Documentaire',
+			        'concert'   => 'Concert',
+			    )))
 			->add('duree', 'integer')
-			->add('format', 'text')
+			->add('format', 'choice', array(
+			    'choices'   => array(
+			        'avi'   => 'avi',
+			        'mp4' => 'mp4'
+			    )))
 			->add('langue', 'text')
 			->add('sublangue', 'text')
 			->add('create', 'submit')
@@ -85,11 +99,21 @@ class ProductController extends ResourceController
 			->add('description', 'text')
 			->add('price', 'number')
 			->add('image', 'text')
-			->add('genre', 'text')
+			->add('genre', 'choice', array(
+			    'choices'   => array(
+			        'chanson'   => 'Chanson',
+			        'rock' => 'Rock',
+			        'rap'   => 'Rap',
+			    )))
 			->add('duree', 'integer')
 			->add('nbPistes', 'integer')
 			->add('artiste', 'text')
-			->add('format', 'text')
+			->add('format', 'choice', array(
+			    'choices'   => array(
+			        'mp3'   => 'mp3',
+			        'wav' => 'wav',
+			        'ogg'   => 'ogg',
+			    )))
 			->add('create', 'submit')
 			->getForm();
 
@@ -127,10 +151,24 @@ class ProductController extends ResourceController
 			->add('description', 'text')
 			->add('price', 'number')
 			->add('image', 'text')
-			->add('genre', 'text')
+			->add('genre', 'choice', array(
+			    'choices'   => array(
+			        'roman'   => 'Roman',
+			        'essai' => 'Essai',
+			        'biographie'   => 'Biographie',
+			    )))
 			->add('langue', 'text')
-			->add('type', 'text')
-			->add('format', 'text')
+			->add('type', 'choice', array(
+			    'choices'   => array(
+			        'livre'   => 'Livre',
+			        'magazine' => 'Magazine'
+			    )))
+			->add('format', 'choice', array(
+			    'choices'   => array(
+			        'epub'   => 'ePub',
+			        'pdf' => 'pdf',
+			        'mobi'   => 'mobi',
+			    )))
 			->add('auteur', 'text')
 			->add('create', 'submit')
 			->getForm();
@@ -169,9 +207,26 @@ class ProductController extends ResourceController
 		->add('description', 'text')
 		->add('price', 'number')
 		->add('image', 'text')
-		->add('genre', 'text')
-		->add('plateforme', 'text')
-		->add('PEGI', 'text')
+		->add('genre', 'choice', array(
+			    'choices'   => array(
+			        'stratégie'   => 'Stratégie',
+			        'aventure' => 'Aventure',
+			        'sport'   => 'Sport',
+			    )))
+		->add('plateforme', 'choice', array(
+			    'choices'   => array(
+			        'windows'   => 'Windows',
+			        'linux' => 'Linux',
+			        'macOS'   => 'MacOS',
+			    	'android'   => 'Android'
+			    )))
+		->add('PEGI', 'choice', array(
+			    'choices'   => array(
+			        '3+'   => '3+',
+			        '12+' => '12+',
+			        '16+'   => '16+',
+			    	'18+'   => '18+'
+			    )))
 		->add('create', 'submit')
 		->getForm();
 	
@@ -208,7 +263,13 @@ class ProductController extends ResourceController
 		->add('type', 'text')
 		->add('price', 'number')
 		->add('image', 'text')
-		->add('genre', 'text')
+		->add('genre', 'choice', array(
+			    'choices'   => array(
+			        'concert'   => 'Concert',
+			        'théâtre' => 'Théâtre',
+			        'humour'   => 'Humour',
+			    	'comédie musicale'   => 'Comédie musicale'
+			    )))
 		->add('quantite', 'integer')
 		->add('lieu', 'text')
 		->add('dateEvent', 'text')

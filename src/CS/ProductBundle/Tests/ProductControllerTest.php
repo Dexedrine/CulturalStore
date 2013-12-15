@@ -27,10 +27,10 @@ class ProductControllerTest extends WebTestCase{
 		$form['form[description]']  = "test";
 		$form['form[price]']   = 10;
 		$form['form[image]']  = "test";
-		$form['form[genre]']  = "test";
+		$form['form[genre]']  = "roman";
 		$form['form[langue]']  = "test";
-		$form['form[type]']  = "test";
-		$form['form[format]']  = "test";
+		$form['form[type]']  = "livre";
+		$form['form[format]']  = "pdf";
 		$form['form[auteur]']  = "test";		
 		
 		// submit the form
@@ -39,7 +39,7 @@ class ProductControllerTest extends WebTestCase{
 		$products = $this->em->findBy(array('name' => "test"));		
 		
 		$this->assertCount(1,$products);
-		$this->assertEquals($products[0]->getPropertyByName("price"), "10");
+		$this->assertEquals($products[0]->getPrice(), 1000);
 	}
 	
 	public function testCreateVideo() {
@@ -54,10 +54,10 @@ class ProductControllerTest extends WebTestCase{
 		$form['form[description]']  = "test";
 		$form['form[price]']   = 10;
 		$form['form[image]']  = "test";
-		$form['form[genre]']  = "test";
-		$form['form[type]']  = "test";
+		$form['form[genre]']  = "horreur";
+		$form['form[type]']  = "film";
 		$form['form[duree]']  = 120;
-		$form['form[format]']  = "test";
+		$form['form[format]']  = "avi";
 		$form['form[langue]']  = "test";
 		$form['form[sublangue]']  = "test";
 			
@@ -67,7 +67,7 @@ class ProductControllerTest extends WebTestCase{
 		$products = $this->em->findBy(array('name' => "test"));	
 	
 		$this->assertCount(1,$products);
-		$this->assertEquals($products[0]->getPropertyByName("price"), "10");
+		$this->assertEquals($products[0]->getPrice(), 1000);
 	}
 	
 	public function testCreateMusic() {
@@ -82,11 +82,11 @@ class ProductControllerTest extends WebTestCase{
 		$form['form[description]']  = "test";
 		$form['form[price]']   = 10;
 		$form['form[image]']  = "test";
-		$form['form[genre]']  = "test";
+		$form['form[genre]']  = "rap";
 		$form['form[duree]']  = 60;
 		$form['form[nbPistes]']  = 12;
 		$form['form[artiste]']  = "test";
-		$form['form[format]']  = "test";	
+		$form['form[format]']  = "mp3";	
 	
 		// submit the form
 		$crawler = $client->submit($form);
@@ -94,7 +94,7 @@ class ProductControllerTest extends WebTestCase{
 		$products = $this->em->findBy(array('name' => "test"));	
 	
 		$this->assertCount(1,$products);
-		$this->assertEquals($products[0]->getPropertyByName("price"), "10");
+		$this->assertEquals($products[0]->getPrice(), 1000);
 	}
 	
 	public function testCreateTicket() {
@@ -110,7 +110,7 @@ class ProductControllerTest extends WebTestCase{
 		$form['form[price]']   = 10;
 		$form['form[type]']  = "test";
 		$form['form[image]']  = "test";
-		$form['form[genre]']  = "test";
+		$form['form[genre]']  = "humour";
 		$form['form[quantite]']  = 1000;
 		$form['form[lieu]']  = "test";
 		$form['form[dateEvent]']  = "test";
@@ -121,7 +121,7 @@ class ProductControllerTest extends WebTestCase{
 		$products = $this->em->findBy(array('name' => "test"));
 		
 		$this->assertCount(1,$products);
-		$this->assertEquals($products[0]->getPropertyByName("price"), "10");
+		$this->assertEquals($products[0]->getPrice(), 1000);
 	}
 	
 	public function testCreateGame() {
@@ -136,9 +136,9 @@ class ProductControllerTest extends WebTestCase{
 		$form['form[description]']  = "test";
 		$form['form[price]']   = 10;
 		$form['form[image]']  = "test";
-		$form['form[genre]']  = "test";
-		$form['form[plateforme]']  = "test";
-		$form['form[PEGI]']  = "test";
+		$form['form[genre]']  = "sport";
+		$form['form[plateforme]']  = "windows";
+		$form['form[PEGI]']  = "3+";
 		
 		// submit the form
 		$crawler = $client->submit($form);
@@ -146,7 +146,7 @@ class ProductControllerTest extends WebTestCase{
 		$products = $this->em->findBy(array('name' => "test"));
 		
 		$this->assertCount(1,$products);
-		$this->assertEquals($products[0]->getPropertyByName("price"), "10");
+		$this->assertEquals($products[0]->getPrice(), 1000);
 	}
 	
 	public function tearDown() {
