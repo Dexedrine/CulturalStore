@@ -296,3 +296,28 @@ footer .followUs .fb_link .twitter_link .gg_link{
     -webkit-user-select: none;
     user-select: none;
 }
+
+.label-info{
+	background-color: #95CDE9;
+	color: #49423d; 
+    text-shadow: none;
+}
+
+/*Affichage des community*/
+.communityName {
+	text-align: center;
+	font-size: 35px;
+	margin-bottom: 10px;
+	color: #49423d;
+}
+
+.communityNumber{
+	font-size: 20px;
+	margin-bottom: 10px;
+	color: #49423d;
+}
+
+.communitySoon{
+	font-size:15px;
+	color: #49423d;
+}
