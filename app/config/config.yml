@@ -92,8 +92,7 @@ pugx_multi_user:
           template: CSUserBundle:Registration:register_utilisateur.html.twig
         profile:
           form:
-            type: cs\UserBundle\Form\Type\ProfileFormUtilisateurType
-            name: cs_utilisateur_profile_form
+            type: ~
     admin:
         entity: 
           class: CS\UserBundle\Entity\Administrateur
@@ -112,7 +111,7 @@ pugx_multi_user:
           template: CSUserBundle:Registration:register_fournisseur.html.twig
         profile:
           form: 
-            type: CS\UserBundle\Form\Type\ProfileFormFournisseurType
+            type: ~
 
 #Sylius Configuration
 
