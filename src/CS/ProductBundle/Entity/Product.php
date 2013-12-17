@@ -47,9 +47,25 @@ class Product  extends BaseProduct implements Taggable
 		return $this->communities;
 	}
 	
+	public function removeTag($tag)
+	{
+		$this->communities = $this->communities ?: new ArrayCollection();
+	
+		$this->communities->removeElement($tag);
+	
+	}
+	
 	public function setTags($tags) {
 		$this->communities->clear();
 		foreach($tags as $tag) {
+			$this->communities->add($tag);
+		}
+	}
+	
+	public function addTag($tag)
+	{
+		$this->communities = $this->communities ?: new ArrayCollection();
+		if(!$this->communities->contains($tag)){
 			$this->communities->add($tag);
 		}
 	}

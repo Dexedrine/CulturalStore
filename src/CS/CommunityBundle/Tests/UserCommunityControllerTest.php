@@ -44,7 +44,7 @@ class UserCommuntyControllerTest extends WebTestCase {
 		
 		self::$user = self::$userManager->createUser ();
 		
-		self::$user->setEmail ( "test@test.fr" );
+		self::$user->setEmail ( "test_community@test.fr" );
 		
 		self::$user->setPrenom ( "test" );
 		self::$user->setOptinDonnee(true);

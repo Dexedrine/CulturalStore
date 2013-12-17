@@ -37,15 +37,6 @@ class Cart {
 	
 	
 	/**
-	 * 
-	 * @var CS\UserBundle\Entity\Utilisateur
-	 * 
-	 * @ORM\OneToOne(targetEntity="CS\UserBundle\Entity\Utilisateur")
-	 * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-	 */
-	private $user;
-	
-	/**
 	 * Constructor
 	 */
 	public function __construct() {
@@ -84,6 +75,18 @@ class Cart {
     public function removeProduct(\CS\ProductBundle\Entity\Product $product)
     {
         $this->products->removeElement($product);
+        return $this;
+    }
+    
+    public function removeProductWithId($product_id)
+    {
+    	foreach ($this->products as $product){
+    		if ($product->getId() == $product_id){
+    			$this->products->removeElement($product);
+    			return $this;
+    		}
+    	}
+    	return $this;
     }
     
     /**
@@ -105,26 +108,4 @@ class Cart {
         return $this->products;
     }
 
-    /**
-     * Set user
-     *
-     * @param \CS\UserBundle\Entity\Utilisateur $user
-     * @return Cart
-     */
-    public function setUser(\CS\UserBundle\Entity\Utilisateur $user = null)
-    {
-        $this->user = $user;
-    
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \CS\UserBundle\Entity\Utilisateur 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 }

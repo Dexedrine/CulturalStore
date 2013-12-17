@@ -10,6 +10,10 @@ show_all_communities:
     pattern: /show_all_communities
     defaults:  { _controller: "CSCommunityBundle:Community:showCommunitiesType"}
 
+show_all_communities_of:
+    pattern: /show_all_communities_of/{metaKeyword}
+    defaults:  { _controller: "CSCommunityBundle:Community:showAllCommunitiesOf"}
+
 cs_community_admin:
     resource: "@CSCommunityBundle/Resources/config/Admin/routing.yml"
     prefix:   /admin
@@ -17,3 +21,7 @@ cs_community_admin:
 cs_community_user:
     resource: "@CSCommunityBundle/Resources/config/User/routing.yml"
     prefix:   /user
+
+cs_community_fournisseur:
+    resource: "@CSCommunityBundle/Resources/config/Fournisseur/routing.yml"
+    prefix:   /fournisseur

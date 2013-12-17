@@ -64,27 +64,28 @@ class CartController extends Controller {
 			}			
 		}
 		
-		$cart = $cart->addProduct($product);			
+		$cart->addProduct($product);			
 		$this->em->flush();
+		$session->save();
 				
 		return $this->redirect($this->generateUrl('show_cart'));
 	}
 	
 	public function deleteProductAction($product_id) {
 		$session = $this->getRequest()->getSession();
+		$this->em = $this->getDoctrine()->getManager();
 		
 		$user = $this->getConnectedUser();
-		$cart = $this->getCurrentCart();		
-		$product = $this->getProductFromRepository($product_id);
-		$cart = $cart->removeProduct($product);
-
+		$cart = $this->getCurrentCart();
+		$cart->removeProductWithId($product_id);
+		
 		if(!$user){
-			$session->set('cart', $cart);
+			$session->save();
 		}
 		else{
 			$this->em->flush();
 		}
-		
+			
 		return $this->redirect($this->generateUrl('show_cart'));
 	}
 	
