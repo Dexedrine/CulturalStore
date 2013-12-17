@@ -1,35 +1,34 @@
 {% extends 'CSDesignBundle:Commun:commun.html.twig' %}
 
-{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
+{% block css %}
+<link href="{{ asset('bundles/csproduct/css/product.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
 
 {% block body %}
-	Recherche :{{ recherche}}
 {% for product in products %}
-
-	<div class="product-detail row">
+<div class="product-detail row">
 	<div class="span4">
-		{% block image %} <img class="image" src="{{product.getPropertyByName("image") }}" alt="Image" />
+		{% block image %} <img class="image" src="{{ product.getPropertyByName("image").getValue() }}" alt="Image" />
 		{% endblock %}
 	</div>
 
 	<div class="product-information span5">
 		<div class="general-information row-fluid">
 			{% block general %}
-			<h3 class="name">{{ product.name }}</h3>
-			<p class="description">{{ product.description }}</p>
+			<h3 class="name">{{ product.name|capitalize }}</h3>
+			<p class="description">{{ product.description|capitalize }}</p>
 
-			{% block price %} <span class="price">{{ product.getPropertyByName("price") }} €</span> {%
+			{% block price %} <span class="price">{{ product.getPropertyByName("price").getValue()/100|number_format(2, ',', '.') }} €</span> {%
 			endblock %} {% endblock general%}
 		</div>
 
 		<div class="properties row-fluid">
-			{% block properties %} {% if product.properties|length > 0 %} <span>Autres
-				informations : </span>
+			{% block properties %} {% if product.properties|length > 0 %} <span>Détails du produit : </span>
 			<ul>
 				{% for property in product.properties %} {% if property.name !=
 				"price" and property.name != "image" %}
 				<li class="{{ property.name }}"><span>{{ property.presentation }} : </span> <span>{{
-						property.value }}</span></li> {% endif %} {% endfor %}
+						property.value|capitalize }}</span></li> {% endif %} {% endfor %}
 			</ul>
 			
 			{% endif %} {% endblock properties %}
@@ -47,10 +46,11 @@
 	<div class="communities span3">
 		<div>
 			<h5>Ce produit intéresse les communautés&nbsp;:</h5>
-			<span>romans d'amour</span> - <span>fantastique</span> - <span>vampires</span>
+			{% render url('show_product_communities', { 'product_id' : product.id }) %}	
+			<a class="btn btn-large btn-block btn-info"
+					href="{{ path('manage_community_product' , { 'product_id' : product.id }) }}">G&eacute;rer les communautés&nbsp;</a>
 		</div>
 	</div>
 </div>
 {% endfor %}
-
 {% endblock body %}

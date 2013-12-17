@@ -1,9 +1,26 @@
-{{ form_start(form, {'attr': {'class': 'form-search'}}) }}
+
+<form name="reg_form" action="{{ path('search_product') }}" {{ form_enctype(form) }} method="POST" class="form-search">
+  <div class="input-append">
+    	{{ form_errors(form) }}
+		<div class="input-append">
+        {{ form_errors(form.recherche) }}
+        {{ form_widget(form.recherche) }}
+
+        {{ form_widget(form.Rechercher) }}
+        {{ form_rest(form) }}
+		</div>
+  </div> 
+</form>
+
+
+
+
+{#{{ form_start(form, {'attr': {'action': path('search_product') ,'method' : 'POST'  ,'class': 'form-search'}}) }}
     {{ form_errors(form) }}
 		<div class="input-append">
         {{ form_errors(form.recherche) }}
-        {{ form_widget(form.recherche, {'attr': {'class': 'search-query','placeholder':'Twilight, Lara Fabian, etc.'}}) }}
+        {{ form_widget(form.recherche) }}
 
-        {{ form_widget(form.Rechercher, {'attr': {'class': 'btn btn-primary search'}}) }}
+        {{ form_widget(form.Rechercher) }}
 		</div>
-{{ form_end(form) }}
+{{ form_end(form) }} #}

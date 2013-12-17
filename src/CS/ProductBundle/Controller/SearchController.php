@@ -10,24 +10,30 @@ class SearchController extends Controller {
 
 	public function searchAction(Request $request) {
 
-		$form = $this->createFormBuilder()->add('recherche', 'text')
-				->add('Rechercher', 'submit')->getForm();
+		$form = $this->createFormBuilder()->add('recherche', 'text',
+					array( 'attr' => array('class' => "search-query", 'placeholder' => "Twilight, Lara Fabian, etc.")))
+				->add( 'Rechercher', 'submit',
+					array( 'attr' => array('class' => "btn btn-primary search" ))) 
+				->getForm();
 
-		$form->handleRequest($request);
+		//$form->handleRequest($request);
 
-		if ($form->isValid()) {
-			//récupère les résultats de la recherche
-			$repositoryManager = $this->container->get('fos_elastica.manager');
-			$repository = $repositoryManager
-					->getRepository('CSProductBundle:Product');
-			$products = $repository
-					->find($form["recherche"]->getData());
-			return $this
-					->render(
-							'CSProductBundle:Product:search_result.html.twig',
-							array('products' => $products,
-									'recherche' => $form["recherche"]->getData(),));
-
+		if ($request->isMethod('POST')) {
+			$form->bind($request);
+			if ($form->isValid()) {
+				//recupere les resultats de la recherche
+				$repositoryManager = $this->container->get('fos_elastica.manager');
+				$repository = $repositoryManager
+						->getRepository('CSProductBundle:Product');
+				$products = $repository
+						->find($form["recherche"]->getData());
+				return $this
+						->render(
+								'CSProductBundle:Product:search_result.html.twig',
+								array('products' => $products,
+										'recherche' => $form["recherche"]->getData(),));
+	
+			}
 		}
 		return $this
 				->render('CSProductBundle:Product:search.html.twig',
