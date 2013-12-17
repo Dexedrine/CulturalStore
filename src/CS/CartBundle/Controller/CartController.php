@@ -60,7 +60,6 @@ class CartController extends Controller {
 			}
 			else{
 				$user->setCart($cart);
-				$cart->setUser($user);
 			}			
 		}
 		
