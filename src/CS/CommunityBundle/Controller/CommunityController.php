@@ -106,7 +106,7 @@ class CommunityController extends Controller
 	private function getThemeCorrespondingProductType($metakeyword){
 		$correspondingThemeTitle = null;
 		if ($metakeyword == "video" ){
-			$correspondingThemeTitle = "Cinéma";
+			$correspondingThemeTitle = "Cinema";
 		}
 		else if ($metakeyword == "book" ){
 			$correspondingThemeTitle = "Livres";
@@ -115,7 +115,7 @@ class CommunityController extends Controller
 			$correspondingThemeTitle = "Spectacles";
 		}
 		else if ($metakeyword == "game" ){
-			$correspondingThemeTitle = "Jeux vidéos";
+			$correspondingThemeTitle = "Jeux videos";
 		}
 		else if ($metakeyword == "music" ){
 			$correspondingThemeTitle = "Musique";
