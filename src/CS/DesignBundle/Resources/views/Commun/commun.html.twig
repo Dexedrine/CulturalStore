@@ -25,6 +25,7 @@
   var _paq = _paq || [];
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
+  
   (function() {
     var u=(("https:" == document.location.protocol) ? "https" : "http") + "://pepit1/piwik/";
     _paq.push(['setTrackerUrl', u+'piwik.php']);
@@ -34,6 +35,7 @@
   })();
 
 </script>
+{% block js_piwik %} {% endblock %}
 <noscript><p><img src="http://pepit1/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 <!-- End Piwik Code -->
 
