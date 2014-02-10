@@ -1,3 +1,20 @@
 cs_admin_homepage:
     pattern:  /
     defaults: { _controller: "CSAdminBundle:Adminhomepage:adminhomepage" }
+    
+cs_admin_show_fournisseur:
+    pattern:  /show_fournisseur
+    defaults: { _controller: "CSAdminBundle:Adminhomepage:showFournisseursAValider" }
+    
+cs_admin_validate_fournisseur:
+    pattern:  /validate_fournisseur/{id_fournisseur}
+    defaults: { _controller: "CSAdminBundle:Adminhomepage:validateFournisseur" }
+    
+cs_admin_show_community:
+    pattern:  /show_community
+    defaults: { _controller: "CSAdminBundle:Adminhomepage:showCommunityAValider" }
+    
+cs_admin_validate_community:
+    pattern:  /validate_community
+    defaults: { _controller: "CSAdminBundle:Adminhomepage:validateCommunity" }
+    

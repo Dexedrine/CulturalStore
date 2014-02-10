@@ -1,0 +1,9 @@
+{% extends 'CSAdminBundle:Commun:communAdmin.html.twig' %}
+{% block body %}
+{% for fournisseur in fournisseurs %}
+		{{ fournisseur.nom }} 
+		<a href={{ path('cs_admin_validate_fournisseur', {'id_fournisseur':fournisseur.id}) }}>Valider</a>
+		</br>
+{% endfor %}
+
+{% endblock %}

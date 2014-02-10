@@ -18,10 +18,10 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<ul class="nav">				
-					<li><a href="#">Demandes d'ajout de communautés</a></li>	
-					<li><a href="#">Valider les produits</a></li>	
+					<li><a href="{{ path('cs_admin_show_community') }}">Demandes d'ajout de communaut&eacute;s</a></li>	
+					<li><a href="{{ path('cs_admin_show_fournisseur') }}">Valider les fournisseurs</a></li>	
 					<li><a href="#">Autre</a></li>
-					<li><a href="{{ path('cs_design_homepage') }}">Accèder au site client</a></li>
+					<li><a href="{{ path('cs_design_homepage') }}">Acc&eacute;der au site client</a></li>
 					<li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
 				</ul>
 			</div>

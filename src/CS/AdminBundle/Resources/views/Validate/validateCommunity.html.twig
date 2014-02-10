@@ -1,0 +1,6 @@
+{% extends 'CSAdminBundle:Commun:communAdmin.html.twig' %}
+{% block body %}
+{% for community in communities %}
+		{{ community.name }} </br>
+{% endfor %}
+{% endblock %}
