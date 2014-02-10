@@ -3,7 +3,7 @@
 <h1>Création de produit</h1>
 <hr />
 
-<form action="{{ path('sylius_product_create_music') }}" method="post"
+<form action="{{ path('sylius_product_create_music') }}" method="post" {{ form_enctype(form) }}
 	class="form-horizontal" novalidate>
 
 	{{ form_errors(form) }}
@@ -43,6 +43,10 @@
 		<tr>
 			<td>{{ form_label(form.format, 'Format du fichier') }}</td>
 			<td>{{ form_widget(form.format, {'attr': {'class': ''}}) }}</td>
+		</tr>
+		<tr>
+			<td>{{ form_label(form.upload, 'Telecharger votre fichier') }}</td>
+			<td>{{ form_widget(form.upload, {'attr': {'class': ''}}) }}</td>
 		</tr>
 	</table>
 	<br /> {{ form_widget(form.create, { 'label': 'Créer le produit' }) }}

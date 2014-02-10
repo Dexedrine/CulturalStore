@@ -3,7 +3,7 @@
 <h1>Création de produit</h1>
 <hr />
 
-<form action="{{ path('sylius_product_create_ticket') }}" method="post"
+<form action="{{ path('sylius_product_create_ticket') }}" method="post" {{ form_enctype(form) }}
 	class="form-horizontal" novalidate>
 	{{ form_errors(form) }}
 
@@ -43,6 +43,10 @@
 		<tr>
 			<td>{{ form_label(form.dateEvent, 'Date du spectacle') }}</td>
 			<td>{{ form_widget(form.dateEvent, {'attr': {'class': ''}}) }}</td>
+		</tr>
+		<tr>
+			<td>{{ form_label(form.upload, 'Telecharger votre fichier') }}</td>
+			<td>{{ form_widget(form.upload, {'attr': {'class': ''}}) }}</td>
 		</tr>
 	</table>
 	<br /> {{ form_widget(form.create, { 'label': 'Créer le produit' }) }}

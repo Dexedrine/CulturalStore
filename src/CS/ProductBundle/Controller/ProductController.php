@@ -61,7 +61,9 @@ class ProductController extends ResourceController
 			    )))
 			->add('langue', 'text')
 			->add('sublangue', 'text')
+			->add('upload', 'file')
 			->add('create', 'submit')
+			
 			->getForm();
 
 		if ($request->isMethod('POST') && $form->bind($request)->isValid()) {
@@ -77,6 +79,11 @@ class ProductController extends ResourceController
 			$this->addProperty($product, "langue", $form["langue"]->getData());
 			$this->addProperty($product, "format", $form["format"]->getData());
 			$this->addProperty($product, "subLangue", $form["sublangue"]->getData());
+			$product->setFile($form["upload"]->getData());
+				
+			$product->upload();
+			
+				
 
 			$this->manager->persist($product);
 			$this->manager->flush(); // Save changes in database.
@@ -114,6 +121,7 @@ class ProductController extends ResourceController
 			        'wav' => 'wav',
 			        'ogg'   => 'ogg',
 			    )))
+			    ->add('upload', 'file')
 			->add('create', 'submit')
 			->getForm();
 
@@ -129,6 +137,9 @@ class ProductController extends ResourceController
 			$this->addProperty($product, "nbPistes", $form["nbPistes"]->getData());
 			$this->addProperty($product, "artiste", $form["artiste"]->getData());
 			$this->addProperty($product, "format", $form["format"]->getData());
+			$product->setFile($form["upload"]->getData());
+			
+			$product->upload();
 
 			$this->manager->persist($product);
 			$this->manager->flush(); // Save changes in database.
@@ -170,6 +181,7 @@ class ProductController extends ResourceController
 			        'mobi'   => 'mobi',
 			    )))
 			->add('auteur', 'text')
+			->add('upload', 'file')
 			->add('create', 'submit')
 			->getForm();
 
@@ -185,6 +197,9 @@ class ProductController extends ResourceController
 			$this->addProperty($product, "type", $form["type"]->getData());
 			$this->addProperty($product, "auteur", $form["auteur"]->getData());
 			$this->addProperty($product, "format", $form["format"]->getData());
+			$product->setFile($form["upload"]->getData());
+			
+			$product->upload();
 
 			$this->manager->persist($product);
 			$this->manager->flush(); // Save changes in database.
@@ -227,6 +242,7 @@ class ProductController extends ResourceController
 			        '16+'   => '16+',
 			    	'18+'   => '18+'
 			    )))
+			    ->add('upload', 'file')
 		->add('create', 'submit')
 		->getForm();
 	
@@ -240,6 +256,9 @@ class ProductController extends ResourceController
 			$this->addProperty($product, "genre", $form["genre"]->getData());
 			$this->addProperty($product, "plateforme", $form["plateforme"]->getData());
 			$this->addProperty($product, "PEGI", $form["PEGI"]->getData());
+			$product->setFile($form["upload"]->getData());
+			
+			$product->upload();
 	
 			$this->manager->persist($product);
 			$this->manager->flush(); // Save changes in database.
@@ -273,6 +292,7 @@ class ProductController extends ResourceController
 		->add('quantite', 'integer')
 		->add('lieu', 'text')
 		->add('dateEvent', 'text')
+		->add('upload', 'file')
 		->add('create', 'submit')
 		->getForm();
 	
@@ -288,6 +308,9 @@ class ProductController extends ResourceController
 			$this->addProperty($product, "quantite", $form["quantite"]->getData());
 			$this->addProperty($product, "lieu", $form["lieu"]->getData());
 			$this->addProperty($product, "dateEvent", $form["dateEvent"]->getData());
+			$product->setFile($form["upload"]->getData());
+			
+			$product->upload();
 	
 			$this->manager->persist($product);
 			$this->manager->flush(); // Save changes in database.
