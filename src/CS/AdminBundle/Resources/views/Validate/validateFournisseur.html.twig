@@ -1,9 +1,33 @@
 {% extends 'CSAdminBundle:Commun:communAdmin.html.twig' %}
+ {% block css %}
+<link href="{{ asset('bundles/csadmin/css/showValidate.css') }}"
+	type="text/css" rel="stylesheet" />
+{% endblock %}
 {% block body %}
-{% for fournisseur in fournisseurs %}
-		{{ fournisseur.nom }} 
-		<a href={{ path('cs_admin_validate_fournisseur', {'id_fournisseur':fournisseur.id}) }}>Valider</a>
+<table class="list-fournisseurs">
+	<thead>
+		<tr>
+			<th>Nom du fournisseur</th>
+			<th>Adresse</th>
+			<th>Code postal</th>
+			<th>Ville</th>
+			<th>SIRET</th>
+			<th>Validation</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for fournisseur in fournisseurs %}
+   		 <tr>
+			<td>{{ fournisseur.nom }}</td>
+			<td>{{ fournisseur.adresse }}</td>
+			<td>{{ fournisseur.codepostal }}</td>
+			<td>{{ fournisseur.ville }}</td>
+			<td>{{ fournisseur.siret }}</td>
+			<td><a href={{ path('cs_admin_validate_fournisseur', {'id_fournisseur':fournisseur.id}) }}>Valider</a></td>
+		</tr>
 		</br>
-{% endfor %}
+		{% endfor %}
+	</tbody>
+</table>
 
 {% endblock %}

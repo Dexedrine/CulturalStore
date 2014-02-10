@@ -41,10 +41,10 @@ class AdminhomepageController extends Controller {
 	
 	public function validateCommunityAction($id_fournisseur){
 		$em = $this->getDoctrine()->getManager();
-		/*$repository = $this->getDoctrine()->getRepository('CSUserBundle:Fournisseur');
-		$community = $repository->findOneById($id_fournisseur);
+		/*$repository = $this->getDoctrine()->getRepository('CSCommunityBundle:Community');
+		$community = $repository->findOneById($id_community);
 	
-		$fournisseur->setEnabled(true);
+		$community->setEnabled(true);
 		$em->flush();*/
 	
 		return $this
