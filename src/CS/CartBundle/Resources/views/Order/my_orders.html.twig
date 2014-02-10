@@ -23,6 +23,13 @@
 			<td>{{ order.id }}</td>
 			<td>{{ order.date|date("d/m/Y")}}</td>
 			<td>{{ (order.totalprice / 100) |number_format(2, ',', '.') }} €</td>
+			
+			{% for product in order.products %}
+				<tr><td>
+					<p>{{ product.name }}
+					{{ (product.price / 100) |number_format(2, ',', '.') }} €</p></td>
+				</tr>
+			{% endfor %}
 		</tr>
 		{% endfor %}
 	</tbody>
