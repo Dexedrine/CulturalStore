@@ -1,6 +1,25 @@
 {% extends 'CSAdminBundle:Commun:communAdmin.html.twig' %}
+ {% block css %}
+<link href="{{ asset('bundles/csadmin/css/showValidate.css') }}"
+	type="text/css" rel="stylesheet" />
+{% endblock %}
 {% block body %}
+<table class="list-communities">
+	<thead>
+		<tr>
+			<th>Nom de la communauté</th>
+			<th>Date de création</th>			
+		</tr>
+	</thead>
+	<tbody>
 {% for community in communities %}
-		{{ community.name }} </br>
-{% endfor %}
+	<tr>
+		<td>{{ community.name }}</td>
+		<td>{{ community.createdAt }}</td>
+		<td><a href={{ path('cs_admin_validate_community', {'id_community':community.id}) }}>Valider</a></td>
+	</tr>
+		</br>
+		{% endfor %}
+	</tbody>
+</table>
 {% endblock %}

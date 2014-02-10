@@ -39,7 +39,7 @@ class AdminhomepageController extends Controller {
 		->render('CSAdminBundle:Validate:validateCommunity.html.twig', array('communities'=>$communities));
 	}
 	
-	public function validateCommunityAction($id_fournisseur){
+	public function validateCommunityAction($id_community){
 		$em = $this->getDoctrine()->getManager();
 		/*$repository = $this->getDoctrine()->getRepository('CSCommunityBundle:Community');
 		$community = $repository->findOneById($id_community);
