@@ -4,6 +4,23 @@
 <link href="{{ asset('bundles/cscart/css/checkout.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
 
+{% block js_piwik %}
+// add the first product to the order
+{%  for product in  cart.products %} 
+_paq.push(['addEcommerceItem',
+	"{{ product.id }}", // (required) SKU: Product unique identifier
+	"{{ product.name }}", // (optional) Product name
+	{{ (product.price / 100) }}, // (recommended) Product price
+	1 // (optional, default to 1) Product quantity
+]);
+// Here it is important to add all other products found in the cart, even the products not updated by the current "Add to cart" click
+{% endfor %}
+// Records the cart for this visit
+_paq.push(['trackEcommerceCartUpdate',
+	99.99]); // (recommended) Cart amount
+_paq.push(['trackPageView']);
+{% endblock %}
+
 {% block body %}
 <div class="cart">
 	<h1> Mon panier </h1>
