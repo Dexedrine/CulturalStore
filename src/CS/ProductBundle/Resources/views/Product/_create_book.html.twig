@@ -43,10 +43,20 @@
 			<td>{{ form_label(form.format, 'Format du fichier') }}</td>
 			<td>{{ form_widget(form.format, {'attr': {'class': ''}}) }}</td>
 		</tr>
+		Communaut� <div class="modal hide" id="listTag">
+						<div class="modal-header">
+							<a class="close" data-dismiss="modal">x</a>
+							<h3>Se connecter à Cultural Store</h3>
+						</div><div class="modal-body">{% render url('show_all_communities_of',{'metaKeyword' : 'book'}) %}</div>
+				</div> <a class="btn btn-primary" data-toggle="modal" href="#listTag">Liste des tags</a>
+		<tr>
+			
+		</tr>
 		<tr>
 			<td>{{ form_label(form.upload, 'Telecharger votre fichier') }}</td>
 			<td>{{ form_widget(form.upload, {'attr': {'class': ''}}) }}</td>
 		</tr>
+		
 	</table>
 	<br /> {{ form_widget(form.create, { 'label': 'Créer le produit' }) }}
 
