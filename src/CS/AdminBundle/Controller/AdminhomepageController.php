@@ -7,8 +7,15 @@ use Symfony\Component\Security\Core\SecurityContext;
 class AdminhomepageController extends Controller {
 	public function adminhomepageAction() {
 		$user = $this->get('security.context')->getToken()->getUser();
+		
+		$repository = $this->getDoctrine()->getRepository('CSUserBundle:Fournisseur');
+		$fournisseurs = $repository->findBy(array('enabled' => false));
+		
+		
 		return $this
-				->render('CSAdminBundle:Homepage:homepageAdmin.html.twig', array('user'=>$user));
+				->render('CSAdminBundle:Homepage:homepageAdmin.html.twig', 
+							array('user'=>$user ,
+								  'nombre_fournisseur'=> sizeof($fournisseurs)));
 	}
 	
 	public function showFournisseursAValiderAction(){
