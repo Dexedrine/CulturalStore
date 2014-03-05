@@ -36,13 +36,13 @@ class Product  extends BaseProduct implements Taggable
 	
 	protected function getUploadRootDir()
 	{
-		// le chemin absolu du rŽpertoire o les documents uploadŽs doivent tre sauvegardŽs
+		// le chemin absolu du rï¿½pertoire oï¿½ les documents uploadï¿½s doivent ï¿½tre sauvegardï¿½s
 		return __DIR__.'/../../../../tmp/'.$this->getUploadDir();
 	}
 	
 	protected function getUploadDir()
 	{
-		// on se dŽbarrasse de Ç __DIR__ È afin de ne pas avoir de problme lorsqu'on affiche
+		// on se dï¿½barrasse de ï¿½ __DIR__ ï¿½ afin de ne pas avoir de problï¿½me lorsqu'on affiche
 		// le document/image dans la vue.
 		return 'uploads/documents';
 	}
@@ -50,6 +50,11 @@ class Product  extends BaseProduct implements Taggable
 	
 	protected $communities;
 
+	public function getCommunities()
+	{
+		return $this->getTags();
+	}
+	
 	public function getId()
 	{
 		return $this->id;
@@ -111,25 +116,25 @@ class Product  extends BaseProduct implements Taggable
 	}
 	public function upload()
 	{
-		// la propriŽtŽ Ç file È peut tre vide si le champ n'est pas requis
+		// la propriï¿½tï¿½ ï¿½ file ï¿½ peut ï¿½tre vide si le champ n'est pas requis
 		if (null === $this->file) {
 			return;
 		}
 	
 		// utilisez le nom de fichier original ici mais
-		// vous devriez Ç l'assainir È pour au moins Žviter
-		// quelconques problmes de sŽcuritŽ
+		// vous devriez ï¿½ l'assainir ï¿½ pour au moins ï¿½viter
+		// quelconques problï¿½mes de sï¿½curitï¿½
 	
-		// la mŽthode Ç move È prend comme arguments le rŽpertoire cible et
-		// le nom de fichier cible o le fichier doit tre dŽplacŽ
+		// la mï¿½thode ï¿½ move ï¿½ prend comme arguments le rï¿½pertoire cible et
+		// le nom de fichier cible oï¿½ le fichier doit ï¿½tre dï¿½placï¿½
 		
 		$this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
 	
-		// dŽfinit la propriŽtŽ Ç path È comme Žtant le nom de fichier o vous
-		// avez stockŽ le fichier
+		// dï¿½finit la propriï¿½tï¿½ ï¿½ path ï¿½ comme ï¿½tant le nom de fichier oï¿½ vous
+		// avez stockï¿½ le fichier
 		$this->path = $this->file->getClientOriginalName();
 	
-		// Ç nettoie È la propriŽtŽ Ç file È comme vous n'en aurez plus besoin
+		// ï¿½ nettoie ï¿½ la propriï¿½tï¿½ ï¿½ file ï¿½ comme vous n'en aurez plus besoin
 		$this->file = null;
 	}
 	

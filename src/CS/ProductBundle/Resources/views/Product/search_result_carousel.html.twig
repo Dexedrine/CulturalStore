@@ -1,0 +1,46 @@
+<!-- Mise en place des minis carousels pour la suggestion de produit par communauté -->
+
+<div class="carousel slide" id="suggestionCarouselFirst">
+	<div class="carousel-inner">
+		<div class="item active">
+			<div class="itemContent">
+				{% for product in products1 %}
+				<!-- Ne pas toucher au style de item33, si ajout de photo alors ajout de div et stylisation dessus -->
+
+				<div class="item33">
+					<div class="item33-photo">
+						<a
+							href="{{ path('cs_design_homepage') }}products/{{ product.id }}">
+							<img src="{{ product.getPropertyByName("image").getValue() }}"
+							alt="{{ product.name|capitalize }}" class="img-rounded" />
+						</a>
+						<p>{{ product.description|capitalize }}</p>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="item">
+			<div class="itemContent">
+				{% for product in products2 %}
+				<!-- Ne pas toucher au style de item33, si ajout de photo alors ajout de div et stylisation dessus -->
+				<div class="item33">
+					<div class="item33-photo">
+						<a
+							href="{{ path('cs_design_homepage') }}products/{{ product.id }}">
+							<img src="{{ product.getPropertyByName("image").getValue() }}"
+							alt="{{ product.name|capitalize }}" class="img-rounded" />
+						</a>
+						<p>{{ product.description|capitalize }}</p>
+
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<a class="carousel-control left" data-slide="prev"
+		href="#suggestionCarouselFirst">&lsaquo;</a> <a
+		class="carousel-control right" data-slide="next"
+		href="#suggestionCarouselFirst">&rsaquo;</a>
+</div>

@@ -163,17 +163,22 @@ fos_elastica:
                             custom_search_analyzer:
                                 type: custom
                                 tokenizer: standard
-                                filter   : [standard, lowercase, asciifolding]
+                                filter   : [lowercase,mynGram]
                             custom_index_analyzer:
                                 type: custom
                                 tokenizer: standard
-                                filter   : [standard, lowercase, asciifolding, custom_filter]
+                                filter   : [standard, lowercase, asciifolding, mynGram]
                         filter:
                             custom_filter:
                                 type: edgeNGram
                                 side: front
                                 min_gram: 1
                                 max_gram: 20
+                            mynGram : 
+                                type : nGram
+                                min_gram : 2
+                                max_gram : 50
+                            
             types:
                 product:
                     mappings:
@@ -186,3 +191,25 @@ fos_elastica:
                         model: CS\ProductBundle\Entity\Product
                         provider: ~
                         finder: ~
+                        listener: ~
+                productByCommunity:
+                    mappings:
+                        id:
+                        communities: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                    persistence:
+                        driver: orm
+                        model: CS\ProductBundle\Entity\Product
+                        provider: ~
+                        finder: ~
+                        listener: ~
+                productByType:
+                    mappings:
+                        id:
+                        meta_keywords: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                    persistence:
+                        driver: orm
+                        model: CS\ProductBundle\Entity\Product
+                        provider: ~
+                        finder: ~
+                        listener: ~                        
+                        
