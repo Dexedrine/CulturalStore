@@ -46,8 +46,8 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
    
-sylius_product:
-    resource: "@SyliusProductBundle/Resources/config/routing.yml"
+cs_product:
+    resource: "@CSProductBundle/Resources/config/routing.yml"
     
     
 _imagine:

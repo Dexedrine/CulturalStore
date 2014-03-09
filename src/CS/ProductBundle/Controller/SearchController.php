@@ -4,7 +4,6 @@ namespace CS\ProductBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 
 class SearchController extends Controller {
 	public function searchAction(Request $request) {
@@ -43,19 +42,18 @@ class SearchController extends Controller {
 		) );
 		// pour l'autocompletion = http://devblog.lexik.fr/symfony2/autocompletion-avec-elasticsearch-2525
 	}
+	
 	function showProductAction($id) {
-		$repository = $this->container->get ( 'sylius.repository.product' );
-		$product = $repository->find ( intval ( $id ) );
-		$price = intval ( $product->getPropertyByName ( "price" )->__toString () ) / 100;
-		$image = $product->getPropertyByName ( "image" );
+		$product = $this->getDoctrine()
+			->getRepository('CSProductBundle:Product')
+			->findOneById(intval($id));
+		$price = intval ( $product->getPrice()->__toString () ) / 100;
+		$image = $product->getPrice ();
 		
-		$view = $this->view ()->setTemplate ( $this->getConfiguration ()->getTemplate ( 'show.html' ) )->setData ( array (
-				'product' => $product,
-				'price' => $price,
-				'image' => $image 
-		) );
-		return $this->handleView ( $view );
+		return $this->render('CSProductBundle:Product:show.html.twig'
+				,array('product' => $product,'price' => $price, 'image' => $image));
 	}
+	
 	public function searchByTypeAction($type) {
 		$finder = $this->container->get ( 'fos_elastica.finder.website.productByType' );
 		$products = $finder->find ( $type );  
@@ -64,6 +62,7 @@ class SearchController extends Controller {
 				'products2' => array_slice($products, 3, 6)
 		) );
 	}
+	
 	public function showByTypeAction($type) {
 		$finder = $this->container->get ( 'fos_elastica.finder.website.productByType' );
 		$products = $finder->find ( $type );

@@ -1,19 +1,32 @@
-{% import 'SyliusResourceBundle:Macros:buttons.html.twig' as buttons %}
-{% import 'SyliusProductBundle:Product:macros.html.twig' as macros %}
+{% import 'CSProductBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'CSProductBundle:Macros:macros.html.twig' as macros %}
+
+
+
+
+<div class="choixAjout">
+	<p>Vous souhaitez ajouter un nouveau produit ?</p>
+	<div class="btn-group"> 
+		<a class="btn" data-toggle="dropdown" href="#"> Cat&eacute;gorie</a>
+ 		<ul class="dropdown-menu">
+  			<li><a href="{{ path('cs_product_create_video') }}">Vid&eacute;os</a></li>
+   			<li><a href="{{ path('cs_product_create_book') }}">Livre</a></li>
+   			<li><a href="{{ path('cs_product_create_music') }}">Musique</a></li>
+   			<li><a href="{{ path('cs_product_create_game') }}">Jeux vid&eacute;os</a></li>
+   			<li><a href="{{ path('cs_product_create_ticket') }}">Spectacle</a></li>
+  		</ul>
+	</div>
+</div>
 
 <h1>Liste des produits</h1>
 <hr />
 
-<div class="well">
-    {{ buttons.create(path('sylius_product_create'), 'Creer un produit') }}
-</div>
-
-{% if products.haveToPaginate()|default(false) %}
-    {{ pagerfanta(products, 'twitter_bootstrap_translated') }}
+{% if resources.haveToPaginate() %}
+    {{ pagerfanta(resources, 'twitter_bootstrap_translated') }}
 {% endif %}
 
 {{ macros.list(products) }}
 
-{% if products.haveToPaginate()|default(false) %}
-    {{ pagerfanta(products, 'twitter_bootstrap_translated') }}
+{% if resources.haveToPaginate()%}
+    {{ pagerfanta(resources, 'twitter_bootstrap_translated') }}
 {% endif %}

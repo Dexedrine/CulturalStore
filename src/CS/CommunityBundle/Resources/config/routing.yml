@@ -11,7 +11,7 @@ show_all_communities:
     defaults:  { _controller: "CSCommunityBundle:Community:showCommunitiesType"}
 
 show_all_communities_of:
-    pattern: /show_all_communities_of/{metaKeyword}
+    pattern: /show_all_communities_of/{product_id}
     defaults:  { _controller: "CSCommunityBundle:Community:showAllCommunitiesOf"}
 
 cs_community_admin:

@@ -14,35 +14,30 @@ class AppKernel extends Kernel
 				new Symfony\Bundle\MonologBundle\MonologBundle(),
 				new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
 				new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-				new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-				new CS\UserBundle\CSUserBundle(),
-				new CS\DesignBundle\CSDesignBundle(),
-				new FOS\UserBundle\FOSUserBundle(),
-				new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
-				new CS\CommunityBundle\CSCommunityBundle(),
-				
-				new FPN\TagBundle\FPNTagBundle(),
-
-				//bundles for Sylius (ecommerce bundles)
-				new FOS\RestBundle\FOSRestBundle(),
-				new JMS\SerializerBundle\JMSSerializerBundle($this),
-				new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-				new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
-				new Sylius\Bundle\ProductBundle\SyliusProductBundle(),
-				new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
-				
-
-				new FOS\ElasticaBundle\FOSElasticaBundle(),
-				
-				//doctrine must be added after sylius
 				new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            	new CS\ProductBundle\CSProductBundle(),
-         		new CS\AdminBundle\CSAdminBundle(),
+				new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 				
-				//bundle to rock images !
-				new Liip\ImagineBundle\LiipImagineBundle(),
-            new CS\FournisseurBundle\CSFournisseurBundle(),
-            new CS\CartBundle\CSCartBundle(),
+				new CS\UserBundle\CSUserBundle (),
+				new CS\DesignBundle\CSDesignBundle (),
+				new CS\CommunityBundle\CSCommunityBundle (),
+				new CS\ProductBundle\CSProductBundle (),
+				new CS\AdminBundle\CSAdminBundle (),
+				new CS\FournisseurBundle\CSFournisseurBundle (),
+				new CS\CartBundle\CSCartBundle (),
+				
+				//Gestion des utilisateurs
+				new FOS\UserBundle\FOSUserBundle (),
+				new PUGX\MultiUserBundle\PUGXMultiUserBundle (),
+				
+				//Pager
+				new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle (),				
+				// bundle to rock images !
+				new Liip\ImagineBundle\LiipImagineBundle (),
+				// Gestion des communautés
+				new FPN\TagBundle\FPNTagBundle (),
+				//Search 
+				new JMS\SerializerBundle\JMSSerializerBundle(),
+				new FOS\ElasticaBundle\FOSElasticaBundle (),
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -54,8 +49,9 @@ class AppKernel extends Kernel
 		return $bundles;
 	}
 
-	public function registerContainerConfiguration(LoaderInterface $loader) {
-		$loader->load(__DIR__ . '/config/config_' . $this->getEnvironment()
-				. '.yml');
+	public function registerContainerConfiguration(LoaderInterface $loader)
+	{
+		$loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
 	}
 }
+
