@@ -39,6 +39,9 @@ class Product implements Taggable {
 	 */
 	protected $name;
 	
+
+	public $product_type;
+	
 	/**
 	 * Product description.
 	 *

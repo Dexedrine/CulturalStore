@@ -163,6 +163,8 @@ fos_elastica:
                         description: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                         properties: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                     persistence:
+                        elastica_to_model_transformer:
+                            ignore_missing: true
                         driver: orm
                         model: CS\ProductBundle\Entity\Product
                         provider: ~
@@ -173,6 +175,8 @@ fos_elastica:
                         id:
                         communities: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                     persistence:
+                        elastica_to_model_transformer:
+                            ignore_missing: true                    
                         driver: orm
                         model: CS\ProductBundle\Entity\Product
                         provider: ~
@@ -181,8 +185,10 @@ fos_elastica:
                 productByType:
                     mappings:
                         id:
-                        meta_keywords: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                        product_type : { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                     persistence:
+                        elastica_to_model_transformer:
+                            ignore_missing: true                    
                         driver: orm
                         model: CS\ProductBundle\Entity\Product
                         provider: ~
