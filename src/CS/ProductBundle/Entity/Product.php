@@ -1,4 +1,5 @@
 <?php
+
 namespace CS\ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -9,133 +10,373 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * CS\ProductBundle\Entity\Product
- * 
- * @ORM\Entity
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="CS\ProductBundle\Repository\ProductPaginator")
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="product_type", type="string")
+ * @ORM\DiscriminatorMap({"book" = "CS\ProductBundle\Entity\Book",
+ * 							"game" = "CS\ProductBundle\Entity\Game",
+ *   						"video" = "CS\ProductBundle\Entity\Video",
+ *   						"music" = "CS\ProductBundle\Entity\Music",
+ * 							"ticket" = "CS\ProductBundle\Entity\Ticket",
+ * })
  */
-class Product  extends BaseProduct implements Taggable
-{
+class Product implements Taggable {
+	
 	/**
-	 * @Assert\File()
+	 * @ORM\Id
+	 * @ORM\GeneratedValue
+	 * @ORM\Column(type="integer")
+	 */
+	protected $id;
+	
+	/**
+	 * Product name.
+	 *
+	 * @var string
+	 * @ORM\Column(name="title", type="string")
+	 */
+	protected $name;
+	
+
+	public $product_type;
+	
+	/**
+	 * Product description.
+	 *
+	 * @var string
+	 *  @ORM\Column(name="description",type="text")
+	 */
+	protected $description;
+	
+	/**
+	 * Product price.
+	 *
+	 * @var int
+	 *  @ORM\Column(name="price", type="integer")
+	 */
+	protected $price;
+	
+	/**
+	 * Product genre.
+	 *
+	 * @var string
+	 * @ORM\Column(name="genre", type="string")
 	 * 
 	 */
+	protected $genre;
+	
+		
+	/**
+	 * Product image.
+	 *
+	 * @var string
+	 * @ORM\Column(name="image", type="string")
+	 *
+	 */
+	protected $image;
+	
+	/**
+	 * Creation time.
+	 *
+	 * @var \DateTime
+	 * @ORM\Column(name="createdAt", type="datetime")
+	 */
+	protected $createdAt;
+	
+	/**
+	 *
+	 * @var CS\CommunityBundle\Entity\Theme
+	 *
+	 * @ORM\ManyToOne(targetEntity="CS\CommunityBundle\Entity\Theme")
+	 * @ORM\JoinColumn(name="theme_id", referencedColumnName="id")
+	 */
+	private $theme;
+	
+	/**
+	 * Constructor.
+	 */
+	public function __construct() {
+		$this->createdAt = new \DateTime ();
+	}
+	
+	/**
+	 * @Assert\File()
+	 */
 	public $file;
+	
 	/**
 	 * @ORM\Column(type="string", length=255, nullable=true)
 	 */
 	public $path;
 	
-	public function getAbsolutePath()
-	{
-		return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+	public function getAbsolutePath() {
+		return null === $this->path ? null : $this->getUploadRootDir () . '/' . $this->path;
 	}
-	
-	public function getWebPath()
-	{
-		return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+	public function getWebPath() {
+		return null === $this->path ? null : $this->getUploadDir () . '/' . $this->path;
 	}
-	
-	protected function getUploadRootDir()
-	{
-		// le chemin absolu du rŽpertoire o les documents uploadŽs doivent tre sauvegardŽs
-		return __DIR__.'/../../../../tmp/'.$this->getUploadDir();
+	protected function getUploadRootDir() {
+		// le chemin absolu du rï¿½pertoire oï¿½ les documents uploadï¿½s doivent ï¿½tre sauvegardï¿½s
+		return __DIR__ . '/../../../../tmp/' . $this->getUploadDir ();
 	}
-	
-	protected function getUploadDir()
-	{
-		// on se dŽbarrasse de Ç __DIR__ È afin de ne pas avoir de problme lorsqu'on affiche
+	protected function getUploadDir() {
+		// on se dï¿½barrasse de ï¿½ __DIR__ ï¿½ afin de ne pas avoir de problï¿½me lorsqu'on affiche
 		// le document/image dans la vue.
 		return 'uploads/documents';
 	}
-	
-	
 	protected $communities;
-
-	public function getId()
-	{
-		return $this->id;
+	public function getCommunities() {
+		return $this->getTags ();
 	}
-	
-	public function getTitle()
-	{
+	public function getTitle() {
 		return $this->title;
 	}
-	
-	public function setTitle($title)
-	{
+	public function setTitle($title) {
 		return $this->title = $title;
 	}
-
-	public function getTaggableType()
-	{
+	public function getTaggableType() {
 		return 'product';
 	}
-
-	public function getTaggableId()
-	{
-		return $this->getId();
+	public function getTaggableId() {
+		return $this->getId ();
 	}
-
-	public function getTags()
-	{
-		$this->communities = $this->communities ?: new ArrayCollection();
+	public function getTags() {
+		$this->communities = $this->communities ?  : new ArrayCollection ();
 		return $this->communities;
 	}
-	
-	public function removeTag($tag)
-	{
-		$this->communities = $this->communities ?: new ArrayCollection();
-	
-		$this->communities->removeElement($tag);
-	
+	public function removeTag($tag) {
+		$this->communities = $this->communities ?  : new ArrayCollection ();
+		
+		$this->communities->removeElement ( $tag );
 	}
-	
 	public function setTags($tags) {
-		$this->communities->clear();
-		foreach($tags as $tag) {
-			$this->communities->add($tag);
+		$this->communities->clear ();
+		foreach ( $tags as $tag ) {
+			$this->communities->add ( $tag );
 		}
 	}
-	
-	public function addTag($tag)
-	{
-		$this->communities = $this->communities ?: new ArrayCollection();
-		if(!$this->communities->contains($tag)){
-			$this->communities->add($tag);
+	public function addTag($tag) {
+		$this->communities = $this->communities ?  : new ArrayCollection ();
+		if (! $this->communities->contains ( $tag )) {
+			$this->communities->add ( $tag );
 		}
 	}
-	
-	public function getPrice(){
-		foreach ($this->getProperties() as $property){
-			if($property->getName() == "price") return intval($property->getValue());
-		}
+	public function getPrice() {
+		return $this->price;
 	}
-	public function upload()
-	{
-		// la propriŽtŽ Ç file È peut tre vide si le champ n'est pas requis
+	public function upload() {
 		if (null === $this->file) {
 			return;
 		}
-	
-		// utilisez le nom de fichier original ici mais
-		// vous devriez Ç l'assainir È pour au moins Žviter
-		// quelconques problmes de sŽcuritŽ
-	
-		// la mŽthode Ç move È prend comme arguments le rŽpertoire cible et
-		// le nom de fichier cible o le fichier doit tre dŽplacŽ
 		
-		$this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
-	
-		// dŽfinit la propriŽtŽ Ç path È comme Žtant le nom de fichier o vous
-		// avez stockŽ le fichier
-		$this->path = $this->file->getClientOriginalName();
-	
-		// Ç nettoie È la propriŽtŽ Ç file È comme vous n'en aurez plus besoin
+		$this->file->move ( $this->getUploadRootDir (), $this->file->getClientOriginalName () );
+		
+		$this->path = $this->file->getClientOriginalName ();
+		
 		$this->file = null;
 	}
-	
-	public function setFile($file){
+	public function setFile($file) {
 		return $this->file = $file;
 	}
-			
+	
+	
 
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Product
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Product
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set price
+     *
+     * @param \number $price
+     * @return Product
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    
+        return $this;
+    }
+
+    /**
+     * Set genre
+     *
+     * @param string $genre
+     * @return Product
+     */
+    public function setGenre($genre)
+    {
+        $this->genre = $genre;
+    
+        return $this;
+    }
+
+    /**
+     * Get genre
+     *
+     * @return string 
+     */
+    public function getGenre()
+    {
+        return $this->genre;
+    }
+    
+    
+   
+    
+    
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return Product
+     */
+    public function setImage($image)
+    {
+    	$this->image = $image;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+    	return $this->image;
+    }
+    
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Product
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Product
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+    
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set theme
+     *
+     * @param \CS\CommunityBundle\Entity\Theme $theme
+     * @return Product
+     */
+    public function setTheme(\CS\CommunityBundle\Entity\Theme $theme = null)
+    {
+        $this->theme = $theme;
+    
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return \CS\CommunityBundle\Entity\Theme 
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+    
+    public function getProperties()
+    {
+    	return null;
+    }
+     public function getMetaKeywords()
+    {
+    	return null;
+    }
 }

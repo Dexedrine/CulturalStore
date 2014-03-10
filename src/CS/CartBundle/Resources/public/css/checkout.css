@@ -46,6 +46,14 @@
 	width: 40px;	
 }
 
+.order-id{
+	width:75%;
+}
+
+.order-item{
+	display: none;
+}
+
 .clear{
 	clear:both;	
 }

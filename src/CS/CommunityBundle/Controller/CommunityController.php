@@ -73,13 +73,17 @@ class CommunityController extends Controller
 				array('communities' => $communities));
 	}
 	
-	public function showAllCommunitiesOfAction($metaKeyword) {
+	public function showAllCommunitiesOfAction($product_id) {
 	
 		$entityManager = $this->getDoctrine()->getManager();
 		$tagRepo = $entityManager->getRepository('CS\CommunityBundle\Entity\Community');
 	
-		$theme = $this->getThemeCorrespondingProductType($metaKeyword);
+		$product = $this->getDoctrine()
+		->getRepository('CSProductBundle:Product')
+		->findOneById(intval($product_id));
 		
+		$theme = $product->getTheme();
+				
 		$tagManager = $this->get('fpn_tag.tag_manager');
 		
 		$tagManager->loadTagging($theme);
@@ -102,31 +106,5 @@ class CommunityController extends Controller
 				array('communities' => $communities));
 	}
 	
-	private function getThemeCorrespondingProductType($metakeyword){
-		$correspondingThemeTitle = null;
-		if ($metakeyword == "video" ){
-			$correspondingThemeTitle = "Cinema";
-		}
-		else if ($metakeyword == "book" ){
-			$correspondingThemeTitle = "Livres";
-		}
-		else if ($metakeyword == "ticket" ){
-			$correspondingThemeTitle = "Spectacles";
-		}
-		else if ($metakeyword == "game" ){
-			$correspondingThemeTitle = "Jeux videos";
-		}
-		else if ($metakeyword == "music" ){
-			$correspondingThemeTitle = "Musique";
-		}
-		else if ($metakeyword == "application" ){
-			$correspondingThemeTitle = "Applications";
-		}
-		$repository = $this->get('doctrine')
-		->getManager()
-		->getRepository('CSCommunityBundle:Theme');
-		return $repository->findOneBy ( array (
-				'title' => $correspondingThemeTitle ) );
-	}
-	
+
 }

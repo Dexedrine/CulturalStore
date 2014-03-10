@@ -1,0 +1,51 @@
+{% macro list(products) %}
+
+{% import 'CSProductBundle:Macros:buttons.html.twig' as buttons %}
+
+{% if products|length > 0 %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th> Id </th>
+            <th> Nom </th>
+            <th> Description </th>
+            <th> Type du produit </th>
+            <th> Cr&eacute;&eacute; le </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for product in products %}
+        <tr>
+            <td>
+                <a href="{{ path('cs_product_show', {'id': product.id}) }}" class="btn btn-link">
+                    {{ product.id }}
+                </a>
+            </td>
+            <td>
+                <a href="{{ path('cs_product_show', {'id': product.id}) }}">
+                    <strong>{{ product.name }}</strong>
+                </a>
+            </td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.product_type }}</td>
+            <td><span class="label label-info">{{ product.createdAt|date }}</span></td>
+            <td>
+                <div class="pull-right">
+                    {{ buttons.show(path('cs_product_show', {'id': product.id})) }}
+                    {# buttons.edit(path('cs_product_update', {'id': product.id})) #}
+                    {# buttons.delete(path('cs_product_delete', {'id': product.id})) #}
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-info">
+    <h4 class="alert-heading">Information</h4>
+    No products to show
+</div>
+{% endif %}
+
+{% endmacro %}

@@ -10,8 +10,9 @@
 		</div>
 		
 		<div id="other_communaute" class="span6"> 
-			<h3> Les autres communaut&eacute;s <h3>
-			{% render url('show_all_communities_of', { 'metaKeyword' : product.metaKeywords }) %}
+			<h3> Les autres communaut&eacute;s  <h3>
+			
+			{% render url('show_all_communities_of', { 'product_id' : product.id }) %}
 		</div>
 	</div>
 	<div class="row">

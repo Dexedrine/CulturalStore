@@ -1,9 +1,9 @@
-{% import 'SyliusResourceBundle:Macros:actions.html.twig' as actions %}
+
 
 <h1>Création de produit</h1>
 <hr />
 
-<form action="{{ path('sylius_product_create_ticket') }}" method="post" {{ form_enctype(form) }}
+<form action="{{ path('cs_product_create_ticket') }}" method="post" {{ form_enctype(form) }}
 	class="form-horizontal" novalidate>
 	{{ form_errors(form) }}
 
@@ -45,11 +45,11 @@
 			<td>{{ form_widget(form.dateEvent, {'attr': {'class': ''}}) }}</td>
 		</tr>
 		<tr>
-			<td>{{ form_label(form.upload, 'Telecharger votre fichier') }}</td>
-			<td>{{ form_widget(form.upload, {'attr': {'class': ''}}) }}</td>
+			<td>{{ form_label(form.path, 'Telecharger votre fichier') }}</td>
+			<td>{{ form_widget(form.path, {'attr': {'class': ''}}) }}</td>
 		</tr>
 	</table>
-	<br /> {{ form_widget(form.create, { 'label': 'Créer le produit' }) }}
+	<br /> <input type="submit" value="Cr&eacute;er le produit" />
 
 	{{ form_rest(form) }}
 </form>

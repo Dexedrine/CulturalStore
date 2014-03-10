@@ -1,7 +1,19 @@
 {% extends 'CSDesignBundle:Commun:commun.html.twig' %} {% block css %}
 <link href="{{ asset('bundles/cscart/css/checkout.css') }}"
 	type="text/css" rel="stylesheet" />
-{% endblock %} {% block body %}
+{% endblock %} 
+
+{% block js %}
+<script language="JavaScript">
+	$(document).ready(function(){
+		$('.order-line').click(function(){
+			$(this).closest('tr').next().toggle();
+		});
+	});
+</script>
+{% endblock %}
+
+{% block body %}
 
 <h1>Mes commandes</h1>
 
@@ -19,22 +31,24 @@
 	</thead>
 	<tbody>
 		{% for order in user.orders %}
-		<tr>
-			<td>{{ order.id }}</td>
-			<td>{{ order.date|date("d/m/Y")}}</td>
-			<td>{{ (order.totalprice / 100) |number_format(2, ',', '.') }} €</td>
-			
-			{% for product in order.products %}
-				<tr><td>
+			<tr class="order-line">
+				<td class='order-id'>{{ order.id }}</td>
+				<td>{{ order.date|date("d/m/Y")}}</td>
+				<td>{{ (order.totalprice / 100) |number_format(2, ',', '.') }} €</td>	
+			</tr>			
+			<tr class="order-item"><td>
+			{% for product in order.products %}				
 					<p>{{ product.name }}
-					{{ (product.price / 100) |number_format(2, ',', '.') }} €</p></td>
-				</tr>
+					{{ (product.price / 100) |number_format(2, ',', '.') }} €</p>				
 			{% endfor %}
-		</tr>
+			</td></tr>
+			
 		{% endfor %}
 	</tbody>
 </table>
 
 {% else %}
 <p>Vous n'avez pas encore passé de commande sur CulturalStore.</p>
-{% endif %} {% endblock %}
+{% endif %} 
+
+{% endblock %}

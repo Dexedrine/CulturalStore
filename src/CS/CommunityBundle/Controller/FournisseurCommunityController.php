@@ -14,10 +14,10 @@ use CS\ProductBundle\Entity\Product;
 class FournisseurCommunityController extends Controller
 {
 	public function manageCommunityProductAction($product_id) {
-		
-		$repository = $this->get('sylius.repository.product');
-		$product = $repository->find(intval($product_id));
-		
+		$product = $this->getDoctrine()
+		->getRepository('CSProductBundle:Product')
+		->findOneById(intval($product_id));
+			
 		
 		return $this
 		->render('CSCommunityBundle:Community:manageCommunityProduct.html.twig',
@@ -27,9 +27,10 @@ class FournisseurCommunityController extends Controller
 	
 	public function showCommunitiesProductAction($product_id) {
 	
-		$repository = $this->get('sylius.repository.product');
-		$product = $repository->find(intval($product_id));
-		
+		$product = $this->getDoctrine()
+		->getRepository('CSProductBundle:Product')
+		->findOneById(intval($product_id));
+			
 		
 		$tagManager = $this->get('fpn_tag.tag_manager');
 	
@@ -61,8 +62,10 @@ class FournisseurCommunityController extends Controller
 	
 	public function addCommunityProductAction($communityName, $product_id) {
 
-		$repository = $this->get('sylius.repository.product');
-		$product = $repository->find(intval($product_id));
+		$product = $this->getDoctrine()
+		->getRepository('CSProductBundle:Product')
+		->findOneById(intval($product_id));
+			
 		
 		$tagManager = $this->get('fpn_tag.tag_manager');
 	
@@ -80,9 +83,11 @@ class FournisseurCommunityController extends Controller
 	
 	public function removeCommunityProductAction($communityName,  $product_id) {
 
-		$repository = $this->get('sylius.repository.product');
-		$product = $repository->find(intval($product_id));
-
+		$product = $this->getDoctrine()
+		->getRepository('CSProductBundle:Product')
+		->findOneById(intval($product_id));
+			
+		
 		$tagManager = $this->get('fpn_tag.tag_manager');
 	
 		$community = $tagManager->loadOrCreateTag($communityName);
