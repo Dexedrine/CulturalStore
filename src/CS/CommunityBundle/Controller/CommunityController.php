@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 namespace CS\CommunityBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

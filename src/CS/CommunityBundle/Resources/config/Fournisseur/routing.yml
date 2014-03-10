@@ -13,3 +13,7 @@ add_community_product:
 remove_community_product:
     pattern: /remove_community/{communityName}/{product_id}
     defaults:  { _controller: "CSCommunityBundle:FournisseurCommunity:removeCommunityProduct"}
+    
+propose_new_community:
+    pattern: /propose_new_community/{product_id}
+    defaults:  { _controller: "CSCommunityBundle:FournisseurCommunity:proposeNewCommunity" }

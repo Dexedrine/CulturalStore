@@ -8,6 +8,7 @@ use CS\CommunityBundle\Entity\Theme;
 use CS\CommunityBundle\Form\Type\ThemeType;
 use CS\CommunityBundle\Entity\Community;
 use CS\CommunityBundle\Form\Type\AddCommunityType;
+use CS\CommunityBundle\Form\Type\ProposeNewCommunityType;
 use CS\ProductBundle\Entity\Product;
 
 class FournisseurCommunityController extends Controller
@@ -95,4 +96,39 @@ class FournisseurCommunityController extends Controller
 	
 		return $this->redirect($this->generateUrl('manage_community_product' , array('product_id'=> $product_id)));
 	}
-}
+	
+	public function proposeNewCommunityAction(Request $request, $product_id )
+	{
+		 
+		$tagManager = $this->get('fpn_tag.tag_manager');
+		//$communities = $tagManager->loadTagging($theme);
+	
+		$form = $this->createForm(new ProposeNewCommunityType());
+	
+		if ($request->isMethod('POST')) {
+			$form->bind($request);
+	
+			if ($form->isValid()) {
+	
+				/*$em = $this->getDoctrine()->getManager();
+	
+				$newCommunities = array();
+				foreach ($theme->getTags() as $community)
+					$newCommunities[] = $community;
+				 
+				$tagManager->replaceTags($newCommunities, $theme);
+				 
+				$em->persist($theme);
+				$em->flush();
+				 
+				$tagManager->saveTagging($theme);
+	
+				return $this->redirect($this->generateUrl('cs_community_homepage'));*/
+			}
+		}
+	
+		return $this
+		->render('CSCommunityBundle:Community:proposeNewCommunity.html.twig',
+				array('form' => $form->createView(), 'product_id' => $product_id ));
+	}
+} 
