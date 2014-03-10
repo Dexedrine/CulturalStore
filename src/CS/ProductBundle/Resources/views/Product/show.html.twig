@@ -31,12 +31,12 @@
 			<h3 class="name">{{ product.name|capitalize }}</h3>
 			<p class="description">{{ product.description|capitalize }}</p>
 
-			{% block price %} <span class="price">{{ price|number_format(2, ',',
+			{% block price %} <span class="price">{{ price*100|number_format(2, ',',
 				'.') }} €</span> {% endblock %} {% endblock general%}
 		</div>
 
 		<div class="properties row-fluid">
-			<span>Détails du produit : </span>
+			<span>D&eacute;tails du produit : </span>
 			{% include 'CSProductBundle:Product:_show_'~product.productType~'.html.twig' %}
 		</div>
 
@@ -51,11 +51,11 @@
 
 	<div class="communities span3">
 		<div>
-			<h5>Ce produit intéresse les communautés&nbsp;:</h5>
+			<h5>Ce produit int&eacute;resse les communaut&eacute;s&nbsp;:</h5>
 			{% render url('show_product_communities', { 'product_id' : product.id
 			}) %} <a class="btn btn-large btn-block btn-info"
 				href="{{ path('manage_community_product' , { 'product_id' : product.id }) }}">G&eacute;rer
-				les communautés&nbsp;</a>
+				les communaut&eacute;s&nbsp;</a>
 		</div>
 	</div>
 </div>
