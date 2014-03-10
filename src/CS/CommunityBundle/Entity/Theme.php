@@ -28,6 +28,9 @@ class Theme implements Taggable
 
 	protected $communities;
 
+	public function getCommunities(){
+		return $this->communities;
+	}
 	public function getId()
 	{
 		return $this->id;

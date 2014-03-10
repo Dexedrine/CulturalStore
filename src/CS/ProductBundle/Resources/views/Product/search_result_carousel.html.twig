@@ -11,7 +11,7 @@
 					<div class="item33-photo">
 						<a
 							href="{{ path('cs_design_homepage') }}products/{{ product.id }}">
-							<img src="{{ product.getPropertyByName("image").getValue() }}"
+							<img src="{{ product.image }}"
 							alt="{{ product.name|capitalize }}" class="img-rounded" />
 						</a>
 						<p>{{ product.description|capitalize }}</p>
@@ -28,7 +28,7 @@
 					<div class="item33-photo">
 						<a
 							href="{{ path('cs_design_homepage') }}products/{{ product.id }}">
-							<img src="{{ product.getPropertyByName("image").getValue() }}"
+							<img src="{{ product.image }}"
 							alt="{{ product.name|capitalize }}" class="img-rounded" />
 						</a>
 						<p>{{ product.description|capitalize }}</p>

@@ -11,7 +11,7 @@
 	_paq.push(['setEcommerceView',
 	"{{ product.id }}", // (required) SKU: Product unique identifier
 	"{{ product.name }}", // (optional) Product name
-	"{{ product.product_type }}", // (optional) Product category. You can also specify an array of up to 5 categories eg. ["Books", "New releases", "Biography"]
+	"{{ product.productType }}", // (optional) Product category. You can also specify an array of up to 5 categories eg. ["Books", "New releases", "Biography"]
 	{{ price }} // (recommended) Product price
 	]);
 	_paq.push(['trackPageView']);
@@ -37,7 +37,7 @@
 
 		<div class="properties row-fluid">
 			<span>Détails du produit : </span>
-			{% include 'CSProductBundle:Product:_show_'~product.product_type~'.html.twig' %}
+			{% include 'CSProductBundle:Product:_show_'~product.productType~'.html.twig' %}
 		</div>
 
 		<div class="row-fluid action-buttons">

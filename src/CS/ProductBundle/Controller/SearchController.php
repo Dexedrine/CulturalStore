@@ -62,6 +62,17 @@ class SearchController extends Controller {
 				'products2' => array_slice($products, 3, 6)
 		) );
 	}
+	public function searchCommunitiesByThemeAction($theme) {
+		$finder = $this->container->get ( 'fos_elastica.finder.website.communitiesByTheme' );
+		$t = $finder->find ($theme )[0];
+		$tagManager = $this->get('fpn_tag.tag_manager');
+		$tagManager->loadTagging($t);
+		$communities = $t->getCommunities(); 
+		print count($communities); 
+		return $this->render ( 'CSProductBundle:Product:communities.html.twig', array (
+				'communities' => $communities
+		) );
+	}
 	
 	public function showByTypeAction($type) {
 		$finder = $this->container->get ( 'fos_elastica.finder.website.productByType' );

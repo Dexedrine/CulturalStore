@@ -40,11 +40,11 @@ class Game  extends Product {
 	
 
 	/**
-	 * Get product_type
+	 * Get productType
 	 *
 	 * @return string
 	 */
-	public function getProduct_type()
+	public function getProductType()
 	{
 		return 'game';
 	}

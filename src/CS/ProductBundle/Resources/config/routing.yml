@@ -1,10 +1,6 @@
 cs_product:
     resource: "@CSProductBundle/Resources/config/routing/product.yml"
-    prefix: /products    
-
-
-
-    
+    prefix: /products       
 search_product_by_type:
     pattern: /product/{type}
     methods: [GET]
@@ -18,3 +14,7 @@ search_product_by_type:
     pattern: /product/search/{type}
     methods: [GET]
     defaults:  { _controller: "CSProductBundle:Search:searchByType" }
+search_communities_by_theme:
+    pattern: /product/communities/{theme}
+    methods: [GET]
+    defaults:  { _controller: "CSProductBundle:Search:searchCommunitiesByTheme" }

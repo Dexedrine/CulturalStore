@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="CS\ProductBundle\Repository\ProductPaginator")
  * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="product_type", type="string")
+ * @ORM\DiscriminatorColumn(name="productType", type="string")
  * @ORM\DiscriminatorMap({"book" = "CS\ProductBundle\Entity\Book",
  * 							"game" = "CS\ProductBundle\Entity\Game",
  *   						"video" = "CS\ProductBundle\Entity\Video",
@@ -38,9 +38,6 @@ class Product implements Taggable {
 	 * @ORM\Column(name="title", type="string")
 	 */
 	protected $name;
-	
-
-	public $product_type;
 	
 	/**
 	 * Product description.
@@ -130,6 +127,7 @@ class Product implements Taggable {
 	public function getCommunities() {
 		return $this->getTags ();
 	}
+
 	public function getTitle() {
 		return $this->title;
 	}
