@@ -8,7 +8,7 @@
 {% for product in products %}
 <div class="product-detail row">
 	<div class="span4">
-		{% block image %} <img class="image" src="{{ product.getPropertyByName("image").getValue() }}" alt="Image" />
+		{% block image %} <img class="image" src="{{ product.image }}" alt="Image" />
 		{% endblock %}
 	</div>
 
@@ -18,20 +18,21 @@
 			<h3 class="name">{{ product.name|capitalize }}</h3>
 			<p class="description">{{ product.description|capitalize }}</p>
 
-			{% block price %} <span class="price">{{ product.getPropertyByName("price").getValue()/100|number_format(2, ',', '.') }} €</span> {%
+			{% block price %} <span class="price">{{ product.price|number_format(2, ',', '.') }} €</span> {%
 			endblock %} {% endblock general%}
 		</div>
 
 		<div class="properties row-fluid">
-			{% block properties %} {% if product.properties|length > 0 %} <span>Détails du produit : </span>
-			<ul>
-				{% for property in product.properties %} {% if property.name !=
-				"price" and property.name != "image" %}
-				<li class="{{ property.name }}"><span>{{ property.presentation }} : </span> <span>{{
-						property.value|capitalize }}</span></li> {% endif %} {% endfor %}
-			</ul>
-			
-			{% endif %} {% endblock properties %}
+			<span>D&eacute;tails du produit : </span>
+			{% include 'CSProductBundle:Product:_show_'~product.productType~'.html.twig' %}
+		</div>
+
+		<div class="row-fluid action-buttons">
+			<div class="span6">
+				<a class="btn btn-large btn-block btn-info"
+					href="{{ path("add_product",{"product_id" : product.id}) }}"><i
+					class="icon-shopping-cart"></i>Ajouter au panier</a>
+			</div>
 		</div>
 
 		<div class="row-fluid action-buttons">

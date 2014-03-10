@@ -41,7 +41,7 @@ class CommunityController extends Controller
 		
 		$community = $tagManager->loadOrCreateTag($communityName);
 		
-		//récupérer produit de la communauté
+		//rï¿½cupï¿½rer produit de la communautï¿½
 	
 		return $this
 		->render('CSCommunityBundle:Community:pageCommunity.html.twig',
@@ -105,6 +105,17 @@ class CommunityController extends Controller
 		->render('CSCommunityBundle:Community:showTag.html.twig',
 				array('communities' => $communities));
 	}
-	
+	public function searchCommunitiesByThemeAction($theme) {
+		$t = $this->getDoctrine()
+		->getRepository('CSCommunityBundle:Theme')
+		->findOneByTitle($theme);
+		$tagManager = $this->get('fpn_tag.tag_manager');
+		$tagManager->loadTagging($t);
+		$communities = $t->getCommunities();
+		return $this->render ( 'CSCommunityBundle:Community:communities.html.twig', array (
+				'communities' => $communities,
+				'theme' => $theme
+		) );
+	}
 
 }

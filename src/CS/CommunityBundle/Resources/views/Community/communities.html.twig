@@ -1,0 +1,14 @@
+
+<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
+	href="#">{{ theme }} <b class="caret"></b></a>
+	<ul class="dropdown-menu">
+		{% for community in communities %}
+			<li>
+				<a href="{{ path('cs_design_homepage') }}community/page_community/{{ community.name }}">{{community.name}}
+				</a>
+			</li>
+		{% endfor %}
+		<li class="divider"></li>
+		<li><a href="#">Les autres communautés</a></li>
+	</ul></li>
+

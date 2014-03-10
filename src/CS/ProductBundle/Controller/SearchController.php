@@ -56,21 +56,58 @@ class SearchController extends Controller {
 	
 	public function searchByTypeAction($type) {
 		$finder = $this->container->get ( 'fos_elastica.finder.website.productByType' );
-		$products = $finder->find ( $type );  
+		$query = new \Elastica\Query(array(
+				// query filter
+				'query' => array(
+						'query_string' => array(
+								'query' => $type
+						)
+				),
+				// default sort
+				'sort' => array(
+						'name' => array(
+								'order' => 'asc'
+						)
+				)
+		));	
+		$products = $finder->find ( $query );  
 		return $this->render ( 'CSProductBundle:Product:search_result_carousel.html.twig', array (
 				'products1' => array_slice($products, 0, 3),
-				'products2' => array_slice($products, 3, 6)
+				'products2' => array_slice($products, 3, 6),
+				'type' =>$type
 		) );
 	}
-	public function searchCommunitiesByThemeAction($theme) {
-		$finder = $this->container->get ( 'fos_elastica.finder.website.communitiesByTheme' );
-		$t = $finder->find ($theme )[0];
-		$tagManager = $this->get('fpn_tag.tag_manager');
-		$tagManager->loadTagging($t);
-		$communities = $t->getCommunities(); 
-		print count($communities); 
-		return $this->render ( 'CSProductBundle:Product:communities.html.twig', array (
-				'communities' => $communities
+	public function searchFreeAction() {
+		$finder = $this->container->get ( 'fos_elastica.finder.website.productByPrice' );
+		$products = $finder->find ( '=0' );
+		return $this->render ( 'CSProductBundle:Product:search_result_carousel.html.twig', array (
+				'products1' => array_slice($products, 0, 3),
+				'products2' => array_slice($products, 3, 6),
+				'type' =>'free'
+		) );
+	}
+	public function searchNotFreeAction() {
+		$finder = $this->container->get ( 'fos_elastica.finder.website.productByPrice' );
+		$query = new \Elastica\Query(array(
+				// query filter
+				'query' => array(
+						'query_string' => array(
+								'query' => '>0'
+						)
+				),
+				// default sort
+				'sort' => array(
+						'price' => array(
+								'order' => 'asc'
+						)
+				)
+		));
+
+		$products = $finder->find ( $query );
+		return $this->render ( 'CSProductBundle:Product:search_result_carousel.html.twig', array (
+				'products1' => array_slice($products, 0, 3),
+				'products2' => array_slice($products, 3, 6),
+				'type' =>'notfree'
 		) );
 	}
 	

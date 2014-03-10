@@ -184,8 +184,8 @@ fos_elastica:
                         listener: ~
                 productByType:
                     mappings:
-                        id:
                         productType : { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
+                        name :
                     persistence:
                         elastica_to_model_transformer:
                             ignore_missing: true                    
@@ -193,17 +193,18 @@ fos_elastica:
                         model: CS\ProductBundle\Entity\Product
                         provider: ~
                         finder: ~
-                        listener: ~     
-                communitiesByTheme:
+                        listener: ~
+                       
+
+                productByPrice:
                     mappings:
-                        title: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                        communities : 
+                        price :
                     persistence:
                         elastica_to_model_transformer:
                             ignore_missing: true                    
                         driver: orm
-                        model: CS\CommunityBundle\Entity\Theme
+                        model: CS\ProductBundle\Entity\Product
                         provider: ~
                         finder: ~
-                        listener: ~                     
-                        
+                        listener: ~
+

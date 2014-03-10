@@ -5,7 +5,7 @@ namespace CS\ProductBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use DoctrineExtensions\Taggable\Taggable;
 use Doctrine\Common\Collections\ArrayCollection;
-use Sylius\Bundle\ProductBundle\Model\Product as BaseProduct;
+
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

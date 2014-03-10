@@ -74,53 +74,13 @@
 <div class="row">
 	<div class="span6 topFree">
 		<h5>Top gratuit sur Cultural Store</h5>
-		<div class="colContent">
-		<div class="col">
-			<div class="imgCell">
-				<a href="#"><img src="{{ asset('bundles/csdesign/img/mag.jpg') }}" alt="magazineNantais" class="img-rounded "/></a>
-			</div>
-		</div>
-		<div class="col">
-			<div class="imgCell">
-				<a href="#"><img src="{{ asset('bundles/csdesign/img/mag.jpg') }}" alt="magazineNantais" class="img-rounded "/></a>
-			</div>
-		</div>
-		<div class="col">
-			<div class="imgCell">
-				<a href="#"><img src="{{ asset('bundles/csdesign/img/mag.jpg') }}" alt="magazineNantais" class="img-rounded "/></a>
-			</div>
-		</div>
-		<div class="col">
-			<div class="imgCell">
-				<a href="#"><img src="{{ asset('bundles/csdesign/img/mag.jpg') }}" alt="magazineNantais" class="img-rounded "/></a>
-			</div>
-		</div>
+		{% render(controller('CSProductBundle:Search:searchFree')) %}
+		
 	</div>
-	</div>
+
 	<div class="span6 topPaying">
 		<h5>Top payant sur Cultural Store</h5>
-		<div class="colContent">
-		<div class="col">
-			<div class="imgCell">
-				<a href="#"><img src="{{ asset('bundles/csdesign/img/faust.jpeg') }}" alt="Faust" class="img-rounded "/></a>
-			</div>
-		</div>
-		<div class="col">
-			<div class="imgCell">
-				<a href="#"><img src="{{ asset('bundles/csdesign/img/mag.jpg') }}" alt="magazineNantais" class="img-rounded "/></a>
-			</div>
-		</div>
-		<div class="col">
-			<div class="imgCell">
-				<a href="#"><img src="{{ asset('bundles/csdesign/img/mag.jpg') }}" alt="magazineNantais" class="img-rounded "/></a>
-			</div>
-		</div>
-		<div class="col">
-			<div class="imgCell">
-				<a href="#"><img src="{{ asset('bundles/csdesign/img/faust.jpeg') }}" alt="Faust" class="img-rounded "/></a>
-			</div>
-		</div>
-		</div>
+		{% render(controller('CSProductBundle:Search:searchNotFree')) %}
 	</div>
 </div>
 

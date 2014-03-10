@@ -25,3 +25,8 @@ cs_community_user:
 cs_community_fournisseur:
     resource: "@CSCommunityBundle/Resources/config/Fournisseur/routing.yml"
     prefix:   /fournisseur
+    
+search_communities_by_theme:
+    pattern: /theme/{theme}
+    methods: [GET]
+    defaults:  { _controller: "CSCommunityBundle:Community:searchCommunitiesByTheme" }    
