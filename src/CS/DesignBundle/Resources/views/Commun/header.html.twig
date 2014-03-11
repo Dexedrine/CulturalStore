@@ -71,68 +71,13 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<ul class="nav">
-
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Livres <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Marc Lévy</a></li>
-							<li><a href="#">Amélie Nothomb</a></li>
-							{#<li><a href="{{ path('sylius_product_show',{'id' : 1}) }}">Hunger Game</a></li> #}
-							<li class="divider"></li>
-							<li><a href="#">Les autres communautés</a></li>
-						</ul></li>
-
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Musique <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Electro</a></li>
-							<li><a href="#">Lara Fabian</a></li>
-							<li><a href="#">Daft Punk</a></li>
-							<li class="divider"></li>
-
-							<li><a href="#">Les autres communautés</a></li>
-						</ul></li>
-
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Cinéma <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Américain</a></li>
-							<li><a href="#">Gravity</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Les autres communautés</a></li>
-						</ul></li>
-
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Jeux vidéos <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Dota 2</a></li>
-							<li><a href="#">Battlefield</a></li>
-							<li><a href="#">PS4</a></li>
-							<li class="divider"></li>
-
-							<li><a href="#">Les autres communautés</a></li>
-						</ul></li>
-
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Spectacles <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Dany Boon</a></li>
-							<li><a href="#">Losc</a></li>
-							<li><a href="#">Danse</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Les autres communautés</a></li>
-						</ul></li>
-
-					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Applications <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Gratuit</a></li>
-							<li><a href="#">Payant</a></li>
-							<li><a href="#">Top</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Les autres communautés</a></li>
-						</ul></li>
+					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme': 'Livres' })) %}
+					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme': 'Musique' })) %}
+					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme': 'Cinéma' })) %}
+					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme': 'Jeux vidéos' })) %}
+					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme': 'Spectacles' })) %}
+					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme': 'Applications' })) %}
+					
 					<li><a href="#">Mes promotions</a></li>
 					 {% if not is_granted("ROLE_CLIENT") %}
 

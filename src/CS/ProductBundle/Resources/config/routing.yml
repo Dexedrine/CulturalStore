@@ -14,7 +14,12 @@ search_product_by_type:
     pattern: /product/search/{type}
     methods: [GET]
     defaults:  { _controller: "CSProductBundle:Search:searchByType" }
-search_communities_by_theme:
-    pattern: /product/communities/{theme}
+    
+search_product_not_free:
+    pattern: /notfree
     methods: [GET]
-    defaults:  { _controller: "CSProductBundle:Search:searchCommunitiesByTheme" }
+    defaults:  { _controller: "CSProductBundle:Search:searchNotFree" }
+search_free_product:
+    pattern: /free
+    methods: [GET]
+    defaults:  { _controller: "CSProductBundle:Search:searchFree" }
