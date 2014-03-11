@@ -63,6 +63,20 @@ class Utilisateur extends AUser implements Taggable{
 	 */
 	private $orders;
 	
+	/**
+	 *
+	 * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="CS\CommunityBundle\Entity\Community")
+	 *      @ORM\JoinTable(name="community_user",
+	 *      joinColumns={
+	 *      @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+	 *      },
+	 *      inverseJoinColumns={
+	 *      @ORM\JoinColumn(name="community_id", referencedColumnName="id")
+	 *      }
+	 *      )
+	 */
+	public $communities;
+	
 	
 	/**
 	 * @var bool
@@ -155,7 +169,7 @@ class Utilisateur extends AUser implements Taggable{
 
 	//Gestion des communautes par syst�me de tag
 	
-	protected $communities;
+	protected $tags;
 	
 	public function getTaggableType()
 	{
@@ -169,29 +183,29 @@ class Utilisateur extends AUser implements Taggable{
 	
 	public function addTag($tag)
 	{
-		$this->communities = $this->communities ?: new ArrayCollection();
-		if(!$this->communities->contains($tag)){
-			$this->communities->add($tag);
+		$this->tags = $this->tags ?: new ArrayCollection();
+		if(!$this->tags->contains($tag)){
+			$this->tags->add($tag);
 		}	
 	}
 	public function removeTag($tag)
 	{
-		$this->communities = $this->communities ?: new ArrayCollection();
+		$this->tags = $this->tags ?: new ArrayCollection();
 		
-		$this->communities->removeElement($tag);
+		$this->tags->removeElement($tag);
 		
 	}
 	
 	public function getTags()
 	{
-		$this->communities = $this->communities ?: new ArrayCollection();
-		return $this->communities;
+		$this->tags = $this->tags ?: new ArrayCollection();
+		return $this->tags;
 	}
 	
 	public function setTags($tags) {
-		$this->communities->clear();
+		$this->tags->clear();
 		foreach($tags as $tag) {
-			$this->communities->add($tag);
+			$this->tags->add($tag);
 		}
 	}
 
@@ -282,5 +296,38 @@ class Utilisateur extends AUser implements Taggable{
     public function getOrders()
     {
         return $this->orders;
+    }
+    
+    /**
+     * Add communities
+     *
+     * @param \CS\CommunityBundle\Entity\Community $communities
+     * @return Utilisateur
+     */
+    public function addCommunity(\CS\CommunityBundle\Entity\Community $communities)
+    {
+    	$this->communities[] = $communities;
+    
+    	return $this;
+    }
+    
+    /**
+     * Remove communities
+     *
+     * @param \CS\CommunityBundle\Entity\Community $communities
+     */
+    public function removeCommunity(\CS\CommunityBundle\Entity\Community $communities)
+    {
+    	$this->communities->removeElement($communities);
+    }
+    
+    /**
+     * Get communities
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommunities()
+    {
+    	return $this->communities;
     }
 }

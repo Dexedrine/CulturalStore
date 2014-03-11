@@ -67,6 +67,7 @@ class UserCommunityController extends Controller
 		$security = $this->get('security.context');
 		$user = $security->getToken()->getUser();
 	
+		$entityManager = $this->getDoctrine()->getManager();
 		$tagManager = $this->get('fpn_tag.tag_manager');
 	
 		$community = $tagManager->loadOrCreateTag($communityName);
@@ -74,6 +75,9 @@ class UserCommunityController extends Controller
 		$tagManager->loadTagging($user);
 		
 		$user->addTag($community);
+		$user->addCommunity($community);
+		
+		$entityManager->flush();
 		
 		// assign the foo tag to the post
 		$tagManager->saveTagging($user);	
@@ -86,6 +90,7 @@ class UserCommunityController extends Controller
 		$security = $this->get('security.context');
 		$user = $security->getToken()->getUser();
 	
+		$entityManager = $this->getDoctrine()->getManager();
 		$tagManager = $this->get('fpn_tag.tag_manager');
 	
 		$community = $tagManager->loadOrCreateTag($communityName);
@@ -93,7 +98,10 @@ class UserCommunityController extends Controller
 		$tagManager->loadTagging($user);
 	
 		$user->removeTag($community);
-	
+		$user->removeCommunity($community);
+		
+		$entityManager->flush();
+		
 		// assign the foo tag to the post
 		$tagManager->saveTagging($user);
 	

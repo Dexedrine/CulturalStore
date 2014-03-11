@@ -27,6 +27,6 @@ cs_community_fournisseur:
     prefix:   /fournisseur
     
 search_communities_by_theme:
-    pattern: /theme/{theme}
+    pattern: /theme/{theme_id}
     methods: [GET]
     defaults:  { _controller: "CSCommunityBundle:Community:searchCommunitiesByTheme" }    

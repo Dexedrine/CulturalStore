@@ -71,12 +71,12 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<ul class="nav">
-					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme': 'Livres' })) %}
-					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme': 'Musique' })) %}
-					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme': 'Cinéma' })) %}
-					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme': 'Jeux vidéos' })) %}
-					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme': 'Spectacles' })) %}
-					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme': 'Applications' })) %}
+					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme_id': 1 })) %}
+					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme_id': 2 })) %}
+					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme_id': 3 })) %}
+					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme_id': 4 })) %}
+					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme_id': 5 })) %}
+					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme_id': 6 })) %}
 					
 					<li><a href="#">Mes promotions</a></li>
 					 {% if not is_granted("ROLE_CLIENT") %}

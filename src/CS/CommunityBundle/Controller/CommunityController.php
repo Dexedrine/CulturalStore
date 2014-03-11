@@ -105,16 +105,16 @@ class CommunityController extends Controller
 		->render('CSCommunityBundle:Community:showTag.html.twig',
 				array('communities' => $communities));
 	}
-	public function searchCommunitiesByThemeAction($theme) {
+	public function searchCommunitiesByThemeAction($theme_id) {
 		$t = $this->getDoctrine()
 		->getRepository('CSCommunityBundle:Theme')
-		->findOneByTitle($theme);
+		->findOneById($theme_id);
 		$tagManager = $this->get('fpn_tag.tag_manager');
 		$tagManager->loadTagging($t);
 		$communities = $t->getCommunities();
 		return $this->render ( 'CSCommunityBundle:Community:communities.html.twig', array (
 				'communities' => $communities,
-				'theme' => $theme
+				'theme' => $t->getTitle()
 		) );
 	}
 
