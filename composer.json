@@ -31,9 +31,11 @@
 		"munkie/elasticsearch-thrift-php": "dev-master",
 		
         "fpn/doctrine-extensions-taggable": "dev-master",
-        "fpn/tag-bundle":"dev-master",
+        "fpn/tag-bundle": "dev-master",
         
-        "liip/imagine-bundle": "dev-master"
+        "liip/imagine-bundle": "dev-master",
+        "knplabs/knp-piwik-client-bundle": "dev-master",
+        "knplabs/knp-piwik-client": "dev-master"
         
     },
     "scripts": {

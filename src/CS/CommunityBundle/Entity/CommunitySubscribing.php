@@ -28,4 +28,8 @@ class CommunitySubscribing extends BaseTagging
      * @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
      **/
     protected $tag;
+    
+    public function getCommunity(){
+    	return $tag;
+    }
 }

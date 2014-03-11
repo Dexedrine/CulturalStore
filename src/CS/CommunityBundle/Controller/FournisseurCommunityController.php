@@ -65,7 +65,8 @@ class FournisseurCommunityController extends Controller
 		$product = $this->getDoctrine()
 		->getRepository('CSProductBundle:Product')
 		->findOneById(intval($product_id));
-			
+		
+		$entityManager = $this->getDoctrine()->getManager();
 		
 		$tagManager = $this->get('fpn_tag.tag_manager');
 	
@@ -74,7 +75,10 @@ class FournisseurCommunityController extends Controller
 		$tagManager->loadTagging($product);
 	
 		$product->addTag($community);
-	
+		$product->addCommunity($community);
+		
+		$entityManager->flush();
+		
 		// assign the foo tag to the post
 		$tagManager->saveTagging($product);
 	
@@ -87,6 +91,7 @@ class FournisseurCommunityController extends Controller
 		->getRepository('CSProductBundle:Product')
 		->findOneById(intval($product_id));
 			
+		$entityManager = $this->getDoctrine()->getManager();
 		
 		$tagManager = $this->get('fpn_tag.tag_manager');
 	
@@ -95,7 +100,10 @@ class FournisseurCommunityController extends Controller
 		$tagManager->loadTagging($product);
 	
 		$product->removeTag($community);
-	
+		$product->removeCommunity($community);
+		
+		$entityManager->flush();
+		
 		// assign the foo tag to the post
 		$tagManager->saveTagging($product);
 	

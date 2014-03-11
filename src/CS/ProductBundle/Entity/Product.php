@@ -123,10 +123,22 @@ class Product implements Taggable {
 		// le document/image dans la vue.
 		return 'uploads/documents';
 	}
-	protected $communities;
-	public function getCommunities() {
-		return $this->getTags ();
-	}
+	
+	/**
+	 *
+	 * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="CS\CommunityBundle\Entity\Community")
+	 *      @ORM\JoinTable(name="community_product",
+	 *      joinColumns={
+	 *      @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+	 *      },
+	 *      inverseJoinColumns={
+	 *      @ORM\JoinColumn(name="community_id", referencedColumnName="id")
+	 *      }
+	 *      )
+	 */
+	public $communities;
+	
+	protected  $tags;
 
 	public function getTitle() {
 		return $this->title;
@@ -141,24 +153,24 @@ class Product implements Taggable {
 		return $this->getId ();
 	}
 	public function getTags() {
-		$this->communities = $this->communities ?  : new ArrayCollection ();
-		return $this->communities;
+		$this->tags = $this->tags ?  : new ArrayCollection ();
+		return $this->tags;
 	}
 	public function removeTag($tag) {
-		$this->communities = $this->communities ?  : new ArrayCollection ();
+		$this->tags = $this->tags ?  : new ArrayCollection ();
 		
-		$this->communities->removeElement ( $tag );
+		$this->tags->removeElement ( $tag );
 	}
 	public function setTags($tags) {
-		$this->communities->clear ();
+		$this->tags->clear ();
 		foreach ( $tags as $tag ) {
-			$this->communities->add ( $tag );
+			$this->tags->add ( $tag );
 		}
 	}
 	public function addTag($tag) {
-		$this->communities = $this->communities ?  : new ArrayCollection ();
-		if (! $this->communities->contains ( $tag )) {
-			$this->communities->add ( $tag );
+		$this->tags = $this->tags ?  : new ArrayCollection ();
+		if (! $this->tags->contains ( $tag )) {
+			$this->tags->add ( $tag );
 		}
 	}
 	public function getPrice() {
@@ -369,11 +381,46 @@ class Product implements Taggable {
         return $this->theme;
     }
     
+    
+
+    /**
+     * Add communities
+     *
+     * @param \CS\CommunityBundle\Entity\Community $communities
+     * @return Product
+     */
+    public function addCommunity(\CS\CommunityBundle\Entity\Community $communities)
+    {
+        $this->communities[] = $communities;
+    
+        return $this;
+    }
+
+    /**
+     * Remove communities
+     *
+     * @param \CS\CommunityBundle\Entity\Community $communities
+     */
+    public function removeCommunity(\CS\CommunityBundle\Entity\Community $communities)
+    {
+        $this->communities->removeElement($communities);
+    }
+
+    /**
+     * Get communities
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCommunities()
+    {
+        return $this->communities;
+    }
+    
     public function getProperties()
     {
     	return null;
     }
-     public function getMetaKeywords()
+    public function getMetaKeywords()
     {
     	return null;
     }
