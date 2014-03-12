@@ -28,4 +28,12 @@ class Community extends BaseTag
      * @ORM\OneToMany(targetEntity="CommunitySubscribing", mappedBy="tag", fetch="EAGER")
      **/
     protected $tagging;
+    
+    /**
+     * Product score.
+     *
+     * @var int
+     *  @ORM\Column(name="score", type="float", options={"default" = 0.75})
+     */
+    public $score = 0.75 ;
 }

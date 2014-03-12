@@ -41,12 +41,22 @@
 <!-- Row qui va contenir le 1er carousel de suggestion de produit -->
 <div class="row">
 	<div class="span9">
-		<h5>Suggestion pour la communauté Musique</h5>
-		{% render(controller('CSProductBundle:Search:searchByType', { 'type': 'music' })) %}
-		<h5>Suggestion pour la communauté Livres</h5>
-		{% render(controller('CSProductBundle:Search:searchByType', { 'type': 'book' })) %}
-		<h5>Suggestion pour la communauté Jeux</h5>
-		{% render(controller('CSProductBundle:Search:searchByType', { 'type': 'game' })) %}
+		
+		{% if is_granted("ROLE_CLIENT") %}
+			{% for community in user.communities %}
+				<h5>Suggestion pour la communauté {{ community }}</h5>
+
+				{%  render(controller('CSProductBundle:Search:searchByCommunity', { 'community': community })) %}
+				
+			{% endfor%}
+		{% else %}
+			<h5>Suggestion pour le thème Musique</h5>
+			{% render(controller('CSProductBundle:Search:searchByType', { 'type': 'music' })) %}
+			<h5>Suggestion pour le thème Livres</h5>
+			{% render(controller('CSProductBundle:Search:searchByType', { 'type': 'book' })) %}
+			<h5>Suggestion pour le thème Jeux</h5>
+			{% render(controller('CSProductBundle:Search:searchByType', { 'type': 'game' })) %}	
+		{% endif %}
 </div>
 	
 	<!-- Mise en place de la colonne latérale haute pour indiquer les derniers avis déposés -->

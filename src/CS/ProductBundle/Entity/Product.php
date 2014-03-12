@@ -137,6 +137,13 @@ class Product implements Taggable {
 	 *      )
 	 */
 	public $communities;
+	/**
+	 * Product score.
+	 *
+	 * @var int
+	 *  @ORM\Column(name="score", type="float", options={"default" = 0.75})
+	 */
+	public $score = 0.75 ;
 	
 	protected  $tags;
 

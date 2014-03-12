@@ -159,6 +159,7 @@ fos_elastica:
                 product:
                     mappings:
                         id:
+                        score:
                         name: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                         description: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                         properties: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
@@ -172,7 +173,7 @@ fos_elastica:
                         listener: ~
                 productByCommunity:
                     mappings:
-                        id:
+                        score:
                         communities: { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
                     persistence:
                         elastica_to_model_transformer:
@@ -185,7 +186,7 @@ fos_elastica:
                 productByType:
                     mappings:
                         productType : { search_analyzer: custom_search_analyzer, index_analyzer: custom_index_analyzer, type: string }
-                        name :
+                        score :
                     persistence:
                         elastica_to_model_transformer:
                             ignore_missing: true                    
@@ -199,6 +200,7 @@ fos_elastica:
                 productByPrice:
                     mappings:
                         price :
+                        score:          
                     persistence:
                         elastica_to_model_transformer:
                             ignore_missing: true                    
@@ -207,4 +209,20 @@ fos_elastica:
                         provider: ~
                         finder: ~
                         listener: ~
+                theme:
+                    mappings:
+                        title:
+                        communities :
+                            type: "nested"
+                            properties:                    
+                                score:
 
+                                 
+                    persistence:
+                        elastica_to_model_transformer:
+                            ignore_missing: true                    
+                        driver: orm
+                        model: CS\CommunityBundle\Entity\Theme
+                        provider: ~
+                        finder: ~
+                        listener: ~
