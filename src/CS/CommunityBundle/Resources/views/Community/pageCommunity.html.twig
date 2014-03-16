@@ -15,7 +15,7 @@
 
 <div class="row communitySoon">
 	<div class="span12">
-		<p>Prochainement : les produits de cette communaut&eacute;</p>
+		{%  render(controller('CSProductBundle:Search:searchByCommunity', { 'community': community })) %}
 	</div>
 </div>
 

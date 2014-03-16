@@ -43,10 +43,29 @@ class CommunityController extends Controller
 		
 		//r�cup�rer produit de la communaut�
 	
+		$finder = $this->container->get ( 'fos_elastica.finder.website.productByCommunity' );
+		$query = new \Elastica\Query(array(
+				// query filter
+				'query' => array(
+						'query_string' => array(
+								'query' => strtok($community,' ')
+						)
+				),
+				// default sort
+				'sort' => array(
+						'score' => array(
+								'order' => 'desc'
+						)
+				)
+		));
+		$products = $finder->find ( $query );
+		
 		return $this
 		->render('CSCommunityBundle:Community:pageCommunity.html.twig',
 				array('community' => $community,
-					'count' => $count,));
+					'count' => $count,
+					'products1' => array_slice($products, 0, 3),
+				    'products2' => array_slice($products, 3, 6),));
 	}
 	
 	

@@ -65,8 +65,8 @@ class SearchController extends Controller {
 				),
 				// default sort
 				'sort' => array(
-						'name' => array(
-								'order' => 'asc'
+						'score' => array(
+								'order' => 'desc'
 						)
 				)
 		));	
@@ -77,9 +77,49 @@ class SearchController extends Controller {
 				'type' =>$type
 		) );
 	}
+	public function searchByCommunityAction($community) {
+		$finder = $this->container->get ( 'fos_elastica.finder.website.productByCommunity' );
+		$query = new \Elastica\Query(array(
+				// query filter
+				'query' => array(
+						'query_string' => array(
+								'query' => strtok($community,' ')
+						)
+				),
+				// default sort
+				'sort' => array(
+						'score' => array(
+								'order' => 'desc'
+						)
+				)
+		));
+		$products = $finder->find ( $query );
+		return $this->render ( 'CSProductBundle:Product:search_result_carousel.html.twig', array (
+				'products1' => array_slice($products, 0, 3),
+				'products2' => array_slice($products, 3, 6),
+				'type' =>$community
+		) );
+	}
+	
+	
 	public function searchFreeAction() {
 		$finder = $this->container->get ( 'fos_elastica.finder.website.productByPrice' );
-		$products = $finder->find ( '=0' );
+		$query = new \Elastica\Query(array(
+				// query filter
+				'query' => array(
+						'query_string' => array(
+								'query' => 'price:=0'
+						)
+				),
+				// default sort
+				'sort' => array(
+						'score' => array(
+								'order' => 'desc'
+						)
+				)
+		));
+
+		$products = $finder->find ( $query );
 		return $this->render ( 'CSProductBundle:Product:search_result_carousel.html.twig', array (
 				'products1' => array_slice($products, 0, 3),
 				'products2' => array_slice($products, 3, 6),
@@ -92,13 +132,13 @@ class SearchController extends Controller {
 				// query filter
 				'query' => array(
 						'query_string' => array(
-								'query' => '>0'
+								'query' => 'price:>0'
 						)
 				),
 				// default sort
 				'sort' => array(
-						'price' => array(
-								'order' => 'asc'
+						'score' => array(
+								'order' => 'desc'
 						)
 				)
 		));
@@ -108,6 +148,29 @@ class SearchController extends Controller {
 				'products1' => array_slice($products, 0, 3),
 				'products2' => array_slice($products, 3, 6),
 				'type' =>'notfree'
+		) );
+	}
+	public function top3ThemeAction() {
+		$finder = $this->container->get ( 'fos_elastica.finder.website.theme' );
+		$query = new \Elastica\Query(array(
+				// query filter
+				'query' => array(
+						'query_string' => array(
+								'query' => '*'
+						)
+				),
+				// default sort
+				'sort' => array(
+						'score' => array(
+								'order' => 'desc', 
+								'mode' => 'avg'
+						)
+				)
+		));
+	
+		$theme = $finder->find ( $query );
+		return $this->render ( 'CSProductBundle:Product:showTop3Theme.html.twig', array (
+				'themes' => array_slice($theme, 0, 3)
 		) );
 	}
 	
