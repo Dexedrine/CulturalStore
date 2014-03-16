@@ -1,25 +1,25 @@
 cs_product_index:
-    pattern: /
+    pattern: fournisseur/
     defaults:  { _controller: "CSProductBundle:Product:index" }
 
 cs_product_create_music:
-    pattern: /new/music
+    pattern: fournisseur/new/music
     defaults: { _controller: "CSProductBundle:Product:createMusic" }
 
 cs_product_create_video:
-    pattern: /new/video
+    pattern: fournisseur/new/video
     defaults: { _controller: "CSProductBundle:Product:createVideo" }
             
 cs_product_create_book:
-    pattern: /new/book 
+    pattern: fournisseur/new/book 
     defaults: { _controller: "CSProductBundle:Product:createBook" }
             
 cs_product_create_game:
-    pattern: /new/game
+    pattern: fournisseur/new/game
     defaults: { _controller: "CSProductBundle:Product:createGame" }
             
 cs_product_create_ticket:
-    pattern: /new/ticket
+    pattern: fournisseur/new/ticket
     defaults: { _controller: "CSProductBundle:Product:createTicket" }
             
 

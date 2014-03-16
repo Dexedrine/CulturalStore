@@ -64,7 +64,14 @@ class Product implements Taggable {
 	 */
 	protected $genre;
 	
-		
+	/**
+	 * Product score.
+	 * 
+	 *  @var int
+	 *  @ORM\Column(name="score", type="integer")
+	 */
+	protected $score = 0;
+	
 	/**
 	 * Product image.
 	 *
@@ -90,6 +97,16 @@ class Product implements Taggable {
 	 * @ORM\JoinColumn(name="theme_id", referencedColumnName="id")
 	 */
 	private $theme;
+	
+	
+	/**
+	 *
+	 * @var CS\UserBundle\Entity\Fournisseur
+	 *
+	 * @ORM\ManyToOne(targetEntity="CS\UserBundle\Entity\Fournisseur")
+	 * @ORM\JoinColumn(name="fournissuer_id", referencedColumnName="id")
+	 */
+	private $fournisseur;
 	
 	/**
 	 * Constructor.
@@ -173,9 +190,7 @@ class Product implements Taggable {
 			$this->tags->add ( $tag );
 		}
 	}
-	public function getPrice() {
-		return $this->price;
-	}
+	
 	public function upload() {
 		if (null === $this->file) {
 			return;
@@ -249,6 +264,10 @@ class Product implements Taggable {
         return $this->description;
     }
 
+    public function getPrice() {
+    	return $this->price;
+    }
+    
     /**
      * Set price
      *
@@ -257,9 +276,26 @@ class Product implements Taggable {
      */
     public function setPrice($price)
     {
-        $this->price = $price;
+    	$this->price = $price;
     
-        return $this;
+    	return $this;
+    }
+    
+    public function getScore() {
+    	return $this->score;
+    }
+    
+    /**
+     * Set score
+     *
+     * @param \number $score
+     * @return Product
+     */
+    public function setScore($score)
+    {
+    	$this->score = $score;
+    
+    	return $this;
     }
 
     /**
@@ -380,7 +416,28 @@ class Product implements Taggable {
     {
         return $this->theme;
     }
+    /**
+     * Set fournisseur
+     *
+     * @param \CS\UserBundle\Entity\Fournisseur $fournisseur
+     * @return Product
+     */
+    public function setFournisseur(\CS\UserBundle\Entity\Fournisseur $fournisseur = null)
+    {
+    	$this->fournisseur = $fournisseur;
     
+    	return $this;
+    }
+    
+    /**
+     * Get fournisseur
+     *
+     * @return \CS\UserBundle\Entity\Fournisseur
+     */
+    public function getFournisseur()
+    {
+    	return $this->fournisseur;
+    }
     
 
     /**
