@@ -1,0 +1,5 @@
+<form name="comment_form" action="{{ path('cs_product_add_comment',{'product_id' : product_id}) }}" {{ form_enctype(form) }} method="POST" class="add_comment">
+
+    {{ form_widget(form) }}
+    <input type="submit" name="add_comment_submit" id="add_comment_submit" value="Valider" />
+</form>

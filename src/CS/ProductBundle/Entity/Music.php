@@ -25,7 +25,7 @@ class Music extends Product{
 	/**
 	 * Product duree.
 	 *
-	 * @var string
+	 * @var int
 	 * @ORM\Column(name="duree", type="integer")
 	 */
 	protected $duree ;
@@ -33,7 +33,7 @@ class Music extends Product{
 	/**
 	 * Product nbPistes.
 	 *
-	 * @var string
+	 * @var int
 	 * @ORM\Column(name="nbPistes", type="integer")
 	 */
 	protected $nbPistes;

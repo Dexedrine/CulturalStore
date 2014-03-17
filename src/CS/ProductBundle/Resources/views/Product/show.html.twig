@@ -58,5 +58,8 @@
 				les communaut&eacute;s&nbsp;</a>
 		</div>
 	</div>
+	<div class="comment span3">
+			{% render url('cs_product_add_comment',{ 'product_id' : product.id }) %}
+	</div>
 </div>
 {% endblock body %}

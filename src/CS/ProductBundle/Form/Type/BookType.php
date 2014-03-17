@@ -20,7 +20,6 @@ class BookType extends ProductType
   
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-    	
     	parent::buildForm($builder, $options);
         $builder
             ->add('genre', 'choice', array(

@@ -64,13 +64,6 @@ class Product implements Taggable {
 	 */
 	protected $genre;
 	
-	/**
-	 * Product score.
-	 * 
-	 *  @var int
-	 *  @ORM\Column(name="score", type="integer")
-	 */
-	protected $score = 0;
 	
 	/**
 	 * Product image.
@@ -88,6 +81,14 @@ class Product implements Taggable {
 	 * @ORM\Column(name="createdAt", type="datetime")
 	 */
 	protected $createdAt;
+	
+	/**
+	 *
+	 * @var \Doctrine\Common\Collections\Collection
+	 *
+	 * @ORM\OneToMany(targetEntity="CS\ProductBundle\Entity\Comment", mappedBy="product")
+	 */
+	private $comments;
 	
 	/**
 	 *
@@ -113,6 +114,8 @@ class Product implements Taggable {
 	 */
 	public function __construct() {
 		$this->createdAt = new \DateTime ();
+		$this->communities = new ArrayCollection();
+		$this->comments = new ArrayCollection();
 	}
 	
 	/**
@@ -143,7 +146,8 @@ class Product implements Taggable {
 	
 	/**
 	 *
-	 * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="CS\CommunityBundle\Entity\Community")
+	 * @var \Doctrine\Common\Collections\Collection
+	 *  @ORM\ManyToMany(targetEntity="CS\CommunityBundle\Entity\Community")
 	 *      @ORM\JoinTable(name="community_product",
 	 *      joinColumns={
 	 *      @ORM\JoinColumn(name="product_id", referencedColumnName="id")
@@ -488,4 +492,38 @@ class Product implements Taggable {
     {
     	return null;
     }
+
+    /**
+     * Add comments
+     *
+     * @param \CS\ProductBundle\Entity\Comment $comments
+     * @return Product
+     */
+    public function addComment(\CS\ProductBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+    
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \CS\ProductBundle\Entity\Comment $comments
+     */
+    public function removeComment(\CS\ProductBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
 }
