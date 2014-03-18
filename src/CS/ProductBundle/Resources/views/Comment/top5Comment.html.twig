@@ -1,0 +1,14 @@
+
+<aside class="span3">
+	<div class="avisBody">
+		</br>
+		<h5>Les derniers avis déposés sur CulturalStore :</h5>
+		</br>
+		{% for comment in comments %}
+		<h6>{{ comment.product.name|capitalize }}</h6>
+		<p>"{{ comment.text }}"</p>
+		{% endfor %}
+	</div>
+</aside>
+
+
