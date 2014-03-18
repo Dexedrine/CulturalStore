@@ -48,11 +48,12 @@ class CartController extends Controller {
 	
 	public function addProductAction($product_id) {
 		$session = $this->getRequest()->getSession();
-			
+		$this->em = $this->getDoctrine()->getManager();
 		$user = $this->getConnectedUser();
 		$cart = $this->getCurrentCart();
-		$product = $this->getProductFromRepository($product_id);
-		
+		$product = $this->getDoctrine()
+			->getRepository('CSProductBundle:Product')
+			->findOneById(intval($product_id));
 		if(!$cart){
 			$cart = new Cart();
 			if(!$user){
