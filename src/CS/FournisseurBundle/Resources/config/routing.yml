@@ -1,3 +1,7 @@
 cs_fournisseur_homepage:
     pattern:  /
     defaults: { _controller: "CSFournisseurBundle:Fournisseurhomepage:fournisseurhomepage" }
+    
+cs_fournisseur_dashboard:
+    pattern:  /dashboard
+    defaults: { _controller: "CSFournisseurBundle:Dashboard:dashboard" }
