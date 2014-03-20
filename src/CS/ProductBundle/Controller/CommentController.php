@@ -41,5 +41,27 @@ class CommentController extends Controller
 		return $this->render('CSProductBundle:Comment:addComment.html.twig'
 				,array('form' => $form->createView() , 'product_id' => $product_id));
 	}
+	public function getTop5Action() {
+		$finder = $this->container->get ( 'fos_elastica.finder.website.comment' );
+		$query = new \Elastica\Query(array(
+				// query filter
+				'query' => array(
+						'query_string' => array(
+								'query' => '*'
+						)
+				),
+				// default sort
+				'sort' => array(
+						'id' => array(
+								'order' => 'desc'
+						)
+				)
+		));
+	
+		$comments = $finder->find ( $query );
+		return $this->render ( 'CSProductBundle:Comment:top5Comment.html.twig', array (
+				'comments' => array_slice($comments, 0, 5)
+		) );
+	}
 	
 }

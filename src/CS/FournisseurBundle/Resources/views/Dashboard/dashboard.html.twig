@@ -1,0 +1,74 @@
+{% extends 'CSFournisseurBundle:Commun:communFournisseur.html.twig' %}
+
+{% block js %}
+    <script language="JavaScript" type="text/javascript" src="{{ asset('bundles/csdesign/js/jquery.min.js') }}"></script>
+    <script language="JavaScript" type="text/javascript" src="{{ asset('bundles/csdesign/js/jquery.jqplot.min.js') }}"></script>
+    <script language="JavaScript" type="text/javascript" src="{{ asset('bundles/csdesign/js/jqplotplugins/jqplot.canvasTextRenderer.min.js') }}"></script>
+    <script language="JavaScript" type="text/javascript" src="{{ asset('bundles/csdesign/js/jqplotplugins/jqplot.canvasAxisTickRenderer.min.js') }}"></script>
+    <script language="JavaScript" type="text/javascript" src="{{ asset('bundles/csdesign/js/jqplotplugins/jqplot.categoryAxisRenderer.min.js') }}"></script>
+    <script language="JavaScript" type="text/javascript" src="{{ asset('bundles/csdesign/js/jqplotplugins/jqplot.barRenderer.min.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	{% for i in range(0, 3) %}
+		<script type="text/javascript">
+	        $(document).ready(function(){
+	          /*données de vente du produit*/
+	          var data_ventes = [['Oct.', 3],['Nov.', 6], ['Déc.', 18],['Jan.', 7], ['Fév.', 9], ['Mars', 15]];
+	          /*attention le label est un ID, on ne peut pas avoir plusieurs fois le même*/
+	         
+	          var ventes = $.jqplot('ventes1', [data_ventes], {
+	            title: 'Ventes',
+	            series:[{renderer:$.jqplot.BarRenderer}],
+	            axesDefaults: {
+	                tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+	                tickOptions: {
+	                  angle: -30,
+	                  fontSize: '10pt'
+	                }
+	            },
+	            axes: {
+	              xaxis: {
+	                renderer: $.jqplot.CategoryAxisRenderer
+	              }
+	            }
+	          });
+	            
+	          /*données de visite du produit*/
+	          var data_visites = [['Oct.', 3],['Nov.', 6], ['Déc.', 0],['Jan.', 7], ['Fév.', 9], ['Mars', 15]];
+	
+	          var visites = $.jqplot('visites1', [data_visites], {
+	            title: 'Visites',
+	            series:[{renderer:$.jqplot.BarRenderer}],
+	            axesDefaults: {
+	                tickRenderer: $.jqplot.CanvasAxisTickRenderer ,
+	                tickOptions: {
+	                  angle: -30,
+	                  fontSize: '10pt'
+	                }
+	            },
+	            axes: {
+	              xaxis: {
+	                renderer: $.jqplot.CategoryAxisRenderer
+	              }
+	            }
+	          });
+	        });
+	    </script>
+	
+		<div class="prod-line prod1">
+			<div class="prod-id">
+				<span>1</span>
+			</div>
+		
+			<div class="prod-name">Produit 1</div>
+		
+			<div id="ventes1" class="prod-sales jqplot-target"></div>
+		
+			<div class="prod-note">Note</div>
+		
+			<div id="visites1" class="prod-visits jqplot-target"></div>
+		</div>
+	{% endfor %}
+
+{% endblock body %}

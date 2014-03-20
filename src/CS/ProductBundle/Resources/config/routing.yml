@@ -38,3 +38,8 @@ show_top_3_theme:
     pattern: /top3theme
     methods: [GET]
     defaults:  { _controller: "CSProductBundle:Search:top3Theme" }
+    
+show_top5_comment:
+    pattern: /top5comment
+    methods: [GET]
+    defaults:  { _controller: "CSProductBundle:Comment:getTop5" }

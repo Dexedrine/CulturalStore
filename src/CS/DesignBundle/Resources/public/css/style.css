@@ -338,3 +338,26 @@ footer .followUs .fb_link .twitter_link .gg_link{
 	font-size:15px;
 	color: #49423d;
 }
+
+/* Dashboard Fournisseur*/
+.prod-line div{
+    float:left; 
+}
+
+.prod-line {
+    clear:both;
+    border-bottom: dotted 1px black;
+    height: 100px;
+    margin-bottom: 20px;
+    
+}
+
+.jqplot-target {
+    height: 100px;
+    width: 200px; 
+    position: relative;
+}
+
+.prod_line {
+    vertical-align: bottom;    
+}

@@ -1,39 +1,43 @@
 <!-- Mise en place du carousel à 3 slides -->
 <div class="row">
-<div class="span12">
-	<div class="carousel slide" id="superCarousel">
-		<ol class="carousel-indicators">
-   			 <li data-target="#superCarousel" data-slide-to="0" class="active"></li>
-   			 <li data-target="#superCarousel" data-slide-to="1"></li>
-   			 <li data-target="#superCarousel" data-slide-to="2"></li>
- 		 </ol>
-		<div class="carousel-inner">
-			<div class="item active">
-				<img src="{{ asset('bundles/csdesign/img/cyanide.png') }}" alt="Cyanide"/>
-				<div class="carousel-caption">
-					<p>Le dernier Cyanide est disponible !</p>
+	<div class="span12">
+		<div class="carousel slide" id="superCarousel">
+			<ol class="carousel-indicators">
+				<li data-target="#superCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#superCarousel" data-slide-to="1"></li>
+				<li data-target="#superCarousel" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="{{ asset('bundles/csdesign/img/cyanide.png') }}"
+						alt="Cyanide" />
+					<div class="carousel-caption">
+						<p>Le dernier Cyanide est disponible !</p>
+					</div>
+				</div>
+
+				<div class="item">
+					<img src="{{ asset('bundles/csdesign/img/bateau.jpg') }}"
+						alt="ReportageBateau" />
+					<div class="carousel-caption">
+						<p>Un superbe reportage sur la construction de yacht !</p>
+					</div>
+				</div>
+
+				<div class="item">
+					<img src="{{ asset('bundles/csdesign/img/cyanide2.png') }}"
+						alt="LePetitPrince" />
+					<div class="carousel-caption">
+						<p>Tome 3 de TeaTime !</p>
+					</div>
 				</div>
 			</div>
-			
-			<div class="item">
-				<img src="{{ asset('bundles/csdesign/img/bateau.jpg') }}" alt="ReportageBateau" />
-				<div class="carousel-caption">
-					<p>Un superbe reportage sur la construction de yacht !</p>
-				</div>
-			</div>
-			
-			<div class="item">
-				<img src="{{ asset('bundles/csdesign/img/cyanide2.png') }}" alt="LePetitPrince" />
-				<div class="carousel-caption">
-					<p>Tome 3 de TeaTime !</p>
-				</div>
-			</div>
-			</div>		
-			<a class="carousel-control left" data-slide="prev" href="#superCarousel">&lsaquo;</a>
-			<a class="carousel-control right" data-slide="next" href="#superCarousel">&rsaquo;</a>	
+			<a class="carousel-control left" data-slide="prev"
+				href="#superCarousel">&lsaquo;</a> <a class="carousel-control right"
+				data-slide="next" href="#superCarousel">&rsaquo;</a>
+		</div>
 	</div>
-	</div>
-	
+
 </div>
 
 <!-- Mise en place des minis carousels pour la suggestion de produit par communauté -->
@@ -41,42 +45,26 @@
 <!-- Row qui va contenir le 1er carousel de suggestion de produit -->
 <div class="row">
 	<div class="span9">
-		
-		{% if is_granted("ROLE_CLIENT") %}
-			{% for community in user.communities %}
-				<h5>Suggestion pour la communauté {{ community }}</h5>
 
-				{%  render(controller('CSProductBundle:Search:searchByCommunity', { 'community': community })) %}
-				
-			{% endfor%}
-		{% else %}
-			<h5>Suggestion pour le thème Musique</h5>
-			{% render(controller('CSProductBundle:Search:searchByType', { 'type': 'music' })) %}
-			<h5>Suggestion pour le thème Livres</h5>
-			{% render(controller('CSProductBundle:Search:searchByType', { 'type': 'book' })) %}
-			<h5>Suggestion pour le thème Jeux</h5>
-			{% render(controller('CSProductBundle:Search:searchByType', { 'type': 'game' })) %}	
-		{% endif %}
-</div>
-	
+		{% if is_granted("ROLE_CLIENT") %} {% for community in
+		user.communities %}
+		<h5>Suggestion pour la communauté {{ community }}</h5>
+
+		{% render(controller('CSProductBundle:Search:searchByCommunity', {
+		'community': community })) %} {% endfor%} {% else %}
+		<h5>Suggestion pour le thème Musique</h5>
+		{% render(controller('CSProductBundle:Search:searchByType', { 'type':
+		'music' })) %}
+		<h5>Suggestion pour le thème Livres</h5>
+		{% render(controller('CSProductBundle:Search:searchByType', { 'type':
+		'book' })) %}
+		<h5>Suggestion pour le thème Jeux</h5>
+		{% render(controller('CSProductBundle:Search:searchByType', { 'type':
+		'game' })) %} {% endif %}
+	</div>
+
 	<!-- Mise en place de la colonne latérale haute pour indiquer les derniers avis déposés -->
-	<aside class="span3">
-		<div class="avisBody">
-			<h5>Les derniers avis déposés sur CulturalStore</h5>	
-			<h6>Twilight, tome 1</h6>	
-			<p>Virgine D. "Formidable livre !! J'adore !!"</p>
-			<h6>Pure - Lara Fabian</h6>
-			<p>Antoine P. "Déçu..."</p>
-			<h6>Et si c'était vrai - Marc Lévy</h6>
-			<p>Léa F. "J'en suis encore toute retournée !"</p>
-			<h6>Get Lucky - Daft Punk</h6>
-			<p>Eric G. "Waouh !!"</p>
-			<h6>Worms</h6>
-			<p>Patrick D. "Super jeu"</p>
-			<h6>Rave Age - Vitalic</h6>
-			<p>Léo D. "De l'électro comme j'aime"</p>
-		</div>		
-	</aside>
+	{% render(url('show_top5_comment')) %}
 </div>
 
 <!-- Indication des top gratuits et payants toutes communautés confondues -->
@@ -85,7 +73,7 @@
 	<div class="span6 topFree">
 		<h5>Top gratuit sur Cultural Store</h5>
 		{% render(controller('CSProductBundle:Search:searchFree')) %}
-		
+
 	</div>
 
 	<div class="span6 topPaying">
@@ -96,7 +84,7 @@
 
 
 
-	
+
 
 
 
