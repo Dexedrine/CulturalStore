@@ -13,6 +13,8 @@ class CommentController extends Controller
 	{
 		$entityManager = $this->getDoctrine()->getManager();
 		
+		$security = $this->get('security.context');
+		$user = $security->getToken()->getUser();
 		
 		
 		$comment = new Comment();

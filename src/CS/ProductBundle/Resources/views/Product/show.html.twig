@@ -59,7 +59,9 @@
 		</div>
 	</div>
 	<div class="comment span3">
+		{% if is_granted("ROLE_CLIENT") %}
 			{% render url('cs_product_add_comment',{ 'product_id' : product.id }) %}
+		{% endif %}
 	</div>
 </div>
 {% endblock body %}

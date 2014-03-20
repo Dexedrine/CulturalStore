@@ -44,6 +44,22 @@ class Comment{
 	 */
 	protected $product;
 	
+	/**
+	 * Creation time.
+	 *
+	 * @var \DateTime
+	 * @ORM\Column(name="createdAt", type="datetime")
+	 */
+	protected $createdAt;
+	
+	
+	/**
+	 * Constructor.
+	 */
+	public function __construct() {
+		$this->createdAt = new \DateTime ();
+	}
+	
 	
     /**
      * Get id
@@ -123,5 +139,28 @@ class Comment{
     public function getProduct()
     {
         return $this->product;
+    }
+    
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Product
+     */
+    public function setCreatedAt($createdAt)
+    {
+    	$this->createdAt = $createdAt;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+    	return $this->createdAt;
     }
 }
