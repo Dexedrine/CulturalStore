@@ -10,7 +10,7 @@
 _paq.push(['addEcommerceItem',
 	"{{ product.id }}", // (required) SKU: Product unique identifier
 	"{{ product.name }}", // (optional) Product name
-	{{ (product.price / 100) }}, // (recommended) Product price
+	{{ (product.price) }}, // (recommended) Product price
 	1 // (optional, default to 1) Product quantity
 ]);
 // Here it is important to add all other products found in the cart, even the products not updated by the current "Add to cart" click
@@ -36,14 +36,40 @@ _paq.push(['trackPageView']);
 	  <thead>
 		  <tr>
 		    <th>Nom du produit</th>
+		    <th>Promotion</th>
+		    <th>Jusqu'au</th>
 		    <th>Prix</th>
 		  </tr>
 	  </thead>
+	  <tfoot>
+	    <tr>
+	     <tr>
+		    <td></td>
+		    <td></td>
+		    <td><strong>Total : </strong></td>
+		    <td><strong>{{ valueCart|number_format(2, ',', '.') }} €</strong></td>
+		  </tr>
+	    </tr>
+	  </tfoot>
 	  <tbody>
 		  {%  for product in  cart.products %}    
 		  <tr>  
 		    <td>{{ product.name }}</td>
-		    <td>{{ (product.price / 100) |number_format(2, ',', '.') }} €</td>
+		    {% set currentPromotion = product.currentPromotion %}
+             {% if currentPromotion %}
+            	<td>{{ currentPromotion.percentage }} %</td>
+            	<td><span class="label label-info">{{ currentPromotion.endDate|date('d/m/Y') }}</span></td>
+            	<td>
+            		{% set newPrice = (product.price - (product.price * currentPromotion.percentage / 100)) %}
+            		{{ newPrice|number_format(2, ',', '.') }} € 
+	            	<strike>{{ product.price|number_format(2, ',', '.') }} €</strike> 
+            	</td>
+            {% else %}
+            	<td></td>
+            	<td></td>
+            	<td>{{ product.price|number_format(2, ',', '.') }} €</td>
+           	{% endif %}
+		    
 		    <td class="delete"><a href="{{ path("delete_product",{"product_id" : product.id}) }}"/></td>
 		  </tr>
 		  {% endfor %}

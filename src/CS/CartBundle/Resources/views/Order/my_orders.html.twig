@@ -34,12 +34,12 @@
 			<tr class="order-line">
 				<td class='order-id'>{{ order.id }}</td>
 				<td>{{ order.date|date("d/m/Y")}}</td>
-				<td>{{ (order.totalprice / 100) |number_format(2, ',', '.') }} €</td>	
+				<td>{{ order.totalprice|number_format(2, ',', '.') }} €</td>	
 			</tr>			
 			<tr class="order-item"><td>
 			{% for product in order.products %}				
 					<p>{{ product.name }}
-					{{ (product.price / 100) |number_format(2, ',', '.') }} €</p>				
+					{{ product.price |number_format(2, ',', '.') }} €</p>				
 			{% endfor %}
 			</td></tr>
 			

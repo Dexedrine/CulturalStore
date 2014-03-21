@@ -40,9 +40,21 @@ class CartController extends Controller {
 		$user = $this->getConnectedUser();
 		$cart = $this->getCurrentCart();
 				
+		
+		$valueCart = 0;
+		
+		foreach ($cart->getProducts() as $product){
+			$price = $product->getPrice();
+			if($promotion = $product->getCurrentPromotion()){
+				$price = $price - ($promotion->getPercentage() * $price / 100 );
+			}
+			$valueCart = $valueCart + $price;
+		}
+		
 		return $this->render('CSCartBundle:Cart:cart.html.twig', array (
 				'user' => $user,
-				'cart' => $cart 
+				'cart' => $cart,
+				'valueCart' => $valueCart
 		) );
 	}
 	

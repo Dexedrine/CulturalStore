@@ -36,8 +36,7 @@
 			<h3 class="name">{{ product.name|capitalize }}</h3>
 			<p class="description">{{ product.description|capitalize }}</p>
 
-			{% block price %} <span class="price">{{ price*100|number_format(2, ',',
-				'.') }} €</span> {% endblock %} 
+			{% block price %} <span class="price">{{ product.price|number_format(2, ',', '.') }} €</span> {% endblock %} 
 			 {% set currentPromotion = product.currentPromotion %}
             {% if currentPromotion %}
             	<span class="percentage">{{ "-"~currentPromotion.percentage~" %" }}</span>

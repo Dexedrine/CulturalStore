@@ -33,14 +33,18 @@ class OrderController extends Controller {
 		$user = $this->getConnectedUser();		
 		$cart = $this->getCurrentCart();
 		$order = new Order();
-		$price = 0;
+		$totalPrice = 0;
 		foreach ($cart->getProducts() as $item){
 			$order->addProduct($item);
-			$price += $item->getPrice();
+			$price = $item->getPrice();
+			if($promotion = $item->getCurrentPromotion()){
+				$price = $price - ($promotion->getPercentage() * $price / 100 );
+			}
+			$totalPrice += $price;
 		}
 		$order->setUser($user);
 		$order->setDate(new \DateTime("now"));
-		$order->setTotalPrice($price);
+		$order->setTotalPrice($totalPrice);
 		$user->addOrder($order);
 		
 		$cart->emptyCart();
