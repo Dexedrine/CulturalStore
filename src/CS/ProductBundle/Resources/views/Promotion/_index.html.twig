@@ -1,0 +1,21 @@
+{% import 'CSProductBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'CSProductBundle:Macros:macros_promotions.html.twig' as macros %}
+
+
+
+
+
+
+<h1>Liste de vos promotions </h1>
+<hr />
+{{ buttons.create(path('cs_product_add_promotion')) }}
+
+{% if resources.haveToPaginate() %}
+    {{ pagerfanta(resources, 'twitter_bootstrap_translated') }}
+{% endif %}
+
+{{ macros.list(promotions) }}
+
+{% if resources.haveToPaginate()%}
+    {{ pagerfanta(resources, 'twitter_bootstrap_translated') }}
+{% endif %}

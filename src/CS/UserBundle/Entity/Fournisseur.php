@@ -55,6 +55,23 @@ class Fournisseur extends AUser {
 	 * @ORM\Column(type="string", length=14, nullable=false)
 	 */
 	protected $siret;
+	
+	/**
+	 *
+	 *  @var \Doctrine\Common\Collections\Collection 
+	 *
+	 * @ORM\OneToMany(targetEntity="CS\ProductBundle\Entity\Product", mappedBy="fournisseur")
+	 */
+	private $products;
+	
+	
+	/**
+	 *
+	 *  @var \Doctrine\Common\Collections\Collection
+	 *
+	 * @ORM\OneToMany(targetEntity="CS\ProductBundle\Entity\Promotion", mappedBy="fournisseur")
+	 */
+	private $promotions;
 
 	/**
 	 * @ORM\PrePersist
@@ -180,5 +197,71 @@ class Fournisseur extends AUser {
 	 */
 	public function getSiret() {
 		return $this->siret;
+	}
+	
+	/**
+	 * Add product
+	 *
+	 * @param \CS\ProductBundle\Entity\Product $product
+	 * @return Fournisseur
+	 */
+	public function addProduct(\CS\ProductBundle\Entity\Product $product)
+	{
+		$this->product[] = $product;
+	
+		return $this;
+	}
+	
+	/**
+	 * Remove product
+	 *
+	 * @param \CS\ProductBundle\Entity\Product $product
+	 */
+	public function removeProduct(\CS\ProductBundle\Entity\Product $product)
+	{
+		$this->products->removeElement($products);
+	}
+	
+	/**
+	 * Get products
+	 *
+	 * @return \Doctrine\Common\Collections\Collection
+	 */
+	public function getProducts()
+	{
+		return $this->products;
+	}
+	
+	/**
+	 * Add promotion
+	 *
+	 * @param \CS\ProductBundle\Entity\Promotion $promotion
+	 * @return Fournisseur
+	 */
+	public function addPromotion(\CS\ProductBundle\Entity\Promotion $promotion)
+	{
+		$this->promotions[] = $promotion;
+	
+		return $this;
+	}
+	
+	/**
+	 * Remove promotion
+	 *
+	 * @param \CS\ProductBundle\Entity\Product $promotion
+	 */
+	public function removePromotion(\CS\ProductBundle\Entity\Promotion $promotion)
+	{
+		$this->promotions->removeElement($promotion);
+	}
+	
+	/**
+	 * Get promotion
+	 *
+	 * @return \Doctrine\Common\Collections\Collection
+	 */
+	public function getPromotions()
+	{
+		return $this->promotions;
 	}
 }

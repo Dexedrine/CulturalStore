@@ -20,9 +20,12 @@ class ProductController extends Controller
 	
 	public function indexAction(Request $request){
 		
-		$repository = $this->getDoctrine()->getRepository('CSProductBundle:Product');;
+		$repository = $this->getDoctrine()->getRepository('CSProductBundle:Product');
 		
-		$productPaginator = $repository->createPaginator();
+		$security = $this->get('security.context');
+		$four = $security->getToken()->getUser();
+		
+		$productPaginator = $repository->createPaginator($four);
 		
 		$productPaginator
 			->setCurrentPage($request->get('page', 1), true, true)
@@ -38,6 +41,9 @@ class ProductController extends Controller
 	{
 		$entityManager = $this->getDoctrine()->getManager();
 		
+		$security = $this->get('security.context');
+		$four = $security->getToken()->getUser();
+		
 		$product = new Video();
 		
 		$form = $this->createForm(new VideoType(), $product);
@@ -48,7 +54,7 @@ class ProductController extends Controller
 			$theme = $this->getDoctrine()
 			->getRepository('CSCommunityBundle:Theme')
 			->findOneByTitle('Cinema');
-				
+			$product->setFournisseur($four);
 			$product->setTheme($theme);
 			
 			$product->upload();
@@ -64,7 +70,12 @@ class ProductController extends Controller
 	
 	public function createMusicAction(Request $request)
 	{
+		$security = $this->get('security.context');
+		$four = $security->getToken()->getUser();
+		
 		$entityManager = $this->getDoctrine()->getManager();
+		
+		
 		$product =$product = new Music();
 		
 		$form = $this->createForm(new MusicType(), $product);
@@ -76,7 +87,7 @@ class ProductController extends Controller
 			->findOneByTitle('Musique');
 				
 			$product->setTheme($theme);
-			
+			$product->setFournisseur($four);
 			$product->upload();
 
 			$entityManager->persist($product);
@@ -91,6 +102,8 @@ class ProductController extends Controller
 
 	public function createBookAction(Request $request)
 	{			
+		$security = $this->get('security.context');
+		$four = $security->getToken()->getUser();
 		$entityManager = $this->getDoctrine()->getManager();
 		$product = $product = new Book();
 		
@@ -103,7 +116,7 @@ class ProductController extends Controller
 			->findOneByTitle('Livres');
 				
 			$product->setTheme($theme);
-			
+			$product->setFournisseur($four);
 			$product->upload();
 
 			$entityManager->persist($product);
@@ -118,6 +131,8 @@ class ProductController extends Controller
 	
 	public function createGameAction(Request $request)
 	{
+		$security = $this->get('security.context');
+		$four = $security->getToken()->getUser();
 		$entityManager = $this->getDoctrine()->getManager();
 		$product = $product = new Game();
 		
@@ -129,7 +144,7 @@ class ProductController extends Controller
 			->findOneByTitle('Jeux videos');
 				
 			$product->setTheme($theme);
-			
+			$product->setFournisseur($four);
 			$product->upload();
 	
 			$entityManager->persist($product);
@@ -144,6 +159,8 @@ class ProductController extends Controller
 	
 	public function createTicketAction(Request $request)
 	{
+		$security = $this->get('security.context');
+		$four = $security->getToken()->getUser();
 		$entityManager = $this->getDoctrine()->getManager();
 		$product =$product = new Ticket();
 		
@@ -156,6 +173,7 @@ class ProductController extends Controller
 			->findOneByTitle('Spectacles');
 			
 			$product->setTheme($theme);
+			$product->setFournisseur($four);
 			
 			$product->upload();
 	

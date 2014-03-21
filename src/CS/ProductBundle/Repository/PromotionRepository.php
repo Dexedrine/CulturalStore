@@ -7,14 +7,14 @@ use Doctrine\ORM\QueryBuilder;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 
-class ProductPaginator extends BaseEntityRepository {
+class PromotionRepository extends BaseEntityRepository {
 	
 	public function createPaginator($fournisseur) {
 			
 		$queryBuilder = $this->createQueryBuilder('p')
-							->join('p.fournisseur', 'f')
-							->where('f.id = :fournisseur_id')
-							->setParameter('fournisseur_id', $fournisseur->getId());
+							->where('p.fournisseur = :fournisseur ')
+							->orderBy('p.beginDate', 'DESC')
+							->setParameter('fournisseur', $fournisseur);
 		
 		return $this->getPaginator ( $queryBuilder );
 	}

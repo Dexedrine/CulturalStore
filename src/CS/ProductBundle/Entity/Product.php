@@ -7,6 +7,7 @@ use DoctrineExtensions\Taggable\Taggable;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * CS\ProductBundle\Entity\Product
@@ -108,6 +109,22 @@ class Product implements Taggable {
 	 * @ORM\JoinColumn(name="fournissuer_id", referencedColumnName="id")
 	 */
 	private $fournisseur;
+	
+	/**
+	 *
+	 * @var \Doctrine\Common\Collections\Collection
+	 *
+	 * @ORM\ManyToMany(targetEntity="CS\ProductBundle\Entity\Promotion", inversedBy="products")
+	 *      @ORM\JoinTable(name="product_promotion",
+	 *      joinColumns={
+	 *      @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+	 *      },
+	 *      inverseJoinColumns={
+	 *      @ORM\JoinColumn(name="promotion_id", referencedColumnName="id")
+	 *      }
+	 *      )
+	 */
+	private $promotions;
 	
 	/**
 	 * Constructor.
@@ -217,7 +234,59 @@ class Product implements Taggable {
 		return $this->file = $file;
 	}
 	
+	public function hasPromotionOnSameDate($managedPromotion){
+		$datedebut= $managedPromotion->getBeginDate()->format('d/m/Y');
+		$datefin= $managedPromotion->getEndDate()->format('d/m/Y');
+			
+		$ddebut = explode("/", $datedebut);
+		$dfin = explode("/", $datefin);
+			
+		$debutmanagedpro = $ddebut[2].$ddebut[1].$ddebut[0];
+		$finmanagedpro = $dfin[2].$dfin[1].$dfin[0];
+		
+		foreach ($this->promotions as $promotion) { 
+			
+			$datedebut= $promotion->getBeginDate()->format('d/m/Y');
+			$datefin= $promotion->getEndDate()->format('d/m/Y');
+				
+			$ddebut = explode("/", $datedebut);
+			$dfin = explode("/", $datefin);
+				
+			$debutpro = $ddebut[2].$ddebut[1].$ddebut[0];
+			$finpro = $dfin[2].$dfin[1].$dfin[0];
+			if ($debutmanagedpro >= $debutpro  && $debutmanagedpro <= $finpro
+				|| $finmanagedpro >= $debutpro  && $finmanagedpro <= $finpro
+				|| $debutpro >= $debutmanagedpro  && $debutpro <= $finmanagedpro
+				|| $finpro >= $debutmanagedpro  && $finpro <= $finmanagedpro
+)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 	
+	public function getCurrentPromotion(){
+		foreach ($this->promotions as $promotion) {
+			$datejour = date('d/m/Y');
+			$datedebut= $promotion->getBeginDate()->format('d/m/Y');
+			$datefin= $promotion->getEndDate()->format('d/m/Y');
+			
+			$ddebut = explode("/", $datedebut);
+			$dfin = explode("/", $datefin);
+			
+			$djour = explode("/", $datejour);
+			$debutpro = $ddebut[2].$ddebut[1].$ddebut[0];
+			$finpro = $dfin[2].$dfin[1].$dfin[0];
+			$auj = $djour[2].$djour[1].$djour[0];
+
+			if ($auj >= $debutpro  && $auj <= $finpro)
+			{
+				return $promotion;
+			}
+		}
+		return null;
+	}
 
     /**
      * Get id
@@ -524,6 +593,39 @@ class Product implements Taggable {
     public function getComments()
     {
         return $this->comments;
+    }
+    
+    /**
+     * Add promotion
+     *
+     * @param \CS\ProductBundle\Entity\Promotion $promotion
+     * @return Product
+     */
+    public function addPromotion(\CS\ProductBundle\Entity\Promotion $promotion)
+    {
+    	$this->promotions[] = $promotion;
+    
+    	return $this;
+    }
+    
+    /**
+     * Remove promotion
+     *
+     * @param \CS\ProductBundle\Entity\Promotion $promotion
+     */
+    public function removePromotion(\CS\ProductBundle\Entity\Promotion $promotion)
+    {
+    	$this->promotions->removeElement($promotion);
+    }
+    
+    /**
+     * Get promotions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPromotions()
+    {
+    	return $this->promotions;
     }
 
 }

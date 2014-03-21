@@ -1,0 +1,20 @@
+cs_product_promotion_index:
+    pattern: /
+    defaults:  { _controller: "CSProductBundle:Promotion:index" }
+
+
+cs_product_add_promotion:
+    pattern: /add_promotion
+    defaults:  { _controller: "CSProductBundle:Promotion:addPromotion" }
+
+cs_product_manage_promotion:
+    pattern: /manage_promotion/{promotion_id}
+    defaults:  { _controller: "CSProductBundle:Promotion:managePromotion" }
+
+cs_product_add_product_to_promotion:
+    pattern: /add_product_to_promotion/{promotion_id}/{product_id}
+    defaults:  { _controller: "CSProductBundle:Promotion:addProductToPromotion" }
+    
+cs_product_remove_product_from_promotion:
+    pattern: /remove_product_from_promotion/{promotion_id}/{product_id}
+    defaults:  { _controller: "CSProductBundle:Promotion:removeProductFromPromotion" }

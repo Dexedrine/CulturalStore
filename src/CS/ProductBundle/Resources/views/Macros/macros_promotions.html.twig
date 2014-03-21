@@ -1,0 +1,48 @@
+{% macro list(promotions) %}
+
+{% import 'CSProductBundle:Macros:buttons.html.twig' as buttons %}
+
+{% if promotions|length > 0 %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th> Id </th>
+            <th> Pourcentage </th>
+            <th> Date de d&eacutebut </th>
+            <th> Date de fin  </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for promotion in promotions %}
+        <tr>
+            <td>
+                <a href="{{ path('cs_product_manage_promotion', {'promotion_id': promotion.id}) }}" class="btn btn-link">
+                    {{ promotion.id }}
+                </a>
+            </td>
+            <td>
+                <strong>{{ promotion.percentage }}</strong>
+                
+            </td>
+            <td><span class="label label-info">{{ promotion.beginDate|date }}</span></td>
+            <td><span class="label label-info">{{ promotion.endDate|date }}</span></td>
+            <td>
+                <div class="pull-right">
+                    {{ buttons.manage(path('cs_product_manage_promotion', {'promotion_id': promotion.id})) }}
+                    {# buttons.edit(path('cs_product_update', {'id': product.id})) #}
+                    {# buttons.delete(path('cs_product_delete', {'id': product.id})) #}
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-info">
+    <h4 class="alert-heading">Information</h4>
+    Aucune promotion
+</div>
+{% endif %}
+
+{% endmacro %}

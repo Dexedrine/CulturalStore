@@ -66,7 +66,8 @@ class Utilisateur extends AUser implements Taggable{
 	
 	/**
 	 *
-	 * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="CS\CommunityBundle\Entity\Community")
+	 * @var \Doctrine\Common\Collections\Collection 
+	 * @ORM\ManyToMany(targetEntity="CS\CommunityBundle\Entity\Community")
 	 *      @ORM\JoinTable(name="community_user",
 	 *      joinColumns={
 	 *      @ORM\JoinColumn(name="user_id", referencedColumnName="id")

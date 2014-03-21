@@ -1,0 +1,43 @@
+{% extends 'CSFournisseurBundle:Commun:communFournisseur.html.twig' %} 
+
+{% block css %}
+	<link href="{{ asset('bundles/csdesign/css/datepicker.css') }}" type="text/css" rel="stylesheet" />	
+	<link rel="stylesheet/less" type="text/css" href="{{ asset('bundles/csdesign/css/datepicker.css') }}" />
+{% endblock %}
+{% block js %}
+	<script language="JavaScript" src="{{ asset('bundles/csdesign/js/bootstrap-datepicker.js') }}"></script>
+	<script language="JavaScript" src="{{ asset('bundles/csdesign/js/less.js') }}"></script>				
+{% endblock %}
+
+{% block body %}
+<form action="{{ path('cs_product_add_promotion') }}" method="post" {{ form_enctype(form) }}
+	class="form-horizontal" >
+
+	{{ form_errors(form) }}
+	
+		{{ form_row(form.percentage) }}
+		{{  form_label(form.beginDate,'Date de debut') }}
+		{{  form_errors(form.beginDate) }}
+		<div id="dp3" class="input-append date" data-date-format="dd/mm/yyyy" data-date="{{ "now"|date("d/m/Y") }}">
+			{{ form_widget(form.beginDate) }}
+			<span class="add-on">
+				<i class="icon-calendar"></i>
+			</span>
+		</div>
+		{{ form_label(form.endDate,'Date de fin') }}
+		{{  form_errors(form.beginDate) }}
+		<div id="dp3" class="input-append date" data-date-format="dd/mm/yyyy" data-date="{{ "now"|date("d/m/Y") }}">
+			{{ form_widget(form.endDate) }}
+			<span class="add-on">
+				<i class="icon-calendar"></i>
+			</span>
+		</div>
+			
+			
+		
+	<br /> <input type="submit" name="add_promotion_submit" id="add_promotion_submit" value="Valider" />
+
+	{{ form_rest(form) }}
+</form>
+
+{% endblock %}

@@ -5,7 +5,11 @@ cs_product:
 cs_product_comment:
     resource: "@CSProductBundle/Resources/config/routing/comment.yml"
     prefix: /comments
-    
+   
+cs_product_promotion:
+    resource: "@CSProductBundle/Resources/config/routing/promotions.yml"
+    prefix: /promotions
+ 
 search_product_by_type:
     pattern: /product/{type}
     methods: [GET]

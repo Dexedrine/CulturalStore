@@ -1,0 +1,22 @@
+{% import 'CSProductBundle:Macros:buttons.html.twig' as buttons %}
+{% import 'CSProductBundle:Macros:macros_products_promotion.html.twig' as macros %}
+
+
+
+<h1>Promotion de  {{ promotion.percentage }} %</h1>
+
+Du <span class="label label-info">{{ promotion.beginDate|date('d/m/Y') }}</span> 
+
+Au <span class="label label-info">{{ promotion.endDate|date('d/m/Y') }}</span>
+
+<hr />
+
+{% if resources.haveToPaginate() %}
+    {{ pagerfanta(resources, 'twitter_bootstrap_translated') }}
+{% endif %}
+
+{{ macros.list(promotion,products) }}
+
+{% if resources.haveToPaginate()%}
+    {{ pagerfanta(resources, 'twitter_bootstrap_translated') }}
+{% endif %}

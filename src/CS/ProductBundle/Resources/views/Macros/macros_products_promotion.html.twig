@@ -1,0 +1,71 @@
+{% macro list(promotion,products) %}
+
+{% import 'CSProductBundle:Macros:buttons.html.twig' as buttons %}
+
+{% if products|length > 0 %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th> Id </th>
+            <th> Nom </th>
+            <th> Promotion </th>
+            <th> Du </th>
+            <th> Au </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for product in products %}
+        <tr>
+            <td>
+                 {{ product.id }}
+            </td>
+            <td>
+               	 <strong>{{ product.name }}</strong>
+            </td>
+            {% set currentPromotion = product.currentPromotion %}
+            {% if currentPromotion %}
+            	<td>{{ currentPromotion.percentage }}</td>
+            	<td><span class="label label-info">{{ product.currentPromotion.beginDate|date }}</span></td>
+            	<td><span class="label label-info">{{ product.currentPromotion.endDate|date }}</span></td>
+            {% else %}
+            	<td></td>
+            	<td></td>
+            	<td></td>
+           	{% endif %}
+           	
+            {% if currentPromotion and currentPromotion.id == promotion.id %}
+            	<td>
+            		<div class="pull-right">
+	                	<a href="{{ path('cs_product_remove_product_from_promotion', 
+	                    					{'promotion_id': promotion.id,'product_id': product.id}) }}" class="btn btn-primary">
+						    <i class="glyphicon glyphicon-pencil"></i><span>Supprimer de la promotion</span>
+						</a>
+                	</div>
+                </td>
+            {% else %}
+            	{% if product.hasPromotionOnSameDate(promotion)  %}
+	            	<td> <span class="pull-right">D&eacute;j&agrave; une promotion pour ces dates.</span> </td>
+	           	{% else %}
+		            <td>
+		                <div class="pull-right">
+		                	<a href="{{ path('cs_product_add_product_to_promotion', 
+		                    					{'promotion_id': promotion.id,'product_id': product.id}) }}" class="btn btn-primary">
+							    <i class="glyphicon glyphicon-pencil"></i><span>Ajouter &agrave; la promotion</span>
+							</a>
+		                </div>
+		            </td>
+		        {% endif %}    
+	        {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-info">
+    <h4 class="alert-heading">Information</h4>
+    Aucun produit
+</div>
+{% endif %}
+
+{% endmacro %}
