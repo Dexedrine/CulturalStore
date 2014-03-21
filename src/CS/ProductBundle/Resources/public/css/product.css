@@ -19,6 +19,14 @@
 	border-radius: 4px;
 	font-size: 20px;
 }
+.percentage{
+	padding: 2px 5px;
+	background-color:#95CDE9;
+	color: #666666;
+	font-weight: bold;
+	border-radius: 4px;
+	font-size: 20px;
+}
 
 .properties{
 	margin-top: 20px;	

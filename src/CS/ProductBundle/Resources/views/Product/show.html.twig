@@ -1,4 +1,9 @@
-{% extends 'CSDesignBundle:Commun:commun.html.twig' %} 
+{% if is_granted("ROLE_CLIENT") %}
+	{% set extendedPath = 'CSDesignBundle:Commun:commun.html.twig' %} 
+{% elseif is_granted("ROLE_FOURNISSEUR")  %}
+	{% set extendedPath = 'CSFournisseurBundle:Commun:communFournisseur.html.twig' %}
+{% endif %}
+{% extends extendedPath %}
 
 {% block css %}
 	<link href="{{ asset('bundles/csproduct/css/product.css') }}"  type="text/css" rel="stylesheet" />
@@ -32,7 +37,13 @@
 			<p class="description">{{ product.description|capitalize }}</p>
 
 			{% block price %} <span class="price">{{ price*100|number_format(2, ',',
-				'.') }} €</span> {% endblock %} {% endblock general%}
+				'.') }} €</span> {% endblock %} 
+			 {% set currentPromotion = product.currentPromotion %}
+            {% if currentPromotion %}
+            	<span class="percentage">{{ "-"~currentPromotion.percentage~" %" }}</span>
+            	jusqu'au <span class="label label-info">{{ product.currentPromotion.endDate|date('d/m/Y') }}</span>
+           	{% endif %}
+			{% endblock general%}
 		</div>
 
 		<div class="properties row-fluid">
@@ -42,9 +53,14 @@
 
 		<div class="row-fluid action-buttons">
 			<div class="span6">
-				<a class="btn btn-large btn-block btn-info"
+				{% if is_granted("ROLE_CLIENT") %}
+					<a class="btn btn-large btn-block btn-info"
 					href="{{ path("add_product",{"product_id" : product.id}) }}"><i
 					class="icon-shopping-cart"></i>Ajouter au panier</a>
+				{% elseif is_granted("ROLE_FOURNISSEUR")  %}
+					<a class="btn btn-large btn-block btn-info">
+						<i	class="icon-shopping-cart"></i>Ajouter au panier</a>
+				{% endif %}
 			</div>
 		</div>
 	</div>
@@ -52,10 +68,14 @@
 	<div class="communities span3">
 		<div>
 			<h5>Ce produit int&eacute;resse les communaut&eacute;s&nbsp;:</h5>
-			{% render url('show_product_communities', { 'product_id' : product.id
-			}) %} <a class="btn btn-large btn-block btn-info"
-				href="{{ path('manage_community_product' , { 'product_id' : product.id }) }}">G&eacute;rer
-				les communaut&eacute;s&nbsp;</a>
+			{% render url('show_product_communities', { 'product_id' : product.id }) %} 
+			
+			{% if is_granted("ROLE_FOURNISSEUR")  %}
+				<a class="btn btn-large btn-block btn-info" href="{{ path('manage_community_product' , { 'product_id' : product.id }) }}">
+						G&eacute;rer les communaut&eacute;s&nbsp;
+				</a>
+			{% endif %}
+		
 		</div>
 	</div>
 	<div class="comment span3">

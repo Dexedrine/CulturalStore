@@ -11,6 +11,8 @@
             <th> Description </th>
             <th> Type du produit </th>
             <th> Cr&eacute;&eacute; le </th>
+            <th> Promotion </th>
+            <th> Jusqu'au </th>
             <th></th>
         </tr>
     </thead>
@@ -30,6 +32,14 @@
             <td>{{ product.description }}</td>
             <td>{{ product.productType }}</td>
             <td><span class="label label-info">{{ product.createdAt|date }}</span></td>
+            {% set currentPromotion = product.currentPromotion %}
+             {% if currentPromotion %}
+            	<td>{{ currentPromotion.percentage }} %</td>
+            	<td><span class="label label-info">{{ product.currentPromotion.endDate|date }}</span></td>
+            {% else %}
+            	<td></td>
+            	<td></td>
+           	{% endif %}
             <td>
                 <div class="pull-right">
                     {{ buttons.show(path('cs_product_show', {'id': product.id})) }}

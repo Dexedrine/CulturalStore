@@ -8,7 +8,7 @@
         <tr>
             <th> Id </th>
             <th> Nom </th>
-            <th> Promotion </th>
+            <th> Promotion en cours</th>
             <th> Du </th>
             <th> Au </th>
             <th></th>
@@ -25,7 +25,7 @@
             </td>
             {% set currentPromotion = product.currentPromotion %}
             {% if currentPromotion %}
-            	<td>{{ currentPromotion.percentage }}</td>
+            	<td>{{ currentPromotion.percentage }} %</td>
             	<td><span class="label label-info">{{ product.currentPromotion.beginDate|date }}</span></td>
             	<td><span class="label label-info">{{ product.currentPromotion.endDate|date }}</span></td>
             {% else %}
