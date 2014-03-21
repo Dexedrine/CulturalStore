@@ -188,19 +188,29 @@ class ProductController extends Controller
 	}
 
 	function showCreatedProduct($product,$price, $image){
+		$security = $this->get('security.context');
+		$four = $security->getToken()->getUser();
 		return $this->render('CSProductBundle:Product:show.html.twig'
-				,array('product' => $product,'price' => $price, 'image' => $image));
+				,array('product' => $product,
+						'price' => $price, 
+						'image' => $image,
+						'userConnecte' => $four));
 	}
 	
 	function showProductAction($id){
+		$security = $this->get('security.context');
+		$userConnecte = $security->getToken()->getUser();
 		$product = $this->getDoctrine()
 			->getRepository('CSProductBundle:Product')
 			->findOneById(intval($id));
-		$price = intval($product->getPrice())/100;
+		$price = $product->getPrice();
 		$image = $product->getImage();
 		
 		return $this->render('CSProductBundle:Product:show.html.twig'
-				,array('product' => $product,'price' => $price, 'image' => $image));
+				,array('product' => $product,
+						'price' => $price, 
+						'image' => $image,
+						'userConnecte' => $userConnecte));
 
 	}
 

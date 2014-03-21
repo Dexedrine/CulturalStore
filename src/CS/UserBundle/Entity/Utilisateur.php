@@ -94,6 +94,19 @@ class Utilisateur extends AUser implements Taggable{
 	 */
 	private $optin_newsletter;
 
+	
+	
+	public function hasAlreadyBought($product){
+		foreach ($this->orders as $order){
+			foreach ($order->getProducts() as $boughtProduct){
+				if($boughtProduct->getId() == $product->getId() ){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 	/**
 	 * Set nom
 	 *
