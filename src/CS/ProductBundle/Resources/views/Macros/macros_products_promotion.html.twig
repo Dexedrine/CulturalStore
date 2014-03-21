@@ -26,15 +26,15 @@
             {% set currentPromotion = product.currentPromotion %}
             {% if currentPromotion %}
             	<td>{{ currentPromotion.percentage }} %</td>
-            	<td><span class="label label-info">{{ product.currentPromotion.beginDate|date }}</span></td>
-            	<td><span class="label label-info">{{ product.currentPromotion.endDate|date }}</span></td>
+            	<td><span class="label label-info">{{ product.currentPromotion.beginDate|date('d/m/Y') }}</span></td>
+            	<td><span class="label label-info">{{ product.currentPromotion.endDate|date('d/m/Y') }}</span></td>
             {% else %}
             	<td></td>
             	<td></td>
             	<td></td>
            	{% endif %}
            	
-            {% if currentPromotion and currentPromotion.id == promotion.id %}
+            {% if product.hasAlreadyThisPromotion(promotion) %}
             	<td>
             		<div class="pull-right">
 	                	<a href="{{ path('cs_product_remove_product_from_promotion', 

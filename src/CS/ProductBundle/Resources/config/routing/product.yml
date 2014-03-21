@@ -21,7 +21,10 @@ cs_product_create_game:
 cs_product_create_ticket:
     pattern: fournisseur/new/ticket
     defaults: { _controller: "CSProductBundle:Product:createTicket" }
-            
+  
+cs_product_download:
+    pattern: /download/{product_id}
+    defaults: { _controller: "CSProductBundle:Product:download" }          
 
 cs_product_show:
     pattern: /{id}

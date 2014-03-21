@@ -8,8 +8,9 @@
 
 <h1>Liste de vos promotions </h1>
 <hr />
-{{ buttons.create(path('cs_product_add_promotion')) }}
-
+<a href="{{ path('cs_product_add_promotion') }}" class="btn btn-primary">
+    <i class="glyphicon glyphicon-plus-sign"></i><span>Cr&eacute;er une promotion</span>
+</a>
 {% if resources.haveToPaginate() %}
     {{ pagerfanta(resources, 'twitter_bootstrap_translated') }}
 {% endif %}

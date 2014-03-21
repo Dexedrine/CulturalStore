@@ -33,7 +33,7 @@ class ProductType extends AbstractType
             ->add('image', 'text', array(
             		'label' => 'URL de l\'image'
             ))
-            ->add('path', 'file', array(
+            ->add('file', 'file', array(
             		'label' => 'Fichier'
             ))
         ;

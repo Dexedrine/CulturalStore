@@ -133,6 +133,7 @@ class Product implements Taggable {
 		$this->createdAt = new \DateTime ();
 		$this->communities = new ArrayCollection();
 		$this->comments = new ArrayCollection();
+		$this->promotions = new ArrayCollection();
 	}
 	
 	/**
@@ -145,13 +146,29 @@ class Product implements Taggable {
 	 */
 	public $path;
 	
+	/**
+	 * @ORM\Column()
+	 * @Assert\NotBlank
+	 */
+	private $mimeType;
+	
+	
+	public function setMimeType($mimeType) {
+		$this->mimeType = $mimeType;
+		return $this;
+	}
+	
+	public function getMimeType() {
+		return $this->mimeType;
+	}
+	
 	public function getAbsolutePath() {
 		return null === $this->path ? null : $this->getUploadRootDir () . '/' . $this->path;
 	}
 	public function getWebPath() {
 		return null === $this->path ? null : $this->getUploadDir () . '/' . $this->path;
 	}
-	protected function getUploadRootDir() {
+	public function getUploadRootDir() {
 		// le chemin absolu du r�pertoire o� les documents upload�s doivent �tre sauvegard�s
 		return __DIR__ . '/../../../../tmp/' . $this->getUploadDir ();
 	}
@@ -219,6 +236,7 @@ class Product implements Taggable {
 		}
 	}
 	
+	
 	public function upload() {
 		if (null === $this->file) {
 			return;
@@ -231,7 +249,18 @@ class Product implements Taggable {
 		$this->file = null;
 	}
 	public function setFile($file) {
+		$this->setMimeType($file->getMimeType());
 		return $this->file = $file;
+	}
+	
+	public function hasAlreadyThisPromotion($promotion){
+		foreach ($this->promotions as $p){
+			if( $p->getId() == $promotion->getId()){
+				return true;
+			}
+		}
+		return false;
+		
 	}
 	
 	public function hasPromotionOnSameDate($managedPromotion){

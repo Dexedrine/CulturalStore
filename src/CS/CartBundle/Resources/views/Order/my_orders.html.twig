@@ -7,9 +7,13 @@
 <script language="JavaScript">
 	$(document).ready(function(){
 		$('.order-line').click(function(){
-			$(this).closest('tr').next().toggle();
+			var order_item = $(this).attr('id') ;
+			console.log(order_item);
+			$(".order-item#"+order_item).toggle();
 		});
+		
 	});
+	
 </script>
 {% endblock %}
 
@@ -25,23 +29,29 @@
 	<thead>
 		<tr>
 			<th>N° de commande</th>
+			<th>D&eacute;tail<th>
 			<th>Date</th>
 			<th>Montant total</th>
 		</tr>
 	</thead>
 	<tbody>
 		{% for order in user.orders %}
-			<tr class="order-line">
-				<td class='order-id'>{{ order.id }}</td>
+			<tr id="order-{{ order.id }}" class="order-line">
+				<td  class='order-id'>{{ order.id }}</td>
+				<td><i class="icon-large icon-list"></i></td>
+				<td></td>
 				<td>{{ order.date|date("d/m/Y")}}</td>
 				<td>{{ order.totalprice|number_format(2, ',', '.') }} €</td>	
 			</tr>			
-			<tr class="order-item"><td>
-			{% for product in order.products %}				
-					<p>{{ product.name }}
-					{{ product.price |number_format(2, ',', '.') }} €</p>				
-			{% endfor %}
-			</td></tr>
+			
+			{% for product in order.products %}	
+				<tr  id="order-{{ order.id }}" class="order-item">
+					<td></td>			
+					<td>{{ product.name }}</td>
+					<td><a href="{{ path('cs_product_download',{ 'product_id' : product.id  }) }}">T&eacute;l&eacute;charger </a></td>		
+				</tr>		
+			{% endfor %}			
+			
 			
 		{% endfor %}
 	</tbody>

@@ -4,6 +4,7 @@ namespace CS\ProductBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use CS\ProductBundle\Entity\Book;
 use CS\ProductBundle\Entity\Game;
 use CS\ProductBundle\Entity\Music;
@@ -219,5 +220,25 @@ class ProductController extends Controller
 		return $this->render('CSProductBundle:Product:create.html.twig'
 				,array('form' => $form->createView(), 'type' => $type ));
 		
+	}
+	
+	public function downloadAction($product_id)
+	{
+		$em = $this->getDoctrine()->getEntityManager();
+	
+		$product = $em->getRepository('CSProductBundle:Product')->findOneById($product_id);
+	
+		if (!$product) {
+			throw $this->createNotFoundException('Unable to find the product');
+		}
+	
+		$headers = array(
+				'Content-Type' => $product->getMimeType(),
+				'Content-Disposition' => 'attachment; filename="'.$product->getPath().'"'
+		);
+	
+		$filename = $product->getUploadRootDir().'/'.$product->getPath();
+	
+		return new Response(file_get_contents($filename), 200, $headers);
 	}
 }

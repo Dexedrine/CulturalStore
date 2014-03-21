@@ -43,18 +43,12 @@
 			<td>{{ form_label(form.format, 'Format du fichier') }}</td>
 			<td>{{ form_widget(form.format, {'attr': {'class': ''}}) }}</td>
 		</tr>
-		Communaut&eacute;(s) disponible(s) :  <div class="modal hide" id="listTag">
-						<div class="modal-header">
-							<a class="close" data-dismiss="modal">x</a>
-							<h3>Se connecter a Cultural Store</h3>
-						</div><div class="modal-body">{# render url('show_all_communities_of',{'product_id' : product.id}) #}</div>
-				</div> <a class="btn btn-primary" data-toggle="modal" href="#listTag">Liste des tags</a>
 		<tr>
 			
 		</tr>
 		<tr>
-			<td>{{ form_label(form.path, 'T&eacute;l&eacute;charger votre fichier') }}</td>
-			<td>{{ form_widget(form.path, {'attr': {'class': ''}}) }}</td>
+			<td>T&eacute;l&eacute;charger votre fichier</td>
+			<td>{{ form_widget(form.file, {'attr': {'class': ''}}) }}</td>
 		</tr>
 		
 	</table>
