@@ -6,7 +6,7 @@
 		</br>
 		{% for comment in comments %}
 		<h6>{{ comment.product.name|capitalize }}</h6>
-		<p>"{{ comment.text }}"</p>
+		<p>{{ comment.user.prenom ~" "~ comment.user.nom }} "{{ comment.text }}"</p>
 		{% endfor %}
 	</div>
 </aside>

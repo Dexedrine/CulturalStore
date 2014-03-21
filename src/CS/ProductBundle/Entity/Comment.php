@@ -45,6 +45,14 @@ class Comment{
 	protected $product;
 	
 	/**
+	 * Comment user
+	 *
+	 *  @ORM\ManyToOne(targetEntity="CS\UserBundle\Entity\Utilisateur")
+	 *  @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+	 */
+	protected $user;
+	
+	/**
 	 * Creation time.
 	 *
 	 * @var \DateTime
@@ -139,6 +147,29 @@ class Comment{
     public function getProduct()
     {
         return $this->product;
+    }
+    
+    /**
+     * Set user
+     *
+     * @param \CS\UserBundle\Entity\Utilisateur $user
+     * @return Comment
+     */
+    public function setUser(\CS\UserBundle\Entity\Utilisateur $user = null)
+    {
+    	$this->user = $user;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get user
+     *
+     * @return \CS\UserBundle\Entity\Utilisateur
+     */
+    public function getUser()
+    {
+    	return $this->user;
     }
     
     /**

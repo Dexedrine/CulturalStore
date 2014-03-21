@@ -16,21 +16,37 @@ class CommentController extends Controller
 		$security = $this->get('security.context');
 		$user = $security->getToken()->getUser();
 		
+		$purchasedProducts = $user->getPurchasedProducts();
+		$showForm = false;
+		foreach ($purchasedProducts as $purchasedProduct){
+			if ($purchasedProduct->getId() == $product_id){
+				$showForm = true;
+			}
+		}
 		
-		$comment = new Comment();
-		
+		$product = $this->getDoctrine()
+		->getRepository('CSProductBundle:Product')
+		->findOneById($product_id);
+		$comment = null ;
+		foreach ( $product->getComments() as $productComment){
+			if($productComment->getUser()->getId() == $user->getId()){
+				$comment = $productComment;
+			}
+		}
+		if($comment == null ){
+			$comment = new Comment();
+		}
 		$form = $this->createForm(new CommentType(), $comment);
 		
 	
 		if ($request->isMethod('POST') && $form->bind($request)->isValid()) {
 			
 			
-			$product = $this->getDoctrine()
-			->getRepository('CSProductBundle:Product')
-			->findOneById($product_id);
+			
 				
 			$product->addComment($comment);
 			$comment->setProduct($product);
+			$comment->setUser($user);
 			
 			
 			$entityManager->persist($comment);
@@ -39,8 +55,20 @@ class CommentController extends Controller
 			return $this->redirect($this->generateUrl('cs_product_show',array('id'=>$product->getId())));
 		}
 		return $this->render('CSProductBundle:Comment:addComment.html.twig'
-				,array('form' => $form->createView() , 'product_id' => $product_id));
+				,array('form' => $form->createView() , 'product_id' => $product_id, 'showForm' => $showForm));
 	}
+	
+
+	public function showCommentAction($product_id) {
+		$product = $this->getDoctrine()
+		->getRepository('CSProductBundle:Product')
+		->findOneById($product_id);
+		
+		return $this->render ( 'CSProductBundle:Comment:showComment.html.twig', array (
+				'comments' => $product->getComments()->slice( 0, 5)
+		) );
+	}
+	
 	public function getTop5Action() {
 		$finder = $this->container->get ( 'fos_elastica.finder.website.comment' );
 		$query = new \Elastica\Query(array(

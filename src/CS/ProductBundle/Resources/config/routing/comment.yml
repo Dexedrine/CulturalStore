@@ -1,3 +1,7 @@
 cs_product_add_comment:
     pattern: /add_comment/{product_id}
     defaults:  { _controller: "CSProductBundle:Comment:addComment" }
+
+cs_product_show_comment:
+    pattern: /show_comment/{product_id}
+    defaults:  { _controller: "CSProductBundle:Comment:showComment" }

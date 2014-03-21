@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use CS\CartBundle\Entity\Cart;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
+use CS\ProductBundle\Entity\Product;
 
 
 // (repositoryClass="CS\UserBundle\Repository\UtilisateurRepository")
@@ -296,6 +297,16 @@ class Utilisateur extends AUser implements Taggable{
     public function getOrders()
     {
         return $this->orders;
+    }
+    
+    public function getPurchasedProducts(){
+    	$purchasedProducts = new \Doctrine\Common\Collections\ArrayCollection();
+    	foreach ($this->orders as $order){
+    		foreach ($order->getProducts() as $product ){
+    			$purchasedProducts[] = $product;
+    		}
+    	}
+    	return $purchasedProducts;
     }
     
     /**

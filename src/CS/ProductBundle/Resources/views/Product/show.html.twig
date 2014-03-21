@@ -63,5 +63,6 @@
 			{% render url('cs_product_add_comment',{ 'product_id' : product.id }) %}
 		{% endif %}
 	</div>
+	{% render url('cs_product_show_comment',{ 'product_id' : product.id }) %}
 </div>
 {% endblock body %}
