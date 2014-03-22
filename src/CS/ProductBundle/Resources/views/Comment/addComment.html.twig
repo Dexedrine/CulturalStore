@@ -1,7 +1,48 @@
+<script type="text/javascript">
+	$(document).ready(function(){$('#note_hidden select').val(0)
+		$('.icon-star-empty').hover(function(){
+			var numstar = parseInt($(this).attr('id'));
+			for(i=1; i<=numstar;i++){
+				$('#'+i).removeClass('icon-star-empty').addClass('icon-star');
+			}	
+		},function(){
+			var numstar = parseInt($(this).attr('id'));
+			for(i=1; i<=numstar;i++){
+				if(!$('#'+i).hasClass('clicked'))
+					$('#'+i).removeClass('icon-star').addClass('icon-star-empty');
+			}			
+		});
+		$('.star').click(function(){
+			var numstar = parseInt($(this).attr('id'));
+			for(i=1; i<=5;i++){
+				$('#'+i).removeClass('clicked')
+			}
+			for(i=1; i<=numstar;i++){
+				$('#'+i).removeClass('icon-star-empty').addClass('icon-star clicked');
+			}
+			for(i=numstar+1; i<=5;i++){
+				$('#'+i).removeClass('icon-star').removeClass('clicked').addClass('icon-star-empty');
+			}
+			$('#note_hidden select').val(numstar);
+		});
+	});
+</script>
+
 {% if showForm == true %}
 	<form name="comment_form" action="{{ path('cs_product_add_comment',{'product_id' : product_id}) }}" {{ form_enctype(form) }} method="POST" class="add_comment">
+	    {{ form_errors(form) }}
+	    Note:
+		<div class="stars">
+			<i id="1" class="star icon-star-empty"></i>
+			<i id="2" class="star icon-star-empty"></i>
+			<i id="3" class="star icon-star-empty"></i>
+			<i id="4" class="star icon-star-empty"></i>
+			<i id="5" class="star icon-star-empty"></i>
+		</div>
+	    <span id="note_hidden" style="display:none;">{{ form_row(form.note) }}</span>
+	    {{ form_row(form.text) }}
+	    {{ form_rest(form) }}
 	
-	    {{ form_widget(form) }}
 	    <input type="submit" name="add_comment_submit" id="add_comment_submit" value="Valider" />
 	</form>
 {% endif %}
