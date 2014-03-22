@@ -15,12 +15,18 @@ SET search_path = public, pg_catalog;
 -- Data for Name: auser; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO auser VALUES (3, 'florian@gmail.com', 'florian@gmail.com', 'florian@gmail.com', 'florian@gmail.com', true, '8wh95t0a5c84gw8cwcoksso88c4gccc', '45Wjl+OdUo/vVogXRZx/bekiA7ax0HfIBJ8QWH+tjrPn8DOXnBBdqJQfD8odGwMCGKjruS1tcut8V/OKasjk/Q==', '2013-12-14 18:41:08', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:11:"ROLE_CLIENT";}', false, NULL, 'utilisateur');
 INSERT INTO auser VALUES (2, 'anthony@gmail.com', 'anthony@gmail.com', 'anthony@gmail.com', 'anthony@gmail.com', true, 'tqnzp44d0i8cog0sw08kw0swk088k8w', 'zbTXFWY0N59GljG3WFIcXMxbwQQc5fZbhnnrvYWsq2FmznLAL9E3Hjf7ShabfYkmGGFSZTxAHiu4mKaEitWI/Q==', '2013-12-14 18:37:53', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:11:"ROLE_CLIENT";}', false, NULL, 'utilisateur');
-INSERT INTO auser VALUES (1, 'lucille@gmail.com', 'lucille@gmail.com', 'lucille@gmail.com', 'lucille@gmail.com', true, '8k4z5d8j568s44cogoc4k4g088ckwcs', 'MBrD2t7unSxKdkMSzEwynXiCGqQdZAkkS4w8p1HuXwmMNsFI0YZGIOoePjOiuPmutM3/9nXuioNlT64LbQdcJA==', '2013-12-17 13:22:09', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:11:"ROLE_CLIENT";}', false, NULL, 'utilisateur');
+INSERT INTO auser VALUES (12, 'laurence@gmail.com', 'laurence@gmail.com', 'laurence@gmail.com', 'laurence@gmail.com', true, '3fy62uszn8qogs8w4o0w448s4s4848k', 'dAeJZkGiD4LDRYrwpOrlyEIb+J9nVipsZMUIHAwtORA0zf7LCnzztJ6XljIKxf8uWELF0kIgKQO07qkWZcd8JQ==', '2014-03-22 10:09:46', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:11:"ROLE_CLIENT";}', false, NULL, 'utilisateur');
+INSERT INTO auser VALUES (4, 'lucie@gmail.com', 'lucie@gmail.com', 'lucie@gmail.com', 'lucie@gmail.com', true, 'jk7u0jqj9n48gwg88wcs4okc8ckoc0k', 'U4dsZJi6GIxnAb2WmknM7yEkm/0Hahk2UVR3Wv9soSxvTx4cwNaHPcvxdLkuPywz4zZg50ZvpcCyinjkwCt4QA==', '2014-03-22 10:20:25', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:11:"ROLE_CLIENT";}', false, NULL, 'utilisateur');
 INSERT INTO auser VALUES (6, 'admin', 'admin', 'admin@gmail.com', 'admin@gmail.com', true, '380as61k68w0skc8g84w08owows04gc', 'r/NiWgVqdWkgNdgbwJKRZMrLW2yfg/tfvPc4e/29LG+lDh+9iJappSaOyzRVaXA/FyXoq+cwaY3eQzN6QYilJg==', '2014-03-22 09:16:39', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:10:"ROLE_ADMIN";}', false, NULL, 'admin');
 INSERT INTO auser VALUES (5, 'fournisseur@gmail.com', 'fournisseur@gmail.com', 'fournisseur@gmail.com', 'fournisseur@gmail.com', true, 'fn5sb5lpc9c8go44gskoss4cw4cw8g8', 'LqaCgr7tathnRTyEkbfW3pqmeKxSX94v5O0/5OVncMF5/FPppCO6H8UNneUWclNI68p76by2TZM6/zbf7umRMA==', '2014-03-22 09:17:45', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_FOURNISSEUR";}', false, NULL, 'fournisseur');
-INSERT INTO auser VALUES (4, 'lucie@gmail.com', 'lucie@gmail.com', 'lucie@gmail.com', 'lucie@gmail.com', true, 'jk7u0jqj9n48gwg88wcs4okc8ckoc0k', 'U4dsZJi6GIxnAb2WmknM7yEkm/0Hahk2UVR3Wv9soSxvTx4cwNaHPcvxdLkuPywz4zZg50ZvpcCyinjkwCt4QA==', '2014-03-22 09:21:31', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:11:"ROLE_CLIENT";}', false, NULL, 'utilisateur');
+INSERT INTO auser VALUES (1, 'lucille@gmail.com', 'lucille@gmail.com', 'lucille@gmail.com', 'lucille@gmail.com', true, '8k4z5d8j568s44cogoc4k4g088ckwcs', 'MBrD2t7unSxKdkMSzEwynXiCGqQdZAkkS4w8p1HuXwmMNsFI0YZGIOoePjOiuPmutM3/9nXuioNlT64LbQdcJA==', '2014-03-22 10:08:38', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:11:"ROLE_CLIENT";}', false, NULL, 'utilisateur');
+INSERT INTO auser VALUES (3, 'florian@gmail.com', 'florian@gmail.com', 'florian@gmail.com', 'florian@gmail.com', true, '8wh95t0a5c84gw8cwcoksso88c4gccc', '45Wjl+OdUo/vVogXRZx/bekiA7ax0HfIBJ8QWH+tjrPn8DOXnBBdqJQfD8odGwMCGKjruS1tcut8V/OKasjk/Q==', '2014-03-22 10:08:47', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:11:"ROLE_CLIENT";}', false, NULL, 'utilisateur');
+INSERT INTO auser VALUES (7, 'sen@gmail.com', 'sen@gmail.com', 'sen@gmail.com', 'sen@gmail.com', true, '1j9sxg4mnt6sc44o8oc0o0s0o8ogoww', '9pbCl/RE+OSQq52CTCViI/8B9fLzqP/yBKMuY6gkyLNuKG1PwHaLyzhII0sb852j4btfQIzkEYd44LMUJ77oPQ==', '2014-03-22 10:08:57', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:11:"ROLE_CLIENT";}', false, NULL, 'utilisateur');
+INSERT INTO auser VALUES (8, 'faust@gmail.com', 'faust@gmail.com', 'faust@gmail.com', 'faust@gmail.com', true, 'g8w6o08nbxckcs4o0k4c00co48kskog', 'gA6o4ly+xE/0kN4DZcpLQQjrDt4HqVaxmmsXSnL6MeY4Nd9i0YN+oh+5SN3q1FTej5k1cnwJF4lEVcKhm9JATA==', '2014-03-22 10:09:06', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:11:"ROLE_CLIENT";}', false, NULL, 'utilisateur');
+INSERT INTO auser VALUES (9, 'mathieu@gmail.com', 'mathieu@gmail.com', 'mathieu@gmail.com', 'mathieu@gmail.com', true, 'bychxm5em48wkoogkgoo0c8c8gsckkg', 'u5+oHPTGbvnYvFmujt3PTy2ec1uST/t71+0SMKI5yymvBnpZeQdJMKgxvo80zcUlswLzRI5x9QHNwCsEiseOkw==', '2014-03-22 10:09:16', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:11:"ROLE_CLIENT";}', false, NULL, 'utilisateur');
+INSERT INTO auser VALUES (10, 'anne@gmail.com', 'anne@gmail.com', 'anne@gmail.com', 'anne@gmail.com', true, '5spjboq0wco40g0wgok4scg84c8w4gs', '/OmaxiRfdLs0w3eCztlrxHY+1wYr5WiDICy4V8qJuSj60yTnS75VXYo3Ef25r80hYAe78g1lvj8eiC6ygCIi/Q==', '2014-03-22 10:09:25', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:11:"ROLE_CLIENT";}', false, NULL, 'utilisateur');
+INSERT INTO auser VALUES (11, 'bernard@gmail.com', 'bernard@gmail.com', 'bernard@gmail.com', 'bernard@gmail.com', true, 'auwok93zxlsk8skkc4wg0k0kk0g088o', 'w2qf4NnGd1U1jVu0lCsipqERlpjCYfaaFp0a5XnFUfxwQPk9Zgo7O9I/T2qYj/1o0z15d7w8f9yk98P/H6LdHg==', '2014-03-22 10:09:36', false, false, NULL, NULL, NULL, 'a:1:{i:0;s:11:"ROLE_CLIENT";}', false, NULL, 'utilisateur');
 
 
 --
@@ -34,7 +40,7 @@ INSERT INTO administrateur VALUES (6);
 -- Name: auser_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('auser_id_seq', 6, true);
+SELECT pg_catalog.setval('auser_id_seq', 12, true);
 
 
 --
@@ -103,13 +109,21 @@ INSERT INTO book VALUES (12, 'English', 'livre', 'epub', 'Takami');
 --
 
 INSERT INTO cart VALUES (1);
+INSERT INTO cart VALUES (2);
+INSERT INTO cart VALUES (3);
+INSERT INTO cart VALUES (4);
+INSERT INTO cart VALUES (5);
+INSERT INTO cart VALUES (6);
+INSERT INTO cart VALUES (7);
+INSERT INTO cart VALUES (8);
+INSERT INTO cart VALUES (9);
 
 
 --
 -- Name: cart_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('cart_id_seq', 1, true);
+SELECT pg_catalog.setval('cart_id_seq', 9, true);
 
 
 --
@@ -123,9 +137,15 @@ SELECT pg_catalog.setval('cart_id_seq', 1, true);
 --
 
 INSERT INTO utilisateur VALUES (2, NULL, 'Maia', 'Anthony', true, false);
-INSERT INTO utilisateur VALUES (3, NULL, 'Licour', 'Florian', true, false);
-INSERT INTO utilisateur VALUES (1, NULL, 'Dhaleine', 'Lucille', true, false);
 INSERT INTO utilisateur VALUES (4, 1, 'Meresse', 'Lucie', true, false);
+INSERT INTO utilisateur VALUES (1, 2, 'Dhaleine', 'Lucille', true, false);
+INSERT INTO utilisateur VALUES (3, 3, 'Licour', 'Florian', true, false);
+INSERT INTO utilisateur VALUES (7, 4, 'sen', 'le chat', true, false);
+INSERT INTO utilisateur VALUES (8, 5, 'faust', 'faust', true, false);
+INSERT INTO utilisateur VALUES (9, 6, 'm', 'm', true, false);
+INSERT INTO utilisateur VALUES (10, 7, 'a', 'a', true, false);
+INSERT INTO utilisateur VALUES (11, 8, 'a', 'a', true, false);
+INSERT INTO utilisateur VALUES (12, 9, 'a', 'a', true, false);
 
 
 --
@@ -334,6 +354,17 @@ INSERT INTO music VALUES (25, 120, 12, 'mp3', 'Marilyn Manson');
 --
 
 INSERT INTO orders VALUES (1, 4, '2014-03-22 09:22:51', 29);
+INSERT INTO orders VALUES (2, 4, '2014-03-22 09:55:36', 12);
+INSERT INTO orders VALUES (3, 4, '2014-03-22 10:08:34', 12);
+INSERT INTO orders VALUES (4, 1, '2014-03-22 10:08:43', 12);
+INSERT INTO orders VALUES (5, 3, '2014-03-22 10:08:53', 12);
+INSERT INTO orders VALUES (6, 7, '2014-03-22 10:09:03', 12);
+INSERT INTO orders VALUES (7, 8, '2014-03-22 10:09:12', 12);
+INSERT INTO orders VALUES (8, 9, '2014-03-22 10:09:22', 12);
+INSERT INTO orders VALUES (9, 10, '2014-03-22 10:09:31', 12);
+INSERT INTO orders VALUES (10, 11, '2014-03-22 10:09:42', 12);
+INSERT INTO orders VALUES (11, 12, '2014-03-22 10:09:52', 12);
+INSERT INTO orders VALUES (12, 4, '2014-03-22 10:21:51', 13);
 
 
 --
@@ -344,13 +375,24 @@ INSERT INTO order_item VALUES (1, 4);
 INSERT INTO order_item VALUES (1, 22);
 INSERT INTO order_item VALUES (1, 23);
 INSERT INTO order_item VALUES (1, 13);
+INSERT INTO order_item VALUES (2, 25);
+INSERT INTO order_item VALUES (3, 25);
+INSERT INTO order_item VALUES (4, 25);
+INSERT INTO order_item VALUES (5, 25);
+INSERT INTO order_item VALUES (6, 25);
+INSERT INTO order_item VALUES (7, 25);
+INSERT INTO order_item VALUES (8, 25);
+INSERT INTO order_item VALUES (9, 25);
+INSERT INTO order_item VALUES (10, 25);
+INSERT INTO order_item VALUES (11, 25);
+INSERT INTO order_item VALUES (12, 22);
 
 
 --
 -- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('orders_id_seq', 1, true);
+SELECT pg_catalog.setval('orders_id_seq', 12, true);
 
 
 --
@@ -405,7 +447,7 @@ SELECT pg_catalog.setval('theme_id_seq', 6, true);
 -- Data for Name: user_order; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO user_order VALUES (4, 1);
+INSERT INTO user_order VALUES (4, 12);
 
 
 --
