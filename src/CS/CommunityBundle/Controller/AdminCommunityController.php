@@ -8,6 +8,7 @@ use CS\CommunityBundle\Entity\Theme;
 use CS\CommunityBundle\Form\Type\ThemeType;
 use CS\CommunityBundle\Entity\Community;
 use CS\CommunityBundle\Form\Type\AddCommunityType;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class AdminCommunityController extends Controller
 {
@@ -81,5 +82,38 @@ class AdminCommunityController extends Controller
     	return $this
     	->render('CSCommunityBundle:Community:addCommunity.html.twig',
     			array('form' => $form->createView(), 'idtheme' => $idtheme ));
+    }
+    
+    public function valideProposedCommunityAction(Request $request){
+    	
+    	$repository = $this->getDoctrine()->getRepository('CSProductBundle:Product');
+    	
+    	$products = $repository->findAll();
+    	
+    	$productsWithProposedCommunities= new ArrayCollection();
+    	 
+    	foreach ($products as $product){
+    		if ($product->getProposedCommunities()->count() > 0){
+    			$productsWithProposedCommunities[] = $product;
+    		}
+    	}
+    	
+    	$theme = new Theme();
+    	$form = $this->createForm(new AddCommunityType(), $theme);
+    	
+    	if ($request->isMethod('POST')) {
+    		$form->bind($request);
+    	
+    		if ($form->isValid()) {
+    	
+    			
+    	
+    			return $this->redirect($this->generateUrl('cs_community_homepage'));
+    		}
+    	}
+    	
+    	return $this->render('CSCommunityBundle:Community:validerProposedCommunity.html.twig',
+    			array("products" => $productsWithProposedCommunities,"form" => $form));
+    	
     }
 }

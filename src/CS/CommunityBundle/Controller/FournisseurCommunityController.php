@@ -8,7 +8,7 @@ use CS\CommunityBundle\Entity\Theme;
 use CS\CommunityBundle\Form\Type\ThemeType;
 use CS\CommunityBundle\Entity\Community;
 use CS\CommunityBundle\Form\Type\AddCommunityType;
-use CS\CommunityBundle\Form\Type\ProposeNewCommunityType;
+use CS\CommunityBundle\Form\Type\AddProposedCommunityType;
 use CS\ProductBundle\Entity\Product;
 
 class FournisseurCommunityController extends Controller
@@ -83,6 +83,35 @@ class FournisseurCommunityController extends Controller
 		$tagManager->saveTagging($product);
 	
 		return $this->redirect($this->generateUrl('manage_community_product', array('product_id' => $product_id)));
+	}
+	
+	public function addProposedCommunityAction(Request $request,$product_id)
+	{
+		 		
+		$product = $this->getDoctrine()
+		->getRepository('CSProductBundle:Product')
+		->findOneById(intval($product_id));
+		 		
+		$proposedCommunities = $product->getProposedCommunities();
+	
+		$form = $this->createForm(new AddProposedCommunityType(), $product);
+	
+		if ($request->isMethod('POST')) {
+			$form->bind($request);
+	
+			if ($form->isValid()) {
+	
+				$em = $this->getDoctrine()->getManager();
+				$em->flush();
+	
+				return $this->redirect($this->generateUrl('manage_community_product', 
+							array('product_id' => $product_id)));
+			}
+		}
+	
+		return $this
+		->render('CSCommunityBundle:Community:addProposedCommunity.html.twig',
+				array('form' => $form->createView(), 'product_id' => $product_id ));
 	}
 	
 	public function removeCommunityProductAction($communityName,  $product_id) {

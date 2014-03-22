@@ -9,7 +9,11 @@ show_product_communities:
 add_community_product:
     pattern: /add_community/{communityName}/{product_id}
     defaults:  { _controller: "CSCommunityBundle:FournisseurCommunity:addCommunityProduct"}
-    
+  
+add_proposed_community_product:
+    pattern: /add_proposed_community/{product_id}
+    defaults:  { _controller: "CSCommunityBundle:FournisseurCommunity:addProposedCommunity"}  
+  
 remove_community_product:
     pattern: /remove_community/{communityName}/{product_id}
     defaults:  { _controller: "CSCommunityBundle:FournisseurCommunity:removeCommunityProduct"}

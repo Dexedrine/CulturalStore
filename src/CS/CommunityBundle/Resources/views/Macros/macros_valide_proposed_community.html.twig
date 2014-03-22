@@ -1,0 +1,50 @@
+{% macro list(products,form) %}
+
+
+{% if products|length > 0 %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th> Id </th>
+            <th> Nom </th>
+            <th> Description</th>
+            <th> Theme </th>
+            <th> Communaut&eacute;s propos&eacute;es </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for product in products %}
+        <tr>
+            <td>
+                 {{ product.id }}
+            </td>
+            <td>
+               	 <strong>{{ product.name }}</strong>
+            </td>
+            <td>
+               	 {{ product.description }}
+            </td>
+           	<td>
+               	 {{ product.theme.title }}
+            </td>
+            <td>
+               	{% for community in product.proposedCommunities %} 
+               			<div  id="{{ community.name }}"  class="tag label label-info" > 
+							{{ community.name }} 
+						</div>
+               	{% endfor %}
+            </td>
+            
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-info">
+    <h4 class="alert-heading">Information</h4>
+    Aucun produit
+</div>
+{% endif %}
+
+{% endmacro %}

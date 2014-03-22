@@ -5,3 +5,7 @@ create_theme:
 add_community:
     pattern: /add_community/{idtheme}
     defaults:  { _controller: "CSCommunityBundle:AdminCommunity:addCommunity" }
+
+valide_proposed_community:
+    pattern: /valide_proposed_community
+    defaults:  { _controller: "CSCommunityBundle:AdminCommunity:valideProposedCommunity" }

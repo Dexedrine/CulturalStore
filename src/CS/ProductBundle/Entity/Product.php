@@ -132,6 +132,7 @@ class Product implements Taggable {
 	public function __construct() {
 		$this->createdAt = new \DateTime ();
 		$this->communities = new ArrayCollection();
+		$this->proposedCommunities = new ArrayCollection();
 		$this->comments = new ArrayCollection();
 		$this->promotions = new ArrayCollection();
 	}
@@ -192,6 +193,22 @@ class Product implements Taggable {
 	 *      )
 	 */
 	public $communities;
+	
+	/**
+	 *
+	 * @var \Doctrine\Common\Collections\Collection
+	 *  @ORM\ManyToMany(targetEntity="CS\CommunityBundle\Entity\Community")
+	 *      @ORM\JoinTable(name="proposedCommunity_product",
+	 *      joinColumns={
+	 *      @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+	 *      },
+	 *      inverseJoinColumns={
+	 *      @ORM\JoinColumn(name="proposed_community_id", referencedColumnName="id")
+	 *      }
+	 *      )
+	 */
+	public $proposedCommunities;
+	
 	/**
 	 * Product score.
 	 *
@@ -580,6 +597,39 @@ class Product implements Taggable {
     public function getCommunities()
     {
         return $this->communities;
+    }
+    
+    /**
+     * Add proposedCommunities
+     *
+     * @param \CS\CommunityBundle\Entity\Community $proposedCommunities
+     * @return Product
+     */
+    public function addProposedCommunity(\CS\CommunityBundle\Entity\Community $proposedCommunity)
+    {
+    	$this->proposedCommunities[] = $proposedCommunity;
+    
+    	return $this;
+    }
+    
+    /**
+     * Remove $proposedCommunity
+     *
+     * @param \CS\CommunityBundle\Entity\Community $proposedCommunity
+     */
+    public function removeProposedCommunity(\CS\CommunityBundle\Entity\Community $proposedCommunity)
+    {
+    	$this->proposedCommunities->removeElement($proposedCommunity);
+    }
+    
+    /**
+     * Get $proposedCommunities
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProposedCommunities()
+    {
+    	return $this->proposedCommunities;
     }
     
     public function getProperties()

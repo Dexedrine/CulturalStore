@@ -8,6 +8,7 @@ use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
 
 class ProductPaginator extends BaseEntityRepository {
+
 	
 	public function createPaginator($fournisseur) {
 			
