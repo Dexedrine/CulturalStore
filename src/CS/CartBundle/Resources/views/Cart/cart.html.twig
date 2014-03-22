@@ -17,7 +17,7 @@ _paq.push(['addEcommerceItem',
 {% endfor %}
 // Records the cart for this visit
 _paq.push(['trackEcommerceCartUpdate',
-	99.99]); // (recommended) Cart amount
+	{{ valueCart }}]); // (recommended) Cart amount
 _paq.push(['trackPageView']);
 {% endblock %}
 
@@ -60,14 +60,22 @@ _paq.push(['trackPageView']);
             	<td>{{ currentPromotion.percentage }} %</td>
             	<td><span class="label label-info">{{ currentPromotion.endDate|date('d/m/Y') }}</span></td>
             	<td>
-            		{% set newPrice = (product.price - (product.price * currentPromotion.percentage / 100)) %}
-            		{{ newPrice|number_format(2, ',', '.') }} € 
-	            	<strike>{{ product.price|number_format(2, ',', '.') }} €</strike> 
+            		{% if product.price != 0 %}
+	            		{% set newPrice = (product.price - (product.price * currentPromotion.percentage / 100)) %}
+	            		{{ newPrice|number_format(2, ',', '.') }} € 
+		            	<strike>{{ product.price|number_format(2, ',', '.') }} €</strike>
+		            {% else %}
+		            	Gratuit
+		            {% endif %} 
             	</td>
             {% else %}
             	<td></td>
             	<td></td>
-            	<td>{{ product.price|number_format(2, ',', '.') }} €</td>
+            	{% if product.price != 0 %}
+	            		<td>{{ product.price|number_format(2, ',', '.') }} €</td>
+		            {% else %}
+		            	<td>Gratuit</td>
+		            {% endif %} 
            	{% endif %}
 		    
 		    <td class="delete"><a href="{{ path("delete_product",{"product_id" : product.id}) }}"/></td>

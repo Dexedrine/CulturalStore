@@ -12,7 +12,6 @@
 {% import 'CSProductBundle:Macros:buttons.html.twig' as buttons %} 
 
 {% block js_piwik %}
-<script>
 	_paq.push(['setEcommerceView',
 	"{{ product.id }}", // (required) SKU: Product unique identifier
 	"{{ product.name }}", // (optional) Product name
@@ -20,7 +19,6 @@
 	{{ price }} // (recommended) Product price
 	]);
 	_paq.push(['trackPageView']);
-</script>
 {% endblock %} 
 
 {% block body %}
@@ -36,8 +34,15 @@
 			<h3 class="name">{{ product.name|capitalize }}</h3>
 			<p class="description">{{ product.description|capitalize }}</p>
 
-			{% block price %} <span class="price">{{ product.price|number_format(2, ',', '.') }} €</span> {% endblock %} 
-			 {% set currentPromotion = product.currentPromotion %}
+			{% block price %} 
+				{% if price != 0 %}
+				<span class="price">{{ product.price|number_format(2, ',', '.') }} €</span> 
+				{% else %}
+				<span class="price">Gratuit</span>
+				{% endif %}
+			{% endblock %} 
+			
+			{% set currentPromotion = product.currentPromotion %}
             {% if currentPromotion %}
             	<span class="percentage">{{ "-"~currentPromotion.percentage~" %" }}</span>
             	jusqu'au <span class="label label-info">{{ product.currentPromotion.endDate|date('d/m/Y') }}</span>
@@ -54,7 +59,10 @@
 			<div class="span6">
 				{% if is_granted("ROLE_CLIENT") %}
 					{% if userConnecte.hasAlreadyBought(product) %}
-					
+						Vous avez d&eacute;j&agrave; achet&eacute; ce produit
+						<a class="btn btn-large btn-block btn-info"
+						href="{{ path('cs_product_download',{ 'product_id' : product.id  }) }}"><i
+						class="icon-download-alt"></i>T&eacute;l&eacute;charger</a>
 					{% else %}
 						<a class="btn btn-large btn-block btn-info"
 						href="{{ path("add_product",{"product_id" : product.id}) }}"><i
