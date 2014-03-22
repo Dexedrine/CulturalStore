@@ -11,11 +11,21 @@ class AdminhomepageController extends Controller {
 		$repository = $this->getDoctrine()->getRepository('CSUserBundle:Fournisseur');
 		$fournisseurs = $repository->findBy(array('enabled' => false));
 		
+		$repository = $this->getDoctrine()->getRepository('CSProductBundle:Product');
+		 
+		$products = $repository->findAll();
+		 
+		$nbCommunityToValidate = 0 ;
+		
+		foreach ($products as $product){
+			$nbCommunityToValidate += $product->getProposedCommunities()->count() 	;	
+		}
 		
 		return $this
 				->render('CSAdminBundle:Homepage:homepageAdmin.html.twig', 
 							array('user'=>$user ,
-								  'nombre_fournisseur'=> sizeof($fournisseurs)));
+								  'nombre_fournisseur'=> sizeof($fournisseurs),
+								'nombre_communaute' => $nbCommunityToValidate));
 	}
 	
 	public function showFournisseursAValiderAction(){

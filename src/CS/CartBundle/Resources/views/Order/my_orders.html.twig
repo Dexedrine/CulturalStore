@@ -46,8 +46,11 @@
 			
 			{% for product in order.products %}	
 				<tr  id="order-{{ order.id }}" class="order-item">
-					<td></td>			
-					<td>{{ product.name }}</td>
+					<td></td>	
+						
+					<td><a href="{{ path('cs_product_show', {'id': product.id}) }}" class="btn btn-link">
+                    {{ product.name }}
+               		 </a>		</td>
 					<td><a href="{{ path('cs_product_download',{ 'product_id' : product.id  }) }}">T&eacute;l&eacute;charger </a></td>		
 				</tr>		
 			{% endfor %}			

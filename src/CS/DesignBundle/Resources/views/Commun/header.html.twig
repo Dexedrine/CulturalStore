@@ -77,8 +77,9 @@
 					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme_id': 4 })) %}
 					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme_id': 5 })) %}
 					{% render(controller('CSCommunityBundle:Community:searchCommunitiesByTheme', { 'theme_id': 6 })) %}
-					
-					<li><a href="#">Mes promotions</a></li>
+					 {% if  is_granted("ROLE_CLIENT") %}
+						<li><a href="{{ path('view_orders') }}">Mes commandes</a></li>
+					{% endif %}
 					 {% if not is_granted("ROLE_CLIENT") %}
 
 					<div class="modal hide" id="accesCommunaute">

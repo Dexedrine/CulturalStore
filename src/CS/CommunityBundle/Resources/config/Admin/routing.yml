@@ -1,3 +1,7 @@
+cs_community_homepage:
+    pattern:  /
+    defaults: { _controller: "CSCommunityBundle:Community:home" }
+
 create_theme:
     pattern: /create_theme
     defaults:  { _controller: "CSCommunityBundle:AdminCommunity:createTheme" }
@@ -9,3 +13,7 @@ add_community:
 valide_proposed_community:
     pattern: /valide_proposed_community
     defaults:  { _controller: "CSCommunityBundle:AdminCommunity:valideProposedCommunity" }
+    
+cs_community_validate_communities:
+    pattern: /valide_proposed_community/{product_id}
+    defaults:  { _controller: "CSCommunityBundle:AdminCommunity:validateProposedCommunity" }

@@ -68,4 +68,11 @@ class Theme implements Taggable
 			$this->communities->add($tag);
 		}
 	}
+	public function addTag($tag) {
+		$this->communities = $this->communities ?  : new ArrayCollection ();
+		if (! $this->communities->contains ( $tag )) {
+			$this->communities->add ( $tag );
+		}
+	}
+	
 }

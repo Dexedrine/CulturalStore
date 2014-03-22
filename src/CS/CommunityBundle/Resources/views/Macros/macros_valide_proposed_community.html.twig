@@ -1,4 +1,4 @@
-{% macro list(products,form) %}
+{% macro list(products) %}
 
 
 {% if products|length > 0 %}
@@ -8,7 +8,6 @@
             <th> Id </th>
             <th> Nom </th>
             <th> Description</th>
-            <th> Theme </th>
             <th> Communaut&eacute;s propos&eacute;es </th>
             <th></th>
         </tr>
@@ -25,9 +24,6 @@
             <td>
                	 {{ product.description }}
             </td>
-           	<td>
-               	 {{ product.theme.title }}
-            </td>
             <td>
                	{% for community in product.proposedCommunities %} 
                			<div  id="{{ community.name }}"  class="tag label label-info" > 
@@ -35,7 +31,14 @@
 						</div>
                	{% endfor %}
             </td>
-            
+            <td>
+           		 <div class="pull-right">
+	                	<a href="{{ path('cs_community_validate_communities', 
+	                    					{'product_id': product.id}) }}" class="btn btn-primary">
+						    <i class="glyphicon glyphicon-pencil"></i><span>Valider</span>
+						</a>
+		         </div>
+            </td>
         </tr>
     {% endfor %}
     </tbody>

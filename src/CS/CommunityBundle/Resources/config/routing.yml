@@ -1,7 +1,3 @@
-cs_community_homepage:
-    pattern:  /
-    defaults: { _controller: "CSCommunityBundle:Community:home" }
-
 page_community:
     pattern: /page_community/{communityName}
     defaults: { _controller: "CSCommunityBundle:Community:pageCommunity" }

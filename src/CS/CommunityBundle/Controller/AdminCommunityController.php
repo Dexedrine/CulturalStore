@@ -84,13 +84,13 @@ class AdminCommunityController extends Controller
     			array('form' => $form->createView(), 'idtheme' => $idtheme ));
     }
     
-    public function valideProposedCommunityAction(Request $request){
+    public function valideProposedCommunityAction(){
     	
     	$repository = $this->getDoctrine()->getRepository('CSProductBundle:Product');
     	
     	$products = $repository->findAll();
     	
-    	$productsWithProposedCommunities= new ArrayCollection();
+    	$productsWithProposedCommunities=  array();
     	 
     	foreach ($products as $product){
     		if ($product->getProposedCommunities()->count() > 0){
@@ -98,22 +98,38 @@ class AdminCommunityController extends Controller
     		}
     	}
     	
-    	$theme = new Theme();
-    	$form = $this->createForm(new AddCommunityType(), $theme);
-    	
-    	if ($request->isMethod('POST')) {
-    		$form->bind($request);
-    	
-    		if ($form->isValid()) {
-    	
-    			
-    	
-    			return $this->redirect($this->generateUrl('cs_community_homepage'));
-    		}
-    	}
-    	
     	return $this->render('CSCommunityBundle:Community:validerProposedCommunity.html.twig',
-    			array("products" => $productsWithProposedCommunities,"form" => $form));
+    			array("products" => $productsWithProposedCommunities ));
     	
+    }
+    
+    public function validateProposedCommunityAction($product_id){
+    	 
+    	$entityManager = $this->getDoctrine()->getEntityManager();
+    	$tagManager = $this->get('fpn_tag.tag_manager');
+    	
+    	$product = $entityManager->getRepository('CSProductBundle:Product')->findOneById($product_id);
+    	$theme = $product->getTheme();
+    	$tagManager->loadTagging($product);
+    	$tagManager->loadTagging($theme);
+    	
+    	foreach ($product->getProposedCommunities() as $community){
+    		$c = $tagManager->loadOrCreateTag($community->getName());
+    		
+    		$product->removeProposedCommunity($c);
+    		$product->addCommunity($c);
+   
+    		$product->addTag($c);
+
+    		$theme->addTag($c);
+    		
+    	}
+    	$tagManager->saveTagging($product);
+    	$tagManager->saveTagging($theme);
+    	$entityManager->flush();
+    	
+    	// assign the foo tag to the post
+    	return $this->redirect($this->generateUrl('valide_proposed_community'));
+    	    	 
     }
 }
