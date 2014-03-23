@@ -339,17 +339,24 @@ footer .followUs .fb_link .twitter_link .gg_link{
 	color: #49423d;
 }
 
+/* commentaire */
+.comment{
+	min-height:15px;	
+}
+
 /* Dashboard Fournisseur*/
 .prod-line div{
     float:left; 
+    margin-right:20px;
+	padding:5px;
 }
 
 .prod-line {
     clear:both;
-    border-bottom: dotted 1px black;
-    height: 100px;
+    height: 120px;
     margin-bottom: 20px;
-    
+    background-color:#EDE8DC;
+    width:100%;    
 }
 
 .jqplot-target {
@@ -358,6 +365,20 @@ footer .followUs .fb_link .twitter_link .gg_link{
     position: relative;
 }
 
-.prod_line {
-    vertical-align: bottom;    
+.prod-id{
+	font-weight: bold;
+	font-size:20px;
 }
+
+.star{
+	font-weight:bold;
+	font-size: 20px;
+	display:block;
+	height:23px;
+	width:21px;
+	padding-top:7px;
+	padding-left:9px;
+	background: url({{ asset('bundles/csdesign/img/star.png') }});
+	background-size: 21px 25px;
+}
+

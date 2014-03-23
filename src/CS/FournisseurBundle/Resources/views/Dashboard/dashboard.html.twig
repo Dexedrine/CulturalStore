@@ -10,14 +10,14 @@
 {% endblock %}
 
 {% block body %}
-	{% for i in range(0, 3) %}
+	{% for i in range(1, 3) %}
 		<script type="text/javascript">
 	        $(document).ready(function(){
 	          /*données de vente du produit*/
 	          var data_ventes = [['Oct.', 3],['Nov.', 6], ['Déc.', 18],['Jan.', 7], ['Fév.', 9], ['Mars', 15]];
 	          /*attention le label est un ID, on ne peut pas avoir plusieurs fois le même*/
 	         
-	          var ventes = $.jqplot('ventes1', [data_ventes], {
+	          var ventes = $.jqplot('ventes'+{{ i }}, [data_ventes], {
 	            title: 'Ventes',
 	            series:[{renderer:$.jqplot.BarRenderer}],
 	            axesDefaults: {
@@ -37,7 +37,7 @@
 	          /*données de visite du produit*/
 	          var data_visites = [['Oct.', 3],['Nov.', 6], ['Déc.', 0],['Jan.', 7], ['Fév.', 9], ['Mars', 15]];
 	
-	          var visites = $.jqplot('visites1', [data_visites], {
+	          var visites = $.jqplot('visites'+{{ i }}, [data_visites], {
 	            title: 'Visites',
 	            series:[{renderer:$.jqplot.BarRenderer}],
 	            axesDefaults: {
@@ -58,16 +58,23 @@
 	
 		<div class="prod-line prod1">
 			<div class="prod-id">
-				<span>1</span>
+				<span>{{ i }}</span>
 			</div>
 		
-			<div class="prod-name">Produit 1</div>
+			<div class="prod-name">Produit {{ i }}</div>
 		
-			<div id="ventes1" class="prod-sales jqplot-target"></div>
+			<div id="ventes{{ i }}" class="prod-sales jqplot-target"></div>
 		
-			<div class="prod-note">Note</div>
+			<div class="prod-note">
+			Note:<br/>
+			<span class="star">5</span>
+			
+			<br/>Commentaires:<br/>12
+			
+			
+			</div>
 		
-			<div id="visites1" class="prod-visits jqplot-target"></div>
+			<div id="visites{{ i }}" class="prod-visits jqplot-target"></div>
 		</div>
 	{% endfor %}
 
