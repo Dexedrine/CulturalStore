@@ -316,6 +316,6 @@ class Score{
     
     	$score = $conversion * 10;
     
-    	$this->scoreConversion = $score * 4;
+    	$this->scoreConversion = round($score * 4);
     }
 }
