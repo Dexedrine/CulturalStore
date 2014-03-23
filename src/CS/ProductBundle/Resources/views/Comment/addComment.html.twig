@@ -12,7 +12,7 @@
 					$('#'+i).removeClass('icon-star').addClass('icon-star-empty');
 			}			
 		});
-		$('.star').click(function(){
+		$('.stars').click(function(){
 			var numstar = parseInt($(this).attr('id'));
 			for(i=1; i<=5;i++){
 				$('#'+i).removeClass('clicked')
@@ -32,12 +32,12 @@
 	<form name="comment_form" action="{{ path('cs_product_add_comment',{'product_id' : product_id}) }}" {{ form_enctype(form) }} method="POST" class="add_comment">
 	    {{ form_errors(form) }}
 	    Note:
-		<div class="stars">
-			<i id="1" class="star icon-star-empty"></i>
-			<i id="2" class="star icon-star-empty"></i>
-			<i id="3" class="star icon-star-empty"></i>
-			<i id="4" class="star icon-star-empty"></i>
-			<i id="5" class="star icon-star-empty"></i>
+		<div class="divstars">
+			<i id="1" class="stars icon-star-empty"></i>
+			<i id="2" class="stars icon-star-empty"></i>
+			<i id="3" class="stars icon-star-empty"></i>
+			<i id="4" class="stars icon-star-empty"></i>
+			<i id="5" class="stars icon-star-empty"></i>
 		</div>
 	    <span id="note_hidden" style="display:none;">{{ form_row(form.note) }}</span>
 	    {{ form_row(form.text) }}
