@@ -10,6 +10,7 @@ use CS\ProductBundle\Entity\Game;
 use CS\ProductBundle\Entity\Music;
 use CS\ProductBundle\Entity\Ticket;
 use CS\ProductBundle\Entity\Video;
+use CS\ProductBundle\Entity\InfoTracking;
 use CS\ProductBundle\Form\Type\BookType;
 use CS\ProductBundle\Form\Type\GameType;
 use CS\ProductBundle\Form\Type\MusicType;
@@ -206,6 +207,15 @@ class ProductController extends Controller
 			->findOneById(intval($id));
 		$price = $product->getPrice();
 		$image = $product->getImage();
+		
+		$em = $this->getDoctrine()->getEntityManager();
+		if( ! $security->isGranted("ROLE_FOURNISSEUR") ){
+			if( ! $product->getInfoTracking() ){
+				$product->setInfoTracking(new InfoTracking());
+			} 
+			$product->addVisite();
+		}
+		$em->flush();
 		
 		return $this->render('CSProductBundle:Product:show.html.twig'
 				,array('product' => $product,

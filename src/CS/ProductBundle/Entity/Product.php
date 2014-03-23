@@ -127,6 +127,15 @@ class Product implements Taggable {
 	private $promotions;
 	
 	/**
+	 *
+	 * @var CS\ProductBundle\Entity\InfoTracking
+	 *
+	 * @ORM\OneToOne(targetEntity="CS\ProductBundle\Entity\InfoTracking", cascade={"persist"})
+	 * 
+	 */
+	private $infoTracking;
+	
+	/**
 	 * Constructor.
 	 */
 	public function __construct() {
@@ -366,6 +375,39 @@ class Product implements Taggable {
     {
         return $this->name;
     }
+    
+    /**
+     * Set infoTracking
+     *
+     * @param CS\ProductBundle\Entity\InfoTracking $infoTracking
+     * @return Product
+     */
+    public function setInfoTracking(InfoTracking $infoTracking)
+    {
+    	$this->infoTracking = $infoTracking;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get infoTracking
+     *
+     * @return  CS\ProductBundle\Entity\InfoTracking
+     */
+    public function getInfoTracking()
+    {
+    	return $this->infoTracking;
+    }
+    
+    public function addVisite(){
+    	$this->infoTracking->addVisite();
+    	return $this;
+    }
+    
+   	public function addAchat(){
+    	$this->infoTracking->addAchat();
+    	return $this;
+   	}
 
     /**
      * Set description

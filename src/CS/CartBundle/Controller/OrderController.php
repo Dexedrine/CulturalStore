@@ -41,6 +41,7 @@ class OrderController extends Controller {
 		foreach ($cart->getProducts() as $item){
 			//$t->addEcommerceItem($item->getId(), $item->getName() , $item->getFournisseur()->getId(), $item->getPrice(), 1);
 			$order->addProduct($item);
+			$item->addAchat();
 			$price = $item->getPrice();
 			if($promotion = $item->getCurrentPromotion()){
 				$discount = true;
