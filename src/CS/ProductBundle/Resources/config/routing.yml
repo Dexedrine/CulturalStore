@@ -28,6 +28,11 @@ search_product_by_community:
     pattern: /product/searchByCommunity/{community}
     methods: [GET]
     defaults:  { _controller: "CSProductBundle:Search:searchByCommunity" }
+
+search_product_by_community_without_carousel:
+    pattern: /product/searchByCommunityWithoutCarousel/{community}
+    methods: [GET]
+    defaults:  { _controller: "CSProductBundle:Search:searchByCommunityWithoutCarousel" }
     
 search_product_not_free:
     pattern: /notfree

@@ -94,12 +94,33 @@ class SearchController extends Controller {
 				)
 		));
 		$products = $finder->find ( $query );
-		return $this->render ( 'CSProductBundle:Product:search_result_without_carousel.html.twig', array (
-				'products' => $products,
+		return $this->render ( 'CSProductBundle:Product:search_result_carousel.html.twig', array (
+				'products1' => array_slice($products, 0, 3),
+				'products2' => array_slice($products, 3, 3),
 				'type' =>$community
 		) );
 	}
-	
+	public function searchByCommunityWithoutCarouselAction($community) {
+		$finder = $this->container->get ( 'fos_elastica.finder.website.productByCommunity' );
+		$query = new \Elastica\Query(array(
+				// query filter
+				'query' => array(
+						'query_string' => array(
+								'query' => strtok($community,' ')
+						)
+				),
+				// default sort
+				'sort' => array(
+						'score' => array(
+								'order' => 'desc'
+						)
+				)
+		));
+		$products = $finder->find ( $query );
+		return $this->render ( 'CSProductBundle:Product:search_result_without_carousel.html.twig', array (
+				'products' => $products
+		) );
+	}
 	
 	public function searchFreeAction() {
 		$finder = $this->container->get ( 'fos_elastica.finder.website.productByPrice' );
