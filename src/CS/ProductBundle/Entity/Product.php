@@ -136,6 +136,15 @@ class Product implements Taggable {
 	private $infoTracking;
 	
 	/**
+	 *
+	 * @var CS\ProductBundle\Entity\Score
+	 *
+	 * @ORM\OneToOne(targetEntity="CS\ProductBundle\Entity\Score", cascade={"persist"})
+	 *
+	 */
+	private $score;
+	
+	/**
 	 * Constructor.
 	 */
 	public function __construct() {
@@ -218,13 +227,7 @@ class Product implements Taggable {
 	 */
 	public $proposedCommunities;
 	
-	/**
-	 * Product score.
-	 *
-	 * @var int
-	 *  @ORM\Column(name="score", type="float", options={"default" = 0.75})
-	 */
-	public $score = 0.75 ;
+
 	
 	protected  $tags;
 
@@ -408,6 +411,38 @@ class Product implements Taggable {
     	$this->infoTracking->addAchat();
     	return $this;
    	}
+   	
+
+   	public function calculScoreNouveaute() {
+   		if($this->score)
+   			$this->score->calculScoreNouveaute($this);
+   		else 	
+   			$this->score = new Score($this);
+   	}
+   	
+   	public function calculScoreNote() {
+   		if($this->score)
+   			$this->score->calculScoreNote($this);
+   		else
+   			$this->score = new Score($this);
+   	}
+   	
+   	public function calculScoreVisite() {
+   		if($this->score){
+	   		$this->score->calculScoreVisite($this);
+	   		$this->score->calculScoreConversion($this);
+   		}else
+   			$this->score = new Score($this);
+   	}
+   	
+   	public function calculScoreAchat() {
+   		if($this->score){
+   			$this->score->calculScoreAchat($this);
+   			$this->score->calculScoreConversion($this);
+   		}else
+   			$this->score = new Score($this);
+   	}
+   	
 
     /**
      * Set description
@@ -450,7 +485,13 @@ class Product implements Taggable {
     }
     
     public function getScore() {
-    	return $this->score;
+    	if(! $this->score){
+    		$this->score = new Score($this);
+    	}	
+    	$score = $this->score->getScoreTotal();
+		
+    	
+    	return  str_pad($score, 5, '0', STR_PAD_LEFT);
     }
     
     /**

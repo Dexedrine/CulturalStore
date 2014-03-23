@@ -41,15 +41,14 @@ class CommentController extends Controller
 	
 		if ($request->isMethod('POST') && $form->bind($request)->isValid()) {
 			
-			
-			
-				
 			$product->addComment($comment);
 			$comment->setProduct($product);
 			$comment->setUser($user);
 			
 			
 			$entityManager->persist($comment);
+			
+			$product->calculScoreNote();
 			$entityManager->flush(); // Save changes in database.
 			
 			return $this->redirect($this->generateUrl('cs_product_show',array('id'=>$product->getId())));

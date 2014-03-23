@@ -192,6 +192,13 @@ class ProductController extends Controller
 	function showCreatedProduct($product,$price, $image){
 		$security = $this->get('security.context');
 		$four = $security->getToken()->getUser();
+		
+		$em = $this->getDoctrine()->getEntityManager();
+		
+		$product->calculScoreNouveaute();
+		
+		$em->flush();
+		
 		return $this->render('CSProductBundle:Product:show.html.twig'
 				,array('product' => $product,
 						'price' => $price, 
@@ -214,6 +221,7 @@ class ProductController extends Controller
 				$product->setInfoTracking(new InfoTracking());
 			} 
 			$product->addVisite();
+			$product->calculScoreVisite();
 		}
 		$em->flush();
 		
