@@ -38,6 +38,8 @@ class AppKernel extends Kernel
 				//Search 
 				new JMS\SerializerBundle\JMSSerializerBundle(),
 				new FOS\ElasticaBundle\FOSElasticaBundle (),
+				
+				new Knp\Bundle\PiwikBundle\KnpPiwikBundle(),
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {

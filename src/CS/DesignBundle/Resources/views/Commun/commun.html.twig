@@ -19,29 +19,6 @@
 		{% block js %}{% endblock %}
 	</head>
 <body>
-
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  {% block js_piwik %} {% endblock %}
-  (function() {
-	var host =  "://"+document.location.host+"/piwik/";
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + host;
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', 1]);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
-    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-  
-</script>
-<noscript><p><img src="http://localhost/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-
-<!-- End Piwik Code -->
-
-
-
 <div class="container">
 
 	<header>		
@@ -64,6 +41,35 @@
 	</footer>
 	
 </div>
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['enableLinkTracking']);
+  _paq.push(['trackPageView']);
+  {% block js_piwik %} {% endblock %}
+  
+  {% if not app.session.has('status') %}
+	  _paq.push(['appendToTrackingUrl', 'new_visit=1']); // (1) forces a new visit 
+	  _paq.push(["deleteCookies"]); // (2) deletes existing tracking cookies to start the new visit
+	  // the two lines must be above the call to track* function
+	  _paq.push(["trackPageView"]);
+	  {{ app.session.set('status','nonconnecte') }}
+	  console.log("{{ app.session.get('status') }}");
+	{% endif %}
+	
+  (function() {
+	var host =  "://"+document.location.host+"/piwik/";
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + host;
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 1]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+  
+</script>
+<noscript><p><img src="http://localhost/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+
+<!-- End Piwik Code -->
 </body>
 
 </html>

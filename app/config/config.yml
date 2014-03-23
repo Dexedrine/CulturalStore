@@ -117,6 +117,11 @@ fpn_tag:
     model:
         tag_class:     CS\CommunityBundle\Entity\Community
         tagging_class: CS\CommunityBundle\Entity\CommunitySubscribing
+
+knp_piwik:
+    connection: piwik.connection.piwik
+    token:      PIWIK_API_TOKEN
+
         
 services:
     cs.form.community_entry:

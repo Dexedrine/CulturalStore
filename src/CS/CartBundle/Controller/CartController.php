@@ -4,6 +4,7 @@ namespace CS\CartBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use CS\CartBundle\Entity\Cart;
+use CS\CartBundle\Piwik\PiwikTracker;
 use Symfony\Component\Security\Core\SecurityContext;
 
 class CartController extends Controller {
@@ -51,6 +52,12 @@ class CartController extends Controller {
 			$valueCart = $valueCart + $price;
 		}
 		
+		/*$t = new PiwikTracker(1);
+		
+		$t->addEcommerceItem($product->getId(), $product->getName() , $product->getFournisseur()->getId(), $product->getPrice(), 1);
+		
+		$t->doTrackEcommerceCartUpdate($valueCart);*/
+		
 		return $this->render('CSCartBundle:Cart:cart.html.twig', array (
 				'user' => $user,
 				'cart' => $cart,
@@ -74,7 +81,7 @@ class CartController extends Controller {
 			else{
 				$user->setCart($cart);
 			}			
-		}
+		}		
 		
 		$cart->addProduct($product);			
 		$this->em->flush();

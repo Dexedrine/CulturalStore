@@ -2,18 +2,20 @@
 
 {% block js_piwik %}
 // add the first product to the order
+{% for product in order.products %}
 _paq.push(['addEcommerceItem',
-	"9780786706211", // (required) SKU: Product unique identifier
-	"Endurance: Shackleton's Incredible Voyage", // (optional) Product name
-	"Adventure Books", // (optional) Product category. You can also specify an array of up to 5 categories eg. ["Books", "New releases", "Biography"]
-	8.8, // (recommended) Product price
+	"{{ product.id }}", // (required) SKU: Product unique identifier
+	"{{ product.name }}", // (optional) Product name
+	"{{ product.fournisseur.id }}", // (optional) Product category. You can also specify an array of up to 5 categories eg. ["Books", "New releases", "Biography"]
+	{{ product.price }}, // (recommended) Product price
 	1 // (optional, default to 1) Product quantity
 ]);
+{% endfor %}
 // Here you can add other products in the order
 // Specifiy the order details to Piwik server &amp; sends the data to Piwik server
 _paq.push(['trackEcommerceOrder',
-	"A10000123", // (required) Unique Order ID
-	35, // (required) Order Revenue grand total (includes tax, shipping, and subtracted discount)
+	"{{ order.id }}", // (required) Unique Order ID
+	{{ order.totalPrice }}, // (required) Order Revenue grand total (includes tax, shipping, and subtracted discount)
 	30, // (optional) Order sub total (excludes shipping)
 	5.5, // (optional) Tax amount
 	4.5, // (optional) Shipping amount

@@ -1,6 +1,5 @@
-{% if is_granted("ROLE_CLIENT") %}
-	{% set extendedPath = 'CSDesignBundle:Commun:commun.html.twig' %} 
-{% elseif is_granted("ROLE_FOURNISSEUR")  %}
+{% set extendedPath = 'CSDesignBundle:Commun:commun.html.twig' %} 
+{% if is_granted("ROLE_FOURNISSEUR")  %}
 	{% set extendedPath = 'CSFournisseurBundle:Commun:communFournisseur.html.twig' %}
 {% endif %}
 {% extends extendedPath %}
@@ -10,16 +9,6 @@
 {% endblock %} 
 
 {% import 'CSProductBundle:Macros:buttons.html.twig' as buttons %} 
-
-{% block js_piwik %}
-	_paq.push(['setEcommerceView',
-	"{{ product.id }}", // (required) SKU: Product unique identifier
-	"{{ product.name }}", // (optional) Product name
-	"{{ product.productType }}", // (optional) Product category. You can also specify an array of up to 5 categories eg. ["Books", "New releases", "Biography"]
-	{{ price }} // (recommended) Product price
-	]);
-	_paq.push(['trackPageView']);
-{% endblock %} 
 
 {% block body %}
 <div class="product-detail row">
@@ -57,21 +46,28 @@
 
 		<div class="row-fluid action-buttons">
 			<div class="span6">
-				{% if is_granted("ROLE_CLIENT") %}
-					{% if userConnecte.hasAlreadyBought(product) %}
-						Vous avez d&eacute;j&agrave; achet&eacute; ce produit
-						<a class="btn btn-large btn-block btn-info"
-						href="{{ path('cs_product_download',{ 'product_id' : product.id  }) }}"><i
-						class="icon-download-alt"></i>T&eacute;l&eacute;charger</a>
-					{% else %}
-						<a class="btn btn-large btn-block btn-info"
-						href="{{ path("add_product",{"product_id" : product.id}) }}"><i
-						class="icon-shopping-cart"></i>Ajouter au panier</a>
-					{% endif %}
+				
 					
-				{% elseif is_granted("ROLE_FOURNISSEUR")  %}
+				{% if is_granted("ROLE_FOURNISSEUR")  %}
 					<a class="btn btn-large btn-block btn-info">
 						<i	class="icon-shopping-cart"></i>Ajouter au panier</a>
+				{% else %}
+					{% if is_granted("ROLE_CLIENT")  %}
+						{% if userConnecte.hasAlreadyBought(product) %}
+							Vous avez d&eacute;j&agrave; achet&eacute; ce produit
+							<a class="btn btn-large btn-block btn-info"
+							href="{{ path('cs_product_download',{ 'product_id' : product.id  }) }}"><i
+							class="icon-download-alt"></i>T&eacute;l&eacute;charger</a>
+						{% else %}
+							<a class="btn btn-large btn-block btn-info"
+							href="{{ path("add_product",{"product_id" : product.id}) }}"><i
+							class="icon-shopping-cart"></i>Ajouter au panier</a>
+						{% endif %}
+					{% else %}
+							<a class="btn btn-large btn-block btn-info"
+							href="{{ path("add_product",{"product_id" : product.id}) }}"><i
+							class="icon-shopping-cart"></i>Ajouter au panier</a>
+					{% endif %}
 				{% endif %}
 			</div>
 		</div>
@@ -98,3 +94,13 @@
 	{% render url('cs_product_show_comment',{ 'product_id' : product.id }) %}
 </div>
 {% endblock body %}
+{% block js_piwik %}
+	_paq.push(['setEcommerceView',
+	"{{ product.id }}", // (required) SKU: Product unique identifier
+	"{{ product.name }}", // (optional) Product name
+	"{{ product.fournisseur.id }}", // (optional) Product category. You can also specify an array of up to 5 categories eg. ["Books", "New releases", "Biography"]
+	{{ price }} // (recommended) Product price
+	]);
+	
+  _paq.push(['trackPageView']);
+{% endblock %} 

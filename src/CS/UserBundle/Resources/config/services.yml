@@ -11,6 +11,6 @@ services:
             - { name: form.type, alias: cs_fournisseur_registration_form }
     authentication_handler:
         class:  CS\UserBundle\Handler\LoginSuccessHandler
-        arguments:  ['@router', '@security.context']
+        arguments:  ['@router', '@security.context','@session']
         tags:
             - { name: 'monolog.logger', channel: 'security' }
