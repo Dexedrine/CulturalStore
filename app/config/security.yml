@@ -18,6 +18,7 @@ security:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
                 success_handler: authentication_handler
+                failure_path: cs_design_homepage_with_error
             logout:       true
             anonymous:    true
             remember_me:
