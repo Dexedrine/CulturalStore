@@ -266,7 +266,7 @@ class Score{
     			$score = 3;
     		} elseif ($infoTracking->getVisite() > 50) {
     			$score = 2;
-    		} elseif ($infoTracking->getVisite() > 1) {
+    		} elseif ($infoTracking->getVisite() >= 1) {
     			$score = 1;
     		}
     	}
@@ -296,7 +296,7 @@ class Score{
     			$score = 3;
     		} elseif ($infoTracking->getAchat() > 5) {
     			$score = 2;
-    		} elseif ($infoTracking->getAchat() > 1) {
+    		} elseif ($infoTracking->getAchat() >= 1) {
     			$score = 1;
     		}
     	}
@@ -310,7 +310,7 @@ class Score{
     	$score = 0;
     	$conversion = 0;
     
-    	if($infoTracking){
+    	if($infoTracking && $infoTracking->getAchat() != 0 &&  $infoTracking->getVisite() != 0){
     		$conversion = $infoTracking->getAchat() / $infoTracking->getVisite();
     	}
     

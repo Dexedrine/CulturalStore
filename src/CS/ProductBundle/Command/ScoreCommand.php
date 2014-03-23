@@ -24,14 +24,14 @@ class ScoreCommand extends ContainerAwareCommand {
 		}
 		
 		$products = $this->getContainer ()->get ( 'doctrine' )->getRepository ( 'CSProductBundle:Product' )->findAll ();
-		
+		$em = $this->getContainer ()->get('doctrine')->getEntityManager();
 		foreach ( $products as $product ) {
 			$product->setScore(new Score($product));
 			$text .= $product->getName () . " score : " . $product->getScore() . "\n";
 			
 		}
 		
-		
+		$em->flush();
 		
 		$output->writeln ( $text );
 	}
