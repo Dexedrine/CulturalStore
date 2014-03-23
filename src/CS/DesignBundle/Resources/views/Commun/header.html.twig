@@ -1,3 +1,11 @@
+{%if login is defined  and login == 'error'%}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#login_button').click();
+		});
+	</script>
+{% endif %}
+
 <div class="row header">
 
 	<!-- Le logo Cultural Store -->
@@ -48,7 +56,7 @@
 
 						<div class="modal-body">{% render url('fos_user_security_login')
 							%}</div>
-					</div> <a class="btn btn-primary" data-toggle="modal"
+					</div> <a class="btn btn-primary" data-toggle="modal" id="login_button"
 					href="#logger">Se connecter</a>
 				</td>
 				<td class="client register">

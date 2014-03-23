@@ -1,3 +1,7 @@
 cs_design_homepage:
     pattern:  /
     defaults: { _controller: "CSDesignBundle:Homepage:homepage" }
+
+cs_design_homepage_with_error:
+    pattern:  /error
+    defaults: { _controller: "CSDesignBundle:Homepage:errorLogin" }

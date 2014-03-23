@@ -11,4 +11,11 @@ class HomepageController extends Controller {
 		return $this
 				->render('CSDesignBundle:Homepage:homepage.html.twig', array('user'=>$user));
 	}
+	
+	public function errorLoginAction() {
+		$security = $this->get('security.context');
+		$user = $security->getToken()->getUser();
+		return $this
+				->render('CSDesignBundle:Homepage:homepage.html.twig', array('user'=>$user,'login'=>"error"));
+	}
 }

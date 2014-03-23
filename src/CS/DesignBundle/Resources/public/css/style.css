@@ -105,6 +105,18 @@ border-radius: 0 4px 4px 0;
 	color: #49423d;
 }
 
+#remember_me + label {
+    margin-top: -18px;
+    margin-bottom: 15px;
+}
+#remember_me {
+    display: block;
+    margin-left: 177px;
+    margin-top: 13px;
+    margin-bottom: 0px;
+}
+.modal-body div div{color:red; margin-bottom:10px}
+
 /*Navigation*/
 
 .navbar-inner {
