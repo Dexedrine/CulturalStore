@@ -73,7 +73,7 @@ class SearchController extends Controller {
 		$products = $finder->find ( $query );  
 		return $this->render ( 'CSProductBundle:Product:search_result_carousel.html.twig', array (
 				'products1' => array_slice($products, 0, 3),
-				'products2' => array_slice($products, 3, 6),
+				'products2' => array_slice($products, 3, 3),
 				'type' =>$type
 		) );
 	}
@@ -94,9 +94,8 @@ class SearchController extends Controller {
 				)
 		));
 		$products = $finder->find ( $query );
-		return $this->render ( 'CSProductBundle:Product:search_result_carousel.html.twig', array (
-				'products1' => array_slice($products, 0, 3),
-				'products2' => array_slice($products, 3, 6),
+		return $this->render ( 'CSProductBundle:Product:search_result_without_carousel.html.twig', array (
+				'products' => $products,
 				'type' =>$community
 		) );
 	}
@@ -122,7 +121,7 @@ class SearchController extends Controller {
 		$products = $finder->find ( $query );
 		return $this->render ( 'CSProductBundle:Product:search_result_carousel.html.twig', array (
 				'products1' => array_slice($products, 0, 3),
-				'products2' => array_slice($products, 3, 6),
+				'products2' => array_slice($products, 3, 3),
 				'type' =>'free'
 		) );
 	}
@@ -146,7 +145,7 @@ class SearchController extends Controller {
 		$products = $finder->find ( $query );
 		return $this->render ( 'CSProductBundle:Product:search_result_carousel.html.twig', array (
 				'products1' => array_slice($products, 0, 3),
-				'products2' => array_slice($products, 3, 6),
+				'products2' => array_slice($products, 3, 3),
 				'type' =>'notfree'
 		) );
 	}

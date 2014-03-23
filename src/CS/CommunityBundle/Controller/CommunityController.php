@@ -65,7 +65,7 @@ class CommunityController extends Controller
 				array('community' => $community,
 					'count' => $count,
 					'products1' => array_slice($products, 0, 3),
-				    'products2' => array_slice($products, 3, 6),));
+				    'products2' => array_slice($products, 3, 3),));
 	}
 	
 	
